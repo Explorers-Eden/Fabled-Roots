@@ -1,0 +1,172 @@
+{
+  "type": "minecraft:multi_action",
+  "body": {
+    "type": "minecraft:item",
+    "item": {
+      "id": "minecraft:writable_book",
+      "components": {
+        "minecraft:tooltip_display": {
+          "hide_tooltip": true
+        }
+      }
+    },
+    "description": {
+      "translate": "menu.fabled_roots.description",
+      "fallback": "Choose a Class to proceed:"
+    }
+  },
+  "can_close_with_escape": false,
+  "external_title": {
+    "translate": "menu.fabled_roots.title.external",
+    "fallback": "Fabled Roots"
+  },
+  "title": {
+    "translate": "menu.fabled_roots.title",
+    "fallback": "Fabled Roots"
+  },
+  "pause": true,
+  "after_action": "close",
+  "columns": 2,
+  "actions": [
+    {
+      "label": {
+        "translate": "option.fabled_roots.builder",
+        "fallback": "Builder"
+      },
+      "tooltip": {
+        "translate": "option.fabled_roots.builder.tooltip",
+        "fallback": "description goes here"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.class set 1"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.survivor",
+        "fallback": "Survivor"
+      },
+      "tooltip": {
+        "translate": "option.fabled_roots.survivor.tooltip",
+        "fallback": "description goes here"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.class set 2"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.miner",
+        "fallback": "Miner"
+      },
+      "tooltip": {
+        "translate": "option.fabled_roots.miner.tooltip",
+        "fallback": "description goes here"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.class set 3"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.rancher",
+        "fallback": "Rancher"
+      },
+      "tooltip": {
+        "translate": "option.fabled_roots.rancher.tooltip",
+        "fallback": "description goes here"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.class set 4"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.archer",
+        "fallback": "Archer"
+      },
+      "tooltip": {
+        "translate": "option.fabled_roots.archer.tooltip",
+        "fallback": "description goes here"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.class set 5"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.raider",
+        "fallback": "Raider"
+      },
+      "tooltip": {
+        "translate": "option.fabled_roots.raider.tooltip",
+        "fallback": "description goes here"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.class set 6"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.hermit",
+        "fallback": "Hermit"
+      },
+      "tooltip": {
+        "translate": "option.fabled_roots.hermit.tooltip",
+        "fallback": "description goes here"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.class set 7"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.nomad",
+        "fallback": "Nomad"
+      },
+      "tooltip": {
+        "translate": "option.fabled_roots.nomad.tooltip",
+        "fallback": "description goes here"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.class set 8"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.climber",
+        "fallback": "Climber"
+      },
+      "tooltip": {
+        "translate": "option.fabled_roots.climber.tooltip",
+        "fallback": "description goes here"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.class set 9"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.seeker",
+        "fallback": "Seeker"
+      },
+      "tooltip": {
+        "translate": "option.fabled_roots.seeker.tooltip",
+        "fallback": "description goes here"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.class set 10"
+      }
+    }
+  ]
+}

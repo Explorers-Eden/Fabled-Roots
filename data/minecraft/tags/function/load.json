@@ -1,0 +1,8 @@
+{
+	"values": [
+		"fabled_roots:load",
+		"fabled_roots:teams",
+		"fabled_roots:trigger/class",
+		"fabled_roots:trigger/race"
+	]
+}

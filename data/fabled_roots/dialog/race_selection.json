@@ -1,0 +1,172 @@
+{
+  "type": "minecraft:multi_action",
+  "body": {
+    "type": "minecraft:item",
+    "item": {
+      "id": "minecraft:writable_book",
+      "components": {
+        "minecraft:tooltip_display": {
+          "hide_tooltip": true
+        }
+      }
+    },
+    "description": {
+      "translate": "menu.fabled_roots.description",
+      "fallback": "Choose a Race to proceed:"
+    }
+  },
+  "can_close_with_escape": false,
+  "external_title": {
+    "translate": "menu.fabled_roots.main.title.external",
+    "fallback": "Fabled Roots"
+  },
+  "title": {
+    "translate": "menu.fabled_roots.main.title",
+    "fallback": "Fabled Roots"
+  },
+  "pause": true,
+  "after_action": "close",
+  "columns": 2,
+  "actions": [
+    {
+      "label": {
+        "translate": "option.fabled_roots.aetherian",
+        "fallback": "Aetherian"
+      },
+      "tooltip": {
+        "translate": "option.fabled_roots.aetherian.tooltip",
+        "fallback": "description goes here"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.race set 1"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.dunesworn",
+        "fallback": "Dunesworn"
+      },
+      "tooltip": {
+        "translate": "option.fabled_roots.dunesworn.tooltip",
+        "fallback": "description goes here"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.race set 2"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.endling",
+        "fallback": "Endling"
+      },
+      "tooltip": {
+        "translate": "option.fabled_roots.endling.tooltip",
+        "fallback": "description goes here"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.race set 3"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.frostborne",
+        "fallback": "Frostborne"
+      },
+      "tooltip": {
+        "translate": "option.fabled_roots.frostborne.tooltip",
+        "fallback": "description goes here"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.race set 4"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.moonshroud",
+        "fallback": "Moonshroud"
+      },
+      "tooltip": {
+        "translate": "option.fabled_roots.moonshroud.tooltip",
+        "fallback": "description goes here"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.race set 5"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.netherian",
+        "fallback": "Netherian"
+      },
+      "tooltip": {
+        "translate": "option.fabled_roots.netherian.tooltip",
+        "fallback": "description goes here"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.race set 6"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.oakhearted",
+        "fallback": "Oakhearted"
+      },
+      "tooltip": {
+        "translate": "option.fabled_roots.oakhearted.tooltip",
+        "fallback": "description goes here"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.race set 7"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.orebringer",
+        "fallback": "Orebringer"
+      },
+      "tooltip": {
+        "translate": "option.fabled_roots.orebringer.tooltip",
+        "fallback": "description goes here"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.race set 8"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.palehearted",
+        "fallback": "Palehearted"
+      },
+      "tooltip": {
+        "translate": "option.fabled_roots.palehearted.tooltip",
+        "fallback": "description goes here"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.race set 9"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.turtlekin",
+        "fallback": "Turtlekin"
+      },
+      "tooltip": {
+        "translate": "option.fabled_roots.turtlekin.tooltip",
+        "fallback": "description goes here"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.race set 10"
+      }
+    }
+  ]
+}
