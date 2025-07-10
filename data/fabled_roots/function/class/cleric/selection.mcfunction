@@ -3,11 +3,10 @@ function fabled_roots:remove/class
 tag @s add fabled_roots.cleric
 tag @s add fabled_roots.has_class
 
+execute unless score @s fabled_roots.received_equip matches 1 run loot give @s loot eden:gameplay/starter_equipment/cleric
+scoreboard players set @s fabled_roots.received_equip 1
+
 stopsound @s
-advancement revoke @s only fabled_roots:on_join
-
-attribute @s minecraft:step_height base set 1.5
-
 particle minecraft:poof ~ ~.6 ~ .5 .5 .5 0 100
 particle minecraft:end_rod ~ ~.6 ~ 1 1 1 0.01 50
 particle minecraft:scrape ~ ~.6 ~ .8 .8 .8 0.3 50

@@ -5,6 +5,7 @@ scoreboard objectives add eden.technical dummy
 scoreboard objectives add fabled_roots.dialog_trigger.race trigger {"bold":false,"color":"green","italic":false,"text":"Fabled Roots: Race Selection"}
 scoreboard objectives add fabled_roots.dialog_trigger.class trigger {"bold":false,"color":"green","italic":false,"text":"Fabled Roots: Class Selection"}
 scoreboard objectives add fabled_roots.exp.player dummy
+scoreboard objectives add fabled_roots.received_equip dummy
 scoreboard objectives add fabled_roots.bard.timer.active dummy
 scoreboard objectives add fabled_roots.bard.timer dummy
 scoreboard objectives add fabled_roots.scout.pos dummy

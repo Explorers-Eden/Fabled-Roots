@@ -1,0 +1,191 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "minecraft:fire_resistance"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "minecraft:healing"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "minecraft:invisibility"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "minecraft:luck"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "minecraft:night_vision"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "minecraft:regeneration"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "minecraft:slow_falling"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:potion",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "minecraft:turtle_master"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:splash_potion",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "minecraft:fire_resistance"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:splash_potion",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "minecraft:healing"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:splash_potion",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "minecraft:invisibility"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:splash_potion",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "minecraft:luck"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:splash_potion",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "minecraft:night_vision"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:splash_potion",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "minecraft:regeneration"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:splash_potion",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "minecraft:slow_falling"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:splash_potion",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_potion",
+              "id": "minecraft:turtle_master"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
