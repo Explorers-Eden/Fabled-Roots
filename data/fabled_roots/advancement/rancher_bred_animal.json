@@ -1,0 +1,20 @@
+{
+  "criteria": {
+    "bred_animal": {
+      "trigger": "minecraft:bred_animals",
+      "conditions": {
+        "player": {
+          "nbt": "{Tags:[\"fabled_roots.rancher\"]}"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "bred_animal"
+    ]
+  ],
+  "rewards": {
+    "function": "fabled_roots:class/rancher/trigger/advancement"
+  }
+}

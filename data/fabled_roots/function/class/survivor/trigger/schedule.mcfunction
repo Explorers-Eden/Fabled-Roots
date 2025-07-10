@@ -1,0 +1,2 @@
+$execute if predicate {"condition":"minecraft:random_chance","chance":0.25} if score @s fabled_roots.exp.player matches 1.. if entity @e[type=#eden:scout_effect,distance=..16] run experience add @s $(exp) points
+scoreboard players set @s fabled_roots.exp.player 0

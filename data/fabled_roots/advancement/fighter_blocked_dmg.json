@@ -1,0 +1,23 @@
+{
+  "criteria": {
+    "blocked_hit": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "player": {
+          "nbt": "{Tags:[\"fabled_roots.fighter\"]}"
+        },
+        "damage": {
+          "blocked": true
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "blocked_hit"
+    ]
+  ],
+  "rewards": {
+    "function": "fabled_roots:class/fighter/trigger/advancement"
+  }
+}

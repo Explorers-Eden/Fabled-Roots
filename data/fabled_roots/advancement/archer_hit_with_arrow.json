@@ -1,0 +1,33 @@
+{
+  "criteria": {
+    "arrow_hit": {
+      "trigger": "minecraft:player_hurt_entity",
+      "conditions": {
+        "player": {
+          "nbt": "{Tags:[\"fabled_roots.archer\"]}"
+        },
+        "damage": {
+          "type": {
+            "direct_entity": {
+              "type": "#minecraft:arrows"
+            },
+            "tags": [
+              {
+                "expected": true,
+                "id": "minecraft:is_projectile"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "arrow_hit"
+    ]
+  ],
+  "rewards": {
+    "function": "fabled_roots:class/archer/trigger/advancement"
+  }
+}

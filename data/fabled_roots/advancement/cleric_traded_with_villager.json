@@ -1,0 +1,23 @@
+{
+  "criteria": {
+    "traded": {
+      "trigger": "minecraft:villager_trade",
+      "conditions": {
+        "player": {
+          "nbt": "{Tags:[\"fabled_roots.cleric\"]}"
+        },
+        "villager": {
+          "nbt": "{VillagerData: {profession:\"minecraft:cleric\"}}"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "traded"
+    ]
+  ],
+  "rewards": {
+    "function": "fabled_roots:class/cleric/trigger/advancement"
+  }
+}

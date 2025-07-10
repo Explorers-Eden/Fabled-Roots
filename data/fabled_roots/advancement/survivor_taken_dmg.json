@@ -1,0 +1,20 @@
+{
+  "criteria": {
+    "taken_dmg": {
+      "trigger": "minecraft:entity_hurt_player",
+      "conditions": {
+        "player": {
+          "nbt": "{Tags:[\"fabled_roots.survivor\"]}"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "taken_dmg"
+    ]
+  ],
+  "rewards": {
+    "function": "fabled_roots:class/survivor/trigger/advancement"
+  }
+}

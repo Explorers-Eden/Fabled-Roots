@@ -1,0 +1,20 @@
+{
+  "criteria": {
+    "tame_animal": {
+      "trigger": "minecraft:tame_animal",
+      "conditions": {
+        "player": {
+          "nbt": "{Tags:[\"fabled_roots.rancher\"]}"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "tame_animal"
+    ]
+  ],
+  "rewards": {
+    "function": "fabled_roots:class/rancher/trigger/advancement"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "criteria": {
+    "killed_entity": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "player": {
+          "nbt": "{Tags:[\"fabled_roots.fighter\"]}"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "killed_entity"
+    ]
+  ],
+  "rewards": {
+    "function": "fabled_roots:class/fighter/trigger/advancement"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "criteria": {
+    "consumed_potion": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "player": {
+          "nbt": "{Tags:[\"fabled_roots.cleric\"]}"
+        },
+        "item": {
+          "items": "minecraft:potion"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "consumed_potion"
+    ]
+  ],
+  "rewards": {
+    "function": "fabled_roots:class/cleric/trigger/advancement"
+  }
+}

@@ -1,14 +1,14 @@
 team leave @s
 
-tag @s remove fabled_roots.aetherian
-tag @s remove fabled_roots.dunesworn
-tag @s remove fabled_roots.endling
-tag @s remove fabled_roots.frostborne
-tag @s remove fabled_roots.moonshroud
-tag @s remove fabled_roots.netherian
-tag @s remove fabled_roots.oakhearted
-tag @s remove fabled_roots.orebringer
-tag @s remove fabled_roots.palehearted
-tag @s remove fabled_roots.turtlekin
+function fabled_roots:remove/race/aetherian
+function fabled_roots:remove/race/dunesworn
+function fabled_roots:remove/race/endling
+function fabled_roots:remove/race/frostborne
+function fabled_roots:remove/race/moonshroud
+function fabled_roots:remove/race/netherian
+function fabled_roots:remove/race/oakhearted
+function fabled_roots:remove/race/orebringer
+function fabled_roots:remove/race/palehearted
+function fabled_roots:remove/race/turtlekin
 
 tag @s remove fabled_roots.has_race

@@ -1,0 +1,20 @@
+{
+  "criteria": {
+    "builder_placed_block": {
+      "trigger": "minecraft:placed_block",
+      "conditions": {
+        "player": {
+          "nbt": "{Tags:[\"fabled_roots.builder\"]}"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "builder_placed_block"
+    ]
+  ],
+  "rewards": {
+    "function": "fabled_roots:class/builder/trigger/advancement"
+  }
+}

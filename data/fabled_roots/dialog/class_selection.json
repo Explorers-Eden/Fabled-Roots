@@ -100,11 +100,11 @@
     },
     {
       "label": {
-        "translate": "option.fabled_roots.raider",
-        "fallback": "Raider"
+        "translate": "option.fabled_roots.fighter",
+        "fallback": "Fighter"
       },
       "tooltip": {
-        "translate": "option.fabled_roots.raider.tooltip",
+        "translate": "option.fabled_roots.fighter.tooltip",
         "fallback": "description goes here"
       },
       "action": {
@@ -128,11 +128,11 @@
     },
     {
       "label": {
-        "translate": "option.fabled_roots.nomad",
-        "fallback": "Nomad"
+        "translate": "option.fabled_roots.bard",
+        "fallback": "Bard"
       },
       "tooltip": {
-        "translate": "option.fabled_roots.nomad.tooltip",
+        "translate": "option.fabled_roots.bard.tooltip",
         "fallback": "description goes here"
       },
       "action": {
@@ -142,11 +142,11 @@
     },
     {
       "label": {
-        "translate": "option.fabled_roots.climber",
-        "fallback": "Climber"
+        "translate": "option.fabled_roots.cleric",
+        "fallback": "Cleric"
       },
       "tooltip": {
-        "translate": "option.fabled_roots.climber.tooltip",
+        "translate": "option.fabled_roots.cleric.tooltip",
         "fallback": "description goes here"
       },
       "action": {
@@ -156,11 +156,11 @@
     },
     {
       "label": {
-        "translate": "option.fabled_roots.seeker",
-        "fallback": "Seeker"
+        "translate": "option.fabled_roots.scout",
+        "fallback": "Scout"
       },
       "tooltip": {
-        "translate": "option.fabled_roots.seeker.tooltip",
+        "translate": "option.fabled_roots.scout.tooltip",
         "fallback": "description goes here"
       },
       "action": {
