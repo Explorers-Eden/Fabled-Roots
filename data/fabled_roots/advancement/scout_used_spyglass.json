@@ -1,0 +1,29 @@
+{
+  "criteria": {
+    "target_entity": {
+      "trigger": "minecraft:using_item",
+      "conditions": {
+        "player": {
+          "type_specific": {
+            "type": "minecraft:player",
+            "looking_at": {
+              "type": "#eden:living"
+            }
+          },
+          "nbt": "{Tags:[\"fabled_roots.scout\"]}"
+        },
+        "item": {
+          "items": "minecraft:spyglass"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "target_entity"
+    ]
+  ],
+  "rewards": {
+    "function": "fabled_roots:class/scout/trigger/advancement"
+  }
+}

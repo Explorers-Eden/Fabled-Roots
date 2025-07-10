@@ -1,0 +1,5 @@
+$execute positioned ^ ^ ^$(spyglass_pos) if entity @e[type=#eden:living,tag=!fabled_roots.scout,distance=..1] run effect give @n[type=#eden:living,tag=!fabled_roots.scout] glowing 1 0 true
+$execute positioned ^ ^ ^$(spyglass_pos) if entity @e[type=#eden:living,tag=!fabled_roots.scout,distance=..1] run effect give @n[type=#eden:living,tag=!fabled_roots.scout] slowness 1 1 true
+
+$execute positioned ^ ^ ^$(spyglass_pos) unless entity @e[type=#eden:living,tag=!fabled_roots.scout,distance=..1] run return run function fabled_roots:class/scout/spyglass with storage eden:temp fabled_roots
+$execute positioned ^ ^ ^$(spyglass_pos) if entity @e[type=#eden:living,tag=!fabled_roots.scout,distance=..1] run return run scoreboard players set @s fabled_roots.scout.pos 0

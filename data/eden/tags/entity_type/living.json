@@ -1,0 +1,8 @@
+{
+  "values": [
+    "#eden:hostile_mobs",
+    "#eden:passive_mobs",
+    "#eden:neutral_mobs",
+    "minecraft:player"
+  ]
+}

@@ -7,6 +7,7 @@ scoreboard objectives add fabled_roots.dialog_trigger.class trigger {"bold":fals
 scoreboard objectives add fabled_roots.exp.player dummy
 scoreboard objectives add fabled_roots.bard.timer.active dummy
 scoreboard objectives add fabled_roots.bard.timer dummy
+scoreboard objectives add fabled_roots.scout.pos dummy
 scoreboard objectives add fabled_roots.exp.miner.coal_ore minecraft.mined:minecraft.coal_ore
 scoreboard objectives add fabled_roots.exp.miner.iron_ore minecraft.mined:minecraft.iron_ore
 scoreboard objectives add fabled_roots.exp.miner.copper_ore minecraft.mined:minecraft.copper_ore

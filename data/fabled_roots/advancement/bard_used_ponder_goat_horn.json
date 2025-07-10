@@ -21,6 +21,6 @@
     ]
   ],
   "rewards": {
-    "function": "fabled_roots:class/bard/trigger/advancement"
+    "function": "fabled_roots:class/bard/trigger/advancement/ponder"
   }
 }
