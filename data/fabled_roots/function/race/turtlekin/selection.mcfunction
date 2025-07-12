@@ -12,6 +12,6 @@ attribute @s minecraft:waypoint_transmit_range base set 256
 attribute @s minecraft:waypoint_receive_range base set 128
 
 attribute @s minecraft:oxygen_bonus base set 15
-attribute @s minecraft:movement_speed base set 0.09
+attribute @s minecraft:movement_speed base set 0.085
 
 dialog show @s fabled_roots:class_selection

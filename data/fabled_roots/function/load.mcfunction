@@ -1,10 +1,17 @@
+##gamerules
+gamerule locatorBar true
+
 ##add default scoreboard
 scoreboard objectives add eden.technical dummy
 
-##add scoreboards
+##dialog trigger scoreboards
 scoreboard objectives add fabled_roots.dialog_trigger.race trigger {"bold":false,"color":"green","italic":false,"text":"Fabled Roots: Race Selection"}
 scoreboard objectives add fabled_roots.dialog_trigger.class trigger {"bold":false,"color":"green","italic":false,"text":"Fabled Roots: Class Selection"}
-scoreboard objectives add fabled_roots.exp.player dummy
+scoreboard objectives add fabled_roots.dialog_trigger.reset trigger {"bold":false,"color":"green","italic":false,"text":"Fabled Roots: Reset Roots"}
+
+##additional scoreboards
+scoreboard objectives add fabled_roots.exp.player.current dummy
+scoreboard objectives add fabled_roots.exp.class_ability dummy
 scoreboard objectives add fabled_roots.received_equip dummy
 scoreboard objectives add fabled_roots.bard.timer.active dummy
 scoreboard objectives add fabled_roots.bard.timer dummy

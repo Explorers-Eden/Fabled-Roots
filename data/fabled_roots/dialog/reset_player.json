@@ -1,0 +1,73 @@
+{
+  "type": "minecraft:confirmation",
+  "body": [
+    {
+      "type": "minecraft:plain_message",
+      "contents": {
+        "translate": "menu.fabled_roots.reset.description",
+        "fallback": "Proceeding will reset your chosen Race, Class and Experience Levels!",
+        "color": "red"
+      },
+      "width": 256
+    },
+    {
+      "type": "minecraft:plain_message",
+      "contents": [
+        {
+          "translate": "menu.fabled_roots.reset.warning",
+          "fallback": "If you reset your choices, you'll get to pick a new Race and Class to start fresh. Just a heads-up: you won't get the Starter Gear from your new Class again.",
+          "color": "white"
+        },
+        {
+          "text": "\n\n"
+        },
+        {
+          "translate": "menu.fabled_roots.reset.cost_text",
+          "fallback": "You need at least "
+        },
+        {
+          "translate": "menu.fabled_roots.reset.amount",
+          "fallback": "100",
+          "color": "green",
+          "bold": true
+        },
+        {
+          "translate": "menu.fabled_roots.reset.cost_currency",
+          "fallback": " Exp Levels to reset."
+        }
+      ],
+      "width": 256
+    }
+  ],
+  "can_close_with_escape": true,
+  "external_title": {
+    "translate": "menu.fabled_roots.title.reset.external",
+    "fallback": "Reset Roots"
+  },
+  "title": {
+    "translate": "menu.fabled_roots.title.reset",
+    "fallback": "Fabled Roots: Reset Roots"
+  },
+  "pause": false,
+  "after_action": "close",
+  "yes": {
+    "label": {
+      "translate": "menu.fabled_roots.confirm",
+      "fallback": "Confirm"
+    },
+    "action": {
+      "type": "run_command",
+      "command": "trigger fabled_roots.dialog_trigger.reset set 1"
+    }
+  },
+  "no": {
+    "label": {
+      "translate": "menu.fabled_roots.back",
+      "fallback": "Back"
+    },
+    "action": {
+      "type": "show_dialog",
+      "dialog": "fabled_roots:pause_screen_main"
+    }
+  }
+}

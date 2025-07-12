@@ -1,2 +1,2 @@
-execute unless entity @e[type=#eden:hermit_effect,distance=0.1..32] run effect give @s minecraft:strength 2 0 true
+execute unless entity @e[type=#eden:hermit_effect,distance=0.1..32] run effect give @s minecraft:strength 2 1 true
 $execute if predicate {"condition":"minecraft:random_chance","chance":0.025} unless entity @e[type=#eden:hermit_effect,distance=0.1..32] run experience add @s $(exp) points

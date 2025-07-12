@@ -1,18 +1,10 @@
 {
   "type": "minecraft:multi_action",
   "body": {
-    "type": "minecraft:item",
-    "item": {
-      "id": "minecraft:writable_book",
-      "components": {
-        "minecraft:tooltip_display": {
-          "hide_tooltip": true
-        }
-      }
-    },
-    "description": {
-      "translate": "menu.fabled_roots.description",
-      "fallback": "Choose a Class to proceed:"
+    "type": "minecraft:plain_message",
+    "contents": {
+      "translate": "menu.fabled_roots.class.description",
+      "fallback": "Every adventurer starts somewhere.\nPick a path — you can always wander a new one later."
     }
   },
   "can_close_with_escape": false,
@@ -33,10 +25,20 @@
         "translate": "option.fabled_roots.builder",
         "fallback": "Builder"
       },
-      "tooltip": {
-        "translate": "option.fabled_roots.builder.tooltip",
-        "fallback": "description goes here"
-      },
+      "tooltip": [
+        {
+          "translate": "option.fabled_roots.builder.tooltip.description",
+          "fallback": "Loves blocks, blueprints, and turning ideas into reality."
+        },
+        {
+          "text": "\n\n"
+        },
+        {
+          "translate": "option.fabled_roots.builder.tooltip.stats",
+          "fallback": "Traits:\n• Block Interaction Range: 6.5\n• Gains extra Exp by placing blocks",
+          "color": "gray"
+        }
+      ],
       "action": {
         "type": "run_command",
         "command": "trigger fabled_roots.dialog_trigger.class set 1"
@@ -47,10 +49,20 @@
         "translate": "option.fabled_roots.survivor",
         "fallback": "Survivor"
       },
-      "tooltip": {
-        "translate": "option.fabled_roots.survivor.tooltip",
-        "fallback": "description goes here"
-      },
+      "tooltip": [
+        {
+          "translate": "option.fabled_roots.survivor.tooltip.description",
+          "fallback": "Scrappy and self-reliant, they make it through anything with just the basics."
+        },
+        {
+          "text": "\n\n"
+        },
+        {
+          "translate": "option.fabled_roots.survivor.tooltip.stats",
+          "fallback": "Traits:\n• Chance to get a small Regeneration effect when taking damage\n• Gains extra Exp by taking damage",
+          "color": "gray"
+        }
+      ],
       "action": {
         "type": "run_command",
         "command": "trigger fabled_roots.dialog_trigger.class set 2"
@@ -61,10 +73,20 @@
         "translate": "option.fabled_roots.miner",
         "fallback": "Miner"
       },
-      "tooltip": {
-        "translate": "option.fabled_roots.miner.tooltip",
-        "fallback": "description goes here"
-      },
+      "tooltip": [
+        {
+          "translate": "option.fabled_roots.miner.tooltip.description",
+          "fallback": "Lives for deep tunnels, rare ores, and the thrill of the dig."
+        },
+        {
+          "text": "\n\n"
+        },
+        {
+          "translate": "option.fabled_roots.miner.tooltip.stats",
+          "fallback": "Traits:\n• +50% Block Breaking Speed\n• Gains extra Exp by mining Ores",
+          "color": "gray"
+        }
+      ],
       "action": {
         "type": "run_command",
         "command": "trigger fabled_roots.dialog_trigger.class set 3"
@@ -75,10 +97,20 @@
         "translate": "option.fabled_roots.rancher",
         "fallback": "Rancher"
       },
-      "tooltip": {
-        "translate": "option.fabled_roots.rancher.tooltip",
-        "fallback": "description goes here"
-      },
+      "tooltip": [
+        {
+          "translate": "option.fabled_roots.rancher.tooltip.description",
+          "fallback": "Good with animals, and always has a pen full of friends."
+        },
+        {
+          "text": "\n\n"
+        },
+        {
+          "translate": "option.fabled_roots.rancher.tooltip.stats",
+          "fallback": "Traits:\n• Speed Boost while riding animals\n• Gains extra Exp by taming, breeding and having animales on a leash",
+          "color": "gray"
+        }
+      ],
       "action": {
         "type": "run_command",
         "command": "trigger fabled_roots.dialog_trigger.class set 4"
@@ -89,10 +121,20 @@
         "translate": "option.fabled_roots.archer",
         "fallback": "Archer"
       },
-      "tooltip": {
-        "translate": "option.fabled_roots.archer.tooltip",
-        "fallback": "description goes here"
-      },
+      "tooltip": [
+        {
+          "translate": "option.fabled_roots.archer.tooltip.description",
+          "fallback": "Quick on their feet and quicker with a bow—distance is their best friend."
+        },
+        {
+          "text": "\n\n"
+        },
+        {
+          "translate": "option.fabled_roots.archer.tooltip.stats",
+          "fallback": "Traits:\n• Wind Charges entities hit with a Cross-/Bow\n• Gains extra Exp by hitting entities with a Cross-/Bow",
+          "color": "gray"
+        }
+      ],
       "action": {
         "type": "run_command",
         "command": "trigger fabled_roots.dialog_trigger.class set 5"
@@ -103,10 +145,20 @@
         "translate": "option.fabled_roots.fighter",
         "fallback": "Fighter"
       },
-      "tooltip": {
-        "translate": "option.fabled_roots.fighter.tooltip",
-        "fallback": "description goes here"
-      },
+      "tooltip": [
+        {
+          "translate": "option.fabled_roots.fighter.tooltip.description",
+          "fallback": "Straightforward and tough—if it moves, they can probably punch it."
+        },
+        {
+          "text": "\n\n"
+        },
+        {
+          "translate": "option.fabled_roots.fighter.tooltip.stats",
+          "fallback": "Traits:\n• +10% Attack Damage\n• Gets a short Strength effect when killing an entity\n• Gains extra Exp by killing entities and blocking damage",
+          "color": "gray"
+        }
+      ],
       "action": {
         "type": "run_command",
         "command": "trigger fabled_roots.dialog_trigger.class set 6"
@@ -117,10 +169,20 @@
         "translate": "option.fabled_roots.hermit",
         "fallback": "Hermit"
       },
-      "tooltip": {
-        "translate": "option.fabled_roots.hermit.tooltip",
-        "fallback": "description goes here"
-      },
+      "tooltip": [
+        {
+          "translate": "option.fabled_roots.hermit.tooltip.description",
+          "fallback": "Keeps to themselves, knows every cave and corner, and prefers quiet over company."
+        },
+        {
+          "text": "\n\n"
+        },
+        {
+          "translate": "option.fabled_roots.hermit.tooltip.stats",
+          "fallback": "Traits:\n• Has Strength effect as long as no Players, Villagers, Piglins or Raiders are around\n• Gains extra Exp when no one is around",
+          "color": "gray"
+        }
+      ],
       "action": {
         "type": "run_command",
         "command": "trigger fabled_roots.dialog_trigger.class set 7"
@@ -131,10 +193,20 @@
         "translate": "option.fabled_roots.bard",
         "fallback": "Bard"
       },
-      "tooltip": {
-        "translate": "option.fabled_roots.bard.tooltip",
-        "fallback": "description goes here"
-      },
+      "tooltip": [
+        {
+          "translate": "option.fabled_roots.bard.tooltip.description",
+          "fallback": "Brings music, magic, and a bit of mischief wherever they go."
+        },
+        {
+          "text": "\n\n"
+        },
+        {
+          "translate": "option.fabled_roots.bard.tooltip.stats",
+          "fallback": "Traits:\n• Can tap into the secret magic of Goat Horns\n• Gains extra Exp by using Goat Horns",
+          "color": "gray"
+        }
+      ],
       "action": {
         "type": "run_command",
         "command": "trigger fabled_roots.dialog_trigger.class set 8"
@@ -145,10 +217,20 @@
         "translate": "option.fabled_roots.cleric",
         "fallback": "Cleric"
       },
-      "tooltip": {
-        "translate": "option.fabled_roots.cleric.tooltip",
-        "fallback": "description goes here"
-      },
+      "tooltip": [
+        {
+          "translate": "option.fabled_roots.cleric.tooltip.description",
+          "fallback": "Master of potions and remedies, always ready with a brew to save the day."
+        },
+        {
+          "text": "\n\n"
+        },
+        {
+          "translate": "option.fabled_roots.cleric.tooltip.stats",
+          "fallback": "Traits:\n• Clears Poison, Slowness & Weakness effects\n• Gains extra Exp by consuming Potions and trading with Cleric Villagers",
+          "color": "gray"
+        }
+      ],
       "action": {
         "type": "run_command",
         "command": "trigger fabled_roots.dialog_trigger.class set 9"
@@ -159,10 +241,20 @@
         "translate": "option.fabled_roots.scout",
         "fallback": "Scout"
       },
-      "tooltip": {
-        "translate": "option.fabled_roots.scout.tooltip",
-        "fallback": "description goes here"
-      },
+      "tooltip": [
+        {
+          "translate": "option.fabled_roots.scout.tooltip.description",
+          "fallback": "Fast, sharp-eyed, and never lost—perfect for exploring what's ahead."
+        },
+        {
+          "text": "\n\n"
+        },
+        {
+          "translate": "option.fabled_roots.scout.tooltip.stats",
+          "fallback": "Traits:\n• Waypoint Receive Range: 256 Blocks\n• Looking at entities through a Spyglass makes the targets glow and slows them down\n• Hostile Entities within an 8 Block radius glow\n•Gains extra Exp when hostile entities are within an 8 Block radius",
+          "color": "gray"
+        }
+      ],
       "action": {
         "type": "run_command",
         "command": "trigger fabled_roots.dialog_trigger.class set 10"

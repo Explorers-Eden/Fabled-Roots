@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:multi_action",
+  "can_close_with_escape": true,
+  "external_title": {
+    "translate": "menu.fabled_roots.title",
+    "fallback": "Fabled Roots"
+  },
+  "title": {
+    "translate": "menu.fabled_roots.title",
+    "fallback": "Fabled Roots"
+  },
+  "pause": false,
+  "exit_action": {
+    "label": {
+      "translate": "mco.selectServer.close"
+    }
+  },
+  "actions": [
+    {
+      "label": {
+        "translate": "menu.fabled_roots.title.reset.external",
+        "fallback": "Reset Roots"
+      },
+      "action": {
+        "type": "show_dialog",
+        "dialog": "fabled_roots:reset_player"
+      }
+    }
+  ]
+}
