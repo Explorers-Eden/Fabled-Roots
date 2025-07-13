@@ -1,0 +1,11 @@
+{
+  "description": {
+    "translate": "instrument.fabled_roots.dunesworn_horn",
+      "fallback": "Call of a Dunesworn"
+  },
+  "range": 256,
+  "sound_event": {
+    "sound_id": "fabled_roots:item.horn.dunesworn"
+  },
+  "use_duration": 8
+}

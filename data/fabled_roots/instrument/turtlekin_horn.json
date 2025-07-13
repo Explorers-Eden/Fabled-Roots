@@ -1,0 +1,11 @@
+{
+  "description": {
+    "translate": "instrument.fabled_roots.turtlekin_horn",
+      "fallback": "Call of a Turtlekin"
+  },
+  "range": 256,
+  "sound_event": {
+    "sound_id": "fabled_roots:item.horn.turtlekin"
+  },
+  "use_duration": 8
+}

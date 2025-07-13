@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:goat_horn",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "minecraft:item_name": {
+                  "translate": "item.fabled_roots.horn_of_roots",
+                  "fallback": "Horn of Roots"
+                },
+                "minecraft:item_model": "fabled_roots:netherian_horn",
+                "minecraft:instrument": "fabled_roots:netherian_horn",
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "horn_of_roots",
+                    "type": "netherian"
+                  }
+                },
+                "minecraft:use_cooldown": {
+                  "seconds": 8,
+                  "cooldown_group": "fabled_roots:horn_of_roots"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "description": {
+    "translate": "instrument.fabled_roots.oakhearted_horn",
+      "fallback": "Call of an Oakhearted"
+  },
+  "range": 256,
+  "sound_event": {
+    "sound_id": "fabled_roots:item.horn.oakhearted"
+  },
+  "use_duration": 8
+}

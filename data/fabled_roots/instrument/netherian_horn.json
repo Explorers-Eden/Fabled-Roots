@@ -1,0 +1,11 @@
+{
+  "description": {
+    "translate": "instrument.fabled_roots.netherian_horn",
+      "fallback": "Call of a Netherian"
+  },
+  "range": 256,
+  "sound_event": {
+    "sound_id": "fabled_roots:item.horn.netherian"
+  },
+  "use_duration": 8
+}

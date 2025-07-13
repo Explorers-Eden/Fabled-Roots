@@ -1,0 +1,11 @@
+{
+  "description": {
+    "translate": "instrument.fabled_roots.aetherian_horn",
+      "fallback": "Call of an Aetherian"
+  },
+  "range": 256,
+  "sound_event": {
+    "sound_id": "fabled_roots:item.horn.aetherian"
+  },
+  "use_duration": 8
+}

@@ -1,0 +1,52 @@
+{
+      "item.horn.dunesworn": {
+        "sounds": [
+            "fabled_roots:dunesworn_horn"
+        ]
+      },
+      "item.horn.endling": {
+        "sounds": [
+            "fabled_roots:endling_horn"
+        ]
+      },
+      "item.horn.frostborne": {
+        "sounds": [
+            "fabled_roots:frostborne_horn"
+        ]
+      },
+      "item.horn.moonshroud": {
+        "sounds": [
+            "fabled_roots:moonshroud_horn"
+        ]
+      },
+      "item.horn.netherian": {
+        "sounds": [
+            "fabled_roots:netherian_horn"
+        ]
+      },
+      "item.horn.oakhearted": {
+        "sounds": [
+            "fabled_roots:oakhearted_horn"
+        ]
+      },
+      "item.horn.orebringer": {
+        "sounds": [
+            "fabled_roots:orebringer_horn"
+        ]
+      },
+      "item.horn.turtlekin": {
+        "sounds": [
+            "fabled_roots:turtlekin_horn"
+        ]
+      },
+      "item.horn.palehearted": {
+        "sounds": [
+            "fabled_roots:palehearted_horn"
+        ]
+      },
+      "item.horn.aetherian": {
+        "sounds": [
+            "fabled_roots:aetherian_horn"
+        ]
+      }
+}
