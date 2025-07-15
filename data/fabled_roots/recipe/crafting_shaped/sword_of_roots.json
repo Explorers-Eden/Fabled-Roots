@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:stick",
+    "X": "#minecraft:iron_tool_materials"
+  },
+  "pattern": [
+    "X",
+    "X",
+    "#"
+  ],
+  "result": {
+    "components": {
+      "minecraft:item_name": {
+        "translate": "items.fabled_roots.sword_of_roots",
+        "fallback": "Sword of Roots"
+      },
+      "minecraft:item_model": "fabled_roots:sword_of_roots",
+      "minecraft:rarity": "common",
+      "minecraft:custom_data": {
+        "fabled_roots": {
+          "item": "sword_of_roots",
+          "root_color": true
+        }
+      }
+    },
+    "count": 1,
+    "id": "minecraft:iron_sword"
+  }
+}

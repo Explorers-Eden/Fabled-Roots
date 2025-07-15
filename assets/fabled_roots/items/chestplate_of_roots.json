@@ -1,0 +1,21 @@
+{
+  "model": {
+    "type": "minecraft:composite",
+    "models": [
+      {
+        "type": "minecraft:model",
+        "model": "fabled_roots:item/chestplate_of_roots",
+        "tints": [
+          {
+            "type": "minecraft:dye",
+            "default": [
+              0.7,
+              0.75,
+              0.78
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

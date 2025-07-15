@@ -1,0 +1,14 @@
+[
+  {
+    "function": "minecraft:set_components",
+    "components": {
+      "minecraft:tooltip_display": {
+        "hidden_components": [
+          "minecraft:dyed_color"
+        ]
+      },
+      "minecraft:dyed_color": 11678515,
+      "minecraft:tooltip_style": "fabled_roots:netherian"
+    }
+  }
+]

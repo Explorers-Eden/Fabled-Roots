@@ -1,0 +1,8 @@
+{
+  "values": [
+    "#fabled_roots:hostile_mobs",
+    "#fabled_roots:passive_mobs",
+    "#fabled_roots:neutral_mobs",
+    "minecraft:player"
+  ]
+}

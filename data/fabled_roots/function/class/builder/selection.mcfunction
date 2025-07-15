@@ -3,7 +3,7 @@ function fabled_roots:remove/class
 tag @s add fabled_roots.builder
 tag @s add fabled_roots.has_class
 
-execute unless score @s fabled_roots.received_equip matches 1 run loot give @s loot eden:gameplay/starter_equipment/builder
+execute unless score @s fabled_roots.received_equip matches 1 run loot give @s loot fabled_roots:gameplay/starter_equipment/builder
 scoreboard players set @s fabled_roots.received_equip 1
 
 attribute @s minecraft:block_interaction_range base set 6.5

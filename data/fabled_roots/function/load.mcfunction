@@ -2,7 +2,7 @@
 gamerule locatorBar true
 
 ##add default scoreboard
-scoreboard objectives add eden.technical dummy
+scoreboard objectives add fabled_roots.technical dummy
 
 ##dialog trigger scoreboards
 scoreboard objectives add fabled_roots.dialog_trigger.race trigger {"bold":false,"color":"green","italic":false,"text":"Fabled Roots: Race Selection"}

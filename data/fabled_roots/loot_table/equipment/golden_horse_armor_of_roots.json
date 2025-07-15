@@ -1,0 +1,53 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:golden_horse_armor",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "minecraft:item_name": {
+                  "translate": "items.fabled_roots.golden_horse_armor_of_roots",
+                  "fallback": "Golden Horse Armor of Roots"
+                },
+                "minecraft:item_model": "fabled_roots:golden_horse_armor_of_roots",
+                "minecraft:rarity": "uncommon",
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "golden_horse_armor_of_roots",
+                    "root_color": true
+                  }
+                },
+                "minecraft:equippable": {
+                  "slot": "body",
+                  "equip_sound": "minecraft:item.armor.equip_gold",
+                  "asset_id": "fabled_roots:golden_horse_armor_of_roots",
+                  "allowed_entities": "#minecraft:can_wear_horse_armor",
+                  "dispensable": true,
+                  "swappable": true,
+                  "damage_on_hurt": false,
+                  "equip_on_interact": true,
+                  "can_be_sheared": true,
+                  "shearing_sound": "minecraft:item.shears.snip"
+                },
+                "minecraft:lore": [
+                  {
+                    "translate": "items.fabled_roots.golden_horse_armor_of_roots.description",
+                    "fallback": "Regeneration II while mounted",
+                    "color": "gray",
+                    "italic": false
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

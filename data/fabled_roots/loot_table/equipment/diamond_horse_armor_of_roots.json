@@ -1,0 +1,53 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_horse_armor",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "minecraft:item_name": {
+                  "translate": "items.fabled_roots.diamond_horse_armor_of_roots",
+                  "fallback": "Diamond Horse Armor of Roots"
+                },
+                "minecraft:item_model": "fabled_roots:diamond_horse_armor_of_roots",
+                "minecraft:rarity": "uncommon",
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "diamond_horse_armor_of_roots",
+                    "root_color": true
+                  }
+                },
+                "minecraft:equippable": {
+                  "slot": "body",
+                  "equip_sound": "minecraft:item.armor.equip_diamond",
+                  "asset_id": "fabled_roots:diamond_horse_armor_of_roots",
+                  "allowed_entities": "#minecraft:can_wear_horse_armor",
+                  "dispensable": true,
+                  "swappable": true,
+                  "damage_on_hurt": false,
+                  "equip_on_interact": true,
+                  "can_be_sheared": true,
+                  "shearing_sound": "minecraft:item.shears.snip"
+                },
+                "minecraft:lore": [
+                  {
+                    "translate": "items.fabled_roots.diamond_horse_armor_of_roots.description",
+                    "fallback": "Regeneration III while mounted",
+                    "color": "gray",
+                    "italic": false
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -3,7 +3,7 @@ function fabled_roots:remove/class
 tag @s add fabled_roots.rancher
 tag @s add fabled_roots.has_class
 
-execute unless score @s fabled_roots.received_equip matches 1 run loot give @s loot eden:gameplay/starter_equipment/rancher
+execute unless score @s fabled_roots.received_equip matches 1 run loot give @s loot fabled_roots:gameplay/starter_equipment/rancher
 scoreboard players set @s fabled_roots.received_equip 1
 
 stopsound @s

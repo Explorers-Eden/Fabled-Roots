@@ -7,7 +7,7 @@
           "type_specific": {
             "type": "minecraft:player",
             "looking_at": {
-              "type": "#eden:living"
+              "type": "#fabled_roots:living"
             }
           },
           "nbt": "{Tags:[\"fabled_roots.scout\"]}"

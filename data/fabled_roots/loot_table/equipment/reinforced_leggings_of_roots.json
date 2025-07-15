@@ -1,0 +1,43 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_leggings",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "minecraft:item_name": {
+                  "translate": "items.fabled_roots.reinforced_leggings_of_roots",
+                  "fallback": "Reinforced Leggings of Roots"
+                },
+                "minecraft:item_model": "fabled_roots:reinforced_leggings_of_roots",
+                "minecraft:rarity": "epic",
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "armor_of_roots",
+                    "root_color": true
+                  }
+                },
+                "minecraft:equippable": {
+                  "slot": "legs",
+                  "equip_sound": "minecraft:item.armor.equip_iron",
+                  "asset_id": "fabled_roots:reinforced_armor_of_roots",
+                  "dispensable": true,
+                  "swappable": true,
+                  "damage_on_hurt": true,
+                  "equip_on_interact": true,
+                  "can_be_sheared": false
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

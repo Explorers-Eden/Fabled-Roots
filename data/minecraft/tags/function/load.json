@@ -1,11 +1,10 @@
 {
 	"values": [
 		"fabled_roots:load",
-		"fabled_roots:trigger/class",
-		"fabled_roots:trigger/race",
-		"fabled_roots:trigger/reset",
+		"fabled_roots:run",
 		"fabled_roots:race/init",
 		"fabled_roots:class/init",
-		"fabled_roots:run"
+		"#fabled_roots:items",
+		"#fabled_roots:trigger"
 	]
 }

@@ -1,12 +1,12 @@
 function fabled_roots:remove/race
-function fabled_roots:send_join_msg {race:"oakhearted",race_cap:"Oakhearted"}
+function fabled_roots:selection_msg {race:"oakhearted",race_cap:"Oakhearted"}
 
 tag @s add fabled_roots.oakhearted
 team join fabled_roots.oakhearted
 tag @s add fabled_roots.has_race
 
-execute store result storage eden:temp fabled_roots.player_size float 0.01 run random value 100..110
-function fabled_roots:set_player_size with storage eden:temp fabled_roots
+execute store result storage fabled_roots:temp fabled_roots.player_size float 0.01 run random value 100..110
+function fabled_roots:set_player_size with storage fabled_roots:temp fabled_roots
 
 attribute @s minecraft:waypoint_transmit_range base set 256
 attribute @s minecraft:waypoint_receive_range base set 128
