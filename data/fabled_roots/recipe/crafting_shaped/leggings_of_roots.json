@@ -1,0 +1,40 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": "minecraft:iron_ingot"
+  },
+  "pattern": [
+    "XXX",
+    "X X",
+    "X X"
+  ],
+  "result": {
+    "components": {
+        "minecraft:item_name": {
+                  "translate": "items.fabled_roots.leggings_of_roots",
+                  "fallback": "Leggings of Roots"
+                },
+                "minecraft:item_model": "fabled_roots:leggings_of_roots",
+                "minecraft:rarity": "common",
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "armor_of_roots",
+                    "root_color": true
+                  }
+                },
+                "minecraft:equippable": {
+                  "slot": "legs",
+                  "equip_sound": "minecraft:item.armor.equip_iron",
+                  "asset_id": "fabled_roots:armor_of_roots",
+                  "dispensable": true,
+                  "swappable": true,
+                  "damage_on_hurt": true,
+                  "equip_on_interact": true,
+                  "can_be_sheared": false
+                }
+    },
+    "count": 1,
+    "id": "minecraft:iron_leggings"
+  }
+}

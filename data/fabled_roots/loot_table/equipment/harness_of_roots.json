@@ -6,32 +6,34 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:netherite_helmet",
+          "name": "minecraft:white_harness",
           "functions": [
             {
               "function": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.reinforced_helmet_of_roots",
-                  "fallback": "Reinforced Helmet of Roots"
+                  "translate": "items.fabled_roots.harness_of_roots",
+                  "fallback": "Harness of Roots"
                 },
-                "minecraft:item_model": "fabled_roots:reinforced_helmet_of_roots",
-                "minecraft:rarity": "rare",
+                "minecraft:item_model": "fabled_roots:harness_of_roots",
+                "minecraft:rarity": "common",
                 "minecraft:custom_data": {
                   "fabled_roots": {
-                    "item": "armor_of_roots",
+                    "item": "harness_of_roots",
                     "root_color": true
                   }
                 },
                 "minecraft:equippable": {
-                  "slot": "head",
-                  "equip_sound": "minecraft:item.armor.equip_iron",
-                  "asset_id": "fabled_roots:reinforced_armor_of_roots",
+                  "slot": "body",
+                  "equip_sound": "minecraft:entity.happy_ghast.equip",
+                  "asset_id": "fabled_roots:harness_of_roots",
+                  "allowed_entities": "minecraft:happy_ghast",
                   "dispensable": true,
                   "swappable": true,
-                  "damage_on_hurt": true,
+                  "damage_on_hurt": false,
                   "equip_on_interact": true,
-                  "can_be_sheared": false
+                  "can_be_sheared": true,
+                  "shearing_sound": "minecraft:entity.happy_ghast.unequip"
                 }
               }
             }

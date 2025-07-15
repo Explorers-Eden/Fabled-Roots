@@ -16,7 +16,7 @@
                   "fallback": "Reinforced Sword of Roots"
                 },
                 "minecraft:item_model": "fabled_roots:reinforced_sword_of_roots",
-                "minecraft:rarity": "epic",
+                "minecraft:rarity": "rare",
                 "minecraft:custom_data": {
                   "fabled_roots": {
                     "item": "reinforced_sword_of_roots",

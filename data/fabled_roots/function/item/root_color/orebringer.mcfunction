@@ -1,7 +1,7 @@
-execute if items entity @s armor.feet #fabled_roots:root_color_items[minecraft:custom_data~{fabled_roots:{root_color: 1b}}] run item modify entity @s armor.feet fabled_roots:custom_model_data/orebringer
-execute if items entity @s armor.legs #fabled_roots:root_color_items[minecraft:custom_data~{fabled_roots:{root_color: 1b}}] run item modify entity @s armor.legs fabled_roots:custom_model_data/orebringer
-execute if items entity @s armor.chest #fabled_roots:root_color_items[minecraft:custom_data~{fabled_roots:{root_color: 1b}}] run item modify entity @s armor.chest fabled_roots:custom_model_data/orebringer
-execute if items entity @s armor.head #fabled_roots:root_color_items[minecraft:custom_data~{fabled_roots:{root_color: 1b}}] run item modify entity @s armor.head fabled_roots:custom_model_data/orebringer
-execute on vehicle if items entity @s armor.body #fabled_roots:root_color_items[minecraft:custom_data~{fabled_roots:{root_color: 1b}}] run item modify entity @s armor.body fabled_roots:custom_model_data/orebringer
-execute if items entity @s weapon.mainhand #fabled_roots:root_color_items[minecraft:custom_data~{fabled_roots:{root_color: 1b}}] run item modify entity @s weapon.mainhand fabled_roots:custom_model_data/orebringer
-execute if items entity @s weapon.offhand #fabled_roots:root_color_items[minecraft:custom_data~{fabled_roots:{root_color: 1b}}] run item modify entity @s weapon.offhand fabled_roots:custom_model_data/orebringer
+execute if items entity @s armor.feet #fabled_roots:custom_item_base[minecraft:custom_data~{fabled_roots:{root_color: 1b}}] run item modify entity @s armor.feet fabled_roots:custom_model_data/orebringer
+execute if items entity @s armor.legs #fabled_roots:custom_item_base[minecraft:custom_data~{fabled_roots:{root_color: 1b}}] run item modify entity @s armor.legs fabled_roots:custom_model_data/orebringer
+execute if items entity @s armor.chest #fabled_roots:custom_item_base[minecraft:custom_data~{fabled_roots:{root_color: 1b}}] run item modify entity @s armor.chest fabled_roots:custom_model_data/orebringer
+execute if items entity @s armor.head #fabled_roots:custom_item_base[minecraft:custom_data~{fabled_roots:{root_color: 1b}}] run item modify entity @s armor.head fabled_roots:custom_model_data/orebringer
+execute on vehicle if items entity @s armor.body #fabled_roots:custom_item_base[minecraft:custom_data~{fabled_roots:{root_color: 1b}}] run item modify entity @s armor.body fabled_roots:custom_model_data/orebringer
+execute if items entity @s weapon.mainhand #fabled_roots:custom_item_base[minecraft:custom_data~{fabled_roots:{root_color: 1b}}] run item modify entity @s weapon.mainhand fabled_roots:custom_model_data/orebringer
+execute if items entity @s weapon.offhand #fabled_roots:custom_item_base[minecraft:custom_data~{fabled_roots:{root_color: 1b}}] run item modify entity @s weapon.offhand fabled_roots:custom_model_data/orebringer

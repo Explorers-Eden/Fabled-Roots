@@ -1,0 +1,169 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:music_disc_5",
+          "weight": 25,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "minecraft:item_name": {
+                  "translate": "items.fabled_roots.crown_of_roots",
+                  "fallback": "Crown of Roots"
+                },
+                "minecraft:item_model": "fabled_roots:crown_of_roots",
+                "minecraft:rarity": "epic",
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "crown_of_roots",
+                    "root_color": true,
+                    "stronger_together": true
+                  }
+                },
+                "minecraft:equippable": {
+                  "slot": "head",
+                  "equip_sound": "minecraft:item.armor.equip_gold",
+                  "asset_id": "fabled_roots:crown_of_roots",
+                  "dispensable": true,
+                  "swappable": true,
+                  "damage_on_hurt": true,
+                  "equip_on_interact": true,
+                  "can_be_sheared": false
+                },
+                "minecraft:lore": [
+                  {
+                    "translate": "items.fabled_roots.crown_of_roots.description.1",
+                    "fallback": "Unenchantable",
+                    "color": "gray",
+                    "italic": false
+                  },
+                  {
+                    "translate": "items.fabled_roots.crown_of_roots.description.2",
+                    "fallback": "Stronger Together",
+                    "color": "gray",
+                    "italic": false
+                  }
+                ],
+                "!minecraft:jukebox_playable": {},
+                "minecraft:max_damage": 800,
+                "minecraft:attribute_modifiers": [
+                  {
+                    "type": "minecraft:armor",
+                    "id": "fabled_roots:crown_armor",
+                    "amount": 6,
+                    "operation": "add_value",
+                    "slot": "head"
+                  },
+                  {
+                    "type": "minecraft:armor_toughness",
+                    "id": "fabled_roots:crown_armor_toughness",
+                    "amount": 6,
+                    "operation": "add_value",
+                    "slot": "head"
+                  },
+                  {
+                    "type": "minecraft:knockback_resistance",
+                    "id": "fabled_roots:crown_knockback_res",
+                    "amount": 0.2,
+                    "operation": "add_value",
+                    "slot": "head"
+                  }
+                ],
+                "minecraft:damage": 0,
+                "minecraft:enchantments": {
+                  "minecraft:mending": 1
+                },
+                "minecraft:repairable": {
+                  "items": "#minecraft:repairs_diamond_armor"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:music_disc_5",
+          "weight": 5,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "minecraft:item_name": {
+                  "translate": "items.fabled_roots.crown_of_roots",
+                  "fallback": "Crown of Roots"
+                },
+                "minecraft:item_model": "fabled_roots:crown_of_roots",
+                "minecraft:rarity": "epic",
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "crown_of_roots",
+                    "root_color": true,
+                    "stronger_together": true
+                  }
+                },
+                "minecraft:equippable": {
+                  "slot": "head",
+                  "equip_sound": "minecraft:item.armor.equip_gold",
+                  "asset_id": "fabled_roots:crown_of_roots",
+                  "dispensable": true,
+                  "swappable": true,
+                  "damage_on_hurt": true,
+                  "equip_on_interact": true,
+                  "can_be_sheared": false
+                },
+                "minecraft:lore": [
+                  {
+                    "translate": "items.fabled_roots.crown_of_roots.description.1",
+                    "fallback": "Unenchantable",
+                    "color": "gray",
+                    "italic": false
+                  },
+                  {
+                    "translate": "items.fabled_roots.crown_of_roots.description.2",
+                    "fallback": "Stronger Together",
+                    "color": "gray",
+                    "italic": false
+                  }
+                ],
+                "!minecraft:jukebox_playable": {},
+                "minecraft:max_damage": 800,
+                "minecraft:attribute_modifiers": [
+                  {
+                    "type": "minecraft:armor",
+                    "id": "fabled_roots:crown_armor",
+                    "amount": 6,
+                    "operation": "add_value",
+                    "slot": "head"
+                  },
+                  {
+                    "type": "minecraft:armor_toughness",
+                    "id": "fabled_roots:crown_armor_toughness",
+                    "amount": 6,
+                    "operation": "add_value",
+                    "slot": "head"
+                  },
+                  {
+                    "type": "minecraft:knockback_resistance",
+                    "id": "fabled_roots:crown_knockback_res",
+                    "amount": 0.2,
+                    "operation": "add_value",
+                    "slot": "head"
+                  }
+                ],
+                "minecraft:damage": 0,
+                "minecraft:repairable": {
+                  "items": "#minecraft:repairs_diamond_armor"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

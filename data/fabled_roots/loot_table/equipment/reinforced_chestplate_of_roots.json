@@ -16,7 +16,7 @@
                   "fallback": "Reinforced Chestplate of Roots"
                 },
                 "minecraft:item_model": "fabled_roots:reinforced_chestplate_of_roots",
-                "minecraft:rarity": "epic",
+                "minecraft:rarity": "rare",
                 "minecraft:custom_data": {
                   "fabled_roots": {
                     "item": "armor_of_roots",
