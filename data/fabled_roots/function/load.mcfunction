@@ -10,7 +10,7 @@ scoreboard objectives add fabled_roots.dialog_trigger.class trigger {"bold":fals
 scoreboard objectives add fabled_roots.dialog_trigger.reset trigger {"bold":false,"color":"green","italic":false,"text":"Fabled Roots: Reset Roots"}
 
 ##additional scoreboards
-scoreboard objectives add fabled_roots.exp.player.current dummy
+scoreboard objectives add fabled_roots.exp.player.level dummy
 scoreboard objectives add fabled_roots.exp.class_ability dummy
 scoreboard objectives add fabled_roots.received_equip dummy
 scoreboard objectives add fabled_roots.bard.timer.active dummy
