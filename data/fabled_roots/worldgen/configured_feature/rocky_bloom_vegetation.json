@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "minecraft:glow_lichen",
+            "Properties": {
+              "down": "true"
+            }
+          },
+          "weight": 25
+        },
+        {
+          "data": {
+            "Name": "minecraft:iron_ore"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "minecraft:copper_ore"
+          },
+          "weight": 2
+        }
+      ]
+    }
+  }
+}

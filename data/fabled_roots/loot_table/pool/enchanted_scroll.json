@@ -1,0 +1,110 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/enchanted_scroll/pale_bloom"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/enchanted_scroll/cold_bloom"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/enchanted_scroll/crimson_bloom"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/enchanted_scroll/dry_bloom"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/enchanted_scroll/rocky_bloom"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/enchanted_scroll/sculky_bloom"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/enchanted_scroll/thousand_stings"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/enchanted_scroll/verdant_bloom"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/enchanted_scroll/void_bloom"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/enchanted_scroll/warped_bloom"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/enchanted_scroll/lupine_echo"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/enchanted_scroll/toothburst"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/enchanted_scroll/stormcall"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/enchanted_scroll/stonepiercer"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/enchanted_scroll/webbing"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/enchanted_scroll/heavy_shot"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/enchanted_scroll/void_shot"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/enchanted_scroll/ghastly_shot"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/enchanted_scroll/atlantic_shot"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/enchanted_scroll/breeze_shot"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/enchanted_scroll/flying_nimbus"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/enchanted_scroll/scouting_arrows"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/enchanted_scroll/ender_lure"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/enchanted_scroll/frostbite"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/enchanted_scroll/dry_heat"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "minecraft:snow",
+            "Properties": {
+              "layers": "1"
+            }
+          },
+          "weight": 25
+        },
+        {
+          "data": {
+            "Name": "minecraft:snow",
+            "Properties": {
+              "layers": "2"
+            }
+          },
+          "weight": 20
+        },
+        {
+          "data": {
+            "Name": "minecraft:snow",
+            "Properties": {
+              "layers": "3"
+            }
+          },
+          "weight": 15
+        },
+        {
+          "data": {
+            "Name": "minecraft:snow",
+            "Properties": {
+              "layers": "4"
+            }
+          },
+          "weight": 10
+        },
+        {
+          "data": {
+            "Name": "minecraft:snow",
+            "Properties": {
+              "layers": "5"
+            }
+          },
+          "weight": 5
+        }
+      ]
+    }
+  }
+}

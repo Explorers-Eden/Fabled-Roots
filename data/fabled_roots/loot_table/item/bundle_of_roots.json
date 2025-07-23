@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bundle",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "minecraft:item_name": {
+                  "translate": "items.fabled_roots.bundle_of_roots",
+                  "fallback": "Bundle of Roots"
+                },
+                "minecraft:item_model": "fabled_roots:bundle_of_roots",
+                "minecraft:rarity": "common",
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "bundle_of_roots",
+                    "root_color": true
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

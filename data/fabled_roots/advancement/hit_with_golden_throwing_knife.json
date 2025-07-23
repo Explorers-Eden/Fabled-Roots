@@ -1,0 +1,25 @@
+{
+  "criteria": {
+    "golden_throwing_knife": {
+      "trigger": "minecraft:player_hurt_entity",
+      "conditions": {
+        "damage": {
+          "type": {
+            "direct_entity": {
+              "type": "minecraft:snowball",
+              "nbt": "{Item:{components:{\"minecraft:item_model\":\"fabled_roots:golden_throwing_knife\"}}}"
+            }
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "golden_throwing_knife"
+    ]
+  ],
+  "rewards": {
+    "function": "fabled_roots:item/golden_throwing_knife"
+  }
+}

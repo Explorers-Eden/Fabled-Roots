@@ -1,0 +1,29 @@
+{
+  "criteria": {
+    "consumed_scroll": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "player": {},
+        "item": {
+          "items": "minecraft:music_disc_5",
+          "predicates": {
+            "minecraft:custom_data": {
+              "fabled_roots": {
+                "item": "enchanted_scroll",
+                "effect": "stonepiercer"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "consumed_scroll"
+    ]
+  ],
+  "rewards": {
+    "function": "fabled_roots:item/enchanted_scroll/stonepiercer/init"
+  }
+}

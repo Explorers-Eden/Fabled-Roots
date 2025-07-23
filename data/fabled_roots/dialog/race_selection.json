@@ -60,7 +60,7 @@
         },
         {
           "translate": "option.fabled_roots.dunesworn.tooltip.stats",
-          "fallback": "Traits:\n• Height: 85-95%\n• +3 Armor\n• -2 Knockback Resistance\n• Strength & Luck Effect in Desert Biomes\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Applies Hunger Effect to nearby entities",
+          "fallback": "Traits:\n• Height: 85-95%\n• +3 Armor\n• -2 Knockback Resistance\n• Strength & Luck Effect in Desert Biomes\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Dries Wet Sponges in Main-/Offhand",
           "color": "gray"
         }
       ],
@@ -132,7 +132,7 @@
         },
         {
           "translate": "option.fabled_roots.moonshroud.tooltip.stats",
-          "fallback": "Traits:\n• Height: 85-100%\n• +50% Sneaking Speed\n• -30% Attack Damage\n• Strength & Luck Effect during Night Time\n\nLocator Bar:\n• Transmit Range: 0 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Turns invisible",
+          "fallback": "Traits:\n• Height: 85-100%\n• +50% Sneaking Speed\n• -30% Attack Damage\n• Throwing Knives inflict Poison damage\n• Strength & Luck Effect during Night Time\n\nLocator Bar:\n• Transmit Range: 0 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Turns invisible",
           "color": "gray"
         }
       ],

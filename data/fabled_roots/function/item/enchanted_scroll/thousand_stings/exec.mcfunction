@@ -1,0 +1,9 @@
+summon bee ~ ~1.5 ~ {Tags:["fabled_roots.thousand_stings","mob_manager.settings.exclude"],CannotEnterHiveTicks:2400,attributes:[{id:"minecraft:attack_damage",base:4}],Passengers:[{id:"minecraft:area_effect_cloud",Duration:1200,custom_particle:{type:"block",block_state:"minecraft:air"}}],}
+summon bee ~1 ~1.5 ~1 {Tags:["fabled_roots.thousand_stings","mob_manager.settings.exclude"],CannotEnterHiveTicks:2400,attributes:[{id:"minecraft:attack_damage",base:4}],Passengers:[{id:"minecraft:area_effect_cloud",Duration:1200,custom_particle:{type:"block",block_state:"minecraft:air"}}],}
+summon bee ~1 ~1.5 ~-1 {Tags:["fabled_roots.thousand_stings","mob_manager.settings.exclude"],CannotEnterHiveTicks:2400,attributes:[{id:"minecraft:attack_damage",base:4}],Passengers:[{id:"minecraft:area_effect_cloud",Duration:1200,custom_particle:{type:"block",block_state:"minecraft:air"}}],}
+summon bee ~-1 ~1.5 ~1 {Tags:["fabled_roots.thousand_stings","mob_manager.settings.exclude"],CannotEnterHiveTicks:2400,attributes:[{id:"minecraft:attack_damage",base:4}],Passengers:[{id:"minecraft:area_effect_cloud",Duration:1200,custom_particle:{type:"block",block_state:"minecraft:air"}}],}
+summon bee ~-1 ~1.5 ~-1 {Tags:["fabled_roots.thousand_stings","mob_manager.settings.exclude"],CannotEnterHiveTicks:2400,attributes:[{id:"minecraft:attack_damage",base:4}],Passengers:[{id:"minecraft:area_effect_cloud",Duration:1200,custom_particle:{type:"block",block_state:"minecraft:air"}}],}
+
+execute as @e[type=bee,tag=!fabled_roots.anger_set,tag=fabled_roots.thousand_stings,distance=..24] at @s run data modify entity @s AngerTime set value 1200
+execute as @e[type=bee,tag=!fabled_roots.anger_set,tag=fabled_roots.thousand_stings,distance=..24] at @s run data modify entity @s AngryAt set from entity @n[type=#fabled_roots:scroll_targets] UUID
+tag @e[type=bee,tag=!fabled_roots.anger_set,tag=fabled_roots.lupine_echo,distance=..24] add fabled_roots.anger_set

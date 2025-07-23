@@ -1,0 +1,25 @@
+{
+  "criteria": {
+    "stone_throwing_knife": {
+      "trigger": "minecraft:player_hurt_entity",
+      "conditions": {
+        "damage": {
+          "type": {
+            "direct_entity": {
+              "type": "minecraft:snowball",
+              "nbt": "{Item:{components:{\"minecraft:item_model\":\"fabled_roots:stone_throwing_knife\"}}}"
+            }
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "stone_throwing_knife"
+    ]
+  ],
+  "rewards": {
+    "function": "fabled_roots:item/stone_throwing_knife"
+  }
+}

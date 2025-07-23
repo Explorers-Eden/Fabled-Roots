@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bow",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "minecraft:item_name": {
+                  "translate": "items.fabled_roots.bow_of_roots",
+                  "fallback": "Bow of Roots"
+                },
+                "minecraft:item_model": "fabled_roots:bow_of_roots",
+                "minecraft:rarity": "common",
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "bow_of_roots",
+                    "root_color": true
+                  }
+                }
+              }
+            },
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "type": "minecraft:uniform",
+                "min": 0.3,
+                "max": 0.8
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

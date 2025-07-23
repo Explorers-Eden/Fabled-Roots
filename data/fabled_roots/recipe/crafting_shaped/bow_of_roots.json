@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:stick",
+    "X": "minecraft:string",
+    "I": "minecraft:iron_nugget"
+  },
+  "pattern": [
+    "I#X",
+    "# X",
+    "I#X"
+  ],
+  "result": {
+    "components": {
+      "minecraft:item_name": {
+        "translate": "items.fabled_roots.bow_of_roots",
+        "fallback": "Bow of Roots"
+      },
+      "minecraft:item_model": "fabled_roots:bow_of_roots",
+      "minecraft:rarity": "common",
+      "minecraft:custom_data": {
+        "fabled_roots": {
+          "item": "bow_of_roots",
+          "root_color": true
+        }
+      }
+    },
+    "count": 1,
+    "id": "minecraft:bow"
+  }
+}

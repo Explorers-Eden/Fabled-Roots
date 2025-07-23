@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:leather",
+    "-": "minecraft:string",
+    "G": "minecraft:gold_nugget"
+  },
+  "pattern": [
+    "-",
+    "G",
+    "#"
+  ],
+  "result": {
+    "components": {
+      "minecraft:item_name": {
+        "translate": "items.fabled_roots.bundle_of_roots",
+        "fallback": "Bundle of Roots"
+      },
+      "minecraft:item_model": "fabled_roots:bundle_of_roots",
+      "minecraft:rarity": "common",
+      "minecraft:custom_data": {
+        "fabled_roots": {
+          "item": "bundle_of_roots",
+          "root_color": true
+        }
+      }
+    },
+    "count": 1,
+    "id": "minecraft:bundle"
+  }
+}

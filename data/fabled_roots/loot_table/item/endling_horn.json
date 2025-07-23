@@ -26,7 +26,8 @@
                 "minecraft:use_cooldown": {
                   "seconds": 8,
                   "cooldown_group": "fabled_roots:horn_of_roots"
-                }
+                },
+                "minecraft:tooltip_style": "fabled_roots:endling"
               }
             }
           ]

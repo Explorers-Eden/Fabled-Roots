@@ -1,0 +1,8 @@
+execute at @n[type=#fabled_roots:scroll_targets,distance=1..24] positioned ~1 ~ ~ if block ~ ~ ~ #fabled_roots:safe_to_tp run return run tp @s ~ ~ ~ facing entity @n[type=#fabled_roots:scroll_targets,distance=1..24]
+execute at @n[type=#fabled_roots:scroll_targets,distance=1..24] positioned ~-1 ~ ~ if block ~ ~ ~ #fabled_roots:safe_to_tp run return run tp @s ~ ~ ~ facing entity @n[type=#fabled_roots:scroll_targets,distance=1..24]
+execute at @n[type=#fabled_roots:scroll_targets,distance=1..24] positioned ~ ~ ~1 if block ~ ~ ~ #fabled_roots:safe_to_tp run return run tp @s ~ ~ ~ facing entity @n[type=#fabled_roots:scroll_targets,distance=1..24]
+execute at @n[type=#fabled_roots:scroll_targets,distance=1..24] positioned ~ ~ ~-1 if block ~ ~ ~ #fabled_roots:safe_to_tp run return run tp @s ~ ~ ~ facing entity @n[type=#fabled_roots:scroll_targets,distance=1..24]
+execute at @n[type=#fabled_roots:scroll_targets,distance=1..24] positioned ~1 ~ ~1 if block ~ ~ ~ #fabled_roots:safe_to_tp run return run tp @s ~ ~ ~ facing entity @n[type=#fabled_roots:scroll_targets,distance=1..24]
+execute at @n[type=#fabled_roots:scroll_targets,distance=1..24] positioned ~-1 ~ ~1 if block ~ ~ ~ #fabled_roots:safe_to_tp run return run tp @s ~ ~ ~ facing entity @n[type=#fabled_roots:scroll_targets,distance=1..24]
+execute at @n[type=#fabled_roots:scroll_targets,distance=1..24] positioned ~-1 ~ ~1 if block ~ ~ ~ #fabled_roots:safe_to_tp run return run tp @s ~ ~ ~ facing entity @n[type=#fabled_roots:scroll_targets,distance=1..24]
+execute at @n[type=#fabled_roots:scroll_targets,distance=1..24] positioned ~1 ~ ~-1 if block ~ ~ ~ #fabled_roots:safe_to_tp run return run tp @s ~ ~ ~ facing entity @n[type=#fabled_roots:scroll_targets,distance=1..24]

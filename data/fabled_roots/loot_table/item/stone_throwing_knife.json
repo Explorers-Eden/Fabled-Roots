@@ -1,0 +1,50 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:snowball",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "minecraft:item_name": {
+                  "translate": "items.fabled_roots.stone_throwing_knife",
+                  "fallback": "Stone Throwing Knife"
+                },
+                "minecraft:item_model": "fabled_roots:stone_throwing_knife",
+                "minecraft:rarity": "common",
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "stone_throwing_knife"
+                  }
+                },
+                "minecraft:lore": [
+                  {
+                    "translate": "effects.fabled_roots.unenchantable",
+                    "fallback": "Unenchantable",
+                    "color": "gray",
+                    "italic": false
+                  }
+                ],
+                "minecraft:max_stack_size": 64,
+                "minecraft:attribute_modifiers": [
+                  {
+                    "type": "minecraft:attack_damage",
+                    "id": "fabled_roots:throwing_knife_dmg",
+                    "amount": 0.3,
+                    "operation": "add_value",
+                    "slot": "mainhand"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

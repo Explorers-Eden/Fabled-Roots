@@ -4,7 +4,9 @@
       "#fabled_roots:armor",
       "#fabled_roots:horse_armor",
       "minecraft:white_harness",
-      "minecraft:music_disc_5"
+      "minecraft:music_disc_5",
+      "minecraft:bow",
+      "minecraft:bundle"
     ]
   }
   

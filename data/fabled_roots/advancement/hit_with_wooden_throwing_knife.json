@@ -1,0 +1,25 @@
+{
+  "criteria": {
+    "wooden_throwing_knife": {
+      "trigger": "minecraft:player_hurt_entity",
+      "conditions": {
+        "damage": {
+          "type": {
+            "direct_entity": {
+              "type": "minecraft:snowball",
+              "nbt": "{Item:{components:{\"minecraft:item_model\":\"fabled_roots:wooden_throwing_knife\"}}}"
+            }
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "wooden_throwing_knife"
+    ]
+  ],
+  "rewards": {
+    "function": "fabled_roots:item/wooden_throwing_knife"
+  }
+}

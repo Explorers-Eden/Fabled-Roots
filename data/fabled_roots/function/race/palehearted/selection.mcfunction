@@ -5,6 +5,9 @@ tag @s add fabled_roots.palehearted
 team join fabled_roots.palehearted
 tag @s add fabled_roots.has_race
 
+waypoint modify @s style set fabled_roots:player
+waypoint modify @s color hex E8DADA
+
 execute store result storage fabled_roots:temp fabled_roots.player_size float 0.01 run random value 100..110
 function fabled_roots:set_player_size with storage fabled_roots:temp fabled_roots
 
