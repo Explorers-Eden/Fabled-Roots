@@ -1,0 +1,32 @@
+{
+  "criteria": {
+    "rapier_kill": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "player": {
+          "nbt": "{Tags:[\"fabled_roots.palehearted\"]}",
+          "slots": {
+            "weapon.mainhand": {
+              "items": "#minecraft:swords",
+              "predicates": {
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "type": "rapier"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "rapier_kill"
+    ]
+  ],
+  "rewards": {
+    "function": "fabled_roots:item/palehearted_kill_with_rapier"
+  }
+}

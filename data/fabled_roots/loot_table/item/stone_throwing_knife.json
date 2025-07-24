@@ -38,8 +38,19 @@
                     "amount": 0.3,
                     "operation": "add_value",
                     "slot": "mainhand"
+                  },
+                  {
+                    "type": "minecraft:entity_interaction_range",
+                    "id": "fabled_roots:throwing_knife_range",
+                    "amount": -1,
+                    "operation": "add_value",
+                    "slot": "mainhand",
+                    "display": {
+                      "type": "default"
+                    }
                   }
-                ]
+                ],
+                "minecraft:tooltip_style": "fabled_roots:moonshroud"
               }
             }
           ]

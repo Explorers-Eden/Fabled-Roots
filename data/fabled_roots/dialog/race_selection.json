@@ -228,7 +228,7 @@
         },
         {
           "translate": "option.fabled_roots.palehearted.tooltip.stats",
-          "fallback": "Traits:\n• Height: 100-110%\n• +25% Jump Strength\n• -10% Attack Damage\n• +50% Burning Time\n• Strength & Luck Effect in Pale Garden Biomes\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 256 Blocks\n\nCrouch Ability: Gets Night Vision Effect.",
+          "fallback": "Traits:\n• Height: 100-110%\n• +25% Jump Strength\n• -10% Attack Damage\n• +50% Burning Time\n• Absorption effect for kills with a Rapier\n• Strength & Luck Effect in Pale Garden Biomes\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 256 Blocks\n\nCrouch Ability: Gets Night Vision Effect.",
           "color": "gray"
         }
       ],

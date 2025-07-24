@@ -1,0 +1,42 @@
+{
+  "function": "minecraft:set_components",
+  "components": {
+    "minecraft:item_model": "fabled_roots:netherite_rapier",
+    "minecraft:item_name": {
+      "translate": "items.fabled_roots.netherite_rapier",
+      "fallback": "Netherite Rapier"
+    },
+    "minecraft:custom_data": {
+      "fabled_roots": {
+        "item": "netherite_rapier",
+        "type": "rapier"
+      }
+    },
+    "minecraft:attribute_modifiers": [
+      {
+        "type": "minecraft:entity_interaction_range",
+        "id": "fabled_roots:rapier_range",
+        "amount": 1,
+        "operation": "add_value",
+        "slot": "mainhand",
+        "display": {
+          "type": "default"
+        }
+      },
+      {
+        "type": "minecraft:attack_damage",
+        "id": "fabled_roots:rapier_attack",
+        "amount": 6,
+        "operation": "add_value",
+        "slot": "mainhand"
+      },
+      {
+        "type": "minecraft:attack_speed",
+        "id": "fabled_roots:rapier_speed",
+        "amount": -2.2,
+        "operation": "add_value",
+        "slot": "mainhand"
+      }
+    ]
+  }
+}
