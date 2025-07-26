@@ -1,0 +1,45 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/wooden_spear",
+          "weight": 40
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/stone_spear",
+          "weight": 30
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/golden_spear",
+          "weight": 25
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/iron_spear",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/copper_spear",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/diamond_spear",
+          "weight": 8
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/netherite_spear",
+          "weight": 2
+        }
+      ]
+    }
+  ]
+}

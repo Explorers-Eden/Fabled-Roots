@@ -1,3 +1,6 @@
+##forceload spawn chunk in case it isn't loaded
+forceload add 0 0
+
 ##gamerules
 gamerule locatorBar true
 

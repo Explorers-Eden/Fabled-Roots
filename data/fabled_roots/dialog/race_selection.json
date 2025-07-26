@@ -36,7 +36,7 @@
         },
         {
           "translate": "option.fabled_roots.aetherian.tooltip.stats",
-          "fallback": "Traits:\n• Height: 90-110%\n• 30 Blocks Safe Fall Distance\n• -3 Armor\n• Strength & Luck Effect above Y-Level 200\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Slow Levitation",
+          "fallback": "Traits:\n• Height: 90-110%\n• 30 Blocks Safe Fall Distance\n• -3 Armor\n• Hits with Spears have a chance to shoot a Wind Charge\n• Strength & Luck Effect above Y-Level 200\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Slow Levitation",
           "color": "gray"
         }
       ],
@@ -204,7 +204,7 @@
         },
         {
           "translate": "option.fabled_roots.orebringer.tooltip.stats",
-          "fallback": "Traits:\n• Height: 75-90%\n• +3 Armor Toughness\n• +20% Gravity\n• Strength & Luck Effect below Y-Level 0\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Gets Haste Effect.",
+          "fallback": "Traits:\n• Height: 75-90%\n• +3 Armor Toughness\n• +20% Gravity\n• Faster Attack Speed with Maces\n• Strength & Luck Effect below Y-Level 0\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Gets Haste Effect.",
           "color": "gray"
         }
       ],
@@ -252,7 +252,7 @@
         },
         {
           "translate": "option.fabled_roots.turtlekin.tooltip.stats",
-          "fallback": "Traits:\n• Height: 85-110%\n• +15 Oxygen Bonus\n• -15% Movement Speed\n• Strength & Luck Effect in Ocean Biomes\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Gets Conduit Power Effect.",
+          "fallback": "Traits:\n• Height: 85-110%\n• +15 Oxygen Bonus\n• -15% Movement Speed\n• Holding a Trident gives Dolphin's Grace effect\n• Strength & Luck Effect in Ocean Biomes\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Gets Conduit Power Effect.",
           "color": "gray"
         }
       ],

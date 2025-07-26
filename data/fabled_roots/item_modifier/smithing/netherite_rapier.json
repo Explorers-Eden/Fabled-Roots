@@ -33,7 +33,7 @@
       {
         "type": "minecraft:attack_speed",
         "id": "fabled_roots:rapier_speed",
-        "amount": -2.2,
+        "amount": -2,
         "operation": "add_value",
         "slot": "mainhand"
       }

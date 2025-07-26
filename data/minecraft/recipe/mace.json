@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:heavy_core",
+    "I": "minecraft:stick"
+  },
+  "pattern": [
+    " # ",
+    " I "
+  ],
+  "result": {
+    "components": {
+      "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "mace",
+                    "type": "mace"
+                  }
+                },
+      "minecraft:attribute_modifiers": [
+        {
+          "type": "minecraft:attack_damage",
+          "id": "fabled_roots:mace_attack",
+          "amount": 5,
+          "operation": "add_value",
+          "slot": "mainhand"
+        },
+        {
+          "type": "minecraft:attack_speed",
+          "id": "fabled_roots:mace_attack",
+          "amount": -3.4,
+          "operation": "add_value",
+          "slot": "mainhand"
+        }
+      ],
+      "minecraft:tooltip_style": "fabled_roots:orebringer"
+    },
+    "count": 1,
+    "id": "minecraft:mace"
+  }
+}

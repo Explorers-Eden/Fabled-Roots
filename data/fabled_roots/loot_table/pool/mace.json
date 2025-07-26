@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/mace",
+          "weight": 40
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/blaze_mace",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/breeze_mace",
+          "weight": 20
+        }
+      ]
+    }
+  ]
+}

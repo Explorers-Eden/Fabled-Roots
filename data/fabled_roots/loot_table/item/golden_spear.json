@@ -1,0 +1,68 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:golden_sword",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "minecraft:item_name": {
+                  "translate": "items.fabled_roots.golden_spear",
+                  "fallback": "Golden Spear"
+                },
+                "minecraft:item_model": "fabled_roots:golden_spear",
+                "minecraft:rarity": "common",
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "golden_spear",
+                    "type": "spear"
+                  }
+                },
+                "minecraft:attribute_modifiers": [
+                  {
+                    "type": "minecraft:entity_interaction_range",
+                    "id": "fabled_roots:spear_range",
+                    "amount": 2,
+                    "operation": "add_value",
+                    "slot": "mainhand",
+                    "display": {
+                      "type": "default"
+                    }
+                  },
+                  {
+                    "type": "minecraft:attack_damage",
+                    "id": "fabled_roots:spear_attack",
+                    "amount": 1,
+                    "operation": "add_value",
+                    "slot": "mainhand"
+                  },
+                  {
+                    "type": "minecraft:attack_speed",
+                    "id": "fabled_roots:spear_speed",
+                    "amount": -2.5,
+                    "operation": "add_value",
+                    "slot": "mainhand"
+                  }
+                ],
+                "minecraft:tooltip_style": "fabled_roots:aetherian"
+              }
+            },
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "type": "minecraft:uniform",
+                "min": 0.3,
+                "max": 0.8
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

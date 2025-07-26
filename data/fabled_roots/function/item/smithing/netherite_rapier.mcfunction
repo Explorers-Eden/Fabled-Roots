@@ -1,6 +1,5 @@
-schedule function fabled_roots:item/update_netherite_rapier_texture 1s
-
 execute if items entity @s weapon.offhand minecraft:netherite_sword[minecraft:item_model="fabled_roots:diamond_rapier"] run item modify entity @s weapon.offhand fabled_roots:smithing/netherite_rapier
+execute if items entity @s player.cursor minecraft:netherite_sword[minecraft:item_model="fabled_roots:diamond_rapier"] run item modify entity @s player.cursor fabled_roots:smithing/netherite_rapier
 
 execute if items entity @s inventory.0 minecraft:netherite_sword[minecraft:item_model="fabled_roots:diamond_rapier"] run item modify entity @s inventory.0 fabled_roots:smithing/netherite_rapier
 execute if items entity @s inventory.1 minecraft:netherite_sword[minecraft:item_model="fabled_roots:diamond_rapier"] run item modify entity @s inventory.1 fabled_roots:smithing/netherite_rapier

@@ -1,0 +1,7 @@
+schedule function fabled_roots:item/vanilla_modifier/init 3s
+
+execute as @e[type=#fabled_roots:can_hold_weapon] if items entity @s weapon.mainhand minecraft:trident unless items entity @s weapon.mainhand minecraft:trident[minecraft:custom_data~{fabled_roots:{item:"trident"}}] run item modify entity @s weapon.mainhand fabled_roots:vanilla_modifier/trident
+execute as @e[type=#fabled_roots:can_hold_weapon] if items entity @s weapon.offhand minecraft:trident unless items entity @s weapon.offhand minecraft:trident[minecraft:custom_data~{fabled_roots:{item:"trident"}}] run item modify entity @s weapon.offhand fabled_roots:vanilla_modifier/trident
+
+execute as @e[type=#fabled_roots:can_hold_weapon] if items entity @s weapon.mainhand minecraft:mace unless items entity @s weapon.mainhand minecraft:mace[minecraft:custom_data~{fabled_roots:{type:"mace"}}] run item modify entity @s weapon.mainhand fabled_roots:vanilla_modifier/mace
+execute as @e[type=#fabled_roots:can_hold_weapon] if items entity @s weapon.offhand minecraft:mace unless items entity @s weapon.offhand minecraft:mace[minecraft:custom_data~{fabled_roots:{type:"mace"}}] run item modify entity @s weapon.offhand fabled_roots:vanilla_modifier/mace

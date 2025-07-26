@@ -1,0 +1,45 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/wooden_rapier",
+          "weight": 40
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/stone_rapier",
+          "weight": 30
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/golden_rapier",
+          "weight": 25
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/iron_rapier",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/copper_rapier",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/diamond_rapier",
+          "weight": 8
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/netherite_rapier",
+          "weight": 2
+        }
+      ]
+    }
+  ]
+}

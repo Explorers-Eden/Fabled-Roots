@@ -1,0 +1,32 @@
+{
+  "criteria": {
+    "spear_hit": {
+      "trigger": "minecraft:player_hurt_entity",
+      "conditions": {
+        "player": {
+          "nbt": "{Tags:[\"fabled_roots.aetherian\"]}",
+          "slots": {
+            "weapon.mainhand": {
+              "items": "#minecraft:swords",
+              "predicates": {
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "type": "spear"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "spear_hit"
+    ]
+  ],
+  "rewards": {
+    "function": "fabled_roots:item/aetherian_hit_with_spear/init"
+  }
+}

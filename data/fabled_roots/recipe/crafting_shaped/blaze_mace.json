@@ -1,0 +1,47 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:heavy_core",
+    "I": "minecraft:blaze_rod"
+  },
+  "pattern": [
+    " # ",
+    " I "
+  ],
+  "result": {
+    "components": {
+                "minecraft:item_name": {
+                  "translate": "items.fabled_roots.blaze_mace",
+                  "fallback": "Blaze Mace"
+                },
+                "minecraft:item_model": "fabled_roots:blaze_mace",
+                "minecraft:rarity": "epic",
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "blaze_mace",
+                    "type": "mace"
+                  }
+                },
+                "minecraft:attribute_modifiers": [
+                  {
+                    "type": "minecraft:attack_damage",
+                    "id": "fabled_roots:mace_attack",
+                    "amount": 6,
+                    "operation": "add_value",
+                    "slot": "mainhand"
+                  },
+                  {
+                    "type": "minecraft:attack_speed",
+                    "id": "fabled_roots:spear_speed",
+                    "amount": -3.7,
+                    "operation": "add_value",
+                    "slot": "mainhand"
+                  }
+                ],
+                "minecraft:tooltip_style": "fabled_roots:orebringer"
+              },
+    "count": 1,
+    "id": "minecraft:mace"
+  }
+}

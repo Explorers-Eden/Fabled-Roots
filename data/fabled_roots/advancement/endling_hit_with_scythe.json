@@ -1,0 +1,32 @@
+{
+  "criteria": {
+    "scythe_hit": {
+      "trigger": "minecraft:player_hurt_entity",
+      "conditions": {
+        "player": {
+          "nbt": "{Tags:[\"fabled_roots.endling\"]}",
+          "slots": {
+            "weapon.mainhand": {
+              "items": "#minecraft:swords",
+              "predicates": {
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "type": "scythe"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "scythe_hit"
+    ]
+  ],
+  "rewards": {
+    "function": "fabled_roots:item/endling_hit_with_scythe/init"
+  }
+}

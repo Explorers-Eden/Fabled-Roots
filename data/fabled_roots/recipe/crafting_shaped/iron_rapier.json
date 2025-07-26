@@ -1,0 +1,58 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:stick",
+    "X": "#minecraft:iron_tool_materials"
+  },
+  "pattern": [
+    "  X",
+    " X ",
+    "#  "
+  ],
+  "result": {
+    "components": {
+      "minecraft:item_name": {
+        "translate": "items.fabled_roots.iron_rapier",
+        "fallback": "Iron Rapier"
+      },
+      "minecraft:item_model": "fabled_roots:iron_rapier",
+      "minecraft:rarity": "common",
+      "minecraft:custom_data": {
+        "fabled_roots": {
+          "item": "iron_rapier",
+          "type": "rapier"
+        }
+      },
+      "minecraft:attribute_modifiers": [
+        {
+          "type": "minecraft:entity_interaction_range",
+          "id": "fabled_roots:rapier_range",
+          "amount": 1,
+          "operation": "add_value",
+          "slot": "mainhand",
+          "display": {
+            "type": "default"
+          }
+        },
+        {
+          "type": "minecraft:attack_damage",
+          "id": "fabled_roots:rapier_attack",
+          "amount": 4,
+          "operation": "add_value",
+          "slot": "mainhand"
+        },
+        {
+          "type": "minecraft:attack_speed",
+          "id": "fabled_roots:rapier_speed",
+          "amount": -2,
+          "operation": "add_value",
+          "slot": "mainhand"
+        }
+      ],
+      "minecraft:tooltip_style": "fabled_roots:palehearted"
+    },
+    "count": 1,
+    "id": "minecraft:iron_sword"
+  }
+}

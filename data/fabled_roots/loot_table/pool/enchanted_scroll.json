@@ -103,6 +103,10 @@
         {
           "type": "minecraft:loot_table",
           "value": "fabled_roots:item/enchanted_scroll/dry_heat"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/enchanted_scroll/lumos"
         }
       ]
     }
