@@ -1,0 +1,68 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_sword",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "minecraft:item_name": {
+                  "translate": "items.fabled_roots.copper_broadsword",
+                  "fallback": "Copper Broadsword"
+                },
+                "minecraft:item_model": "fabled_roots:copper_broadsword",
+                "minecraft:rarity": "common",
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "copper_broadsword",
+                    "type": "broadsword"
+                  }
+                },
+                "minecraft:attribute_modifiers": [
+                  {
+                    "type": "minecraft:attack_damage",
+                    "id": "fabled_roots:broadsword_dmg",
+                    "amount": 8,
+                    "operation": "add_value",
+                    "slot": "mainhand",
+                    "display": {
+                      "type": "default"
+                    }
+                  },
+                  {
+                    "type": "minecraft:attack_knockback",
+                    "id": "fabled_roots:broadsword_knockback",
+                    "amount": 0.75,
+                    "operation": "add_value",
+                    "slot": "mainhand"
+                  },
+                  {
+                    "type": "minecraft:attack_speed",
+                    "id": "fabled_roots:broadsword_speed",
+                    "amount": -3.6,
+                    "operation": "add_value",
+                    "slot": "mainhand"
+                  }
+                ],
+                "minecraft:tooltip_style": "fabled_roots:netherian"
+              }
+            },
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "type": "minecraft:uniform",
+                "min": 0.3,
+                "max": 0.8
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

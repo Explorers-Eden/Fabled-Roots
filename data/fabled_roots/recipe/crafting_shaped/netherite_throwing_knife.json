@@ -19,7 +19,8 @@
       "minecraft:rarity": "common",
       "minecraft:custom_data": {
         "fabled_roots": {
-          "item": "netherite_throwing_knife"
+          "item": "netherite_throwing_knife",
+          "type": "throwing_knife"
         }
       },
       "minecraft:lore": [
@@ -39,7 +40,8 @@
           "operation": "add_value",
           "slot": "mainhand"
         }
-      ]
+      ],
+                "minecraft:tooltip_style": "fabled_roots:moonshroud"
     },
     "count": 4,
     "id": "minecraft:snowball"

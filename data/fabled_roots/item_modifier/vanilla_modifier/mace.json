@@ -22,6 +22,7 @@
         "operation": "add_value",
         "slot": "mainhand"
       }
-    ]
+    ],
+    "minecraft:tooltip_style": "fabled_roots:orebringer"
   }
 }

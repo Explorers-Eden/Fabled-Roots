@@ -20,7 +20,8 @@
                 "minecraft:custom_data": {
                   "fabled_roots": {
                     "item": "reinforced_sword_of_roots",
-                    "root_color": true
+                    "root_color": true,
+                    "type": "sword"
                   }
                 }
               }

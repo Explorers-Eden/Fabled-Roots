@@ -1,0 +1,25 @@
+{
+  "criteria": {
+    "netherite_hatchet": {
+      "trigger": "minecraft:player_hurt_entity",
+      "conditions": {
+        "damage": {
+          "type": {
+            "direct_entity": {
+              "type": "minecraft:snowball",
+              "nbt": "{Item:{components:{\"minecraft:item_model\":\"fabled_roots:netherite_hatchet\"}}}"
+            }
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "netherite_hatchet"
+    ]
+  ],
+  "rewards": {
+    "function": "fabled_roots:item/netherite_hatchet"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "criteria": {
+    "hit_with_iron_hatchet": {
+      "trigger": "minecraft:player_hurt_entity",
+      "conditions": {
+        "damage": {
+          "type": {
+            "direct_entity": {
+              "type": "minecraft:snowball",
+              "nbt": "{Item:{components:{\"minecraft:item_model\":\"fabled_roots:hit_with_iron_hatchet\"}}}"
+            }
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "hit_with_iron_hatchet"
+    ]
+  ],
+  "rewards": {
+    "function": "fabled_roots:item/hit_with_iron_hatchet"
+  }
+}

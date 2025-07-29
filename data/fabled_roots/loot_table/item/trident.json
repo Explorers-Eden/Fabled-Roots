@@ -13,7 +13,8 @@
               "components": {
                 "minecraft:custom_data": {
                   "fabled_roots": {
-                    "item": "trident"
+                    "item": "trident",
+                    "type": "trident"
                   }
                 },
                 "minecraft:attribute_modifiers": [
@@ -31,7 +32,8 @@
                     "operation": "add_value",
                     "slot": "mainhand"
                   }
-                ]
+                ],
+                "minecraft:tooltip_style": "fabled_roots:turtlekin"
               }
             },
             {

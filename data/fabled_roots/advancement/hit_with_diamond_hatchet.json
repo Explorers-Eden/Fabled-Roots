@@ -1,0 +1,25 @@
+{
+  "criteria": {
+    "diamond_hatchet": {
+      "trigger": "minecraft:player_hurt_entity",
+      "conditions": {
+        "damage": {
+          "type": {
+            "direct_entity": {
+              "type": "minecraft:snowball",
+              "nbt": "{Item:{components:{\"minecraft:item_model\":\"fabled_roots:diamond_hatchet\"}}}"
+            }
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "diamond_hatchet"
+    ]
+  ],
+  "rewards": {
+    "function": "fabled_roots:item/diamond_hatchet"
+  }
+}

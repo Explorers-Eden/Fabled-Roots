@@ -60,7 +60,7 @@
         },
         {
           "translate": "option.fabled_roots.dunesworn.tooltip.stats",
-          "fallback": "Traits:\n• Height: 85-95%\n• +3 Armor\n• -2 Knockback Resistance\n• Strength & Luck Effect in Desert Biomes\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Dries Wet Sponges in Main-/Offhand",
+          "fallback": "Traits:\n• Height: 85-95%\n• +3 Armor\n• -2 Knockback Resistance\n• Hits with Scythes have a chance to shoot a Shulker Bullet\n• Strength & Luck Effect in Desert Biomes\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Dries Wet Sponges in Main-/Offhand",
           "color": "gray"
         }
       ],
@@ -156,7 +156,7 @@
         },
         {
           "translate": "option.fabled_roots.netherian.tooltip.stats",
-          "fallback": "Traits:\n• Height: 90-110%\n• +100% Attack Knockback\n• -25% Attack Speed\n• Strength & Luck Effect in The Nether\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Becomes Fire Resistant",
+          "fallback": "Traits:\n• Height: 90-110%\n• +100% Attack Knockback\n• -25% Attack Speed\n• Hits with Broadswords have a chance to shoot a Fireball\n• Strength & Luck Effect in The Nether\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Becomes Fire Resistant",
           "color": "gray"
         }
       ],
@@ -180,7 +180,7 @@
         },
         {
           "translate": "option.fabled_roots.oakhearted.tooltip.stats",
-          "fallback": "Traits:\n• Height: 100-110%\n• +50% Jump Strength\n• +100% Burning Time\n• Strength & Luck Effect in Forest Biomes\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Applies Weakness Effect to nearby entities.",
+          "fallback": "Traits:\n• Height: 100-110%\n• +50% Jump Strength\n• +100% Burning Time\n• Thrown Hatchets inflict Weakness\n• Strength & Luck Effect in Forest Biomes\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Applies Weakness Effect to nearby entities.",
           "color": "gray"
         }
       ],
