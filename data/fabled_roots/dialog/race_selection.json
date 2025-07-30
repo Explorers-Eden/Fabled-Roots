@@ -60,7 +60,7 @@
         },
         {
           "translate": "option.fabled_roots.dunesworn.tooltip.stats",
-          "fallback": "Traits:\n• Height: 85-95%\n• +3 Armor\n• -2 Knockback Resistance\n• Hits with Scythes have a chance to shoot a Shulker Bullet\n• Strength & Luck Effect in Desert Biomes\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Dries Wet Sponges in Main-/Offhand",
+          "fallback": "Traits:\n• Height: 85-95%\n• +3 Armor\n• -2 Knockback Resistance\n• Saturation effect for kills with a Scimitar\n• Strength & Luck Effect in Desert Biomes\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Dries Wet Sponges in Main-/Offhand",
           "color": "gray"
         }
       ],
@@ -84,7 +84,7 @@
         },
         {
           "translate": "option.fabled_roots.endling.tooltip.stats",
-          "fallback": "Traits:\n• Height: 105-120%\n• -50% Gravity\n• +50% Fall Damage Multiplier\n• Strength & Luck Effect in The End\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Applies Levitation Effect to nearby entities",
+          "fallback": "Traits:\n• Height: 105-120%\n• -50% Gravity\n• +50% Fall Damage Multiplier\n• Hits with Scythes have a chance to shoot a Shulker Bullet\n• Strength & Luck Effect in The End\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Applies Levitation Effect to nearby entities",
           "color": "gray"
         }
       ],
@@ -108,7 +108,7 @@
         },
         {
           "translate": "option.fabled_roots.frostborne.tooltip.stats",
-          "fallback": "Traits:\n• Height: 95-105%\n• +10% Movement Speed\n• -50% Submerged Mining Speed\n• Strength & Luck Effect in Cold Biomes\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Applies Slowness Effect to nearby entities",
+          "fallback": "Traits:\n• Height: 95-105%\n• +10% Movement Speed\n• -50% Submerged Mining Speed\n• Kills with Clubs freeze nearby entities shortly\n• Strength & Luck Effect in Cold Biomes\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Applies Slowness Effect to nearby entities",
           "color": "gray"
         }
       ],

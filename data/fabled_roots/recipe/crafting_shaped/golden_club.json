@@ -1,0 +1,48 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:stick",
+    "X": "#minecraft:gold_tool_materials"
+  },
+  "pattern": [
+    "X  ",
+    " X ",
+    "  #"
+  ],
+  "result": {
+    "components": {
+                "minecraft:item_name": {
+                  "translate": "items.fabled_roots.golden_club",
+                  "fallback": "Golden Club"
+                },
+                "minecraft:item_model": "fabled_roots:golden_club",
+                "minecraft:rarity": "common",
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "golden_club",
+                    "type": "club"
+                  }
+                },
+                "minecraft:attribute_modifiers": [
+                  {
+                    "type": "minecraft:attack_damage",
+                    "id": "fabled_roots:club_attack",
+                    "amount": 3.5,
+                    "operation": "add_value",
+                    "slot": "mainhand"
+                  },
+                  {
+                    "type": "minecraft:attack_speed",
+                    "id": "fabled_roots:club_speed",
+                    "amount": -2.9,
+                    "operation": "add_value",
+                    "slot": "mainhand"
+                  }
+                ],
+                "minecraft:tooltip_style": "fabled_roots:frostborne"
+              },
+    "count": 1,
+    "id": "minecraft:golden_sword"
+  }
+}

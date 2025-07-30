@@ -1,0 +1,32 @@
+{
+  "criteria": {
+    "scimitar_kill": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "player": {
+          "nbt": "{Tags:[\"fabled_roots.dunesworn\"]}",
+          "slots": {
+            "weapon.mainhand": {
+              "items": "#minecraft:swords",
+              "predicates": {
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "type": "scimitar"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "scimitar_kill"
+    ]
+  ],
+  "rewards": {
+    "function": "fabled_roots:item/dunesworn_kill_with_scimitar"
+  }
+}

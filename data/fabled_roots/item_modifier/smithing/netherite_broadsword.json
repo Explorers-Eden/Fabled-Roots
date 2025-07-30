@@ -1,0 +1,42 @@
+{
+  "function": "minecraft:set_components",
+  "components": {
+    "minecraft:item_model": "fabled_roots:netherite_broadsword",
+    "minecraft:item_name": {
+      "translate": "items.fabled_roots.netherite_broadsword",
+      "fallback": "Netherite Broadsword"
+    },
+    "minecraft:custom_data": {
+      "fabled_roots": {
+        "item": "netherite_broadsword",
+        "type": "broadsword"
+      }
+    },
+    "minecraft:attribute_modifiers": [
+      {
+        "type": "minecraft:attack_damage",
+        "id": "fabled_roots:broadsword_dmg",
+        "amount": 9,
+        "operation": "add_value",
+        "slot": "mainhand",
+        "display": {
+          "type": "default"
+        }
+      },
+      {
+        "type": "minecraft:attack_knockback",
+        "id": "fabled_roots:broadsword_knockback",
+        "amount": 1.5,
+        "operation": "add_value",
+        "slot": "mainhand"
+      },
+      {
+        "type": "minecraft:attack_speed",
+        "id": "fabled_roots:broadsword_speed",
+        "amount": -3.6,
+        "operation": "add_value",
+        "slot": "mainhand"
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/wooden_broadsword",
+          "weight": 40
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/stone_broadsword",
+          "weight": 30
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/golden_broadsword",
+          "weight": 25
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/iron_broadsword",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/copper_broadsword",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/diamond_broadsword",
+          "weight": 8
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/netherite_broadsword",
+          "weight": 2
+        }
+      ]
+    }
+  ]
+}

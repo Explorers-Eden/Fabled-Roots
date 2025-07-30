@@ -1,0 +1,45 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/wooden_scimitar",
+          "weight": 40
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/stone_scimitar",
+          "weight": 30
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/golden_scimitar",
+          "weight": 25
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/iron_scimitar",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/copper_scimitar",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/diamond_scimitar",
+          "weight": 8
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/netherite_scimitar",
+          "weight": 2
+        }
+      ]
+    }
+  ]
+}

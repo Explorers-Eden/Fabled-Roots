@@ -1,0 +1,32 @@
+{
+  "criteria": {
+    "club_kill": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "player": {
+          "nbt": "{Tags:[\"fabled_roots.frostborne\"]}",
+          "slots": {
+            "weapon.mainhand": {
+              "items": "#minecraft:swords",
+              "predicates": {
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "type": "club"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "club_kill"
+    ]
+  ],
+  "rewards": {
+    "function": "fabled_roots:item/frostborne_kill_with_club"
+  }
+}

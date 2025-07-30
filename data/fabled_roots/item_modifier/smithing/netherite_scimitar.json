@@ -1,0 +1,32 @@
+{
+  "function": "minecraft:set_components",
+  "components": {
+    "minecraft:item_model": "fabled_roots:netherite_scimitar",
+    "minecraft:item_name": {
+      "translate": "items.fabled_roots.netherite_scimitar",
+      "fallback": "Netherite Scimitar"
+    },
+    "minecraft:custom_data": {
+      "fabled_roots": {
+        "item": "netherite_scimitar",
+        "type": "scimitar"
+      }
+    },
+    "minecraft:attribute_modifiers": [
+      {
+        "type": "minecraft:attack_damage",
+        "id": "fabled_roots:scimitar_attack",
+        "amount": 6.5,
+        "operation": "add_value",
+        "slot": "mainhand"
+      },
+      {
+        "type": "minecraft:attack_speed",
+        "id": "fabled_roots:scimitar_speed",
+        "amount": -1.9,
+        "operation": "add_value",
+        "slot": "mainhand"
+      }
+    ]
+  }
+}

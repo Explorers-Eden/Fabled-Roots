@@ -1,0 +1,75 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_helmet",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "minecraft:item_name": {
+                  "translate": "items.fabled_roots.phantom_shell",
+                  "fallback": "Phantom Shell"
+                },
+                "minecraft:item_model": "fabled_roots:phantom_shell",
+                "minecraft:rarity": "common",
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "phantom_shell",
+                    "race": "moonshroud"
+                  }
+                },
+                "minecraft:equippable": {
+                  "slot": "head",
+                  "equip_sound": "minecraft:item.armor.equip_turtle",
+                  "asset_id": "fabled_roots:phantom_shell",
+                  "dispensable": true,
+                  "swappable": true,
+                  "damage_on_hurt": true,
+                  "equip_on_interact": true,
+                  "can_be_sheared": false
+                },
+                "minecraft:tooltip_style": "fabled_roots:moonshroud",
+                "minecraft:attribute_modifiers": [
+                  {
+                    "type": "minecraft:armor",
+                    "id": "fabled_roots:shell_armor",
+                    "amount": 2,
+                    "operation": "add_value",
+                    "slot": "head"
+                  },
+                  {
+                    "type": "minecraft:sneaking_speed",
+                    "id": "fabled_roots:shell_sneak_speed",
+                    "amount": 0.33,
+                    "operation": "add_multiplied_base",
+                    "slot": "head",
+                    "display": {
+                      "type": "hidden"
+                    }
+                  }
+                ],
+                "minecraft:max_damage": 275,
+                "minecraft:repairable": {
+                  "items": "minecraft:phantom_membrane"
+                }
+              }
+            },
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "type": "minecraft:uniform",
+                "min": 0.3,
+                "max": 0.8
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

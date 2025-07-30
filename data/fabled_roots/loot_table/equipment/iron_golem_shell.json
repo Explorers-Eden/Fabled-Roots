@@ -1,0 +1,75 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_helmet",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "minecraft:item_name": {
+                  "translate": "items.fabled_roots.iron_golem_shell",
+                  "fallback": "Iron Golem Shell"
+                },
+                "minecraft:item_model": "fabled_roots:iron_golem_shell",
+                "minecraft:rarity": "common",
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "iron_golem_shell",
+                    "race": "orebringer"
+                  }
+                },
+                "minecraft:equippable": {
+                  "slot": "head",
+                  "equip_sound": "minecraft:item.armor.equip_turtle",
+                  "asset_id": "fabled_roots:iron_golem_shell",
+                  "dispensable": true,
+                  "swappable": true,
+                  "damage_on_hurt": true,
+                  "equip_on_interact": true,
+                  "can_be_sheared": false
+                },
+                "minecraft:tooltip_style": "fabled_roots:orebringer",
+                "minecraft:attribute_modifiers": [
+                  {
+                    "type": "minecraft:armor",
+                    "id": "fabled_roots:shell_armor",
+                    "amount": 2,
+                    "operation": "add_value",
+                    "slot": "head"
+                  },
+                  {
+                    "type": "minecraft:block_break_speed",
+                    "id": "fabled_roots:shell_block_break_speed",
+                    "amount": 0.25,
+                    "operation": "add_multiplied_base",
+                    "slot": "head",
+                    "display": {
+                      "type": "hidden"
+                    }
+                  }
+                ],
+                "minecraft:max_damage": 275,
+                "minecraft:repairable": {
+                  "items": "minecraft:iron_ingot"
+                }
+              }
+            },
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "type": "minecraft:uniform",
+                "min": 0.3,
+                "max": 0.8
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
