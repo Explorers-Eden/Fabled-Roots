@@ -1,0 +1,11 @@
+{
+    "sound_event": {
+      "sound_id": "fabled_roots:music_disc.orebringer_peter_hont_dank_cave"
+  },
+    "description": {
+      "text": "Peter Hont - Dank Cave"
+    },
+    "length_in_seconds": 160.0,
+    "comparator_output": 7
+  }
+  

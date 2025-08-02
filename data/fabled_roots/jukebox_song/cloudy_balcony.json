@@ -1,0 +1,11 @@
+{
+    "sound_event": {
+      "sound_id": "fabled_roots:music_disc.aetherian_peter_hont_cloudy_balcony"
+  },
+    "description": {
+      "text": "Peter Hont - Cloudy Balcony"
+    },
+    "length_in_seconds": 95.0,
+    "comparator_output": 1
+  }
+  

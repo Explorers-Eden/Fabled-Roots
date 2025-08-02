@@ -1,0 +1,52 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "minecraft:written_book_content": {
+                  "pages": [
+                    {
+                      "raw": {
+                        "text": "We no longer feel the chill in our bones. It's as though the mountain has stopped reminding us we're alive. Some have taken to silence. Others pray."
+                      }
+                    }
+                  ],
+                  "title": {
+                    "raw": "Journal: Final Days VI"
+                  },
+                  "author": "Frostborne Guardian",
+                  "generation": 3,
+                  "resolved": true
+                },
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "journal",
+                    "day": "6",
+                    "race": "frostborne"
+                  }
+                },
+                "minecraft:tooltip_display": {
+                  "hidden_components": [
+                    "minecraft:dyed_color"
+                  ]
+                },
+                "minecraft:dyed_color": 11130597,
+                "minecraft:tooltip_style": "fabled_roots:frostborne",
+                "minecraft:item_model": "fabled_roots:journal",
+                "minecraft:enchantment_glint_override": false
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

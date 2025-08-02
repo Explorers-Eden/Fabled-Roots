@@ -1,0 +1,11 @@
+{
+    "sound_event": {
+      "sound_id": "fabled_roots:music_disc.netherian_peter_hont_ghast"
+  },
+    "description": {
+      "text": "Peter Hont - Evoker"
+    },
+    "length_in_seconds": 175.0,
+    "comparator_output": 5
+  }
+  

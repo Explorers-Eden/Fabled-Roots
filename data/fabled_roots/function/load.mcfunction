@@ -49,7 +49,7 @@ team add fabled_roots.turtlekin {"bold":false,"color":"#3C92A4","italic":false,"
 team add fabled_roots.dunesworn {"bold":false,"color":"#C2A76D","italic":false,"text":"Dunesworn"}
 team add fabled_roots.endling {"bold":false,"color":"#5D3A9B","italic":false,"text":"Endling"}
 team add fabled_roots.palehearted {"bold":false,"color":"#E8DADA","italic":false,"text":"Palehearted"}
-team add fabled_roots.aetherian {"bold":false,"color":"#D4F1FF","italic":false,"text":"Aetherian"}
+team add fabled_roots.aetherian {"bold":false,"color":"#a8fcff","italic":false,"text":"Aetherian"}
 
 ##modify teams
 team modify fabled_roots.frostborne friendlyFire false

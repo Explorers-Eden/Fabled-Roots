@@ -1,0 +1,50 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "minecraft:written_book_content": {
+                  "pages": [
+                    {
+                      "raw": {
+                        "text": "The Archivum is empty. Not raided — not abandoned — just… devoid. The scrolls, the tablets, the echoes of our knowledge — gone. As if they never were."
+                      }
+                    }
+                  ],
+                  "title": {
+                    "raw": "Journal: Final Days XIII"
+                  },
+                  "author": "Aetherian Guardian",
+                  "generation": 3,
+                  "resolved": true
+                },
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "journal",
+                    "day": "13",
+                    "race": "aetherian"
+                  }
+                },
+                "minecraft:tooltip_display": {
+                  "hidden_components": ["minecraft:dyed_color"]
+                },
+                "minecraft:dyed_color": 11074815,
+                "minecraft:tooltip_style": "fabled_roots:aetherian",
+                "minecraft:item_model": "fabled_roots:journal",
+                "minecraft:enchantment_glint_override": false
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

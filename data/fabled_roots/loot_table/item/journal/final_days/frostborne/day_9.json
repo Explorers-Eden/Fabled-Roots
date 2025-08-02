@@ -1,0 +1,52 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "minecraft:written_book_content": {
+                  "pages": [
+                    {
+                      "raw": {
+                        "text": "I heard a crack beneath the ice. Not from weight or warmth—but something deeper. Something old. We sealed the crevasse before it could speak again."
+                      }
+                    }
+                  ],
+                  "title": {
+                    "raw": "Journal: Final Days IX"
+                  },
+                  "author": "Frostborne Guardian",
+                  "generation": 3,
+                  "resolved": true
+                },
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "journal",
+                    "day": "9",
+                    "race": "frostborne"
+                  }
+                },
+                "minecraft:tooltip_display": {
+                  "hidden_components": [
+                    "minecraft:dyed_color"
+                  ]
+                },
+                "minecraft:dyed_color": 11130597,
+                "minecraft:tooltip_style": "fabled_roots:frostborne",
+                "minecraft:item_model": "fabled_roots:journal",
+                "minecraft:enchantment_glint_override": false
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

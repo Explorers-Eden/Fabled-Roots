@@ -1,0 +1,52 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "minecraft:written_book_content": {
+                  "pages": [
+                    {
+                      "raw": {
+                        "text": "The earth trembles beneath us, sending shards of stone like broken promises. Our miners retreat with faces streaked in dust and dread."
+                      }
+                    }
+                  ],
+                  "title": {
+                    "raw": "Journal: Final Days VI"
+                  },
+                  "author": "Orebringer Guardian",
+                  "generation": 3,
+                  "resolved": true
+                },
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "journal",
+                    "day": "6",
+                    "race": "orebringer"
+                  }
+                },
+                "minecraft:tooltip_display": {
+                  "hidden_components": [
+                    "minecraft:dyed_color"
+                  ]
+                },
+                "minecraft:dyed_color": 8747631,
+                "minecraft:tooltip_style": "fabled_roots:orebringer",
+                "minecraft:item_model": "fabled_roots:journal",
+                "minecraft:enchantment_glint_override": false
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "minecraft:written_book_content": {
+                  "pages": [
+                    {
+                      "raw": {
+                        "text": "The ocean roars louder each night, drowning our chants and prayers. I wonder if the tides will carry our memories away forever."
+                      }
+                    }
+                  ],
+                  "title": {
+                    "raw": "Journal: Final Days IX"
+                  },
+                  "author": "Turtlekin Guardian",
+                  "generation": 3,
+                  "resolved": true
+                },
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "journal",
+                    "day": "9",
+                    "race": "turtlekin"
+                  }
+                },
+                "minecraft:tooltip_display": {
+                  "hidden_components": [
+                    "minecraft:dyed_color"
+                  ]
+                },
+                "minecraft:dyed_color": 3969700,
+                "minecraft:tooltip_style": "fabled_roots:turtlekin",
+                "minecraft:item_model": "fabled_roots:journal",
+                "minecraft:enchantment_glint_override": false
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

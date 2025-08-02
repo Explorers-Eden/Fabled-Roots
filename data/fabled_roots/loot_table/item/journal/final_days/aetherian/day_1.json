@@ -1,0 +1,50 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "minecraft:written_book_content": {
+                  "pages": [
+                    {
+                      "raw": {
+                        "text": "The clouds lingered longer today. We flew only short paths, gliding through heavy silence. Even the sky seemed reluctant to hold us. Something unseen brushes against our wings."
+                      }
+                    }
+                  ],
+                  "title": {
+                    "raw": "Journal: Final Days I"
+                  },
+                  "author": "Aetherian Guardian",
+                  "generation": 3,
+                  "resolved": true
+                },
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "journal",
+                    "day": "1",
+                    "race": "aetherian"
+                  }
+                },
+                "minecraft:tooltip_display": {
+                  "hidden_components": ["minecraft:dyed_color"]
+                },
+                "minecraft:dyed_color": 11074815,
+                "minecraft:tooltip_style": "fabled_roots:aetherian",
+                "minecraft:item_model": "fabled_roots:journal",
+                "minecraft:enchantment_glint_override": false
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

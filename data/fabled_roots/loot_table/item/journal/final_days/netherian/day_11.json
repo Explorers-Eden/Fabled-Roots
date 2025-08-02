@@ -1,0 +1,44 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "minecraft:written_book_content": {
+                  "pages": [
+                    { "raw": { "text": "The magma rivers run cold. I touched one, expecting to burn—but it was like stone. The heat that defined us has abandoned us. Without flame, what are we?" } }
+                  ],
+                  "title": { "raw": "Journal: Final Days XI" },
+                  "author": "Netherian Guardian",
+                  "generation": 3,
+                  "resolved": true
+                },
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "journal",
+                    "day": "11",
+                    "race": "netherian"
+                  }
+                },
+                "minecraft:tooltip_display": {
+                  "hidden_components": ["minecraft:dyed_color"]
+                },
+                "minecraft:dyed_color": 11678515,
+                "minecraft:tooltip_style": "fabled_roots:netherian",
+                "minecraft:item_model": "fabled_roots:journal",
+                "minecraft:enchantment_glint_override": false
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

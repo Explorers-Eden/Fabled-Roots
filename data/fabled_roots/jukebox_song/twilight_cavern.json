@@ -1,0 +1,11 @@
+{
+    "sound_event": {
+      "sound_id": "fabled_roots:music_disc.turtlekin_peter_hont_twilight_cavern"
+  },
+    "description": {
+      "text": "Peter Hont - Twilight Cavern"
+    },
+    "length_in_seconds": 155.0,
+    "comparator_output": 10
+  }
+  

@@ -1,0 +1,11 @@
+{
+    "sound_event": {
+      "sound_id": "fabled_roots:music_disc.peter_hont_mojam"
+  },
+    "description": {
+      "text": "Peter Hont - Mojam"
+    },
+    "length_in_seconds": 101.0,
+    "comparator_output": 15
+  }
+  

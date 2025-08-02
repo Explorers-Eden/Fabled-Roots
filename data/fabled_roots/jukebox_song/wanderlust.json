@@ -1,0 +1,11 @@
+{
+    "sound_event": {
+      "sound_id": "fabled_roots:music_disc.dunesworn_peter_hont_wanderlust"
+  },
+    "description": {
+      "text": "Peter Hont - Wanderlust"
+    },
+    "length_in_seconds": 115.0,
+    "comparator_output": 2
+  }
+  

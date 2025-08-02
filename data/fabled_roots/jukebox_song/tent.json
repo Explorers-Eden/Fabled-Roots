@@ -1,0 +1,11 @@
+{
+    "sound_event": {
+      "sound_id": "fabled_roots:music_disc.endling_peter_hont_tent"
+  },
+    "description": {
+      "text": "Peter Hont - Tent"
+    },
+    "length_in_seconds": 110.0,
+    "comparator_output": 3
+  }
+  

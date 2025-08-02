@@ -48,5 +48,60 @@
         "sounds": [
             "fabled_roots:aetherian_horn"
         ]
-      }
+      },
+      "music_disc.aetherian_peter_hont_cloudy_balcony": {
+        "sounds": [
+            "fabled_roots:records/aetherian_peter_hont_cloudy_balcony"
+        ]
+    },
+      "music_disc.dunesworn_peter_hont_wanderlust": {
+        "sounds": [
+            "fabled_roots:records/dunesworn_peter_hont_wanderlust"
+        ]
+    },
+      "music_disc.endling_peter_hont_tent": {
+        "sounds": [
+            "fabled_roots:records/endling_peter_hont_tent"
+        ]
+    },
+      "music_disc.frostborne_peter_hont_shelter": {
+        "sounds": [
+            "fabled_roots:records/frostborne_peter_hont_shelter"
+        ]
+    },
+      "music_disc.moonshroud_peter_hont_evoker": {
+        "sounds": [
+            "fabled_roots:records/moonshroud_peter_hont_evoker"
+        ]
+    },
+      "music_disc.netherian_peter_hont_ghast": {
+        "sounds": [
+            "fabled_roots:records/netherian_peter_hont_ghast"
+        ]
+    },
+      "music_disc.oakhearted_peter_hont_panda_temple": {
+        "sounds": [
+            "fabled_roots:records/oakhearted_peter_hont_panda_temple"
+        ]
+    },
+      "music_disc.orebringer_peter_hont_dank_cave": {
+        "sounds": [
+            "fabled_roots:records/orebringer_peter_hont_dank_cave"
+        ]
+    },
+      "music_disc.palehearted_peter_hont_spoopy": {
+        "sounds": [
+            "fabled_roots:records/palehearted_peter_hont_spoopy"
+        ]
+    },
+      "music_disc.peter_hont_mojam": {
+        "sounds": [
+            "fabled_roots:records/peter_hont_mojam"
+        ]
+    },
+      "music_disc.turtlekin_peter_hont_twilight_cavern": {
+        "sounds": [
+            "fabled_roots:records/turtlekin_peter_hont_twilight_cavern"
+        ]
+    }
 }

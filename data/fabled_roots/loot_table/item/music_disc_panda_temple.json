@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:music_disc_5",
+          "weight": 5,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "minecraft:item_name": {
+                  "translate": "items.fabled_roots.music_disc",
+                  "fallback": "Music Disc"
+                },
+                "minecraft:item_model": "fabled_roots:roots_disc",
+                "minecraft:rarity": "rare",
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "music_disc_panda_temple"
+                  }
+                },
+                "minecraft:jukebox_playable": "fabled_roots:panda_temple",
+                "minecraft:tooltip_display": {
+                "hidden_components": [
+                  "minecraft:dyed_color"
+                  ]
+                },
+                "minecraft:dyed_color": 5995341,
+                "minecraft:tooltip_style": "fabled_roots:oakhearted"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

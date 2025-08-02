@@ -1,0 +1,44 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "minecraft:written_book_content": {
+                  "pages": [
+                    { "raw": { "text": "We tried to invoke the old rites—chants once used to calm the volatile flows—but the echoes mocked us. The obsidian statues cracked, and the fire responded not with warmth, but hunger." } }
+                  ],
+                  "title": { "raw": "Journal: Final Days V" },
+                  "author": "Netherian Guardian",
+                  "generation": 3,
+                  "resolved": true
+                },
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "journal",
+                    "day": "5",
+                    "race": "netherian"
+                  }
+                },
+                "minecraft:tooltip_display": {
+                  "hidden_components": ["minecraft:dyed_color"]
+                },
+                "minecraft:dyed_color": 11678515,
+                "minecraft:tooltip_style": "fabled_roots:netherian",
+                "minecraft:item_model": "fabled_roots:journal",
+                "minecraft:enchantment_glint_override": false
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

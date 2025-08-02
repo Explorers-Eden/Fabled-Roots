@@ -1,0 +1,11 @@
+{
+    "sound_event": {
+      "sound_id": "fabled_roots:music_disc.palehearted_peter_hont_spoopy"
+  },
+    "description": {
+      "text": "Peter Hont - Spoopy"
+    },
+    "length_in_seconds": 180.0,
+    "comparator_output": 8
+  }
+  
