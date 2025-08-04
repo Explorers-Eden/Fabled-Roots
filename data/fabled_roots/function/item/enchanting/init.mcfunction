@@ -1,0 +1,29 @@
+schedule function fabled_roots:item/enchanting/init 1s
+
+execute as @a run function fabled_roots:item/enchanting/atlantic_shot
+execute as @a run function fabled_roots:item/enchanting/breeze_shot
+execute as @a run function fabled_roots:item/enchanting/cold_bloom
+execute as @a run function fabled_roots:item/enchanting/crimson_bloom
+execute as @a run function fabled_roots:item/enchanting/dry_bloom
+execute as @a run function fabled_roots:item/enchanting/dry_heat
+execute as @a run function fabled_roots:item/enchanting/ender_lure
+execute as @a run function fabled_roots:item/enchanting/flying_nimbus
+execute as @a run function fabled_roots:item/enchanting/frostbite
+execute as @a run function fabled_roots:item/enchanting/ghastly_shot
+execute as @a run function fabled_roots:item/enchanting/heavy_shot
+execute as @a run function fabled_roots:item/enchanting/lumos
+execute as @a run function fabled_roots:item/enchanting/lupine_echo
+execute as @a run function fabled_roots:item/enchanting/lurkers_leap
+execute as @a run function fabled_roots:item/enchanting/pale_bloom
+execute as @a run function fabled_roots:item/enchanting/rocky_bloom
+execute as @a run function fabled_roots:item/enchanting/scouting_arrows
+execute as @a run function fabled_roots:item/enchanting/sculky_bloom
+execute as @a run function fabled_roots:item/enchanting/stonepiercer
+execute as @a run function fabled_roots:item/enchanting/stormcall
+execute as @a run function fabled_roots:item/enchanting/thousand_stings
+execute as @a run function fabled_roots:item/enchanting/toothburst
+execute as @a run function fabled_roots:item/enchanting/verdant_bloom
+execute as @a run function fabled_roots:item/enchanting/void_bloom
+execute as @a run function fabled_roots:item/enchanting/void_shot
+execute as @a run function fabled_roots:item/enchanting/warped_bloom
+execute as @a run function fabled_roots:item/enchanting/webbing

@@ -10,7 +10,7 @@
             "minecraft:custom_data": {
               "fabled_roots": {
                 "item": "enchanted_scroll",
-                "effect": "atlantic_shot"
+                "enchantment": "atlantic_shot"
               }
             }
           }

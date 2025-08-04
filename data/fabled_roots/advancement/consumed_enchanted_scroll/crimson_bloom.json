@@ -10,7 +10,7 @@
             "minecraft:custom_data": {
               "fabled_roots": {
                 "item": "enchanted_scroll",
-                "effect": "crimson_bloom"
+                "enchantment": "crimson_bloom"
               }
             }
           }

@@ -10,7 +10,7 @@
             "minecraft:custom_data": {
               "fabled_roots": {
                 "item": "enchanted_scroll",
-                "effect": "thousand_stings"
+                "enchantment": "thousand_stings"
               }
             }
           }

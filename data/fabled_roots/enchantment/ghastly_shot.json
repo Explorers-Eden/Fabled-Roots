@@ -1,0 +1,21 @@
+{
+  "description": {
+    "translate": "enchantment.fabled_roots.ghastly_shot",
+    "fallback": "Ghastly Shot"
+  },
+  "exclusive_set": "#fabled_roots:enchanted_scroll",
+  "supported_items": "minecraft:music_disc_5",
+  "weight": 2,
+  "max_level": 1,
+  "max_cost": {
+    "base": 65,
+    "per_level_above_first": 0
+  },
+  "min_cost": {
+    "base": 5,
+    "per_level_above_first": 0
+  },
+  "anvil_cost": 1,
+  "slots": [],
+  "effects": {}
+}

@@ -6,6 +6,7 @@
 		"fabled_roots:item/smithing/init",
 		"fabled_roots:item/vanilla_modifier/init",
 		"fabled_roots:item/turtlekin_holding_trident",
-		"fabled_roots:item/orebringer_uses_mace"
+		"fabled_roots:item/orebringer_uses_mace",
+		"fabled_roots:item/enchanting/init"
 	]
 }

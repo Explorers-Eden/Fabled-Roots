@@ -1,0 +1,39 @@
+
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "minecraft:item_name": {
+                  "translate": "items.fabled_roots.enchanted_scroll",
+                  "fallback": "Enchanted Scroll"
+                },
+                "minecraft:item_model": "fabled_roots:enchanted_scroll",
+                "minecraft:rarity": "rare",
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "enchanted_scroll",
+                    "enchantment": "thousand_stings"
+                  }
+                },
+                "!minecraft:jukebox_playable": {},
+                "minecraft:tooltip_style": "fabled_roots:oakhearted",
+                "minecraft:lore": [
+                  {
+                    "translate": "enchantment.fabled_roots.thousand_stings",
+                    "fallback": "Thousand Stings",
+                    "color": "gray",
+                    "bold": false,
+                    "italic": false
+                  }
+                ],
+                "minecraft:consumable": {
+                  "consume_seconds": 0.5,
+                  "animation": "block",
+                  "sound": "minecraft:block.amethyst_block.resonate",
+                  "has_consume_particles": false
+                },
+                "minecraft:enchantment_glint_override": true,
+                "minecraft:max_stack_size": 16,
+                "!minecraft:enchantments": {},
+                "!minecraft:enchantable": {}
+              }
+            }
