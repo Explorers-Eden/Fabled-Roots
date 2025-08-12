@@ -1,0 +1,15 @@
+{
+  "asset_id": "fabled_roots:netherian",
+  "author": {
+    "fallback": "Netherian",
+    "color": "gray",
+    "translate": "painting.fabled_roots.netherian.author"
+  },
+  "height": 2,
+  "title": {
+    "fallback": "Red River",
+    "color": "yellow",
+    "translate": "painting.fabled_roots.netherian.title"
+  },
+  "width": 2
+}

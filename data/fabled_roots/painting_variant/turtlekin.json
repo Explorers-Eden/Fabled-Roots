@@ -1,0 +1,15 @@
+{
+  "asset_id": "fabled_roots:turtlekin",
+  "author": {
+    "fallback": "Turtlekin",
+    "color": "gray",
+    "translate": "painting.fabled_roots.turtlekin.author"
+  },
+  "height": 2,
+  "title": {
+    "fallback": "Savior",
+    "color": "yellow",
+    "translate": "painting.fabled_roots.turtlekin.title"
+  },
+  "width": 2
+}

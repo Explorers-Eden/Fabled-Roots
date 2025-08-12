@@ -1,0 +1,15 @@
+{
+  "asset_id": "fabled_roots:palehearted",
+  "author": {
+    "fallback": "Palehearted",
+    "color": "gray",
+    "translate": "painting.fabled_roots.palehearted.author"
+  },
+  "height": 2,
+  "title": {
+    "fallback": "No Option",
+    "color": "yellow",
+    "translate": "painting.fabled_roots.palehearted.title"
+  },
+  "width": 2
+}

@@ -1,0 +1,15 @@
+{
+  "asset_id": "fabled_roots:orebringer",
+  "author": {
+    "fallback": "Orebringer",
+    "color": "gray",
+    "translate": "painting.fabled_roots.orebringer.author"
+  },
+  "height": 2,
+  "title": {
+    "fallback": "Treasure",
+    "color": "yellow",
+    "translate": "painting.fabled_roots.orebringer.title"
+  },
+  "width": 2
+}

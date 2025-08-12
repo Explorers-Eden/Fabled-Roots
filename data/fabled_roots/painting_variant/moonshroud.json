@@ -1,0 +1,15 @@
+{
+  "asset_id": "fabled_roots:moonshroud",
+  "author": {
+    "fallback": "Moonshroud",
+    "color": "gray",
+    "translate": "painting.fabled_roots.moonshroud.author"
+  },
+  "height": 2,
+  "title": {
+    "fallback": "Howling",
+    "color": "yellow",
+    "translate": "painting.fabled_roots.moonshroud.title"
+  },
+  "width": 2
+}

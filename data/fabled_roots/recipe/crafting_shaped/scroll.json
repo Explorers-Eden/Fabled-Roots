@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "minecraft:paper"
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "components": {
+      "minecraft:item_name": {
+        "translate": "items.fabled_roots.scroll",
+        "fallback": "Scroll"
+      },
+      "minecraft:item_model": "fabled_roots:scroll",
+      "minecraft:rarity": "common",
+      "minecraft:custom_data": {
+        "fabled_roots": {
+          "item": "scroll"
+        }
+      },
+      "!minecraft:jukebox_playable": {},
+      "minecraft:tooltip_style": "fabled_roots:generic",
+      "minecraft:max_stack_size": 16,
+      "minecraft:enchantable": {
+        "value": 100
+      }
+    },
+    "count": 2,
+    "id": "minecraft:music_disc_5"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "asset_id": "fabled_roots:endling",
+  "author": {
+    "fallback": "Endling",
+    "color": "gray",
+    "translate": "painting.fabled_roots.endling.author"
+  },
+  "height": 2,
+  "title": {
+    "fallback": "Heroic",
+    "color": "yellow",
+    "translate": "painting.fabled_roots.endling.title"
+  },
+  "width": 2
+}
