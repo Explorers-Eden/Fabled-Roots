@@ -1,0 +1,14 @@
+{
+    "values": [
+        { "id": "minecraft:desert","required": false},
+        { "id": "terralith:desert_oasis","required": false},
+        { "id": "terralith:sandstone_valley","required": false},
+        { "id": "terralith:red_oasis","required": false},
+        { "id": "terralith:desert_canyon","required": false},
+        { "id": "terralith:lush_desert","required": false},
+        { "id": "terralith:ancient_sands","required": false},
+        { "id": "terralith:desert_spires","required": false},
+        { "id": "biomesoplenty:lush_savanna","required": false},
+        { "id": "minecraft:savanna", "required": false}
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "values": [
+        { "id": "minecraft:windswept_gravelly_hills","required": false},
+        { "id": "minecraft:windswept_hills","required": false},
+        { "id": "minecraft:windswept_forest","required": false},
+        { "id": "terralith:haze_mountain","required": false},
+        { "id": "terralith:windswept_spires","required": false},
+        { "id": "terralith:windswept_savanna","required": false}
+    ]
+}

@@ -1,0 +1,11 @@
+{
+    "values": [
+        { "id": "minecraft:plains","required": false},
+        { "id": "minecraft:sunflower_plains", "required": false},
+        { "id": "terralith:brushland","required": false},
+        { "id": "terralith:steppe","required": false},
+        { "id": "minecraft:desert","required": false},
+        { "id": "minecraft:river","required": false},
+        { "id": "minecraft:ocean","required": false}
+    ]
+}

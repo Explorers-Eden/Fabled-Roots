@@ -1,0 +1,13 @@
+{
+    "values": [
+        { "id": "minecraft:forest","required": false},
+        { "id": "minecraft:flower_forest","required": false},
+        { "id": "minecraft:birch_forest","required": false},
+        { "id": "minecraft:old_growth_birch_forest","required": false},
+        { "id": "minecraft:grove","required": false},
+        { "id": "minecraft:plains","required": false},
+        { "id": "minecraft:sunflower_plains", "required": false},
+        { "id": "terralith:cloud_forest","required": false},
+        { "id": "terralith:lavender_forest","required": false}
+    ]
+}

@@ -1,0 +1,32 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 32,
+    "separation": 10,
+    "salt": 36227991,
+    "spread_type": "triangular",
+    "frequency": 1,
+    "exclusion_zone": {
+      "other_set": "fabled_roots:shelters",
+      "chunk_count": 10
+    }
+  },
+  "structures": [
+    {
+      "structure": "fabled_roots:outpost/dunesworn",
+      "weight": 1
+    },
+    {
+      "structure": "fabled_roots:outpost/endling",
+      "weight": 1
+    },
+    {
+      "structure": "fabled_roots:outpost/oakhearted",
+      "weight": 1
+    },
+    {
+      "structure": "fabled_roots:outpost/palehearted",
+      "weight": 1
+    }
+  ]
+}

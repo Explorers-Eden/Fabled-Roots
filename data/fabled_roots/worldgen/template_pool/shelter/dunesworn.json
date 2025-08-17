@@ -1,0 +1,14 @@
+{
+    "name": "fabled_roots:shelter/dunesworn",
+    "fallback": "minecraft:empty",
+    "elements": [{
+        "weight": 1,
+        "element": {
+            "location": "fabled_roots:shelter/dunesworn",
+            "processors": "minecraft:empty",
+            "projection": "rigid",
+            "element_type": "minecraft:single_pool_element"
+        }
+    }
+]
+}
