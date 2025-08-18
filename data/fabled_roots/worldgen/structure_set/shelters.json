@@ -39,6 +39,14 @@
     {
       "structure": "fabled_roots:shelter/turtlekin",
       "weight": 1
+    },
+    {
+      "structure": "fabled_roots:shelter/palehearted",
+      "weight": 1
+    },
+    {
+      "structure": "fabled_roots:shelter/aetherian",
+      "weight": 1
     }
   ]
 }
