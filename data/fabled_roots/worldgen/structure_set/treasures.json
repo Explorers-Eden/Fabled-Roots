@@ -1,0 +1,56 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 56,
+    "separation": 16,
+    "salt": 36137991,
+    "spread_type": "triangular",
+    "frequency": 1,
+    "exclusion_zone": {
+      "other_set": "fabled_roots:shelters",
+      "chunk_count": 10
+    }
+  },
+  "structures": [
+    {
+      "structure": "fabled_roots:treasure/dunesworn",
+      "weight": 1
+    },
+    {
+      "structure": "fabled_roots:treasure/endling",
+      "weight": 1
+    },
+    {
+      "structure": "fabled_roots:treasure/frostborne",
+      "weight": 1
+    },
+    {
+      "structure": "fabled_roots:treasure/moonshroud",
+      "weight": 1
+    },
+    {
+      "structure": "fabled_roots:treasure/netherian",
+      "weight": 1
+    },
+    {
+      "structure": "fabled_roots:treasure/oakhearted",
+      "weight": 1
+    },
+    {
+      "structure": "fabled_roots:treasure/orebringer",
+      "weight": 1
+    },
+    {
+      "structure": "fabled_roots:treasure/turtlekin",
+      "weight": 1
+    },
+    {
+      "structure": "fabled_roots:treasure/palehearted",
+      "weight": 1
+    },
+    {
+      "structure": "fabled_roots:treasure/aetherian",
+      "weight": 1
+    }
+  ]
+}
