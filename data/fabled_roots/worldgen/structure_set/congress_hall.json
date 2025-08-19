@@ -1,0 +1,16 @@
+{
+	"placement": {
+		"type": "minecraft:concentric_rings",
+		"count": 128,
+		"distance": 16,
+		"preferred_biomes": "#minecraft:stronghold_biased_to",
+		"salt": 0,
+		"spread": 3
+	},
+	"structures": [
+		{
+			"structure": "fabled_roots:congress_hall/congress_hall",
+			"weight": 1
+		}
+	]
+}
