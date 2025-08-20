@@ -1,0 +1,41 @@
+{
+  "simultaneous_mobs": 3,
+  "simultaneous_mobs_added_per_player": 0.5,
+  "spawn_potentials": [
+    {
+      "data": {
+        "entity": {
+          "id": "minecraft:pillager"
+        }
+      },
+      "weight": 10
+    },
+    {
+      "data": {
+        "entity": {
+          "id": "minecraft:witch"
+        }
+      },
+      "weight": 5
+    },
+    {
+      "data": {
+        "entity": {
+          "id": "minecraft:illusioner"
+        },
+        "equipment": {
+          "loot_table": "minecraft:equipment/trial_chamber_ranged",
+          "slot_drop_chances": 0
+        }
+      },
+      "weight": 5
+    }
+  ],
+  "ticks_between_spawn": 20,
+  "loot_tables_to_eject": [
+    {
+      "data": "fabled_roots:trial_spawner/congress_hall/normal",
+      "weight": 1
+    }
+  ]
+}
