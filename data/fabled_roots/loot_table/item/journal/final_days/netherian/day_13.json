@@ -13,7 +13,7 @@
               "components": {
                 "minecraft:written_book_content": {
                   "pages": [
-                    { "raw": { "text": "A lone Strider wandered into the city. Its skin was pale, its body stiff. It made no sound, only walked until it crumbled to dust at the central anvil. We dared not touch the remains." } }
+                    { "raw": { "translate": "written_book.fabled_roots.final_days.netherian.13" } }
                   ],
                   "title": { "raw": "Journal: Final Days XIII" },
                   "author": "Netherian Guardian",

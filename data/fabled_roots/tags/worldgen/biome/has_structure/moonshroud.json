@@ -1,5 +1,6 @@
 {
     "values": [
+        {"id": "minecraft:mushroom_fields", "required": false},
         {"id": "minecraft:meadow", "required": false},
         {"id": "minecraft:deep_dark", "required": false},
         {"id": "minecraft:plains", "required": false},

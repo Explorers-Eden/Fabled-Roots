@@ -13,7 +13,7 @@
               "components": {
                 "minecraft:written_book_content": {
                   "pages": [
-                    { "raw": { "text": "A scout returned, his armor scorched and eyes empty. He spoke of crumbling bastions and warped stone, of once-familiar ground now twisted by unseen forces. We are being unmade." } }
+                    { "raw": { "translate": "written_book.fabled_roots.final_days.netherian.3" } }
                   ],
                   "title": { "raw": "Journal: Final Days III" },
                   "author": "Netherian Guardian",

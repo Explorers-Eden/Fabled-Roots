@@ -12,8 +12,7 @@
               "function": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.stone_scythe",
-                  "fallback": "Stone Scythe"
+                  "translate": "item.fabled_roots.stone_scythe"
                 },
                 "minecraft:item_model": "fabled_roots:stone_scythe",
                 "minecraft:rarity": "common",

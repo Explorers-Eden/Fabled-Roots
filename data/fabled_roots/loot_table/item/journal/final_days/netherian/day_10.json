@@ -13,7 +13,7 @@
               "components": {
                 "minecraft:written_book_content": {
                   "pages": [
-                    { "raw": { "text": "Today, the great chains snapped. The Citadel's floating spires sank into the lava, dragged like anchors by invisible hands. I cannot tell if this is death or rebirth. Only that it is final." } }
+                    { "raw": { "translate": "written_book.fabled_roots.final_days.netherian.10" } }
                   ],
                   "title": { "raw": "Journal: Final Days X" },
                   "author": "Netherian Guardian",

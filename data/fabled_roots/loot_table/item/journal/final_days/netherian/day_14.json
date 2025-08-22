@@ -13,7 +13,7 @@
               "components": {
                 "minecraft:written_book_content": {
                   "pages": [
-                    { "raw": { "text": "I held vigil with the Emberguard tonight. We sat beside the shattered core of our forge, surrounded by relics now meaningless. None of us spoke. We only waited, for something we could not name." } }
+                    { "raw": { "translate": "written_book.fabled_roots.final_days.netherian.14" } }
                   ],
                   "title": { "raw": "Journal: Final Days XIV" },
                   "author": "Netherian Guardian",

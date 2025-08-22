@@ -1,0 +1,120 @@
+{
+  "type": "minecraft:multi_action",
+  "body": {
+    "type": "minecraft:plain_message",
+    "contents": {
+      "translate": "menu.fabled_roots.desc.wiki.option"
+    },
+    "width": 256
+  },
+  "can_close_with_escape": true,
+  "external_title": {
+    "translate": "menu.fabled_roots.title.wiki.races"
+  },
+  "title": {
+    "translate": "menu.fabled_roots.title.wiki.races"
+  },
+  "pause": false,
+  "exit_action": {
+    "label": {
+      "translate": "menu.fabled_roots.back"
+    },
+    "action": {
+      "type": "minecraft:show_dialog",
+      "dialog": "fabled_roots:wiki/main"
+    }
+  },
+  "columns": 2,
+  "actions": [
+    {
+      "label": {
+        "translate": "option.fabled_roots.aetherian"
+      },
+       "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 11"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.dunesworn"
+      },
+       "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 12"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.endling"
+      },
+       "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 13"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.frostborne"
+      },
+       "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 14"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.moonshroud"
+      },
+       "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 15"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.netherian"
+      },
+       "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 16"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.oakhearted"
+      },
+       "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 17"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.orebringer"
+      },
+       "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 18"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.palehearted"
+      },
+       "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 19"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.turtlekin"
+      },
+       "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 20"
+      }
+    }
+  ]
+}

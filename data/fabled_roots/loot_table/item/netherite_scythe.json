@@ -12,8 +12,7 @@
               "function": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.netherite_scythe",
-                  "fallback": "Netherite Scythe"
+                  "translate": "item.fabled_roots.netherite_scythe"
                 },
                 "minecraft:item_model": "fabled_roots:netherite_scythe",
                 "minecraft:rarity": "common",

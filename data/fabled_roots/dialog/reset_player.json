@@ -5,7 +5,6 @@
       "type": "minecraft:plain_message",
       "contents": {
         "translate": "menu.fabled_roots.reset.description",
-        "fallback": "Proceeding will reset your chosen Race, Class and Experience Levels!",
         "color": "red"
       },
       "width": 256
@@ -15,25 +14,21 @@
       "contents": [
         {
           "translate": "menu.fabled_roots.reset.warning",
-          "fallback": "If you reset your choices, you'll get to pick a new Race and Class to start fresh. Just a heads-up: you won't get the Starter Gear from your new Class again.",
           "color": "white"
         },
         {
           "text": "\n\n"
         },
         {
-          "translate": "menu.fabled_roots.reset.cost_text",
-          "fallback": "You need at least "
+          "translate": "menu.fabled_roots.reset.cost_text"
         },
         {
           "translate": "menu.fabled_roots.reset.amount",
-          "fallback": "100",
           "color": "green",
           "bold": true
         },
         {
-          "translate": "menu.fabled_roots.reset.cost_currency",
-          "fallback": " Exp Levels to reset."
+          "translate": "menu.fabled_roots.reset.cost_currency"
         }
       ],
       "width": 256
@@ -41,19 +36,16 @@
   ],
   "can_close_with_escape": true,
   "external_title": {
-    "translate": "menu.fabled_roots.title.reset.external",
-    "fallback": "Reset Roots"
+    "translate": "menu.fabled_roots.title.reset.external"
   },
   "title": {
-    "translate": "menu.fabled_roots.title.reset",
-    "fallback": "Fabled Roots: Reset Roots"
+    "translate": "menu.fabled_roots.title.reset"
   },
   "pause": false,
   "after_action": "close",
   "yes": {
     "label": {
-      "translate": "menu.fabled_roots.confirm",
-      "fallback": "Confirm"
+      "translate": "menu.fabled_roots.confirm"
     },
     "action": {
       "type": "run_command",
@@ -62,8 +54,7 @@
   },
   "no": {
     "label": {
-      "translate": "menu.fabled_roots.back",
-      "fallback": "Back"
+      "translate": "menu.fabled_roots.back"
     },
     "action": {
       "type": "show_dialog",

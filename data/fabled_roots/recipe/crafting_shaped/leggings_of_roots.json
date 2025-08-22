@@ -12,8 +12,7 @@
   "result": {
     "components": {
         "minecraft:item_name": {
-                  "translate": "items.fabled_roots.leggings_of_roots",
-                  "fallback": "Leggings of Roots"
+                  "translate": "item.fabled_roots.leggings_of_roots"
                 },
                 "minecraft:item_model": "fabled_roots:leggings_of_roots",
                 "minecraft:rarity": "common",

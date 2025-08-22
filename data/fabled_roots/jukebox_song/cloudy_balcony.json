@@ -3,7 +3,7 @@
       "sound_id": "fabled_roots:music_disc.aetherian_peter_hont_cloudy_balcony"
   },
     "description": {
-      "text": "Peter Hont - Cloudy Balcony"
+      "translate": "jukebox_song.fabled_roots.cloudy_balcony"
     },
     "length_in_seconds": 95.0,
     "comparator_output": 1

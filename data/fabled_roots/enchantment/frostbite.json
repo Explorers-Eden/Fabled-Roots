@@ -1,7 +1,6 @@
 {
   "description": {
-    "translate": "enchantment.fabled_roots.frostbite",
-    "fallback": "Frostbite"
+    "translate": "enchantment.fabled_roots.frostbite"
   },
   "exclusive_set": "#fabled_roots:enchanted_scroll",
   "supported_items": "minecraft:music_disc_5",

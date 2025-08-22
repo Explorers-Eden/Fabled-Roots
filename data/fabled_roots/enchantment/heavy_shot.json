@@ -1,7 +1,6 @@
 {
   "description": {
-    "translate": "enchantment.fabled_roots.heavy_shot",
-    "fallback": "Heavy Shot"
+    "translate": "enchantment.fabled_roots.heavy_shot"
   },
   "exclusive_set": "#fabled_roots:enchanted_scroll",
   "supported_items": "minecraft:music_disc_5",

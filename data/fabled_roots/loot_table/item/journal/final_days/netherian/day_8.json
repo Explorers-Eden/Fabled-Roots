@@ -13,7 +13,7 @@
               "components": {
                 "minecraft:written_book_content": {
                   "pages": [
-                    { "raw": { "text": "The deeper chambers echo with voices not our own. I barred the Soul Crucible this morning, but shadows still pour from beneath the arch. Something ancient and wrong is waking." } }
+                    { "raw": { "translate": "written_book.fabled_roots.final_days.netherian.8" } }
                   ],
                   "title": { "raw": "Journal: Final Days VIII" },
                   "author": "Netherian Guardian",

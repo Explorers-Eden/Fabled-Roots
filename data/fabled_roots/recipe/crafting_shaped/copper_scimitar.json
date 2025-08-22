@@ -13,8 +13,7 @@
   "result": {
     "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.copper_scimitar",
-                  "fallback": "Copper Scimitar"
+                  "translate": "item.fabled_roots.copper_scimitar"
                 },
                 "minecraft:item_model": "fabled_roots:copper_scimitar",
                 "minecraft:rarity": "common",

@@ -12,8 +12,7 @@
               "function": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.iron_scimitar",
-                  "fallback": "Iron Scimitar"
+                  "translate": "item.fabled_roots.iron_scimitar"
                 },
                 "minecraft:item_model": "fabled_roots:iron_scimitar",
                 "minecraft:rarity": "common",

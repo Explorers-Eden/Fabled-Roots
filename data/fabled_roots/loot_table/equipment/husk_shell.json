@@ -12,8 +12,7 @@
               "function": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.husk_shell",
-                  "fallback": "Husk Shell"
+                  "translate": "item.fabled_roots.husk_shell"
                 },
                 "minecraft:item_model": "fabled_roots:husk_shell",
                 "minecraft:rarity": "common",

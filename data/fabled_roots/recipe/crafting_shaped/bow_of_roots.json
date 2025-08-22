@@ -14,8 +14,7 @@
   "result": {
     "components": {
       "minecraft:item_name": {
-        "translate": "items.fabled_roots.bow_of_roots",
-        "fallback": "Bow of Roots"
+        "translate": "item.fabled_roots.bow_of_roots"
       },
       "minecraft:item_model": "fabled_roots:bow_of_roots",
       "minecraft:rarity": "common",

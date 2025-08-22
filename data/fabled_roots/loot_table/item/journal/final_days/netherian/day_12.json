@@ -13,7 +13,7 @@
               "components": {
                 "minecraft:written_book_content": {
                   "pages": [
-                    { "raw": { "text": "We once mined the crimson roots for fuel and food. Now they wither as we touch them. The bastions are silent. I walked their halls today—only my footsteps remain." } }
+                    { "raw": { "translate": "written_book.fabled_roots.final_days.netherian.12" } }
                   ],
                   "title": { "raw": "Journal: Final Days XII" },
                   "author": "Netherian Guardian",

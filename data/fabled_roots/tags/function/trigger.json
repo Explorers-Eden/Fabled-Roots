@@ -2,6 +2,7 @@
 	"values": [
 		"fabled_roots:trigger/class",
 		"fabled_roots:trigger/race",
-		"fabled_roots:trigger/reset"
+		"fabled_roots:trigger/reset",
+		"fabled_roots:trigger/wiki"
 	]
 }

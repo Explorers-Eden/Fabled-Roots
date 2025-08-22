@@ -12,9 +12,9 @@
               "function": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.reinforced_helmet_of_roots",
-                  "fallback": "Reinforced Helmet of Roots"
+                  "translate": "item.fabled_roots.reinforced_helmet_of_roots"
                 },
+                "minecraft:tooltip_style": "fabled_roots:generic",
                 "minecraft:item_model": "fabled_roots:reinforced_helmet_of_roots",
                 "minecraft:rarity": "rare",
                 "minecraft:custom_data": {

@@ -1,7 +1,6 @@
 {
   "description": {
-    "translate": "enchantment.fabled_roots.scouting_arrows",
-    "fallback": "Scouting Arrows"
+    "translate": "enchantment.fabled_roots.scouting_arrows"
   },
   "exclusive_set": "#fabled_roots:enchanted_scroll",
   "supported_items": "minecraft:music_disc_5",

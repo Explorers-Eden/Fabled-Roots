@@ -12,8 +12,7 @@
               "function": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.golden_scythe",
-                  "fallback": "Golden Scythe"
+                  "translate": "item.fabled_roots.golden_scythe"
                 },
                 "minecraft:item_model": "fabled_roots:golden_scythe",
                 "minecraft:rarity": "common",

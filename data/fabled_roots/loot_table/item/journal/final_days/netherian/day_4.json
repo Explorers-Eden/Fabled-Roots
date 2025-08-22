@@ -13,7 +13,7 @@
               "components": {
                 "minecraft:written_book_content": {
                   "pages": [
-                    { "raw": { "text": "The magma channels have reversed. Streams once loyal to gravity now drip upward, defying rule and reason. We sealed the lower tunnels, but too late. Something stirred beneath." } }
+                    { "raw": { "translate": "written_book.fabled_roots.final_days.netherian.4" } }
                   ],
                   "title": { "raw": "Journal: Final Days IV" },
                   "author": "Netherian Guardian",

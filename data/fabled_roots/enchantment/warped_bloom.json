@@ -1,7 +1,6 @@
 {
   "description": {
-    "translate": "enchantment.fabled_roots.warped_bloom",
-    "fallback": "Warped Bloom"
+    "translate": "enchantment.fabled_roots.warped_bloom"
   },
   "exclusive_set": "#fabled_roots:enchanted_scroll",
   "supported_items": "minecraft:music_disc_5",

@@ -12,8 +12,7 @@
               "function": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.wooden_spear",
-                  "fallback": "Wooden Spear"
+                  "translate": "item.fabled_roots.wooden_spear"
                 },
                 "minecraft:item_model": "fabled_roots:wooden_spear",
                 "minecraft:rarity": "common",

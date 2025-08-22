@@ -13,8 +13,7 @@
   "result": {
     "components": {
       "minecraft:item_name": {
-        "translate": "items.fabled_roots.stone_rapier",
-        "fallback": "Stone Rapier"
+        "translate": "item.fabled_roots.stone_rapier"
       },
       "minecraft:item_model": "fabled_roots:stone_rapier",
       "minecraft:rarity": "common",

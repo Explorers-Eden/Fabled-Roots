@@ -13,8 +13,7 @@
   "result": {
     "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.golden_scimitar",
-                  "fallback": "Golden Scimitar"
+                  "translate": "item.fabled_roots.golden_scimitar"
                 },
                 "minecraft:item_model": "fabled_roots:golden_scimitar",
                 "minecraft:rarity": "common",

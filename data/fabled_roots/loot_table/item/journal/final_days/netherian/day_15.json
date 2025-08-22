@@ -13,7 +13,7 @@
               "components": {
                 "minecraft:written_book_content": {
                   "pages": [
-                    { "raw": { "text": "I sealed the Vault today. Inside are our blueprints, our stonesongs, our sigils—everything we were. If anything finds this place, may they remember us not for our fall, but our fire." } }
+                    { "raw": { "translate": "written_book.fabled_roots.final_days.netherian.15" } }
                   ],
                   "title": { "raw": "Journal: Final Days XV" },
                   "author": "Netherian Guardian",

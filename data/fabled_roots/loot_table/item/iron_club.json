@@ -12,8 +12,7 @@
               "function": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.iron_club",
-                  "fallback": "Iron Club"
+                  "translate": "item.fabled_roots.iron_club"
                 },
                 "minecraft:item_model": "fabled_roots:iron_club",
                 "minecraft:rarity": "common",

@@ -12,8 +12,7 @@
               "function": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.wooden_broadsword",
-                  "fallback": "Wooden Broadsword"
+                  "translate": "item.fabled_roots.wooden_broadsword"
                 },
                 "minecraft:item_model": "fabled_roots:wooden_broadsword",
                 "minecraft:rarity": "common",

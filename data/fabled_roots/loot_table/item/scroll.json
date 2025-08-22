@@ -12,8 +12,7 @@
               "function": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.scroll",
-                  "fallback": "Scroll"
+                  "translate": "item.fabled_roots.scroll"
                 },
                 "minecraft:item_model": "fabled_roots:scroll",
                 "minecraft:rarity": "common",

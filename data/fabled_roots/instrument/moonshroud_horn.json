@@ -1,7 +1,6 @@
 {
   "description": {
-    "translate": "instrument.fabled_roots.moonshroud_horn",
-      "fallback": "Call of a Moonshroud"
+    "translate": "instrument.fabled_roots.moonshroud_horn"
   },
   "range": 256,
   "sound_event": {

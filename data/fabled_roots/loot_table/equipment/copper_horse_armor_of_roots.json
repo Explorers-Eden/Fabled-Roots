@@ -12,10 +12,10 @@
               "function": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.copper_horse_armor_of_roots",
-                  "fallback": "Copper Horse Armor of Roots"
+                  "translate": "item.fabled_roots.copper_horse_armor_of_roots"
                 },
                 "minecraft:item_model": "fabled_roots:copper_horse_armor_of_roots",
+                "minecraft:tooltip_style": "fabled_roots:generic",
                 "minecraft:rarity": "uncommon",
                 "minecraft:custom_data": {
                   "fabled_roots": {
@@ -37,8 +37,7 @@
                 },
                 "minecraft:lore": [
                   {
-                    "translate": "items.fabled_roots.copper_horse_armor_of_roots.description",
-                    "fallback": "Regeneration I while mounted",
+                    "translate": "item.fabled_roots.copper_horse_armor_of_roots.description",
                     "color": "gray",
                     "italic": false
                   }

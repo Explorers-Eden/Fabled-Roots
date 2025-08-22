@@ -12,8 +12,7 @@
               "function": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
-                  "translate": "item.fabled_roots.horn_of_roots",
-                  "fallback": "Horn of Roots"
+                  "translate": "item.fabled_roots.horn_of_roots"
                 },
                 "minecraft:item_model": "fabled_roots:oakhearted_horn",
                 "minecraft:instrument": "fabled_roots:oakhearted_horn",

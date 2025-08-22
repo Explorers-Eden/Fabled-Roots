@@ -1,7 +1,6 @@
 {
   "description": {
-    "translate": "enchantment.fabled_roots.flying_nimbus",
-    "fallback": "Flying Nimbus"
+    "translate": "enchantment.fabled_roots.flying_nimbus"
   },
   "exclusive_set": "#fabled_roots:enchanted_scroll",
   "supported_items": "minecraft:music_disc_5",

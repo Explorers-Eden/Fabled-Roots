@@ -1,13 +1,11 @@
 {
   "asset_id": "fabled_roots:frostborne",
   "author": {
-    "fallback": "Frostborne",
     "color": "gray",
     "translate": "painting.fabled_roots.frostborne.author"
   },
   "height": 2,
   "title": {
-    "fallback": "Precious",
     "color": "yellow",
     "translate": "painting.fabled_roots.frostborne.title"
   },

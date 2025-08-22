@@ -1,7 +1,6 @@
 {
   "description": {
-    "translate": "instrument.fabled_roots.frostborne_horn",
-      "fallback": "Call of a Frostborne"
+    "translate": "instrument.fabled_roots.frostborne_horn"
   },
   "range": 256,
   "sound_event": {

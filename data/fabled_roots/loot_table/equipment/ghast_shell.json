@@ -12,8 +12,7 @@
               "function": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.ghast_shell",
-                  "fallback": "Ghast Shell"
+                  "translate": "item.fabled_roots.ghast_shell"
                 },
                 "minecraft:item_model": "fabled_roots:ghast_shell",
                 "minecraft:rarity": "common",

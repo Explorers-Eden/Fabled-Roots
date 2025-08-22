@@ -3,8 +3,7 @@
   "components": {
     "minecraft:item_model": "fabled_roots:netherite_rapier",
     "minecraft:item_name": {
-      "translate": "items.fabled_roots.netherite_rapier",
-      "fallback": "Netherite Rapier"
+      "translate": "item.fabled_roots.netherite_rapier"
     },
     "minecraft:custom_data": {
       "fabled_roots": {

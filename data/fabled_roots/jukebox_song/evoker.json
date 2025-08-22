@@ -3,7 +3,7 @@
       "sound_id": "fabled_roots:music_disc.moonshroud_peter_hont_evoker"
   },
     "description": {
-      "text": "Peter Hont - Evoker"
+      "translate": "jukebox_song.fabled_roots.evoker"
     },
     "length_in_seconds": 127.0,
     "comparator_output": 4

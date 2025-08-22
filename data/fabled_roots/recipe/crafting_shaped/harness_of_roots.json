@@ -14,8 +14,7 @@
   "result": {
     "components": {
         "minecraft:item_name": {
-                  "translate": "items.fabled_roots.harness_of_roots",
-                  "fallback": "Harness of Roots"
+                  "translate": "item.fabled_roots.harness_of_roots"
                 },
                 "minecraft:item_model": "fabled_roots:harness_of_roots",
                 "minecraft:rarity": "common",

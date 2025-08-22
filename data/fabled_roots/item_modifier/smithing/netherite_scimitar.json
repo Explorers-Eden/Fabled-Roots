@@ -3,8 +3,7 @@
   "components": {
     "minecraft:item_model": "fabled_roots:netherite_scimitar",
     "minecraft:item_name": {
-      "translate": "items.fabled_roots.netherite_scimitar",
-      "fallback": "Netherite Scimitar"
+      "translate": "item.fabled_roots.netherite_scimitar"
     },
     "minecraft:custom_data": {
       "fabled_roots": {

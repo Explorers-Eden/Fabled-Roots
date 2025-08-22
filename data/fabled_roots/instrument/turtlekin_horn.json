@@ -1,7 +1,6 @@
 {
   "description": {
-    "translate": "instrument.fabled_roots.turtlekin_horn",
-      "fallback": "Call of a Turtlekin"
+    "translate": "instrument.fabled_roots.turtlekin_horn"
   },
   "range": 256,
   "sound_event": {

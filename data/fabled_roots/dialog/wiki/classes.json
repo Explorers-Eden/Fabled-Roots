@@ -1,0 +1,120 @@
+{
+  "type": "minecraft:multi_action",
+  "body": {
+    "type": "minecraft:plain_message",
+    "contents": {
+      "translate": "menu.fabled_roots.desc.wiki.option"
+    },
+    "width": 256
+  },
+  "can_close_with_escape": true,
+  "external_title": {
+    "translate": "menu.fabled_roots.title.wiki.classes"
+  },
+  "title": {
+    "translate": "menu.fabled_roots.title.wiki.classes"
+  },
+  "pause": false,
+  "exit_action": {
+    "label": {
+      "translate": "menu.fabled_roots.back"
+    },
+    "action": {
+      "type": "minecraft:show_dialog",
+      "dialog": "fabled_roots:wiki/main"
+    }
+  },
+  "columns": 2,
+  "actions": [
+    {
+      "label": {
+        "translate": "option.fabled_roots.builder"
+      },
+       "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 1"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.survivor"
+      },
+       "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 2"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.miner"
+      },
+       "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 3"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.rancher"
+      },
+       "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 4"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.archer"
+      },
+       "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 5"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.fighter"
+      },
+       "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 6"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.hermit"
+      },
+       "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 7"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.bard"
+      },
+       "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 8"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.cleric"
+      },
+       "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 9"
+      }
+    },
+    {
+      "label": {
+        "translate": "option.fabled_roots.scout"
+      },
+       "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 10"
+      }
+    }
+  ]
+}

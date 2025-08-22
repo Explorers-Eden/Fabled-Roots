@@ -13,8 +13,7 @@
   "result": {
     "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.golden_club",
-                  "fallback": "Golden Club"
+                  "translate": "item.fabled_roots.golden_club"
                 },
                 "minecraft:item_model": "fabled_roots:golden_club",
                 "minecraft:rarity": "common",

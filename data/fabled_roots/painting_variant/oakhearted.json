@@ -1,13 +1,11 @@
 {
   "asset_id": "fabled_roots:oakhearted",
   "author": {
-    "fallback": "Oakhearted",
     "color": "gray",
     "translate": "painting.fabled_roots.oakhearted.author"
   },
   "height": 2,
   "title": {
-    "fallback": "Peace",
     "color": "yellow",
     "translate": "painting.fabled_roots.oakhearted.title"
   },

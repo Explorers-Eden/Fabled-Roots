@@ -2,8 +2,7 @@
   "function": "minecraft:set_components",
   "components": {
     "minecraft:item_name": {
-      "translate": "items.fabled_roots.enchanted_scroll",
-      "fallback": "Enchanted Scroll"
+      "translate": "item.fabled_roots.enchanted_scroll"
     },
     "minecraft:item_model": "fabled_roots:enchanted_scroll",
     "minecraft:rarity": "rare",
@@ -18,7 +17,6 @@
     "minecraft:lore": [
       {
         "translate": "enchantment.fabled_roots.breeze_shot",
-        "fallback": "Breeze Shot",
         "color": "gray",
         "bold": false,
         "italic": false

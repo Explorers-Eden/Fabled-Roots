@@ -13,7 +13,7 @@
               "components": {
                 "minecraft:written_book_content": {
                   "pages": [
-                    { "raw": { "text": "The magma rivers run cold. I touched one, expecting to burn—but it was like stone. The heat that defined us has abandoned us. Without flame, what are we?" } }
+                    { "raw": { "translate": "written_book.fabled_roots.final_days.netherian.11" } }
                   ],
                   "title": { "raw": "Journal: Final Days XI" },
                   "author": "Netherian Guardian",

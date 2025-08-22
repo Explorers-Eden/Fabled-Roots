@@ -13,9 +13,9 @@
               "function": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.crown_of_roots",
-                  "fallback": "Crown of Roots"
+                  "translate": "item.fabled_roots.crown_of_roots"
                 },
+                "minecraft:tooltip_style": "fabled_roots:generic",
                 "minecraft:item_model": "fabled_roots:crown_of_roots",
                 "minecraft:rarity": "epic",
                 "minecraft:custom_data": {
@@ -37,14 +37,12 @@
                 },
                 "minecraft:lore": [
                   {
-                    "translate": "effects.fabled_roots.unenchantable",
-                    "fallback": "Unenchantable",
+                    "translate": "enchantment.fabled_roots.unenchantable",
                     "color": "gray",
                     "italic": false
                   },
                   {
-                    "translate": "effects.fabled_roots.stronger_together",
-                    "fallback": "Stronger Together",
+                    "translate": "enchantment.fabled_roots.stronger_together",
                     "color": "gray",
                     "italic": false
                   }
@@ -94,9 +92,9 @@
               "function": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.crown_of_roots",
-                  "fallback": "Crown of Roots"
+                  "translate": "item.fabled_roots.crown_of_roots"
                 },
+                "minecraft:tooltip_style": "fabled_roots:generic",
                 "minecraft:item_model": "fabled_roots:crown_of_roots",
                 "minecraft:rarity": "epic",
                 "minecraft:custom_data": {
@@ -118,14 +116,12 @@
                 },
                 "minecraft:lore": [
                   {
-                    "translate": "effects.fabled_roots.unenchantable",
-                    "fallback": "Unenchantable",
+                    "translate": "enchantment.fabled_roots.unenchantable",
                     "color": "gray",
                     "italic": false
                   },
                   {
-                    "translate": "effects.fabled_roots.stronger_together",
-                    "fallback": "Stronger Together",
+                    "translate": "enchantment.fabled_roots.stronger_together",
                     "color": "gray",
                     "italic": false
                   }
@@ -172,9 +168,9 @@
               "function": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.crown_of_roots",
-                  "fallback": "Crown of Roots"
+                  "translate": "item.fabled_roots.crown_of_roots"
                 },
+                "minecraft:tooltip_style": "fabled_roots:generic",
                 "minecraft:item_model": "fabled_roots:crown_of_roots",
                 "minecraft:rarity": "epic",
                 "minecraft:custom_data": {
@@ -196,14 +192,12 @@
                 },
                 "minecraft:lore": [
                   {
-                    "translate": "effects.fabled_roots.unenchantable",
-                    "fallback": "Unenchantable",
+                    "translate": "enchantment.fabled_roots.unenchantable",
                     "color": "gray",
                     "italic": false
                   },
                   {
-                    "translate": "effects.fabled_roots.feast_together",
-                    "fallback": "Feast Together",
+                    "translate": "enchantment.fabled_roots.feast_together",
                     "color": "gray",
                     "italic": false
                   }
@@ -253,9 +247,9 @@
               "function": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.crown_of_roots",
-                  "fallback": "Crown of Roots"
+                  "translate": "item.fabled_roots.crown_of_roots"
                 },
+                "minecraft:tooltip_style": "fabled_roots:generic",
                 "minecraft:item_model": "fabled_roots:crown_of_roots",
                 "minecraft:rarity": "epic",
                 "minecraft:custom_data": {
@@ -277,14 +271,12 @@
                 },
                 "minecraft:lore": [
                   {
-                    "translate": "effects.fabled_roots.unenchantable",
-                    "fallback": "Unenchantable",
+                    "translate": "enchantment.fabled_roots.unenchantable",
                     "color": "gray",
                     "italic": false
                   },
                   {
-                    "translate": "effects.fabled_roots.feast_together",
-                    "fallback": "Feast Together",
+                    "translate": "enchantment.fabled_roots.feast_together",
                     "color": "gray",
                     "italic": false
                   }

@@ -13,8 +13,7 @@
   "result": {
     "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.copper_broadsword",
-                  "fallback": "Copper Broadsword"
+                  "translate": "item.fabled_roots.copper_broadsword"
                 },
                 "minecraft:item_model": "fabled_roots:copper_broadsword",
                 "minecraft:rarity": "common",

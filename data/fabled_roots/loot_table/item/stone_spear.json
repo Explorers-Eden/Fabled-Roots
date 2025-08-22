@@ -12,8 +12,7 @@
               "function": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.stone_spear",
-                  "fallback": "Stone Spear"
+                  "translate": "item.fabled_roots.stone_spear"
                 },
                 "minecraft:item_model": "fabled_roots:stone_spear",
                 "minecraft:rarity": "common",

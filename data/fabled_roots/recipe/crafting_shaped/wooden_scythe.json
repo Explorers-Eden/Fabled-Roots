@@ -13,8 +13,7 @@
   "result": {
     "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.wooden_scythe",
-                  "fallback": "Wooden Scythe"
+                  "translate": "item.fabled_roots.wooden_scythe"
                 },
                 "minecraft:item_model": "fabled_roots:wooden_scythe",
                 "minecraft:rarity": "common",

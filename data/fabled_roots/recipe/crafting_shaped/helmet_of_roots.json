@@ -11,8 +11,7 @@
   "result": {
     "components": {
         "minecraft:item_name": {
-                  "translate": "items.fabled_roots.helmet_of_roots",
-                  "fallback": "Helmet of Roots"
+                  "translate": "item.fabled_roots.helmet_of_roots"
                 },
                 "minecraft:item_model": "fabled_roots:helmet_of_roots",
                 "minecraft:rarity": "common",

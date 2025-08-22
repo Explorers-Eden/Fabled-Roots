@@ -12,8 +12,7 @@
               "function": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.stone_broadsword",
-                  "fallback": "Stone Broadsword"
+                  "translate": "item.fabled_roots.stone_broadsword"
                 },
                 "minecraft:item_model": "fabled_roots:stone_broadsword",
                 "minecraft:rarity": "common",

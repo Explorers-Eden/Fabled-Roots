@@ -3,19 +3,16 @@
   "body": {
     "type": "minecraft:plain_message",
     "contents": {
-      "translate": "menu.fabled_roots.race.description",
-      "fallback": "Choose your Race and let the adventure begin.\nYou can always change it if fate has other plans."
+      "translate": "menu.fabled_roots.race.description"
     },
     "width": 364
   },
   "can_close_with_escape": false,
   "external_title": {
-    "translate": "menu.fabled_roots.main.title.external",
-    "fallback": "Fabled Roots"
+    "translate": "menu.fabled_roots.main.title"
   },
   "title": {
-    "translate": "menu.fabled_roots.main.title",
-    "fallback": "Fabled Roots"
+    "translate": "menu.fabled_roots.main.title"
   },
   "pause": true,
   "after_action": "close",
@@ -23,20 +20,17 @@
   "actions": [
     {
       "label": {
-        "translate": "option.fabled_roots.aetherian",
-        "fallback": "Aetherian"
+        "translate": "option.fabled_roots.aetherian"
       },
       "tooltip": [
         {
-          "translate": "option.fabled_roots.aetherian.tooltip.description",
-          "fallback": "Light-footed skyfolk who feel right at home up high and in the breeze."
+          "translate": "option.fabled_roots.aetherian.tooltip.description"
         },
         {
           "text": "\n\n"
         },
         {
           "translate": "option.fabled_roots.aetherian.tooltip.stats",
-          "fallback": "Traits:\n• Height: 90-110%\n• 30 Blocks Safe Fall Distance\n• -3 Armor\n• Hits with Spears have a chance to shoot a Wind Charge\n• Strength & Luck Effect above Y-Level 200\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Slow Levitation",
           "color": "gray"
         }
       ],
@@ -47,20 +41,17 @@
     },
     {
       "label": {
-        "translate": "option.fabled_roots.dunesworn",
-        "fallback": "Dunesworn"
+        "translate": "option.fabled_roots.dunesworn"
       },
       "tooltip": [
         {
-          "translate": "option.fabled_roots.dunesworn.tooltip.description",
-          "fallback": "Tough desert wanderers built for heat, sandstorms, and endless horizons."
+          "translate": "option.fabled_roots.dunesworn.tooltip.description"
         },
         {
           "text": "\n\n"
         },
         {
           "translate": "option.fabled_roots.dunesworn.tooltip.stats",
-          "fallback": "Traits:\n• Height: 85-95%\n• +3 Armor\n• -2 Knockback Resistance\n• Saturation effect for kills with a Scimitar\n• Strength & Luck Effect in Desert Biomes\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Dries Wet Sponges in Main-/Offhand",
           "color": "gray"
         }
       ],
@@ -71,20 +62,17 @@
     },
     {
       "label": {
-        "translate": "option.fabled_roots.endling",
-        "fallback": "Endling"
+        "translate": "option.fabled_roots.endling"
       },
       "tooltip": [
         {
-          "translate": "option.fabled_roots.endling.tooltip.description",
-          "fallback": "Mysterious beings from the End, quiet, clever, and just a bit strange."
+          "translate": "option.fabled_roots.endling.tooltip.description"
         },
         {
           "text": "\n\n"
         },
         {
           "translate": "option.fabled_roots.endling.tooltip.stats",
-          "fallback": "Traits:\n• Height: 105-120%\n• -50% Gravity\n• +50% Fall Damage Multiplier\n• Hits with Scythes have a chance to shoot a Shulker Bullet\n• Strength & Luck Effect in The End\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Applies Levitation Effect to nearby entities",
           "color": "gray"
         }
       ],
@@ -95,20 +83,17 @@
     },
     {
       "label": {
-        "translate": "option.fabled_roots.frostborne",
-        "fallback": "Frostborne"
+        "translate": "option.fabled_roots.frostborne"
       },
       "tooltip": [
         {
-          "translate": "option.fabled_roots.frostborne.tooltip.description",
-          "fallback": "Snowy survivors who don't mind the cold and always know where to find shelter in a blizzard."
+          "translate": "option.fabled_roots.frostborne.tooltip.description"
         },
         {
           "text": "\n\n"
         },
         {
           "translate": "option.fabled_roots.frostborne.tooltip.stats",
-          "fallback": "Traits:\n• Height: 95-105%\n• +10% Movement Speed\n• -50% Submerged Mining Speed\n• Kills with Clubs freeze nearby entities shortly\n• Strength & Luck Effect in Cold Biomes\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Applies Slowness Effect to nearby entities",
           "color": "gray"
         }
       ],
@@ -119,20 +104,17 @@
     },
     {
       "label": {
-        "translate": "option.fabled_roots.moonshroud",
-        "fallback": "Moonshroud"
+        "translate": "option.fabled_roots.moonshroud"
       },
       "tooltip": [
         {
-          "translate": "option.fabled_roots.moonshroud.tooltip.description",
-          "fallback": "Night-loving folk who move like shadows and feel strongest under starlight."
+          "translate": "option.fabled_roots.moonshroud.tooltip.description"
         },
         {
           "text": "\n\n"
         },
         {
           "translate": "option.fabled_roots.moonshroud.tooltip.stats",
-          "fallback": "Traits:\n• Height: 85-100%\n• +50% Sneaking Speed\n• -30% Attack Damage\n• Throwing Knives inflict Poison damage\n• Strength & Luck Effect during Night Time\n\nLocator Bar:\n• Transmit Range: 0 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Turns invisible",
           "color": "gray"
         }
       ],
@@ -143,20 +125,17 @@
     },
     {
       "label": {
-        "translate": "option.fabled_roots.netherian",
-        "fallback": "Netherian"
+        "translate": "option.fabled_roots.netherian"
       },
       "tooltip": [
         {
-          "translate": "option.fabled_roots.netherian.tooltip.description",
-          "fallback": "Fireproof and fearless, they're right at home near lava and never flinch at heat."
+          "translate": "option.fabled_roots.netherian.tooltip.description"
         },
         {
           "text": "\n\n"
         },
         {
           "translate": "option.fabled_roots.netherian.tooltip.stats",
-          "fallback": "Traits:\n• Height: 90-110%\n• +100% Attack Knockback\n• -25% Attack Speed\n• Hits with Broadswords have a chance to shoot a Fireball\n• Strength & Luck Effect in The Nether\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Becomes Fire Resistant",
           "color": "gray"
         }
       ],
@@ -167,20 +146,17 @@
     },
     {
       "label": {
-        "translate": "option.fabled_roots.oakhearted",
-        "fallback": "Oakhearted"
+        "translate": "option.fabled_roots.oakhearted"
       },
       "tooltip": [
         {
-          "translate": "option.fabled_roots.oakhearted.tooltip.description",
-          "fallback": "Forest dwellers with calm spirits, strong roots, and a deep love for trees."
+          "translate": "option.fabled_roots.oakhearted.tooltip.description"
         },
         {
           "text": "\n\n"
         },
         {
           "translate": "option.fabled_roots.oakhearted.tooltip.stats",
-          "fallback": "Traits:\n• Height: 100-110%\n• +50% Jump Strength\n• +100% Burning Time\n• Thrown Hatchets inflict Weakness\n• Strength & Luck Effect in Forest Biomes\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Applies Weakness Effect to nearby entities.",
           "color": "gray"
         }
       ],
@@ -191,20 +167,17 @@
     },
     {
       "label": {
-        "translate": "option.fabled_roots.orebringer",
-        "fallback": "Orebringer"
+        "translate": "option.fabled_roots.orebringer"
       },
       "tooltip": [
         {
-          "translate": "option.fabled_roots.orebringer.tooltip.description",
-          "fallback": "Cave explorers with a knack for mining and a backpack full of shiny stuff."
+          "translate": "option.fabled_roots.orebringer.tooltip.description"
         },
         {
           "text": "\n\n"
         },
         {
           "translate": "option.fabled_roots.orebringer.tooltip.stats",
-          "fallback": "Traits:\n• Height: 75-90%\n• +3 Armor Toughness\n• +20% Gravity\n• Faster Attack Speed with Maces\n• Strength & Luck Effect below Y-Level 0\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Gets Haste Effect.",
           "color": "gray"
         }
       ],
@@ -215,20 +188,17 @@
     },
     {
       "label": {
-        "translate": "option.fabled_roots.palehearted",
-        "fallback": "Palehearted"
+        "translate": "option.fabled_roots.palehearted"
       },
       "tooltip": [
         {
-          "translate": "option.fabled_roots.palehearted.tooltip.description",
-          "fallback": "Quiet and pale, they're more at home in the dark and have a soft spot for forgotten places."
+          "translate": "option.fabled_roots.palehearted.tooltip.description"
         },
         {
           "text": "\n\n"
         },
         {
           "translate": "option.fabled_roots.palehearted.tooltip.stats",
-          "fallback": "Traits:\n• Height: 100-110%\n• +25% Jump Strength\n• -10% Attack Damage\n• +50% Burning Time\n• Absorption effect for kills with a Rapier\n• Strength & Luck Effect in Pale Garden Biomes\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 256 Blocks\n\nCrouch Ability: Gets Night Vision Effect.",
           "color": "gray"
         }
       ],
@@ -239,20 +209,17 @@
     },
     {
       "label": {
-        "translate": "option.fabled_roots.turtlekin",
-        "fallback": "Turtlekin"
+        "translate": "option.fabled_roots.turtlekin"
       },
       "tooltip": [
         {
-          "translate": "option.fabled_roots.turtlekin.tooltip.description",
-          "fallback": "Ocean travelers with sturdy shells and a laid-back love for the sea."
+          "translate": "option.fabled_roots.turtlekin.tooltip.description"
         },
         {
           "text": "\n\n"
         },
         {
           "translate": "option.fabled_roots.turtlekin.tooltip.stats",
-          "fallback": "Traits:\n• Height: 85-110%\n• +15 Oxygen Bonus\n• -15% Movement Speed\n• Holding a Trident gives Dolphin's Grace effect\n• Strength & Luck Effect in Ocean Biomes\n\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\n\nCrouch Ability: Gets Conduit Power Effect.",
           "color": "gray"
         }
       ],

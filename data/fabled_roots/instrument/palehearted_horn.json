@@ -1,7 +1,6 @@
 {
   "description": {
-    "translate": "instrument.fabled_roots.palehearted_horn",
-      "fallback": "Call of a Palehearted"
+    "translate": "instrument.fabled_roots.palehearted_horn"
   },
   "range": 256,
   "sound_event": {

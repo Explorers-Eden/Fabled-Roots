@@ -13,7 +13,7 @@
               "components": {
                 "minecraft:written_book_content": {
                   "pages": [
-                    { "raw": { "text": "Lava veins once pulsed beneath our halls, feeding our hearths and hearts alike. Now they sputter, cold and choked. The smiths have gone quiet. Some weep. Some wander. None forge." } }
+                    { "raw": { "translate": "written_book.fabled_roots.final_days.netherian.2" } }
                   ],
                   "title": { "raw": "Journal: Final Days II" },
                   "author": "Netherian Guardian",

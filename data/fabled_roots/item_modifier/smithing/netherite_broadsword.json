@@ -3,8 +3,7 @@
   "components": {
     "minecraft:item_model": "fabled_roots:netherite_broadsword",
     "minecraft:item_name": {
-      "translate": "items.fabled_roots.netherite_broadsword",
-      "fallback": "Netherite Broadsword"
+      "translate": "item.fabled_roots.netherite_broadsword"
     },
     "minecraft:custom_data": {
       "fabled_roots": {

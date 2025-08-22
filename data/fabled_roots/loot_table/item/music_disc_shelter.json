@@ -13,8 +13,7 @@
               "function": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.music_disc",
-                  "fallback": "Music Disc"
+                  "translate": "item.fabled_roots.music_disc"
                 },
                 "minecraft:item_model": "fabled_roots:roots_disc",
                 "minecraft:rarity": "rare",

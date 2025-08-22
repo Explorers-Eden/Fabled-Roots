@@ -1,13 +1,11 @@
 {
   "asset_id": "fabled_roots:dunesworn",
   "author": {
-    "fallback": "Dunesworn",
     "color": "gray",
     "translate": "painting.fabled_roots.dunesworn.author"
   },
   "height": 2,
   "title": {
-    "fallback": "Oasis",
     "color": "yellow",
     "translate": "painting.fabled_roots.dunesworn.title"
   },

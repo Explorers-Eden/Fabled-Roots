@@ -3,7 +3,7 @@
       "sound_id": "fabled_roots:music_disc.frostborne_peter_hont_shelter"
   },
     "description": {
-      "text": "Peter Hont - Shelter"
+      "translate": "jukebox_song.fabled_roots.shelter"
     },
     "length_in_seconds": 145.0,
     "comparator_output": 9

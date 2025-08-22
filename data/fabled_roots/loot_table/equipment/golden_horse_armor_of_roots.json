@@ -12,9 +12,9 @@
               "function": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.golden_horse_armor_of_roots",
-                  "fallback": "Golden Horse Armor of Roots"
+                  "translate": "item.fabled_roots.golden_horse_armor_of_roots"
                 },
+                "minecraft:tooltip_style": "fabled_roots:generic",
                 "minecraft:item_model": "fabled_roots:golden_horse_armor_of_roots",
                 "minecraft:rarity": "uncommon",
                 "minecraft:custom_data": {
@@ -37,8 +37,7 @@
                 },
                 "minecraft:lore": [
                   {
-                    "translate": "items.fabled_roots.golden_horse_armor_of_roots.description",
-                    "fallback": "Regeneration II while mounted",
+                    "translate": "item.fabled_roots.golden_horse_armor_of_roots.description",
                     "color": "gray",
                     "italic": false
                   }

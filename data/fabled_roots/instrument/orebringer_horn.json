@@ -1,7 +1,6 @@
 {
   "description": {
-    "translate": "instrument.fabled_roots.orebringer_horn",
-      "fallback": "Call of an Orebringer"
+    "translate": "instrument.fabled_roots.orebringer_horn"
   },
   "range": 256,
   "sound_event": {

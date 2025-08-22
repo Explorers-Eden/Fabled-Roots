@@ -13,7 +13,7 @@
               "components": {
                 "minecraft:written_book_content": {
                   "pages": [
-                    { "raw": { "text": "We tried to invoke the old rites—chants once used to calm the volatile flows—but the echoes mocked us. The obsidian statues cracked, and the fire responded not with warmth, but hunger." } }
+                    { "raw": { "translate": "written_book.fabled_roots.final_days.netherian.5" } }
                   ],
                   "title": { "raw": "Journal: Final Days V" },
                   "author": "Netherian Guardian",

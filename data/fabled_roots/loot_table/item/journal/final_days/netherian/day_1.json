@@ -13,7 +13,7 @@
               "components": {
                 "minecraft:written_book_content": {
                   "pages": [
-                    { "raw": { "text": "The flames no longer comfort. Our great forge flickers low, a mockery of what once roared with purpose. I stood at the gates today, staring out into the obsidian fields. No caravans returned. Only silence. Only ash." } }
+                    { "raw": { "translate": "written_book.fabled_roots.final_days.netherian.1" } }
                   ],
                   "title": { "raw": "Journal: Final Days I" },
                   "author": "Netherian Guardian",

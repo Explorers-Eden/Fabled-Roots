@@ -12,8 +12,7 @@
               "function": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.phantom_shell",
-                  "fallback": "Phantom Shell"
+                  "translate": "item.fabled_roots.phantom_shell"
                 },
                 "minecraft:item_model": "fabled_roots:phantom_shell",
                 "minecraft:rarity": "common",

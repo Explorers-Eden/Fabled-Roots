@@ -3,8 +3,7 @@
   "components": {
     "minecraft:item_model": "fabled_roots:netherite_club",
     "minecraft:item_name": {
-      "translate": "items.fabled_roots.netherite_club",
-      "fallback": "Netherite Club"
+      "translate": "item.fabled_roots.netherite_club"
     },
     "minecraft:custom_data": {
       "fabled_roots": {

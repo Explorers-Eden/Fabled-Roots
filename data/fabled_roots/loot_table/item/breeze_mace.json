@@ -12,8 +12,7 @@
               "function": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.breeze_mace",
-                  "fallback": "Breeze Mace"
+                  "translate": "item.fabled_roots.breeze_mace"
                 },
                 "minecraft:item_model": "fabled_roots:breeze_mace",
                 "minecraft:rarity": "epic",

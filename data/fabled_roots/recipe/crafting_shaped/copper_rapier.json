@@ -13,8 +13,7 @@
   "result": {
     "components": {
       "minecraft:item_name": {
-        "translate": "items.fabled_roots.copper_rapier",
-        "fallback": "Copper Rapier"
+        "translate": "item.fabled_roots.copper_rapier"
       },
       "minecraft:item_model": "fabled_roots:copper_rapier",
       "minecraft:rarity": "common",

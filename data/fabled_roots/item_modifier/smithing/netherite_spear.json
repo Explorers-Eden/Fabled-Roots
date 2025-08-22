@@ -3,8 +3,7 @@
   "components": {
     "minecraft:item_model": "fabled_roots:netherite_spear",
     "minecraft:item_name": {
-      "translate": "items.fabled_roots.netherite_spear",
-      "fallback": "Netherite Spear"
+      "translate": "item.fabled_roots.netherite_spear"
     },
     "minecraft:custom_data": {
       "fabled_roots": {

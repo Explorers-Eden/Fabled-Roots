@@ -1,7 +1,6 @@
 {
   "description": {
-    "translate": "enchantment.fabled_roots.ender_lure",
-    "fallback": "Ender Lure"
+    "translate": "enchantment.fabled_roots.ender_lure"
   },
   "exclusive_set": "#fabled_roots:enchanted_scroll",
   "supported_items": "minecraft:music_disc_5",

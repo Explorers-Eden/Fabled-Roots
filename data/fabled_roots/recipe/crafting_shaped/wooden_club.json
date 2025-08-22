@@ -13,8 +13,7 @@
   "result": {
     "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.wooden_club",
-                  "fallback": "Wooden Club"
+                  "translate": "item.fabled_roots.wooden_club"
                 },
                 "minecraft:item_model": "fabled_roots:wooden_club",
                 "minecraft:rarity": "common",

@@ -12,8 +12,7 @@
   "result": {
     "components": {
       "minecraft:item_name": {
-        "translate": "items.fabled_roots.stone_throwing_knife",
-        "fallback": "Stone Throwing Knife"
+        "translate": "item.fabled_roots.stone_throwing_knife"
       },
       "minecraft:item_model": "fabled_roots:stone_throwing_knife",
       "minecraft:rarity": "common",
@@ -25,8 +24,7 @@
       },
       "minecraft:lore": [
         {
-          "translate": "effects.fabled_roots.unenchantable",
-          "fallback": "Unenchantable",
+          "translate": "enchantment.fabled_roots.unenchantable",
           "color": "gray",
           "italic": false
         }

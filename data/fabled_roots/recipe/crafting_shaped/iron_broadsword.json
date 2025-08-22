@@ -13,8 +13,7 @@
   "result": {
     "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.iron_broadsword",
-                  "fallback": "iron Broadsword"
+                  "translate": "item.fabled_roots.iron_broadsword"
                 },
                 "minecraft:item_model": "fabled_roots:iron_broadsword",
                 "minecraft:rarity": "common",

@@ -13,7 +13,7 @@
               "components": {
                 "minecraft:written_book_content": {
                   "pages": [
-                    { "raw": { "text": "Even the ghasts flee our skies. Their wails no longer echo above the lava seas. I saw one fall silent mid-flight, its body stiff as glass. What force could silence them?" } }
+                    { "raw": { "translate": "written_book.fabled_roots.final_days.netherian.9" } }
                   ],
                   "title": { "raw": "Journal: Final Days IX" },
                   "author": "Netherian Guardian",

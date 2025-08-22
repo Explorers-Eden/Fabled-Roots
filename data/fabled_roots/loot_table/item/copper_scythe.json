@@ -12,8 +12,7 @@
               "function": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.copper_scythe",
-                  "fallback": "Copper Scythe"
+                  "translate": "item.fabled_roots.copper_scythe"
                 },
                 "minecraft:item_model": "fabled_roots:copper_scythe",
                 "minecraft:rarity": "common",

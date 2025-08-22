@@ -13,7 +13,7 @@
               "components": {
                 "minecraft:written_book_content": {
                   "pages": [
-                    { "raw": { "text": "The blackstone walls bleed with glowing cracks. We speak in whispers now, afraid our voices might shatter what remains. I have sent word to the Ember Priests. No answer." } }
+                    { "raw": { "translate": "written_book.fabled_roots.final_days.netherian.6" } }
                   ],
                   "title": { "raw": "Journal: Final Days VI" },
                   "author": "Netherian Guardian",

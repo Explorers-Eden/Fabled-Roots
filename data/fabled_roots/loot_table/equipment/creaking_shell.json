@@ -12,8 +12,7 @@
               "function": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
-                  "translate": "items.fabled_roots.creaking_shell",
-                  "fallback": "Creaking Shell"
+                  "translate": "item.fabled_roots.creaking_shell"
                 },
                 "minecraft:item_model": "fabled_roots:creaking_shell",
                 "minecraft:rarity": "common",

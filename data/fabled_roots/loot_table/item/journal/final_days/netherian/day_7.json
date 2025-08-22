@@ -13,7 +13,7 @@
               "components": {
                 "minecraft:written_book_content": {
                   "pages": [
-                    { "raw": { "text": "A quake struck without warning. The central kiln collapsed. Those inside... I do not write their names. Fire is no longer sacred. It is a predator, and we are prey." } }
+                    { "raw": { "translate": "written_book.fabled_roots.final_days.netherian.7" } }
                   ],
                   "title": { "raw": "Journal: Final Days VII" },
                   "author": "Netherian Guardian",
