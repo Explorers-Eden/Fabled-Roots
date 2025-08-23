@@ -14,7 +14,7 @@
   "title": {
     "translate": "menu.fabled_roots.title.wiki.main.external"
   },
-  "pause": false,
+  "pause": true,
   "exit_action": {
     "label": {
       "translate": "menu.fabled_roots.back"
@@ -46,7 +46,7 @@
     },
     {
       "label": {
-        "translate": "menu.fabled_roots.title.wiki.item.external"
+        "translate": "menu.fabled_roots.title.wiki.items.external"
       },
       "action": {
         "type": "show_dialog",
@@ -55,11 +55,11 @@
     },
     {
       "label": {
-        "translate": "menu.fabled_roots.title.wiki.equipment.external"
+        "translate": "menu.fabled_roots.title.wiki.enchantments.external"
       },
       "action": {
         "type": "show_dialog",
-        "dialog": "fabled_roots:wiki/equipment"
+        "dialog": "fabled_roots:wiki/enchantments"
       }
     }
   ]

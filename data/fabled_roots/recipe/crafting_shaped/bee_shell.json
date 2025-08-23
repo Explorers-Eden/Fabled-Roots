@@ -1,38 +1,37 @@
 {
-  "type": "minecraft:command",
-  "pools": [
-    {
-      "rolls": 1,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:iron_helmet",
-          "functions": [
-            {
-              "function": "minecraft:set_components",
-              "components": {
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": "minecraft:honeycomb"
+  },
+  "pattern": [
+    "XXX",
+    "X X"
+  ],
+  "result": {
+    "components": {
                 "minecraft:item_name": {
-                  "translate": "item.fabled_roots.iron_golem_shell"
+                  "translate": "item.fabled_roots.bee_shell"
                 },
-                "minecraft:item_model": "fabled_roots:iron_golem_shell",
+                "minecraft:item_model": "fabled_roots:bee_shell",
                 "minecraft:rarity": "common",
                 "minecraft:custom_data": {
                   "fabled_roots": {
-                    "item": "iron_golem_shell",
-                    "race": "orebringer"
+                    "item": "bee_shell",
+                    "race": "oakhearted"
                   }
                 },
                 "minecraft:equippable": {
                   "slot": "head",
                   "equip_sound": "minecraft:item.armor.equip_turtle",
-                  "asset_id": "fabled_roots:iron_golem_shell",
+                  "asset_id": "fabled_roots:bee_shell",
                   "dispensable": true,
                   "swappable": true,
                   "damage_on_hurt": true,
                   "equip_on_interact": true,
                   "can_be_sheared": false
                 },
-                "minecraft:tooltip_style": "fabled_roots:orebringer",
+                "minecraft:tooltip_style": "fabled_roots:oakhearted",
                 "minecraft:attribute_modifiers": [
                   {
                     "type": "minecraft:armor",
@@ -42,30 +41,26 @@
                     "slot": "head"
                   },
                   {
-                    "type": "minecraft:block_break_speed",
-                    "id": "fabled_roots:shell_block_break_speed",
+                    "type": "minecraft:jump_strength",
+                    "id": "fabled_roots:shell_jump_strength",
                     "amount": 0.25,
+                    "operation": "add_multiplied_base",
+                    "slot": "head"
+                  },
+                  {
+                    "type": "minecraft:safe_fall_distance",
+                    "id": "fabled_roots:shell_fall_distance",
+                    "amount": 1,
                     "operation": "add_multiplied_base",
                     "slot": "head"
                   }
                 ],
                 "minecraft:max_damage": 275,
                 "minecraft:repairable": {
-                  "items": "minecraft:raw_iron"
+                  "items": "minecraft:honeycomb"
                 }
-              }
-            },
-            {
-              "function": "minecraft:set_damage",
-              "damage": {
-                "type": "minecraft:uniform",
-                "min": 0.3,
-                "max": 0.8
-              }
-            }
-          ]
-        }
-      ]
-    }
-  ]
+              },
+    "count": 1,
+    "id": "minecraft:iron_helmet"
+  }
 }

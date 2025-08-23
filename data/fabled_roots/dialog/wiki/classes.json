@@ -14,7 +14,7 @@
   "title": {
     "translate": "menu.fabled_roots.title.wiki.classes"
   },
-  "pause": false,
+  "pause": true,
   "exit_action": {
     "label": {
       "translate": "menu.fabled_roots.back"

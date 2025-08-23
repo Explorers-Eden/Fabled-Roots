@@ -1,38 +1,37 @@
 {
-  "type": "minecraft:command",
-  "pools": [
-    {
-      "rolls": 1,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:iron_helmet",
-          "functions": [
-            {
-              "function": "minecraft:set_components",
-              "components": {
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": "minecraft:fire_charge"
+  },
+  "pattern": [
+    "XXX",
+    "X X"
+  ],
+  "result": {
+    "components": {
                 "minecraft:item_name": {
-                  "translate": "item.fabled_roots.phantom_shell"
+                  "translate": "item.fabled_roots.ghast_shell"
                 },
-                "minecraft:item_model": "fabled_roots:phantom_shell",
+                "minecraft:item_model": "fabled_roots:ghast_shell",
                 "minecraft:rarity": "common",
                 "minecraft:custom_data": {
                   "fabled_roots": {
-                    "item": "phantom_shell",
-                    "race": "moonshroud"
+                    "item": "ghast_shell",
+                    "race": "netherian"
                   }
                 },
                 "minecraft:equippable": {
                   "slot": "head",
                   "equip_sound": "minecraft:item.armor.equip_turtle",
-                  "asset_id": "fabled_roots:phantom_shell",
+                  "asset_id": "fabled_roots:ghast_shell",
                   "dispensable": true,
                   "swappable": true,
                   "damage_on_hurt": true,
                   "equip_on_interact": true,
                   "can_be_sheared": false
                 },
-                "minecraft:tooltip_style": "fabled_roots:moonshroud",
+                "minecraft:tooltip_style": "fabled_roots:netherian",
                 "minecraft:attribute_modifiers": [
                   {
                     "type": "minecraft:armor",
@@ -42,30 +41,19 @@
                     "slot": "head"
                   },
                   {
-                    "type": "minecraft:sneaking_speed",
-                    "id": "fabled_roots:shell_sneak_speed",
-                    "amount": 0.33,
+                    "type": "minecraft:burning_time",
+                    "id": "fabled_roots:shell_burning_time",
+                    "amount": -0.25,
                     "operation": "add_multiplied_base",
                     "slot": "head"
                   }
                 ],
                 "minecraft:max_damage": 275,
                 "minecraft:repairable": {
-                  "items": "minecraft:phantom_membrane"
+                  "items": "minecraft:fire_charge"
                 }
-              }
-            },
-            {
-              "function": "minecraft:set_damage",
-              "damage": {
-                "type": "minecraft:uniform",
-                "min": 0.3,
-                "max": 0.8
-              }
-            }
-          ]
-        }
-      ]
-    }
-  ]
+              },
+    "count": 1,
+    "id": "minecraft:iron_helmet"
+  }
 }

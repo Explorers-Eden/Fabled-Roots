@@ -41,7 +41,7 @@
   "title": {
     "translate": "menu.fabled_roots.title.reset"
   },
-  "pause": false,
+  "pause": true,
   "after_action": "close",
   "yes": {
     "label": {

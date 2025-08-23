@@ -14,7 +14,7 @@
   "title": {
     "translate": "menu.fabled_roots.title.wiki.items"
   },
-  "pause": false,
+  "pause": true,
   "exit_action": {
     "label": {
       "translate": "menu.fabled_roots.back"
@@ -26,14 +26,7 @@
   },
   "columns": 3,
   "actions": [
-    {
-      "label": {
-        "translate": ""
-      },
-       "action": {
-        "type": "run_command",
-        "command": "trigger fabled_roots.dialog_trigger.wiki set 21"
-      }
-    }
+    {"label": {"translate": "item.fabled_roots.scroll"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 49"}},
+    {"label": {"translate": "item.fabled_roots.trial_key_of_roots"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 50"}}
   ]
 }

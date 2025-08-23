@@ -1,5 +1,6 @@
 {
 	"values": [
+		"fabled_roots:trigger/init",
 		"fabled_roots:item/root_color/init",
 		"fabled_roots:item/horse_armor_of_roots",
 		"fabled_roots:item/crown_of_roots/init",
@@ -7,6 +8,8 @@
 		"fabled_roots:item/vanilla_modifier/init",
 		"fabled_roots:item/turtlekin_holding_trident",
 		"fabled_roots:item/orebringer_uses_mace",
-		"fabled_roots:item/enchanting/init"
+		"fabled_roots:item/enchanting/init",
+		"fabled_roots:race/init",
+		"fabled_roots:class/init"
 	]
 }

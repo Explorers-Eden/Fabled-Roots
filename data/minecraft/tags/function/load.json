@@ -1,10 +1,7 @@
 {
 	"values": [
+		"#fabled_roots:scheduled_functions",
 		"fabled_roots:load",
-		"fabled_roots:run",
-		"fabled_roots:race/init",
-		"fabled_roots:class/init",
-		"#fabled_roots:items",
-		"#fabled_roots:trigger"
+		"fabled_roots:run"
 	]
 }

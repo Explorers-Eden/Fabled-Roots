@@ -46,10 +46,7 @@
                     "id": "fabled_roots:shell_burning_time",
                     "amount": -0.25,
                     "operation": "add_multiplied_base",
-                    "slot": "head",
-                    "display": {
-                      "type": "hidden"
-                    }
+                    "slot": "head"
                   }
                 ],
                 "minecraft:max_damage": 275,

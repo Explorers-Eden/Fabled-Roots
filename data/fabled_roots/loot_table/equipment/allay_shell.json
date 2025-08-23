@@ -46,10 +46,7 @@
                     "id": "fabled_roots:shell_step_height",
                     "amount": 1,
                     "operation": "add_value",
-                    "slot": "head",
-                    "display": {
-                      "type": "hidden"
-                    }
+                    "slot": "head"
                   }
                 ],
                 "minecraft:max_damage": 275,

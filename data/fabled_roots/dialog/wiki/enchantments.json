@@ -1,0 +1,58 @@
+{
+  "type": "minecraft:multi_action",
+  "body": {
+    "type": "minecraft:plain_message",
+    "contents": {
+      "translate": "menu.fabled_roots.desc.wiki.option"
+    },
+    "width": 256
+  },
+  "can_close_with_escape": true,
+  "external_title": {
+    "translate": "menu.fabled_roots.title.wiki.enchantments"
+  },
+  "title": {
+    "translate": "menu.fabled_roots.title.wiki.enchantments"
+  },
+  "pause": true,
+  "exit_action": {
+    "label": {
+      "translate": "menu.fabled_roots.back"
+    },
+    "action": {
+      "type": "minecraft:show_dialog",
+      "dialog": "fabled_roots:wiki/main"
+    }
+  },
+  "columns": 3,
+  "actions": [
+    {"label": {"translate": "enchantment.fabled_roots.atlantic_shot"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 21"}},
+    {"label": {"translate": "enchantment.fabled_roots.breeze_shot"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 22"}},
+    {"label": {"translate": "enchantment.fabled_roots.cold_bloom"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 23"}},
+    {"label": {"translate": "enchantment.fabled_roots.crimson_bloom"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 24"}},
+    {"label": {"translate": "enchantment.fabled_roots.dry_bloom"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 25"}},
+    {"label": {"translate": "enchantment.fabled_roots.dry_heat"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 26"}},
+    {"label": {"translate": "enchantment.fabled_roots.ender_lure"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 27"}},
+    {"label": {"translate": "enchantment.fabled_roots.feast_together"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 28"}},
+    {"label": {"translate": "enchantment.fabled_roots.flying_nimbus"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 29"}},
+    {"label": {"translate": "enchantment.fabled_roots.frostbite"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 30"}},
+    {"label": {"translate": "enchantment.fabled_roots.ghastly_shot"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 31"}},
+    {"label": {"translate": "enchantment.fabled_roots.heavy_shot"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 32"}},
+    {"label": {"translate": "enchantment.fabled_roots.lupine_echo"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 33"}},
+    {"label": {"translate": "enchantment.fabled_roots.lurkers_leap"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 34"}},
+    {"label": {"translate": "enchantment.fabled_roots.pale_bloom"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 35"}},
+    {"label": {"translate": "enchantment.fabled_roots.rocky_bloom"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 36"}},
+    {"label": {"translate": "enchantment.fabled_roots.scouting_arrows"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 37"}},
+    {"label": {"translate": "enchantment.fabled_roots.sculky_bloom"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 38"}},
+    {"label": {"translate": "enchantment.fabled_roots.stonepiercer"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 39"}},
+    {"label": {"translate": "enchantment.fabled_roots.stormcall"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 40"}},
+    {"label": {"translate": "enchantment.fabled_roots.stronger_together"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 41"}},
+    {"label": {"translate": "enchantment.fabled_roots.thousand_stings"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 42"}},
+    {"label": {"translate": "enchantment.fabled_roots.toothburst"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 43"}},
+    {"label": {"translate": "enchantment.fabled_roots.verdant_bloom"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 44"}},
+    {"label": {"translate": "enchantment.fabled_roots.void_bloom"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 45"}},
+    {"label": {"translate": "enchantment.fabled_roots.void_shot"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 46"}},
+    {"label": {"translate": "enchantment.fabled_roots.warped_bloom"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 47"}},
+    {"label": {"translate": "enchantment.fabled_roots.webbing"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 48"}}
+  ]
+}
