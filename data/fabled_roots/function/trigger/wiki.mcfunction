@@ -50,6 +50,7 @@ execute as @s[scores={fabled_roots.dialog_trigger.wiki=45}] at @s run return run
 execute as @s[scores={fabled_roots.dialog_trigger.wiki=46}] at @s run return run function fabled_roots:wiki/enchantment_msg {enchantment:"void_shot"}
 execute as @s[scores={fabled_roots.dialog_trigger.wiki=47}] at @s run return run function fabled_roots:wiki/enchantment_msg {enchantment:"warped_bloom"}
 execute as @s[scores={fabled_roots.dialog_trigger.wiki=48}] at @s run return run function fabled_roots:wiki/enchantment_msg {enchantment:"webbing"}
+execute as @s[scores={fabled_roots.dialog_trigger.wiki=49}] at @s run return run function fabled_roots:wiki/enchantment_msg {enchantment:"lumos"}
 
-execute as @s[scores={fabled_roots.dialog_trigger.wiki=49}] at @s run return run function fabled_roots:wiki/item_msg {item:"scroll"}
-execute as @s[scores={fabled_roots.dialog_trigger.wiki=50}] at @s run return run function fabled_roots:wiki/item_msg {item:"trial_key_of_roots"}
+execute as @s[scores={fabled_roots.dialog_trigger.wiki=50}] at @s run return run function fabled_roots:wiki/item_msg {item:"scroll"}
+execute as @s[scores={fabled_roots.dialog_trigger.wiki=51}] at @s run return run function fabled_roots:wiki/item_msg {item:"trial_key_of_roots"}

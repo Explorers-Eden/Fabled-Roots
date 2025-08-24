@@ -38,6 +38,7 @@
     {"label": {"translate": "enchantment.fabled_roots.frostbite"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 30"}},
     {"label": {"translate": "enchantment.fabled_roots.ghastly_shot"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 31"}},
     {"label": {"translate": "enchantment.fabled_roots.heavy_shot"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 32"}},
+    {"label": {"translate": "enchantment.fabled_roots.lumos"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 49"}},
     {"label": {"translate": "enchantment.fabled_roots.lupine_echo"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 33"}},
     {"label": {"translate": "enchantment.fabled_roots.lurkers_leap"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 34"}},
     {"label": {"translate": "enchantment.fabled_roots.pale_bloom"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 35"}},

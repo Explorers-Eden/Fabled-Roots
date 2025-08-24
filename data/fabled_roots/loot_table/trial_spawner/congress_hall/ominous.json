@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:trial_spawner/congress_hall/normal"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/trial_key_of_roots"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:pool/music_disc"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:pool/diamond_weapon"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:random_chance",
+          "chance": 0.4
+        }
+      ]
+    }
+  ]
+}

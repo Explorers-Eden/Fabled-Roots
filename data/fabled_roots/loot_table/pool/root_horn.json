@@ -1,0 +1,60 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/aetherian_horn",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/dunesworn_horn",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/endling_horn",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/frostborne_horn",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/moonshroud_horn",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/netherian_horn",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/oakhearted_horn",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/orebringer_horn",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/palehearted_horn",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/turtlekin_horn",
+          "weight": 20
+        }
+      ]
+    }
+  ]
+}

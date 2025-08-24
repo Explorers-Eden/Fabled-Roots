@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:equipment/copper_horse_armor_of_roots",
+          "weight": 40
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:equipment/iron_horse_armor_of_roots",
+          "weight": 30
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:equipment/golden_horse_armor_of_roots",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:equipment/diamond_horse_armor_of_roots",
+          "weight": 5
+        }
+      ]
+    }
+  ]
+}

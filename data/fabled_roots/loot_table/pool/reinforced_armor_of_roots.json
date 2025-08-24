@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:equipment/reinforced_helmet_of_roots",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:equipment/reinforced_chestplate_of_roots",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:equipment/reinforced_leggings_of_roots",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:equipment/reinforced_boots_of_roots",
+          "weight": 20
+        }
+      ]
+    }
+  ]
+}
