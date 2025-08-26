@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:painting"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fabled_roots:stonecutter/painting_aetherian",
+      "fabled_roots:stonecutter/painting_dunesworn",
+      "fabled_roots:stonecutter/painting_endling",
+      "fabled_roots:stonecutter/painting_frostborne",
+      "fabled_roots:stonecutter/painting_moonshroud",
+      "fabled_roots:stonecutter/painting_netherian",
+      "fabled_roots:stonecutter/painting_oakhearted",
+      "fabled_roots:stonecutter/painting_orebringer",
+      "fabled_roots:stonecutter/painting_palehearted",
+      "fabled_roots:stonecutter/painting_turtlekin"
+    ]
+  }
+}
