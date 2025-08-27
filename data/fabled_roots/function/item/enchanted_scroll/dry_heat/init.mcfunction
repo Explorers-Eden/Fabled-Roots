@@ -5,7 +5,7 @@ execute unless items entity @s hotbar.* minecraft:wet_sponge \
         unless items entity @s weapon.offhand minecraft:wet_sponge \
             run return run function fabled_roots:item/enchanted_scroll/cancel {scroll:"dry_heat"}
 
-execute store result storage fabled_roots:temp enchanted_scroll.pitch int 1 run random value 0..8
+execute store result storage eden:temp enchanted_scroll.pitch int 1 run random value 0..8
 
-function fabled_roots:item/enchanted_scroll/usage with storage fabled_roots:temp enchanted_scroll
+function fabled_roots:item/enchanted_scroll/usage with storage eden:temp enchanted_scroll
 function fabled_roots:item/enchanted_scroll/dry_heat/exec

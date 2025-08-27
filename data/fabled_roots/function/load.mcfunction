@@ -102,3 +102,6 @@ team modify fabled_roots.aetherian friendlyFire false
 team modify fabled_roots.aetherian seeFriendlyInvisibles true
 team modify fabled_roots.aetherian color white
 team modify fabled_roots.aetherian prefix [{"text":"Aetherian","color":"#D4F1FF"},{"text":" | ","color":"dark_gray"}]
+
+##set data pack version
+data modify storage eden:datapack fabled_roots.version set value "1.2"
