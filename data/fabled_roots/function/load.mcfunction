@@ -3,6 +3,7 @@ forceload add 0 0
 
 ##gamerules
 gamerule locatorBar true
+gamerule showDeathMessages false
 
 ##add default scoreboard
 scoreboard objectives add fabled_roots.technical dummy
@@ -104,4 +105,4 @@ team modify fabled_roots.aetherian color white
 team modify fabled_roots.aetherian prefix [{"text":"Aetherian","color":"#D4F1FF"},{"text":" | ","color":"dark_gray"}]
 
 ##set data pack version
-data modify storage eden:datapack fabled_roots.version set value "1.2"
+data modify storage eden:datapack fabled_roots.version set value "1.3"
