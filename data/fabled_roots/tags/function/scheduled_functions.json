@@ -10,6 +10,8 @@
 		"fabled_roots:item/orebringer_uses_mace",
 		"fabled_roots:item/enchanting/init",
 		"fabled_roots:race/init",
-		"fabled_roots:class/init"
+		"fabled_roots:class/init",
+		"fabled_roots:npc/movement/init",
+		"fabled_roots:npc/update/init"
 	]
 }
