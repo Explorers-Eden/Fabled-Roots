@@ -14,7 +14,7 @@ $summon minecraft:mannequin ~ ~ ~ {\
     }\
 }
 
-summon villager ~ ~ ~ {\
+$summon villager ~ ~ ~ {\
     Tags:["mob_manager.settings.exclude","fabled_roots.npc.base"],\
     Silent:1b,\
     Invulnerable:1b,\
@@ -23,7 +23,7 @@ summon villager ~ ~ ~ {\
     ],\
     attributes:[\
         {id:"minecraft:movement_speed",base:0.5},\
-        {id:"minecraft:scale",base:0.01}\
+        {id:"minecraft:scale",base:$(base_size)}\
     ]\
 }
 

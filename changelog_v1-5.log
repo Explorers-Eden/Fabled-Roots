@@ -1,4 +1,9 @@
 ## Changes:
 - Copper Weapons & Copper Horse Armor now use the Copper variant as base item
+- added Descendants (NPC Entities):
+    - Descendants are passive
+    - can't be bred
+    - can be bartered with by throwing a Lapis Lazuli item (similar to Piglins)
+    - spawn in Descendant Villages when it's generating
 
 ## Fixes:

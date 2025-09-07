@@ -9,7 +9,10 @@ execute if score $model fabled_roots.technical matches 3..4 store result storage
 data modify storage eden:temp fabled_roots.npc.race set value "endling"
 data modify storage eden:temp fabled_roots.npc.race_cap set value "Endling"
 
-execute store result storage eden:temp fabled_roots.npc.size float 0.01 run random value 105..120
+execute store result score $size fabled_roots.technical run random value 105..120
+execute store result storage eden:temp fabled_roots.npc.size float 0.01 run scoreboard players get $size fabled_roots.technical
+execute store result storage eden:temp fabled_roots.npc.base_size float 0.0085 run scoreboard players get $size fabled_roots.technical
+
 execute store result storage eden:temp fabled_roots.npc.pitch float 0.01 run random value 50..200
 
 execute positioned ~ ~.05 ~ run function fabled_roots:npc/summon/exec with storage eden:temp fabled_roots.npc
