@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:iron_horse_armor",
+          "name": "minecraft:copper_horse_armor",
           "functions": [
             {
               "function": "minecraft:set_components",

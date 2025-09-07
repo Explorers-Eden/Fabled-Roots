@@ -1,0 +1,15 @@
+execute store result score $model fabled_roots.technical run random value 1..4
+
+execute if score $model fabled_roots.technical matches 1 run data modify storage eden:temp fabled_roots.npc.model set value "slim"
+execute if score $model fabled_roots.technical matches 2..4 run data modify storage eden:temp fabled_roots.npc.model set value "wide"
+
+execute if score $model fabled_roots.technical matches 1 store result storage eden:temp fabled_roots.npc.id int 1 run random value 1..7
+execute if score $model fabled_roots.technical matches 2..4 store result storage eden:temp fabled_roots.npc.id int 1 run random value 1..18
+
+data modify storage eden:temp fabled_roots.npc.race set value "frostborne"
+data modify storage eden:temp fabled_roots.npc.race_cap set value "Frostborne"
+
+execute store result storage eden:temp fabled_roots.npc.size float 0.01 run random value 95..105
+execute store result storage eden:temp fabled_roots.npc.pitch float 0.01 run random value 50..200
+
+execute positioned ~ ~.05 ~ run function fabled_roots:npc/summon/exec with storage eden:temp fabled_roots.npc

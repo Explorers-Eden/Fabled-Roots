@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:iron_sword",
+          "name": "minecraft:copper_sword",
           "functions": [
             {
               "function": "minecraft:set_components",

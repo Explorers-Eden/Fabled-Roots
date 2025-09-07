@@ -1,0 +1,33 @@
+$summon minecraft:mannequin ~ ~ ~ {\
+    Tags:["fabled_roots.npc.$(race).generic","fabled_roots.npc.mannequin"],\
+    attributes:[\
+        {id:"minecraft:scale",base:$(size)},\
+        {id:"minecraft:max_health",base:60}\
+    ],\
+    Health:60f,\
+    CustomName:"$(race_cap)",\
+    data:{\
+        pitch:$(pitch)\
+    },\
+    profile:{\
+        texture:"fabled_roots:entity/npc/$(model)/$(race)/generic_$(id)"\
+    }\
+}
+
+summon villager ~ ~ ~ {\
+    Tags:["mob_manager.settings.exclude","fabled_roots.npc.base"],\
+    Silent:1b,\
+    Invulnerable:1b,\
+    active_effects:[\
+        {id:"minecraft:invisibility",amplifier:1,duration:-1,show_particles:0b}\
+    ],\
+    attributes:[\
+        {id:"minecraft:movement_speed",base:0.5},\
+        {id:"minecraft:scale",base:0.01}\
+    ]\
+}
+
+$execute if data storage eden:temp fabled_roots.npc{model:"slim"} run data modify entity @n[type=minecraft:mannequin,distance=..1,tag=fabled_roots.npc.$(race).generic] profile merge value {model:"slim"}
+
+$execute as @n[type=minecraft:mannequin,distance=..1,tag=fabled_roots.npc.$(race).generic] run function fabled_roots:npc/store_uuid/init
+data modify entity @n[type=minecraft:villager,distance=..1,tag=fabled_roots.npc.base] data.attached_npc set from storage eden:temp fabled_roots.uuid.serialized

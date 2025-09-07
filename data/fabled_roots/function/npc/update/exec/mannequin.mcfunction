@@ -1,1 +1,0 @@
-team join fabled_roots.npc @s

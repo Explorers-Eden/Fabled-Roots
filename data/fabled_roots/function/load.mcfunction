@@ -56,6 +56,7 @@ team add fabled_roots.npc
 
 ##modify teams
 team modify fabled_roots.npc collisionRule pushOwnTeam
+team modify fabled_roots.npc nametagVisibility never
 
 team modify fabled_roots.frostborne friendlyFire false
 team modify fabled_roots.frostborne seeFriendlyInvisibles true
