@@ -103,5 +103,31 @@
         "sounds": [
             "fabled_roots:records/turtlekin_peter_hont_twilight_cavern"
         ]
-    }
+    },
+    "entity.descendant.ambient": {
+        "sounds": [
+            "fabled_roots:npc/ambient_1",
+            "fabled_roots:npc/ambient_2",
+            "fabled_roots:npc/ambient_3",
+            "fabled_roots:npc/ambient_4",
+            "fabled_roots:npc/ambient_5",
+            "fabled_roots:npc/ambient_6",
+            "fabled_roots:npc/ambient_7",
+            "fabled_roots:npc/ambient_8",
+            "fabled_roots:npc/ambient_9",
+            "fabled_roots:npc/ambient_10"
+        ]
+      },
+    "entity.descendant.celebrate": {
+        "sounds": [
+            "fabled_roots:npc/celebrate_1",
+            "fabled_roots:npc/celebrate_2"
+        ]
+      },
+    "entity.descendant.encourage": {
+        "sounds": [
+            "fabled_roots:npc/encourage_1",
+            "fabled_roots:npc/encourage_2"
+        ]
+      }
 }

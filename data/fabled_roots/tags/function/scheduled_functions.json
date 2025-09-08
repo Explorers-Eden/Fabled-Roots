@@ -12,6 +12,7 @@
 		"fabled_roots:race/init",
 		"fabled_roots:class/init",
 		"fabled_roots:npc/movement/init",
-		"fabled_roots:npc/behavior/init"
+		"fabled_roots:npc/behavior/init",
+		"fabled_roots:npc/modify_age"
 	]
 }

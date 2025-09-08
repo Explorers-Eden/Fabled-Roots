@@ -13,6 +13,8 @@ execute store result score $size fabled_roots.technical run random value 100..11
 execute store result storage eden:temp fabled_roots.npc.size float 0.01 run scoreboard players get $size fabled_roots.technical
 execute store result storage eden:temp fabled_roots.npc.base_size float 0.0085 run scoreboard players get $size fabled_roots.technical
 
-execute store result storage eden:temp fabled_roots.npc.pitch float 0.01 run random value 50..200
+execute store result storage eden:temp fabled_roots.npc.pitch float 0.01 run random value 30..100
+
+function fabled_roots:npc/summon/get_profession
 
 execute positioned ~ ~.05 ~ run function fabled_roots:npc/summon/exec with storage eden:temp fabled_roots.npc
