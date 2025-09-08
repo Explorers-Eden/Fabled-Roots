@@ -8,6 +8,9 @@ gamerule showDeathMessages false
 ##add default scoreboard
 scoreboard objectives add fabled_roots.technical dummy
 
+##additional scoreboards
+scoreboard objectives add fabled_roots.bartering.timer dummy
+
 ##dialog trigger scoreboards
 scoreboard objectives add fabled_roots.dialog_trigger.race trigger {"bold":false,"color":"green","italic":false,"text":"Fabled Roots: Race Selection"}
 scoreboard objectives add fabled_roots.dialog_trigger.class trigger {"bold":false,"color":"green","italic":false,"text":"Fabled Roots: Class Selection"}

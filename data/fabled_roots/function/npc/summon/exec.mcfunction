@@ -1,5 +1,5 @@
 $execute unless data storage eden:temp fabled_roots.npc{profession:"none"} run summon minecraft:mannequin ~ ~ ~ {\
-    Tags:["fabled_roots.npc.$(race).generic","fabled_roots.npc.mannequin"],\
+    Tags:["fabled_roots.npc.generic","fabled_roots.npc.mannequin"],\
     equipment:{\
         head:{\
             id:"minecraft:music_disc_5",\
@@ -17,7 +17,8 @@ $execute unless data storage eden:temp fabled_roots.npc{profession:"none"} run s
     CustomName:"$(race_cap)",\
     data:{\
         pitch:$(pitch),\
-        profession:"$(profession)"\
+        profession:"$(profession)",\
+        race:"$(race)"\
     },\
     profile:{\
         texture:"fabled_roots:entity/npc/$(model)/$(race)/generic_$(id)"\
@@ -25,7 +26,7 @@ $execute unless data storage eden:temp fabled_roots.npc{profession:"none"} run s
 }
 
 $execute if data storage eden:temp fabled_roots.npc{profession:"none"} run summon minecraft:mannequin ~ ~ ~ {\
-    Tags:["fabled_roots.npc.$(race).generic","fabled_roots.npc.mannequin"],\
+    Tags:["fabled_roots.npc.generic","fabled_roots.npc.mannequin"],\
     attributes:[\
         {id:"minecraft:scale",base:$(size)},\
         {id:"minecraft:max_health",base:60}\
@@ -34,7 +35,8 @@ $execute if data storage eden:temp fabled_roots.npc{profession:"none"} run summo
     CustomName:"$(race_cap)",\
     data:{\
         pitch:$(pitch),\
-        profession:"$(profession)"\
+        profession:"$(profession)",\
+        race:"$(race)"\
     },\
     profile:{\
         texture:"fabled_roots:entity/npc/$(model)/$(race)/generic_$(id)"\
@@ -55,10 +57,10 @@ $summon villager ~ ~ ~ {\
     ]\
 }
 
-$execute if data storage eden:temp fabled_roots.npc{model:"slim"} run data modify entity @n[type=minecraft:mannequin,distance=..1,tag=fabled_roots.npc.$(race).generic] profile merge value {model:"slim"}
+execute if data storage eden:temp fabled_roots.npc{model:"slim"} run data modify entity @n[type=minecraft:mannequin,distance=..1,tag=fabled_roots.npc.generic] profile merge value {model:"slim"}
 
 team join fabled_roots.npc @e[type=minecraft:mannequin,distance=..5,tag=fabled_roots.npc.mannequin]
 team join fabled_roots.npc @e[type=minecraft:villager,distance=..5,tag=fabled_roots.npc.base]
 
-$execute as @n[type=minecraft:mannequin,distance=..1,tag=fabled_roots.npc.$(race).generic] run function fabled_roots:npc/store_uuid/init
+execute as @n[type=minecraft:mannequin,distance=..1,tag=fabled_roots.npc.generic] run function fabled_roots:npc/store_uuid/init
 data modify entity @n[type=minecraft:villager,distance=..1,tag=fabled_roots.npc.base] data.attached_npc set from storage eden:temp fabled_roots.uuid.serialized
