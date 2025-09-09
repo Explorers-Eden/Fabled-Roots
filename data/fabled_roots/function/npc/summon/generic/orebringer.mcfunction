@@ -7,7 +7,6 @@ execute if score $model fabled_roots.technical matches 1 store result storage ed
 execute if score $model fabled_roots.technical matches 2..4 store result storage eden:temp fabled_roots.npc.id int 1 run random value 1..20
 
 data modify storage eden:temp fabled_roots.npc.race set value "orebringer"
-data modify storage eden:temp fabled_roots.npc.race_cap set value "Orebringer"
 
 execute store result score $size fabled_roots.technical run random value 75..90
 execute store result storage eden:temp fabled_roots.npc.size float 0.01 run scoreboard players get $size fabled_roots.technical

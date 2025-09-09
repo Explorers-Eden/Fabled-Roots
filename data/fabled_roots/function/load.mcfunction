@@ -8,9 +8,6 @@ gamerule showDeathMessages false
 ##add default scoreboard
 scoreboard objectives add fabled_roots.technical dummy
 
-##additional scoreboards
-scoreboard objectives add fabled_roots.bartering.timer dummy
-
 ##dialog trigger scoreboards
 scoreboard objectives add fabled_roots.dialog_trigger.race trigger {"bold":false,"color":"green","italic":false,"text":"Fabled Roots: Race Selection"}
 scoreboard objectives add fabled_roots.dialog_trigger.class trigger {"bold":false,"color":"green","italic":false,"text":"Fabled Roots: Class Selection"}
@@ -44,7 +41,25 @@ scoreboard objectives add fabled_roots.exp.miner.ancient_debris minecraft.mined:
 scoreboard objectives add fabled_roots.exp.miner.nether_gold_ore minecraft.mined:minecraft.nether_gold_ore
 scoreboard objectives add fabled_roots.exp.miner.nether_quartz_ore minecraft.mined:minecraft.nether_quartz_ore
 
- ##add teams
+##npc scoreboards
+scoreboard objectives add fabled_roots.npc.bartering.timer dummy
+scoreboard objectives add fabled_roots.npc.follow.px dummy
+scoreboard objectives add fabled_roots.npc.follow.py dummy
+scoreboard objectives add fabled_roots.npc.follow.pz dummy
+scoreboard objectives add fabled_roots.npc.follow.dx dummy
+scoreboard objectives add fabled_roots.npc.follow.dy dummy
+scoreboard objectives add fabled_roots.npc.follow.dz dummy
+scoreboard objectives add fabled_roots.npc.follow.ex dummy
+scoreboard objectives add fabled_roots.npc.follow.ey dummy
+scoreboard objectives add fabled_roots.npc.follow.ez dummy
+scoreboard objectives add fabled_roots.npc.follow.dx2 dummy
+scoreboard objectives add fabled_roots.npc.follow.dy2 dummy
+scoreboard objectives add fabled_roots.npc.follow.dz2 dummy
+scoreboard objectives add fabled_roots.npc.follow.len2 dummy
+scoreboard objectives add fabled_roots.npc.follow.motionX dummy
+scoreboard objectives add fabled_roots.npc.follow.motionZ dummy
+
+##add teams
 team add fabled_roots.frostborne {"bold":false,"color":"#A9D6E5","italic":false,"text":"Frostborne"}
 team add fabled_roots.moonshroud {"bold":false,"color":"#B0B7D6","italic":false,"text":"Moonshroud"}
 team add fabled_roots.netherian {"bold":false,"color":"#B23333","italic":false,"text":"Netherian"}

@@ -14,14 +14,15 @@ $execute unless data storage eden:temp fabled_roots.npc{profession:"none"} run s
         {id:"minecraft:max_health",base:60}\
     ],\
     Health:60f,\
-    CustomName:"$(race_cap)",\
+    CustomName:{translate:"entity.fabled_roots.descendant.$(race)"},\
     data:{\
         pitch:$(pitch),\
         profession:"$(profession)",\
         race:"$(race)"\
     },\
     profile:{\
-        texture:"fabled_roots:entity/npc/$(model)/$(race)/generic_$(id)"\
+        texture:"fabled_roots:entity/npc/$(model)/$(race)/generic_$(id)",\
+        model:"$(model)"\
     }\
 }
 
@@ -32,14 +33,15 @@ $execute if data storage eden:temp fabled_roots.npc{profession:"none"} run summo
         {id:"minecraft:max_health",base:60}\
     ],\
     Health:60f,\
-    CustomName:"$(race_cap)",\
+    CustomName:{translate:"entity.fabled_roots.descendant.$(race)"},\
     data:{\
         pitch:$(pitch),\
         profession:"$(profession)",\
         race:"$(race)"\
     },\
     profile:{\
-        texture:"fabled_roots:entity/npc/$(model)/$(race)/generic_$(id)"\
+        texture:"fabled_roots:entity/npc/$(model)/$(race)/generic_$(id)",\
+        model:"$(model)"\
     }\
 }
 
@@ -56,8 +58,6 @@ $summon villager ~ ~ ~ {\
         {id:"minecraft:scale",base:$(base_size)}\
     ]\
 }
-
-execute if data storage eden:temp fabled_roots.npc{model:"slim"} run data modify entity @n[type=minecraft:mannequin,distance=..1,tag=fabled_roots.npc.generic] profile merge value {model:"slim"}
 
 team join fabled_roots.npc @e[type=minecraft:mannequin,distance=..5,tag=fabled_roots.npc.mannequin]
 team join fabled_roots.npc @e[type=minecraft:villager,distance=..5,tag=fabled_roots.npc.base]

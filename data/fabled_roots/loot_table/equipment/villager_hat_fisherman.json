@@ -1,0 +1,57 @@
+{
+    "pools": [
+      {
+        "rolls": 1,
+        "entries": [
+          {
+          "type": "minecraft:item",
+          "name": "minecraft:music_disc_5",
+          "weight": 5,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "minecraft:item_name": {
+                  "translate": "item.fabled_roots.villager_hat_fisherman"
+                },
+                "minecraft:tooltip_style": "fabled_roots:generic",
+                "minecraft:item_model": "fabled_roots:villager_hat_fisherman",
+                "minecraft:rarity": "uncommon",
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "villager_hat_fisherman"
+                  }
+                },
+                "minecraft:equippable": {
+                  "slot": "head",
+                  "equip_sound": "minecraft:item.armor.equip_leather",
+                  "dispensable": true,
+                  "swappable": true,
+                  "damage_on_hurt": true,
+                  "equip_on_interact": true,
+                  "can_be_sheared": false
+                },
+                "!minecraft:jukebox_playable": {},
+                "minecraft:max_damage": 400,
+                "minecraft:attribute_modifiers": [
+                  {
+                    "type": "minecraft:armor",
+                    "id": "fabled_roots:hat_armor",
+                    "amount": 3,
+                    "operation": "add_value",
+                    "slot": "head"
+                  }
+                ],
+                "minecraft:damage": 0,
+                "minecraft:repairable": {
+                  "items": "#minecraft:repairs_leather_armor"
+                }
+              }
+            }
+          ]
+        }
+        ]
+      }
+    ]
+  }
+  

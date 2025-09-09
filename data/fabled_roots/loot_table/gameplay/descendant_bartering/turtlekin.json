@@ -1,0 +1,207 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:loot_table",
+              "value": "fabled_roots:item/scroll",
+              "weight": 5,
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "predicates": {
+                      "minecraft:custom_data": {
+                        "profession": "none"
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:tag",
+              "name": "fabled_roots:descendant_farmer_item",
+              "expand": true,
+              "weight": 5,
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "predicates": {
+                      "minecraft:custom_data": {
+                        "profession": "farmer"
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:book",
+              "weight": 5,
+              "functions": [
+                {
+                  "function": "minecraft:enchant_randomly",
+                  "options": "#minecraft:tradeable"
+                }
+              ],
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "predicates": {
+                      "minecraft:custom_data": {
+                        "profession": "librarian"
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:tag",
+              "name": "fabled_roots:descendant_armorer_item",
+              "expand": true,
+              "weight": 5,
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "predicates": {
+                      "minecraft:custom_data": {
+                        "profession": "armorer"
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:tag",
+              "name": "fabled_roots:descendant_butcher_item",
+              "expand": true,
+              "weight": 5,
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "predicates": {
+                      "minecraft:custom_data": {
+                        "profession": "butcher"
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:loot_table",
+              "value": "fabled_roots:pool/treasure_map",
+              "weight": 5,
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "predicates": {
+                      "minecraft:custom_data": {
+                        "profession": "cartographer"
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:tag",
+              "name": "fabled_roots:descendant_fisherman_item",
+              "expand": true,
+              "weight": 5,
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "predicates": {
+                      "minecraft:custom_data": {
+                        "profession": "fisherman"
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:tag",
+              "name": "fabled_roots:descendant_fletcher_item",
+              "expand": true,
+              "weight": 5,
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "predicates": {
+                      "minecraft:custom_data": {
+                        "profession": "fletcher"
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:tag",
+              "name": "fabled_roots:descendant_shepherd_item",
+              "expand": true,
+              "weight": 5,
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "predicates": {
+                      "minecraft:custom_data": {
+                        "profession": "shepherd"
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:loot_table",
+              "value": "fabled_roots:pool/wooden_weapon",
+              "weight": 5,
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "predicates": {
+                      "minecraft:custom_data": {
+                        "profession": "weaponsmith"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
