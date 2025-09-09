@@ -36,9 +36,9 @@ $execute as @n[distance=..5,type=minecraft:mannequin,tag=$(attached_npc)] run sc
 $execute as @n[distance=..5,type=minecraft:mannequin,tag=$(attached_npc)] run scoreboard players operation @s fabled_roots.npc.follow.len2 += @s fabled_roots.npc.follow.dy2
 $execute as @n[distance=..5,type=minecraft:mannequin,tag=$(attached_npc)] run scoreboard players operation @s fabled_roots.npc.follow.len2 += @s fabled_roots.npc.follow.dz2
 
-$execute as @n[distance=..5,type=minecraft:mannequin,tag=$(attached_npc),scores={len2=..99}] run scoreboard players set @s fabled_roots.npc.follow.dx 0
-$execute as @n[distance=..5,type=minecraft:mannequin,tag=$(attached_npc),scores={len2=..99}] run scoreboard players set @s fabled_roots.npc.follow.dy 0
-$execute as @n[distance=..5,type=minecraft:mannequin,tag=$(attached_npc),scores={len2=..99}] run scoreboard players set @s fabled_roots.npc.follow.dz 0
+$execute as @n[distance=..5,type=minecraft:mannequin,tag=$(attached_npc),scores={fabled_roots.npc.follow.len2=..99}] run scoreboard players set @s fabled_roots.npc.follow.dx 0
+$execute as @n[distance=..5,type=minecraft:mannequin,tag=$(attached_npc),scores={fabled_roots.npc.follow.len2=..99}] run scoreboard players set @s fabled_roots.npc.follow.dy 0
+$execute as @n[distance=..5,type=minecraft:mannequin,tag=$(attached_npc),scores={fabled_roots.npc.follow.len2=..99}] run scoreboard players set @s fabled_roots.npc.follow.dz 0
 
 $execute as @n[distance=..5,type=minecraft:mannequin,tag=$(attached_npc)] store result entity @s Motion[0] double 0.01 run scoreboard players get @s fabled_roots.npc.follow.dx 
 $execute as @n[distance=..5,type=minecraft:mannequin,tag=$(attached_npc)] store result entity @s Motion[2] double 0.01 run scoreboard players get @s fabled_roots.npc.follow.dz 
