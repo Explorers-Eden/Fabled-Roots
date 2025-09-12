@@ -20,6 +20,8 @@ scoreboard objectives add fabled_roots.exp.class_ability dummy
 scoreboard objectives add fabled_roots.received_equip dummy
 scoreboard objectives add fabled_roots.bard.timer.active dummy
 scoreboard objectives add fabled_roots.bard.timer dummy
+scoreboard objectives add fabled_roots.scout.timer.active dummy
+scoreboard objectives add fabled_roots.scout.timer dummy
 scoreboard objectives add fabled_roots.scout.pos dummy
 scoreboard objectives add fabled_roots.exp.miner.coal_ore minecraft.mined:minecraft.coal_ore
 scoreboard objectives add fabled_roots.exp.miner.iron_ore minecraft.mined:minecraft.iron_ore

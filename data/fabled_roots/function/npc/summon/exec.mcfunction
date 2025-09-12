@@ -11,7 +11,8 @@ $execute unless data storage eden:temp fabled_roots.npc{profession:"none"} run s
         },\
     attributes:[\
         {id:"minecraft:scale",base:$(size)},\
-        {id:"minecraft:max_health",base:60}\
+        {id:"minecraft:max_health",base:60},\
+        {id:"minecraft:safe_fall_distance",base:3000}\
     ],\
     Health:60f,\
     CustomName:{translate:"entity.fabled_roots.descendant.$(race)"},\
@@ -30,7 +31,8 @@ $execute if data storage eden:temp fabled_roots.npc{profession:"none"} run summo
     Tags:["fabled_roots.npc.generic","fabled_roots.npc.mannequin"],\
     attributes:[\
         {id:"minecraft:scale",base:$(size)},\
-        {id:"minecraft:max_health",base:60}\
+        {id:"minecraft:max_health",base:60},\
+        {id:"minecraft:safe_fall_distance",base:3000}\
     ],\
     Health:60f,\
     CustomName:{translate:"entity.fabled_roots.descendant.$(race)"},\

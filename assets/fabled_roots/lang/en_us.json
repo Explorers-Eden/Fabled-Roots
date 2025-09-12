@@ -51,7 +51,7 @@
   "option.fabled_roots.cleric.tooltip.stats": "Traits:\n• Clears Poison, Slowness & Weakness effects\n• Gains extra Exp by consuming Potions and trading with Cleric Villagers",
   "option.fabled_roots.scout": "Scout",
   "option.fabled_roots.scout.tooltip.description": "Fast, sharp-eyed, and never lost—perfect for exploring what's ahead.",
-  "option.fabled_roots.scout.tooltip.stats": "Traits:\n• Waypoint Receive Range: 256 Blocks\n• Looking at entities through a Spyglass makes the targets glow and slows them down\n• Hostile Entities within an 8 Block radius glow\n• Gains extra Exp when hostile entities are within an 8 Block radius",
+  "option.fabled_roots.scout.tooltip.stats": "Traits:\n• Waypoint Receive Range: 256 Blocks\n• Looking at entities through a Spyglass shoots a Splash Potion with Glowing and Slowness effect every 10 seconds.\n• Hostile Entities within an 8 Block radius glow\n• Gains extra Exp when hostile entities are within an 8 Block radius",
   "option.fabled_roots.aetherian": "Aetherian",
   "option.fabled_roots.aetherian.tooltip.description": "Light-footed skyfolk who feel right at home up high and in the breeze.",
   "option.fabled_roots.aetherian.tooltip.stats": "Traits:\n• Height: 90-110%\n• 30 Blocks Safe Fall Distance\n• -3 Armor\n• Hits with Spears have a chance to shoot a Wind Charge\n• Strength & Luck Effect above Y-Level 200\nLocator Bar:\n• Transmit Range: 256 Blocks\n• Receive Range: 128 Blocks\nCrouch Ability: Slow Levitation",

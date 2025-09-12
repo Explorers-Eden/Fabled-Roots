@@ -1,4 +1,4 @@
-schedule function fabled_roots:npc/movement/init 2t
+schedule function fabled_roots:npc/movement/init 1t
 
 ##tag players
 execute as @a[gamemode=!spectator,tag=!fabled_roots.descendant.leader] at @s \

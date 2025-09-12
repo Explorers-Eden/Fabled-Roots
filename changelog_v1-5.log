@@ -1,4 +1,5 @@
 ## Changes:
+- Targeting an entity through a spyglass as a Scout now shoots a splash potion (Glow/Slow effect) instead of using a Raycast to detect which entity to affect. This should increase performance on lower end hardware.
 - Copper Weapons & Copper Horse Armor now use the Copper variant as base item
 - added Descendants (NPC Entities):
     - Descendants are passive
