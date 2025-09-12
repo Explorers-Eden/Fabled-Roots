@@ -203,18 +203,8 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:purpur_block",
-          "weight": 20,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 1,
-                "max": 3
-              }
-            }
-          ]
+          "name": "minecraft:powder_snow_bucket",
+          "weight": 20
         },
         {
           "type": "minecraft:item",
@@ -233,7 +223,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:end_stone",
+          "name": "minecraft:snow_block",
           "weight": 30,
           "functions": [
             {
@@ -248,7 +238,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:ender_pearl",
+          "name": "minecraft:packed_ice",
           "weight": 10,
           "functions": [
             {
@@ -263,7 +253,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:obsidian",
+          "name": "minecraft:ice",
           "weight": 20,
           "functions": [
             {
@@ -278,7 +268,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:chorus_flower",
+          "name": "minecraft:snow",
           "weight": 10,
           "functions": [
             {
@@ -293,17 +283,17 @@
         },
         {
           "type": "minecraft:loot_table",
-          "value": "fabled_roots:item/stone_scythe",
+          "value": "fabled_roots:item/stone_club",
           "weight": 15
         },
         {
           "type": "minecraft:loot_table",
-          "value": "fabled_roots:item/iron_scythe",
+          "value": "fabled_roots:item/iron_club",
           "weight": 10
         },
         {
           "type": "minecraft:loot_table",
-          "value": "fabled_roots:equipment/boots_of_roots",
+          "value": "fabled_roots:equipment/chestplate_of_roots",
           "weight": 10
         }
       ]

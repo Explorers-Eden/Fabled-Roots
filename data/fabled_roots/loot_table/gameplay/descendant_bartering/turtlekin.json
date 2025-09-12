@@ -10,7 +10,7 @@
             {
               "type": "minecraft:loot_table",
               "value": "fabled_roots:item/scroll",
-              "weight": 5,
+              "weight": 10,
               "conditions": [
                 {
                   "condition": "minecraft:entity_properties",
@@ -29,7 +29,7 @@
               "type": "minecraft:tag",
               "name": "fabled_roots:descendant_farmer_item",
               "expand": true,
-              "weight": 5,
+              "weight": 10,
               "conditions": [
                 {
                   "condition": "minecraft:entity_properties",
@@ -47,7 +47,7 @@
             {
               "type": "minecraft:item",
               "name": "minecraft:book",
-              "weight": 5,
+              "weight": 10,
               "functions": [
                 {
                   "function": "minecraft:enchant_randomly",
@@ -72,7 +72,7 @@
               "type": "minecraft:tag",
               "name": "fabled_roots:descendant_armorer_item",
               "expand": true,
-              "weight": 5,
+              "weight": 10,
               "conditions": [
                 {
                   "condition": "minecraft:entity_properties",
@@ -91,7 +91,7 @@
               "type": "minecraft:tag",
               "name": "fabled_roots:descendant_butcher_item",
               "expand": true,
-              "weight": 5,
+              "weight": 10,
               "conditions": [
                 {
                   "condition": "minecraft:entity_properties",
@@ -109,7 +109,7 @@
             {
               "type": "minecraft:loot_table",
               "value": "fabled_roots:pool/treasure_map",
-              "weight": 5,
+              "weight": 10,
               "conditions": [
                 {
                   "condition": "minecraft:entity_properties",
@@ -128,7 +128,7 @@
               "type": "minecraft:tag",
               "name": "fabled_roots:descendant_fisherman_item",
               "expand": true,
-              "weight": 5,
+              "weight": 10,
               "conditions": [
                 {
                   "condition": "minecraft:entity_properties",
@@ -147,7 +147,7 @@
               "type": "minecraft:tag",
               "name": "fabled_roots:descendant_fletcher_item",
               "expand": true,
-              "weight": 5,
+              "weight": 10,
               "conditions": [
                 {
                   "condition": "minecraft:entity_properties",
@@ -166,7 +166,7 @@
               "type": "minecraft:tag",
               "name": "fabled_roots:descendant_shepherd_item",
               "expand": true,
-              "weight": 5,
+              "weight": 10,
               "conditions": [
                 {
                   "condition": "minecraft:entity_properties",
@@ -184,7 +184,7 @@
             {
               "type": "minecraft:loot_table",
               "value": "fabled_roots:pool/wooden_weapon",
-              "weight": 5,
+              "weight": 10,
               "conditions": [
                 {
                   "condition": "minecraft:entity_properties",
@@ -200,6 +200,111 @@
               ]
             }
           ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:prismarine",
+          "weight": 20,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:emerald",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:kelp",
+          "weight": 30,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:prismarine_crystals",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:dark_prismarine",
+          "weight": 20,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:prismarine_shard",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/bundle_of_roots",
+          "weight": 15
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:turtle_scute",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:equipment/leggings_of_roots",
+          "weight": 10
         }
       ]
     }

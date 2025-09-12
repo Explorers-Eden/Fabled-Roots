@@ -2,17 +2,17 @@ schedule function fabled_roots:npc/movement/init 2t
 
 ##tag players
 execute as @a[gamemode=!spectator,tag=!fabled_roots.descendant.leader] at @s \
-    if items entity @s weapon.mainhand minecraft:lapis_lazuli \
+    if items entity @s weapon.* minecraft:lapis_lazuli \
     if entity @e[type=villager,tag=fabled_roots.npc.base,distance=..8] \
         run tag @s add fabled_roots.descendant.leader
 
 execute as @a[gamemode=!spectator,tag=fabled_roots.descendant.leader] at @s \
-    unless items entity @s weapon.mainhand minecraft:lapis_lazuli \
+    unless items entity @s weapon.* minecraft:lapis_lazuli \
     if entity @e[type=villager,tag=fabled_roots.npc.base,distance=..8] \
         run tag @s remove fabled_roots.descendant.leader
 
 execute as @a[gamemode=!spectator,tag=fabled_roots.descendant.leader] at @s \
-    if items entity @s weapon.mainhand minecraft:lapis_lazuli \
+    if items entity @s weapon.* minecraft:lapis_lazuli \
     unless entity @e[type=villager,tag=fabled_roots.npc.base,distance=..8] \
         run tag @s remove fabled_roots.descendant.leader
 
@@ -39,4 +39,4 @@ execute as @e[type=villager,tag=fabled_roots.npc.base,tag=!fabled_roots.descenda
     run function fabled_roots:npc/movement/default with entity @s data
 
 execute as @e[type=villager,tag=fabled_roots.npc.base,tag=fabled_roots.descendant.following] at @s \
-    run function fabled_roots:npc/movement/follow with entity @s data
+    run function fabled_roots:npc/movement/follow/init with entity @s data
