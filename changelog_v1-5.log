@@ -1,4 +1,5 @@
 ## Changes:
+- added new Enchanted Scroll enchantment: Decoy
 - Targeting an entity through a spyglass as a Scout now shoots a splash potion (Glow/Slow effect) instead of using a Raycast to detect which entity to affect. This should increase performance on lower end hardware.
 - Copper Weapons & Copper Horse Armor now use the Copper variant as base item
 - added Descendants (NPC Entities):
@@ -7,5 +8,8 @@
     - can be bartered with by throwing a Lapis Lazuli item (similar to Piglins)
     - holding a Lapis Lazuli item makes the nearest Descendant follow the player holding the item
     - spawn in Descendant Villages when it's generating
+- Added new Journals (findable in Descendant Villages):
+    - Title: New Horizons
+    - 5 Books per Race
 
 ## Fixes:

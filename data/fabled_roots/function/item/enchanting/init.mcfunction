@@ -27,3 +27,4 @@ execute as @a run function fabled_roots:item/enchanting/void_bloom
 execute as @a run function fabled_roots:item/enchanting/void_shot
 execute as @a run function fabled_roots:item/enchanting/warped_bloom
 execute as @a run function fabled_roots:item/enchanting/webbing
+execute as @a run function fabled_roots:item/enchanting/decoy

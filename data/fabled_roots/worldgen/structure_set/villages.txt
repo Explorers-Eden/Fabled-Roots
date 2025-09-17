@@ -1,0 +1,56 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 48,
+    "separation": 16,
+    "salt": 36137881,
+    "spread_type": "triangular",
+    "frequency": 1,
+    "exclusion_zone": {
+      "other_set": "fabled_roots:shelters",
+      "chunk_count": 10
+    }
+  },
+  "structures": [
+    {
+      "structure": "fabled_roots:village/dunesworn",
+      "weight": 1
+    },
+    {
+      "structure": "fabled_roots:village/endling",
+      "weight": 1
+    },
+    {
+      "structure": "fabled_roots:village/frostborne",
+      "weight": 1
+    },
+    {
+      "structure": "fabled_roots:village/moonshroud",
+      "weight": 1
+    },
+    {
+      "structure": "fabled_roots:village/netherian",
+      "weight": 1
+    },
+    {
+      "structure": "fabled_roots:village/oakhearted",
+      "weight": 1
+    },
+    {
+      "structure": "fabled_roots:village/orebringer",
+      "weight": 1
+    },
+    {
+      "structure": "fabled_roots:village/turtlekin",
+      "weight": 1
+    },
+    {
+      "structure": "fabled_roots:village/palehearted",
+      "weight": 1
+    },
+    {
+      "structure": "fabled_roots:village/aetherian",
+      "weight": 1
+    }
+  ]
+}

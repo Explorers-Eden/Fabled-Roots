@@ -1,0 +1,33 @@
+{
+    "name": "fabled_roots:village/endling/side_platform",
+    "fallback": "minecraft:empty",
+    "elements": [
+        {
+            "weight": 1,
+            "element": {
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element",
+                "location": "fabled_roots:village/endling/side_platform_1",
+                "processors": "minecraft:empty"
+            }
+        },
+        {
+            "weight": 1,
+            "element": {
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element",
+                "location": "fabled_roots:village/endling/side_platform_2",
+                "processors": "minecraft:empty"
+            }
+        },
+        {
+            "weight": 1,
+            "element": {
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element",
+                "location": "fabled_roots:village/endling/side_platform_3",
+                "processors": "minecraft:empty"
+            }
+        }
+    ]
+}

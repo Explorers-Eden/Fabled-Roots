@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:command",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/journal/new_horizons/dunesworn/day_1",
+          "weight": 40
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/journal/new_horizons/dunesworn/day_2",
+          "weight": 40
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/journal/new_horizons/dunesworn/day_3",
+          "weight": 40
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/journal/new_horizons/dunesworn/day_4",
+          "weight": 40
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:item/journal/new_horizons/dunesworn/day_5",
+          "weight": 40
+        }
+      ]
+    }
+  ]
+}

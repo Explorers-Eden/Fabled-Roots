@@ -54,6 +54,7 @@
     {"label": {"translate": "enchantment.fabled_roots.void_bloom"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 45"}},
     {"label": {"translate": "enchantment.fabled_roots.void_shot"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 46"}},
     {"label": {"translate": "enchantment.fabled_roots.warped_bloom"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 47"}},
-    {"label": {"translate": "enchantment.fabled_roots.webbing"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 48"}}
+    {"label": {"translate": "enchantment.fabled_roots.webbing"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 48"}},
+    {"label": {"translate": "enchantment.fabled_roots.decoy"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 52"}}
   ]
 }

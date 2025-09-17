@@ -1,0 +1,20 @@
+{
+  "biomes": "#fabled_roots:has_structure/aetherian",
+  "spawn_overrides": {},
+  "type": "minecraft:jigsaw",
+  "start_pool": "fabled_roots:village/aetherian/start",
+  "size": 16,
+  "step": "surface_structures",
+  "terrain_adaptation": "none",
+  "start_height": {
+      "type": "minecraft:uniform",
+      "min_inclusive": {
+        "absolute": 200
+      },
+        "max_inclusive": {
+        "absolute": 270
+      }
+    },
+  "max_distance_from_center": 116,
+  "use_expansion_hack": false
+}

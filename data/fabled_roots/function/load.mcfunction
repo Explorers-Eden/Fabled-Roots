@@ -23,6 +23,7 @@ scoreboard objectives add fabled_roots.bard.timer dummy
 scoreboard objectives add fabled_roots.scout.timer.active dummy
 scoreboard objectives add fabled_roots.scout.timer dummy
 scoreboard objectives add fabled_roots.scout.pos dummy
+scoreboard objectives add fabled_roots.decoy.timer dummy
 scoreboard objectives add fabled_roots.exp.miner.coal_ore minecraft.mined:minecraft.coal_ore
 scoreboard objectives add fabled_roots.exp.miner.iron_ore minecraft.mined:minecraft.iron_ore
 scoreboard objectives add fabled_roots.exp.miner.copper_ore minecraft.mined:minecraft.copper_ore
@@ -73,10 +74,14 @@ team add fabled_roots.endling {"bold":false,"color":"#5D3A9B","italic":false,"te
 team add fabled_roots.palehearted {"bold":false,"color":"#E8DADA","italic":false,"text":"Palehearted"}
 team add fabled_roots.aetherian {"bold":false,"color":"#a8fcff","italic":false,"text":"Aetherian"}
 team add fabled_roots.npc
+team add fabled_roots.decoy
 
 ##modify teams
 team modify fabled_roots.npc collisionRule pushOwnTeam
 team modify fabled_roots.npc nametagVisibility never
+
+team modify fabled_roots.decoy collisionRule never
+team modify fabled_roots.decoy nametagVisibility never
 
 team modify fabled_roots.frostborne friendlyFire false
 team modify fabled_roots.frostborne seeFriendlyInvisibles true

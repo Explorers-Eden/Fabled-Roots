@@ -29,6 +29,7 @@
                 "minecraft:custom_data": {
                   "fabled_roots": {
                     "item": "journal",
+                    "theme": "final_days",
                     "day": "11",
                     "race": "oakhearted"
                   }

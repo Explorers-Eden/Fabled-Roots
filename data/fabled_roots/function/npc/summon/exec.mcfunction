@@ -1,5 +1,6 @@
 $execute unless data storage eden:temp fabled_roots.npc{profession:"none"} run summon minecraft:mannequin ~ ~ ~ {\
     Tags:["fabled_roots.npc.generic","fabled_roots.npc.mannequin"],\
+    pose: "standing",\
     equipment:{\
         head:{\
             id:"minecraft:music_disc_5",\
@@ -29,6 +30,7 @@ $execute unless data storage eden:temp fabled_roots.npc{profession:"none"} run s
 
 $execute if data storage eden:temp fabled_roots.npc{profession:"none"} run summon minecraft:mannequin ~ ~ ~ {\
     Tags:["fabled_roots.npc.generic","fabled_roots.npc.mannequin"],\
+    pose: "standing",\
     attributes:[\
         {id:"minecraft:scale",base:$(size)},\
         {id:"minecraft:max_health",base:60},\

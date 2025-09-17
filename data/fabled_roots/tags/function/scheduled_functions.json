@@ -14,6 +14,7 @@
 		"fabled_roots:npc/movement/init",
 		"fabled_roots:npc/behavior/init",
 		"fabled_roots:npc/modify_age",
-		"fabled_roots:npc/summon_at_marker/init"
+		"fabled_roots:npc/summon_at_marker/init",
+		"fabled_roots:item/enchanted_scroll/decoy/scheduled"
 	]
 }
