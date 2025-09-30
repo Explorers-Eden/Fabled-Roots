@@ -215,6 +215,11 @@
         },
         {
           "type": "minecraft:loot_table",
+          "value": "fabled_roots:pool/journal/new_horizons/oakhearted",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:loot_table",
           "value": "fabled_roots:item/treasure_map/oakhearted",
           "weight": 1
         }

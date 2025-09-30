@@ -7,9 +7,11 @@
     - can't be bred
     - can be bartered with by throwing a Lapis Lazuli item (similar to Piglins)
     - holding a Lapis Lazuli item makes the nearest Descendant follow the player holding the item
-    - spawn in Descendant Villages when it's generating
-- Added new Journals (findable in Descendant Villages):
+    - spawn in Shelter Structures when it's generating
+- Added new Journals:
     - Title: New Horizons
     - 5 Books per Race
+- Orebringer Shelter now has Copper Lanterns instead of normal ones
+- Loot Tables of Shelter & Outpost structures now contain Lapis Lazuli instead of Emeralds and also have a chance for the new Journals
 
 ## Fixes:

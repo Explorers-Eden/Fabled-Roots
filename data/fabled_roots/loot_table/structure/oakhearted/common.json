@@ -97,7 +97,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:emerald",
+          "name": "minecraft:lapis_lazuli",
           "weight": 2
         },
         {
@@ -170,6 +170,11 @@
         {
           "type": "minecraft:loot_table",
           "value": "fabled_roots:pool/journal/final_days/oakhearted",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:pool/journal/new_horizons/oakhearted",
           "weight": 3
         },
         {
