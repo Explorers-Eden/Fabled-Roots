@@ -26,7 +26,203 @@
   },
   "columns": 3,
   "actions": [
-    {"label": {"translate": "item.fabled_roots.scroll"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 50"}},
-    {"label": {"translate": "item.fabled_roots.trial_key_of_roots"},"action": {"type": "run_command","command": "trigger fabled_roots.dialog_trigger.wiki set 51"}}
+    {
+      "label": [
+        {
+          "sprite": "fabled_roots:item/scroll"
+        },
+        " ",
+        {
+          "translate": "item.fabled_roots.scroll"
+        }
+      ],
+      "tooltip": {
+        "translate": "item.fabled_roots.scroll.description"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 50"
+      }
+    },
+    {
+      "label": [
+        {
+          "sprite": "fabled_roots:item/trial_key_of_roots"
+        },
+        " ",
+        {
+          "translate": "item.fabled_roots.trial_key_of_roots"
+        }
+      ],
+      "tooltip": {
+        "translate": "item.fabled_roots.trial_key_of_roots.description"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 51"
+      }
+    },
+    {
+      "label": [
+        {
+          "sprite": "fabled_roots:item/allay_shell"
+        },
+        " ",
+        {
+          "translate": "item.fabled_roots.allay_shell"
+        }
+      ],
+      "tooltip": {
+        "translate": "item.fabled_roots.allay_shell.description"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 53"
+      }
+    },
+    {
+      "label": [
+        {
+          "sprite": "fabled_roots:item/bee_shell"
+        },
+        " ",
+        {
+          "translate": "item.fabled_roots.bee_shell"
+        }
+      ],
+      "tooltip": {
+        "translate": "item.fabled_roots.bee_shell.description"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 54"
+      }
+    },
+    {
+      "label": [
+        {
+          "sprite": "fabled_roots:item/creaking_shell"
+        },
+        " ",
+        {
+          "translate": "item.fabled_roots.creaking_shell"
+        }
+      ],
+      "tooltip": {
+        "translate": "item.fabled_roots.creaking_shell.description"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 55"
+      }
+    },
+    {
+      "label": [
+        {
+          "sprite": "fabled_roots:item/enderman_shell"
+        },
+        " ",
+        {
+          "translate": "item.fabled_roots.enderman_shell"
+        }
+      ],
+      "tooltip": {
+        "translate": "item.fabled_roots.enderman_shell.description"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 56"
+      }
+    },
+    {
+      "label": [
+        {
+          "sprite": "fabled_roots:item/ghast_shell"
+        },
+        " ",
+        {
+          "translate": "item.fabled_roots.ghast_shell"
+        }
+      ],
+      "tooltip": {
+        "translate": "item.fabled_roots.ghast_shell.description"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 57"
+      }
+    },
+    {
+      "label": [
+        {
+          "sprite": "fabled_roots:item/husk_shell"
+        },
+        " ",
+        {
+          "translate": "item.fabled_roots.husk_shell"
+        }
+      ],
+      "tooltip": {
+        "translate": "item.fabled_roots.husk_shell.description"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 58"
+      }
+    },
+    {
+      "label": [
+        {
+          "sprite": "fabled_roots:item/iron_golem_shell"
+        },
+        " ",
+        {
+          "translate": "item.fabled_roots.iron_golem_shell"
+        }
+      ],
+      "tooltip": {
+        "translate": "item.fabled_roots.iron_golem_shell.description"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 59"
+      }
+    },
+    {
+      "label": [
+        {
+          "sprite": "fabled_roots:item/phantom_shell"
+        },
+        " ",
+        {
+          "translate": "item.fabled_roots.phantom_shell"
+        }
+      ],
+      "tooltip": {
+        "translate": "item.fabled_roots.phantom_shell.description"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 60"
+      }
+    },
+    {
+      "label": [
+        {
+          "sprite": "fabled_roots:item/stray_shell"
+        },
+        " ",
+        {
+          "translate": "item.fabled_roots.stray_shell"
+        }
+      ],
+      "tooltip": {
+        "translate": "item.fabled_roots.stray_shell.description"
+      },
+      "action": {
+        "type": "run_command",
+        "command": "trigger fabled_roots.dialog_trigger.wiki set 61"
+      }
+    }
   ]
 }

@@ -10,7 +10,6 @@ execute as @s[scores={fabled_roots.dialog_trigger.wiki=7}] at @s run return run 
 execute as @s[scores={fabled_roots.dialog_trigger.wiki=8}] at @s run return run function fabled_roots:wiki/class_msg {class:"bard"}
 execute as @s[scores={fabled_roots.dialog_trigger.wiki=9}] at @s run return run function fabled_roots:wiki/class_msg {class:"cleric"}
 execute as @s[scores={fabled_roots.dialog_trigger.wiki=10}] at @s run return run function fabled_roots:wiki/class_msg {class:"scout"}
-
 execute as @s[scores={fabled_roots.dialog_trigger.wiki=11}] at @s run return run function fabled_roots:wiki/race_msg {race:"aetherian",hex_color:"#a8fcff"}
 execute as @s[scores={fabled_roots.dialog_trigger.wiki=12}] at @s run return run function fabled_roots:wiki/race_msg {race:"dunesworn",hex_color:"#C2A76D"}
 execute as @s[scores={fabled_roots.dialog_trigger.wiki=13}] at @s run return run function fabled_roots:wiki/race_msg {race:"endling",hex_color:"#5D3A9B"}
@@ -21,7 +20,6 @@ execute as @s[scores={fabled_roots.dialog_trigger.wiki=17}] at @s run return run
 execute as @s[scores={fabled_roots.dialog_trigger.wiki=18}] at @s run return run function fabled_roots:wiki/race_msg {race:"orebringer",hex_color:"#857A6F"}
 execute as @s[scores={fabled_roots.dialog_trigger.wiki=19}] at @s run return run function fabled_roots:wiki/race_msg {race:"palehearted",hex_color:"#E8DADA"}
 execute as @s[scores={fabled_roots.dialog_trigger.wiki=20}] at @s run return run function fabled_roots:wiki/race_msg {race:"turtlekin",hex_color:"#3C92A4"}
-
 execute as @s[scores={fabled_roots.dialog_trigger.wiki=21}] at @s run return run function fabled_roots:wiki/enchantment_msg {enchantment:"atlantic_shot"}
 execute as @s[scores={fabled_roots.dialog_trigger.wiki=22}] at @s run return run function fabled_roots:wiki/enchantment_msg {enchantment:"breeze_shot"}
 execute as @s[scores={fabled_roots.dialog_trigger.wiki=23}] at @s run return run function fabled_roots:wiki/enchantment_msg {enchantment:"cold_bloom"}
@@ -51,7 +49,15 @@ execute as @s[scores={fabled_roots.dialog_trigger.wiki=46}] at @s run return run
 execute as @s[scores={fabled_roots.dialog_trigger.wiki=47}] at @s run return run function fabled_roots:wiki/enchantment_msg {enchantment:"warped_bloom"}
 execute as @s[scores={fabled_roots.dialog_trigger.wiki=48}] at @s run return run function fabled_roots:wiki/enchantment_msg {enchantment:"webbing"}
 execute as @s[scores={fabled_roots.dialog_trigger.wiki=49}] at @s run return run function fabled_roots:wiki/enchantment_msg {enchantment:"lumos"}
-execute as @s[scores={fabled_roots.dialog_trigger.wiki=52}] at @s run return run function fabled_roots:wiki/enchantment_msg {enchantment:"decoy"}
-
 execute as @s[scores={fabled_roots.dialog_trigger.wiki=50}] at @s run return run function fabled_roots:wiki/item_msg {item:"scroll"}
 execute as @s[scores={fabled_roots.dialog_trigger.wiki=51}] at @s run return run function fabled_roots:wiki/item_msg {item:"trial_key_of_roots"}
+execute as @s[scores={fabled_roots.dialog_trigger.wiki=52}] at @s run return run function fabled_roots:wiki/enchantment_msg {enchantment:"decoy"}
+execute as @s[scores={fabled_roots.dialog_trigger.wiki=53}] at @s run return run function fabled_roots:wiki/item_msg {item:"allay_shell"}
+execute as @s[scores={fabled_roots.dialog_trigger.wiki=54}] at @s run return run function fabled_roots:wiki/item_msg {item:"bee_shell"}
+execute as @s[scores={fabled_roots.dialog_trigger.wiki=55}] at @s run return run function fabled_roots:wiki/item_msg {item:"creaking_shell"}
+execute as @s[scores={fabled_roots.dialog_trigger.wiki=56}] at @s run return run function fabled_roots:wiki/item_msg {item:"enderman_shell"}
+execute as @s[scores={fabled_roots.dialog_trigger.wiki=57}] at @s run return run function fabled_roots:wiki/item_msg {item:"ghast_shell"}
+execute as @s[scores={fabled_roots.dialog_trigger.wiki=58}] at @s run return run function fabled_roots:wiki/item_msg {item:"husk_shell"}
+execute as @s[scores={fabled_roots.dialog_trigger.wiki=59}] at @s run return run function fabled_roots:wiki/item_msg {item:"iron_golem_shell"}
+execute as @s[scores={fabled_roots.dialog_trigger.wiki=60}] at @s run return run function fabled_roots:wiki/item_msg {item:"phantom_shell"}
+execute as @s[scores={fabled_roots.dialog_trigger.wiki=61}] at @s run return run function fabled_roots:wiki/item_msg {item:"stray_shell"}

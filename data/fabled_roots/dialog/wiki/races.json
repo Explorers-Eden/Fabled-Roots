@@ -27,90 +27,270 @@
   "columns": 2,
   "actions": [
     {
-      "label": {
-        "translate": "option.fabled_roots.aetherian"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:item/glowstone_dust"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.aetherian"
+        }
+      ],
+      "tooltip": [
+        {
+          "translate": "option.fabled_roots.aetherian.tooltip.description"
+        },
+        {
+          "text": "\n\n"
+        },
+        {
+          "translate": "option.fabled_roots.aetherian.tooltip.stats",
+          "color": "gray"
+        }
+      ],
        "action": {
         "type": "run_command",
         "command": "trigger fabled_roots.dialog_trigger.wiki set 11"
       }
     },
     {
-      "label": {
-        "translate": "option.fabled_roots.dunesworn"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:item/arms_up_pottery_sherd"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.dunesworn"
+        }
+      ],
+      "tooltip": [
+        {
+          "translate": "option.fabled_roots.dunesworn.tooltip.description"
+        },
+        {
+          "text": "\n\n"
+        },
+        {
+          "translate": "option.fabled_roots.dunesworn.tooltip.stats",
+          "color": "gray"
+        }
+      ],
        "action": {
         "type": "run_command",
         "command": "trigger fabled_roots.dialog_trigger.wiki set 12"
       }
     },
     {
-      "label": {
-        "translate": "option.fabled_roots.endling"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:item/ender_eye"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.endling"
+        }
+      ],
+      "tooltip": [
+        {
+          "translate": "option.fabled_roots.endling.tooltip.description"
+        },
+        {
+          "text": "\n\n"
+        },
+        {
+          "translate": "option.fabled_roots.endling.tooltip.stats",
+          "color": "gray"
+        }
+      ],
        "action": {
         "type": "run_command",
         "command": "trigger fabled_roots.dialog_trigger.wiki set 13"
       }
     },
     {
-      "label": {
-        "translate": "option.fabled_roots.frostborne"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:item/snowball"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.frostborne"
+        }
+      ],
+      "tooltip": [
+        {
+          "translate": "option.fabled_roots.frostborne.tooltip.description"
+        },
+        {
+          "text": "\n\n"
+        },
+        {
+          "translate": "option.fabled_roots.frostborne.tooltip.stats",
+          "color": "gray"
+        }
+      ],
        "action": {
         "type": "run_command",
         "command": "trigger fabled_roots.dialog_trigger.wiki set 14"
       }
     },
     {
-      "label": {
-        "translate": "option.fabled_roots.moonshroud"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:item/soul_lantern"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.moonshroud"
+        }
+      ],
+      "tooltip": [
+        {
+          "translate": "option.fabled_roots.moonshroud.tooltip.description"
+        },
+        {
+          "text": "\n\n"
+        },
+        {
+          "translate": "option.fabled_roots.moonshroud.tooltip.stats",
+          "color": "gray"
+        }
+      ],
        "action": {
         "type": "run_command",
         "command": "trigger fabled_roots.dialog_trigger.wiki set 15"
       }
     },
     {
-      "label": {
-        "translate": "option.fabled_roots.netherian"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:item/fire_charge"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.netherian"
+        }
+      ],
+      "tooltip": [
+        {
+          "translate": "option.fabled_roots.netherian.tooltip.description"
+        },
+        {
+          "text": "\n\n"
+        },
+        {
+          "translate": "option.fabled_roots.netherian.tooltip.stats",
+          "color": "gray"
+        }
+      ],
        "action": {
         "type": "run_command",
         "command": "trigger fabled_roots.dialog_trigger.wiki set 16"
       }
     },
     {
-      "label": {
-        "translate": "option.fabled_roots.oakhearted"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:block/oak_sapling"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.oakhearted"
+        }
+      ],
+      "tooltip": [
+        {
+          "translate": "option.fabled_roots.oakhearted.tooltip.description"
+        },
+        {
+          "text": "\n\n"
+        },
+        {
+          "translate": "option.fabled_roots.oakhearted.tooltip.stats",
+          "color": "gray"
+        }
+      ],
        "action": {
         "type": "run_command",
         "command": "trigger fabled_roots.dialog_trigger.wiki set 17"
       }
     },
     {
-      "label": {
-        "translate": "option.fabled_roots.orebringer"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:item/raw_iron"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.orebringer"
+        }
+      ],
+      "tooltip": [
+        {
+          "translate": "option.fabled_roots.orebringer.tooltip.description"
+        },
+        {
+          "text": "\n\n"
+        },
+        {
+          "translate": "option.fabled_roots.orebringer.tooltip.stats",
+          "color": "gray"
+        }
+      ],
        "action": {
         "type": "run_command",
         "command": "trigger fabled_roots.dialog_trigger.wiki set 18"
       }
     },
     {
-      "label": {
-        "translate": "option.fabled_roots.palehearted"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:block/pale_oak_sapling"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.palehearted"
+        }
+      ],
+      "tooltip": [
+        {
+          "translate": "option.fabled_roots.palehearted.tooltip.description"
+        },
+        {
+          "text": "\n\n"
+        },
+        {
+          "translate": "option.fabled_roots.palehearted.tooltip.stats",
+          "color": "gray"
+        }
+      ],
        "action": {
         "type": "run_command",
         "command": "trigger fabled_roots.dialog_trigger.wiki set 19"
       }
     },
     {
-      "label": {
-        "translate": "option.fabled_roots.turtlekin"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:item/heart_of_the_sea"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.turtlekin"
+        }
+      ],
+      "tooltip": [
+        {
+          "translate": "option.fabled_roots.turtlekin.tooltip.description"
+        },
+        {
+          "text": "\n\n"
+        },
+        {
+          "translate": "option.fabled_roots.turtlekin.tooltip.stats",
+          "color": "gray"
+        }
+      ],
        "action": {
         "type": "run_command",
         "command": "trigger fabled_roots.dialog_trigger.wiki set 20"

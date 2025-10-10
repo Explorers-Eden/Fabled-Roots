@@ -19,9 +19,15 @@
   "columns": 2,
   "actions": [
     {
-      "label": {
-        "translate": "option.fabled_roots.aetherian"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:item/glowstone_dust"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.aetherian"
+        }
+      ],
       "tooltip": [
         {
           "translate": "option.fabled_roots.aetherian.tooltip.description"
@@ -40,9 +46,15 @@
       }
     },
     {
-      "label": {
-        "translate": "option.fabled_roots.dunesworn"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:item/arms_up_pottery_sherd"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.dunesworn"
+        }
+      ],
       "tooltip": [
         {
           "translate": "option.fabled_roots.dunesworn.tooltip.description"
@@ -61,9 +73,15 @@
       }
     },
     {
-      "label": {
-        "translate": "option.fabled_roots.endling"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:item/ender_eye"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.endling"
+        }
+      ],
       "tooltip": [
         {
           "translate": "option.fabled_roots.endling.tooltip.description"
@@ -82,9 +100,15 @@
       }
     },
     {
-      "label": {
-        "translate": "option.fabled_roots.frostborne"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:item/snowball"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.frostborne"
+        }
+      ],
       "tooltip": [
         {
           "translate": "option.fabled_roots.frostborne.tooltip.description"
@@ -103,9 +127,15 @@
       }
     },
     {
-      "label": {
-        "translate": "option.fabled_roots.moonshroud"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:item/soul_lantern"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.moonshroud"
+        }
+      ],
       "tooltip": [
         {
           "translate": "option.fabled_roots.moonshroud.tooltip.description"
@@ -124,9 +154,15 @@
       }
     },
     {
-      "label": {
-        "translate": "option.fabled_roots.netherian"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:item/fire_charge"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.netherian"
+        }
+      ],
       "tooltip": [
         {
           "translate": "option.fabled_roots.netherian.tooltip.description"
@@ -145,9 +181,15 @@
       }
     },
     {
-      "label": {
-        "translate": "option.fabled_roots.oakhearted"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:block/oak_sapling"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.oakhearted"
+        }
+      ],
       "tooltip": [
         {
           "translate": "option.fabled_roots.oakhearted.tooltip.description"
@@ -166,9 +208,15 @@
       }
     },
     {
-      "label": {
-        "translate": "option.fabled_roots.orebringer"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:item/raw_iron"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.orebringer"
+        }
+      ],
       "tooltip": [
         {
           "translate": "option.fabled_roots.orebringer.tooltip.description"
@@ -187,9 +235,15 @@
       }
     },
     {
-      "label": {
-        "translate": "option.fabled_roots.palehearted"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:block/pale_oak_sapling"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.palehearted"
+        }
+      ],
       "tooltip": [
         {
           "translate": "option.fabled_roots.palehearted.tooltip.description"
@@ -208,9 +262,15 @@
       }
     },
     {
-      "label": {
-        "translate": "option.fabled_roots.turtlekin"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:item/heart_of_the_sea"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.turtlekin"
+        }
+      ],
       "tooltip": [
         {
           "translate": "option.fabled_roots.turtlekin.tooltip.description"

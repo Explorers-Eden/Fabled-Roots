@@ -1,0 +1,7 @@
+## Changes:
+- Races and Classes now have a leading symbol in the wiki and selection screens
+- Items in the wiki now show the item sprite in front of the name
+- Info texts in the wiki are now also readable as tooltips
+- Added Infos about Shell Helmets to the item wiki
+
+## Fixes:

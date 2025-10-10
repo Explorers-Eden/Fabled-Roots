@@ -18,9 +18,15 @@
   "columns": 2,
   "actions": [
     {
-      "label": {
-        "translate": "option.fabled_roots.builder"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:item/bundle"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.builder"
+        }
+      ],
       "tooltip": [
         {
           "translate": "option.fabled_roots.builder.tooltip.description"
@@ -39,9 +45,15 @@
       }
     },
     {
-      "label": {
-        "translate": "option.fabled_roots.survivor"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:item/water_bucket"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.survivor"
+        }
+      ],
       "tooltip": [
         {
           "translate": "option.fabled_roots.survivor.tooltip.description"
@@ -60,9 +72,15 @@
       }
     },
     {
-      "label": {
-        "translate": "option.fabled_roots.miner"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:item/stone_pickaxe"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.miner"
+        }
+      ],
       "tooltip": [
         {
           "translate": "option.fabled_roots.miner.tooltip.description"
@@ -81,9 +99,15 @@
       }
     },
     {
-      "label": {
-        "translate": "option.fabled_roots.rancher"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:item/lead"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.rancher"
+        }
+      ],
       "tooltip": [
         {
           "translate": "option.fabled_roots.rancher.tooltip.description"
@@ -102,9 +126,15 @@
       }
     },
     {
-      "label": {
-        "translate": "option.fabled_roots.archer"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:item/bow"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.archer"
+        }
+      ],
       "tooltip": [
         {
           "translate": "option.fabled_roots.archer.tooltip.description"
@@ -123,9 +153,15 @@
       }
     },
     {
-      "label": {
-        "translate": "option.fabled_roots.fighter"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:item/golden_sword"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.fighter"
+        }
+      ],
       "tooltip": [
         {
           "translate": "option.fabled_roots.fighter.tooltip.description"
@@ -144,9 +180,15 @@
       }
     },
     {
-      "label": {
-        "translate": "option.fabled_roots.hermit"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:item/cooked_chicken"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.hermit"
+        }
+      ],
       "tooltip": [
         {
           "translate": "option.fabled_roots.hermit.tooltip.description"
@@ -165,9 +207,15 @@
       }
     },
     {
-      "label": {
-        "translate": "option.fabled_roots.bard"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:item/goat_horn"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.bard"
+        }
+      ],
       "tooltip": [
         {
           "translate": "option.fabled_roots.bard.tooltip.description"
@@ -186,9 +234,15 @@
       }
     },
     {
-      "label": {
-        "translate": "option.fabled_roots.cleric"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:item/potion"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.cleric"
+        }
+      ],
       "tooltip": [
         {
           "translate": "option.fabled_roots.cleric.tooltip.description"
@@ -207,9 +261,15 @@
       }
     },
     {
-      "label": {
-        "translate": "option.fabled_roots.scout"
-      },
+      "label": [
+        {
+          "sprite": "minecraft:item/spyglass"
+        },
+        " ",
+        {
+          "translate": "option.fabled_roots.scout"
+        }
+      ],
       "tooltip": [
         {
           "translate": "option.fabled_roots.scout.tooltip.description"
