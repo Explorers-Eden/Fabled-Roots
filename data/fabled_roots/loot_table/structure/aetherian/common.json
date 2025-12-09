@@ -142,12 +142,12 @@
           "value": "fabled_roots:equipment/harness_of_roots"
         },
         {
-          "type": "minecraft:loot_table",
-          "value": "fabled_roots:item/stone_spear"
+          "type": "minecraft:item",
+          "name": "minecraft:stone_spear"
         },
         {
-          "type": "minecraft:loot_table",
-          "value": "fabled_roots:item/wooden_spear"
+          "type": "minecraft:item",
+          "name": "minecraft:wooden_spear"
         },
         {
           "type": "minecraft:empty",

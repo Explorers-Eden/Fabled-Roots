@@ -35,8 +35,8 @@
           "weight": 20
         },
         {
-          "type": "minecraft:loot_table",
-          "value": "fabled_roots:item/iron_spear",
+          "type": "minecraft:item",
+          "name": "minecraft:iron_spear",
           "weight": 20
         },
         {

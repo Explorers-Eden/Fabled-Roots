@@ -27,274 +27,285 @@
   "columns": 2,
   "actions": [
     {
-      "label": [
-        {
-          "sprite": "minecraft:item/bundle"
-        },
-        " ",
-        {
-          "translate": "option.fabled_roots.builder"
-        }
-      ],
-      "tooltip": [
-        {
-          "translate": "option.fabled_roots.builder.tooltip.description"
-        },
-        {
-          "text": "\n\n"
-        },
-        {
-          "translate": "option.fabled_roots.builder.tooltip.stats",
-          "color": "gray"
-        }
-      ],
-       "action": {
-        "type": "run_command",
-        "command": "trigger fabled_roots.dialog_trigger.wiki set 1"
-      }
-    },
+  "label": [
     {
-      "label": [
-        {
-          "sprite": "minecraft:item/water_bucket"
-        },
-        " ",
-        {
-          "translate": "option.fabled_roots.survivor"
-        }
-      ],
-      "tooltip": [
-        {
-          "translate": "option.fabled_roots.survivor.tooltip.description"
-        },
-        {
-          "text": "\n\n"
-        },
-        {
-          "translate": "option.fabled_roots.survivor.tooltip.stats",
-          "color": "gray"
-        }
-      ],
-       "action": {
-        "type": "run_command",
-        "command": "trigger fabled_roots.dialog_trigger.wiki set 2"
-      }
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/bundle"
     },
+    " ",
     {
-      "label": [
-        {
-          "sprite": "minecraft:item/stone_pickaxe"
-        },
-        " ",
-        {
-          "translate": "option.fabled_roots.miner"
-        }
-      ],
-      "tooltip": [
-        {
-          "translate": "option.fabled_roots.miner.tooltip.description"
-        },
-        {
-          "text": "\n\n"
-        },
-        {
-          "translate": "option.fabled_roots.miner.tooltip.stats",
-          "color": "gray"
-        }
-      ],
-       "action": {
-        "type": "run_command",
-        "command": "trigger fabled_roots.dialog_trigger.wiki set 3"
-      }
-    },
-    {
-      "label": [
-        {
-          "sprite": "minecraft:item/lead"
-        },
-        " ",
-        {
-          "translate": "option.fabled_roots.rancher"
-        }
-      ],
-      "tooltip": [
-        {
-          "translate": "option.fabled_roots.rancher.tooltip.description"
-        },
-        {
-          "text": "\n\n"
-        },
-        {
-          "translate": "option.fabled_roots.rancher.tooltip.stats",
-          "color": "gray"
-        }
-      ],
-       "action": {
-        "type": "run_command",
-        "command": "trigger fabled_roots.dialog_trigger.wiki set 4"
-      }
-    },
-    {
-      "label": [
-        {
-          "sprite": "minecraft:item/bow"
-        },
-        " ",
-        {
-          "translate": "option.fabled_roots.archer"
-        }
-      ],
-      "tooltip": [
-        {
-          "translate": "option.fabled_roots.archer.tooltip.description"
-        },
-        {
-          "text": "\n\n"
-        },
-        {
-          "translate": "option.fabled_roots.archer.tooltip.stats",
-          "color": "gray"
-        }
-      ],
-       "action": {
-        "type": "run_command",
-        "command": "trigger fabled_roots.dialog_trigger.wiki set 5"
-      }
-    },
-    {
-      "label": [
-        {
-          "sprite": "minecraft:item/golden_sword"
-        },
-        " ",
-        {
-          "translate": "option.fabled_roots.fighter"
-        }
-      ],
-      "tooltip": [
-        {
-          "translate": "option.fabled_roots.fighter.tooltip.description"
-        },
-        {
-          "text": "\n\n"
-        },
-        {
-          "translate": "option.fabled_roots.fighter.tooltip.stats",
-          "color": "gray"
-        }
-      ],
-       "action": {
-        "type": "run_command",
-        "command": "trigger fabled_roots.dialog_trigger.wiki set 6"
-      }
-    },
-    {
-      "label": [
-        {
-          "sprite": "minecraft:item/cooked_chicken"
-        },
-        " ",
-        {
-          "translate": "option.fabled_roots.hermit"
-        }
-      ],
-      "tooltip": [
-        {
-          "translate": "option.fabled_roots.hermit.tooltip.description"
-        },
-        {
-          "text": "\n\n"
-        },
-        {
-          "translate": "option.fabled_roots.hermit.tooltip.stats",
-          "color": "gray"
-        }
-      ],
-       "action": {
-        "type": "run_command",
-        "command": "trigger fabled_roots.dialog_trigger.wiki set 7"
-      }
-    },
-    {
-      "label": [
-        {
-          "sprite": "minecraft:item/goat_horn"
-        },
-        " ",
-        {
-          "translate": "option.fabled_roots.bard"
-        }
-      ],
-      "tooltip": [
-        {
-          "translate": "option.fabled_roots.bard.tooltip.description"
-        },
-        {
-          "text": "\n\n"
-        },
-        {
-          "translate": "option.fabled_roots.bard.tooltip.stats",
-          "color": "gray"
-        }
-      ],
-       "action": {
-        "type": "run_command",
-        "command": "trigger fabled_roots.dialog_trigger.wiki set 8"
-      }
-    },
-    {
-      "label": [
-        {
-          "sprite": "minecraft:item/potion"
-        },
-        " ",
-        {
-          "translate": "option.fabled_roots.cleric"
-        }
-      ],
-      "tooltip": [
-        {
-          "translate": "option.fabled_roots.cleric.tooltip.description"
-        },
-        {
-          "text": "\n\n"
-        },
-        {
-          "translate": "option.fabled_roots.cleric.tooltip.stats",
-          "color": "gray"
-        }
-      ],
-       "action": {
-        "type": "run_command",
-        "command": "trigger fabled_roots.dialog_trigger.wiki set 9"
-      }
-    },
-    {
-      "label": [
-        {
-          "sprite": "minecraft:item/spyglass"
-        },
-        " ",
-        {
-          "translate": "option.fabled_roots.scout"
-        }
-      ],
-      "tooltip": [
-        {
-          "translate": "option.fabled_roots.scout.tooltip.description"
-        },
-        {
-          "text": "\n\n"
-        },
-        {
-          "translate": "option.fabled_roots.scout.tooltip.stats",
-          "color": "gray"
-        }
-      ],
-       "action": {
-        "type": "run_command",
-        "command": "trigger fabled_roots.dialog_trigger.wiki set 10"
-      }
+      "translate": "option.fabled_roots.builder"
     }
+  ],
+  "tooltip": [
+    {
+      "translate": "option.fabled_roots.builder.tooltip.description"
+    },
+    {
+      "text": "\n\n"
+    },
+    {
+      "translate": "option.fabled_roots.builder.tooltip.stats",
+      "color": "gray"
+    }
+  ],
+  "action": {
+    "type": "run_command",
+    "command": "trigger fabled_roots.dialog_trigger.wiki set 1"
+  }
+},
+{
+  "label": [
+    {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/water_bucket"
+    },
+    " ",
+    {
+      "translate": "option.fabled_roots.survivor"
+    }
+  ],
+  "tooltip": [
+    {
+      "translate": "option.fabled_roots.survivor.tooltip.description"
+    },
+    {
+      "text": "\n\n"
+    },
+    {
+      "translate": "option.fabled_roots.survivor.tooltip.stats",
+      "color": "gray"
+    }
+  ],
+  "action": {
+    "type": "run_command",
+    "command": "trigger fabled_roots.dialog_trigger.wiki set 2"
+  }
+},
+{
+  "label": [
+    {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/stone_pickaxe"
+    },
+    " ",
+    {
+      "translate": "option.fabled_roots.miner"
+    }
+  ],
+  "tooltip": [
+    {
+      "translate": "option.fabled_roots.miner.tooltip.description"
+    },
+    {
+      "text": "\n\n"
+    },
+    {
+      "translate": "option.fabled_roots.miner.tooltip.stats",
+      "color": "gray"
+    }
+  ],
+  "action": {
+    "type": "run_command",
+    "command": "trigger fabled_roots.dialog_trigger.wiki set 3"
+  }
+},
+{
+  "label": [
+    {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/lead"
+    },
+    " ",
+    {
+      "translate": "option.fabled_roots.rancher"
+    }
+  ],
+  "tooltip": [
+    {
+      "translate": "option.fabled_roots.rancher.tooltip.description"
+    },
+    {
+      "text": "\n\n"
+    },
+    {
+      "translate": "option.fabled_roots.rancher.tooltip.stats",
+      "color": "gray"
+    }
+  ],
+  "action": {
+    "type": "run_command",
+    "command": "trigger fabled_roots.dialog_trigger.wiki set 4"
+  }
+},
+{
+  "label": [
+    {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/bow"
+    },
+    " ",
+    {
+      "translate": "option.fabled_roots.archer"
+    }
+  ],
+  "tooltip": [
+    {
+      "translate": "option.fabled_roots.archer.tooltip.description"
+    },
+    {
+      "text": "\n\n"
+    },
+    {
+      "translate": "option.fabled_roots.archer.tooltip.stats",
+      "color": "gray"
+    }
+  ],
+  "action": {
+    "type": "run_command",
+    "command": "trigger fabled_roots.dialog_trigger.wiki set 5"
+  }
+},
+{
+  "label": [
+    {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/golden_sword"
+    },
+    " ",
+    {
+      "translate": "option.fabled_roots.fighter"
+    }
+  ],
+  "tooltip": [
+    {
+      "translate": "option.fabled_roots.fighter.tooltip.description"
+    },
+    {
+      "text": "\n\n"
+    },
+    {
+      "translate": "option.fabled_roots.fighter.tooltip.stats",
+      "color": "gray"
+    }
+  ],
+  "action": {
+    "type": "run_command",
+    "command": "trigger fabled_roots.dialog_trigger.wiki set 6"
+  }
+},
+{
+  "label": [
+    {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/cooked_chicken"
+    },
+    " ",
+    {
+      "translate": "option.fabled_roots.hermit"
+    }
+  ],
+  "tooltip": [
+    {
+      "translate": "option.fabled_roots.hermit.tooltip.description"
+    },
+    {
+      "text": "\n\n"
+    },
+    {
+      "translate": "option.fabled_roots.hermit.tooltip.stats",
+      "color": "gray"
+    }
+  ],
+  "action": {
+    "type": "run_command",
+    "command": "trigger fabled_roots.dialog_trigger.wiki set 7"
+  }
+},
+{
+  "label": [
+    {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/goat_horn"
+    },
+    " ",
+    {
+      "translate": "option.fabled_roots.bard"
+    }
+  ],
+  "tooltip": [
+    {
+      "translate": "option.fabled_roots.bard.tooltip.description"
+    },
+    {
+      "text": "\n\n"
+    },
+    {
+      "translate": "option.fabled_roots.bard.tooltip.stats",
+      "color": "gray"
+    }
+  ],
+  "action": {
+    "type": "run_command",
+    "command": "trigger fabled_roots.dialog_trigger.wiki set 8"
+  }
+},
+{
+  "label": [
+    {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/potion"
+    },
+    " ",
+    {
+      "translate": "option.fabled_roots.cleric"
+    }
+  ],
+  "tooltip": [
+    {
+      "translate": "option.fabled_roots.cleric.tooltip.description"
+    },
+    {
+      "text": "\n\n"
+    },
+    {
+      "translate": "option.fabled_roots.cleric.tooltip.stats",
+      "color": "gray"
+    }
+  ],
+  "action": {
+    "type": "run_command",
+    "command": "trigger fabled_roots.dialog_trigger.wiki set 9"
+  }
+},
+{
+  "label": [
+    {
+      "atlas": "minecraft:items",
+      "sprite": "minecraft:item/spyglass"
+    },
+    " ",
+    {
+      "translate": "option.fabled_roots.scout"
+    }
+  ],
+  "tooltip": [
+    {
+      "translate": "option.fabled_roots.scout.tooltip.description"
+    },
+    {
+      "text": "\n\n"
+    },
+    {
+      "translate": "option.fabled_roots.scout.tooltip.stats",
+      "color": "gray"
+    }
+  ],
+  "action": {
+    "type": "run_command",
+    "command": "trigger fabled_roots.dialog_trigger.wiki set 10"
+  }
+}
+
   ]
 }

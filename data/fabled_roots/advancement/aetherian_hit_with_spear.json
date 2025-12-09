@@ -7,14 +7,7 @@
           "nbt": "{Tags:[\"fabled_roots.aetherian\"]}",
           "slots": {
             "weapon.mainhand": {
-              "items": "#minecraft:swords",
-              "predicates": {
-                "minecraft:custom_data": {
-                  "fabled_roots": {
-                    "type": "spear"
-                  }
-                }
-              }
+              "items": "#minecraft:spears"
             }
           }
         }

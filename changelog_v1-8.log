@@ -1,0 +1,9 @@
+### *Due to some naming changes in this game drop the default values will be applied by default with this version*
+
+## Changes:
+- Removed previous (custom) Spear and replaced it with the new vanilla one
+- First time join message is now a dialog. The chat message was not noticed by many users
+- Enchantments are now also listed in our [Enchantment Wiki](https://enchantments.explorerseden.eu/)
+
+## Fixes:
+- Turtlekin Shelter Structure applying waterlogging by default when generating causing Turtlekin Descendants to drown

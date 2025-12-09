@@ -1,13 +1,13 @@
 ##add default values
 execute unless data storage eden:settings fabled_roots run function fabled_roots:default_values
-execute unless data storage eden:datapack fabled_roots{version:"1.71"} run data modify storage eden:settings fabled_roots merge value {prefix_initial:false}
+execute unless data storage eden:datapack fabled_roots{version:"1.8"} run function fabled_roots:default_values
 
 ##forceload spawn chunk in case it isn't loaded
 forceload add 0 0
 
 ##gamerules
-gamerule locatorBar true
-gamerule showDeathMessages false
+gamerule locator_bar true
+gamerule show_death_messages false
 
 ##add default scoreboard
 scoreboard objectives add fabled_roots.technical dummy
@@ -81,4 +81,4 @@ team modify fabled_roots.decoy collisionRule never
 team modify fabled_roots.decoy nametagVisibility never
 
 ##set data pack version
-data modify storage eden:datapack fabled_roots.version set value "1.71"
+data modify storage eden:datapack fabled_roots.version set value "1.8"

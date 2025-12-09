@@ -1,11 +1,4 @@
 scoreboard players set $datapack_info fabled_roots.technical 1
 
 execute at @s run playsound minecraft:entity.chicken.egg neutral @s ~ ~ ~ .6 2
-tellraw @s [\
-    {"bold":false,"color":"white","italic":false,"text":"Thank you for giving "},\
-    {"bold":true,"color":"gold","italic":false,"text":"Fabled Roots"},\
-    {"bold":false,"color":"white","italic":false,"text":" a shot!"}\
-]
-tellraw @s " "
-tellraw @s {"bold":false,"color":"white","italic":false,"text":"If you're running the data pack in singleplayer or on a server, or the mod version on a server, I'd suggest also loading the latest data pack version as a resource pack - otherwise some descriptions might not show up right."}\
-    
+dialog show @s {"type":"minecraft:confirmation","title":{"text":"Fabled Roots","color":"gold"},"body":[{"type":"minecraft:plain_message","contents":"If you're using Fabled Roots as a data pack in singleplayer or on a server, or running the mod version on a server — It is recommended to load the data pack version as a resource pack as well. Otherwise, some descriptions and assets may not display correctly.","width":512},{"type":"minecraft:plain_message","contents":"Enjoy exploring Fabled Roots! :)","width":512}],"inputs":[],"can_close_with_escape":false,"pause":true,"after_action":"close","yes":{"label":"Got It!"},"no":{"label":"Take me to Modrinth","action":{"type":"minecraft:open_url","url":"https://modrinth.com/datapack/fabled-roots"}}}

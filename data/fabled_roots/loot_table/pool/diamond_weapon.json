@@ -35,8 +35,8 @@
           "weight": 20
         },
         {
-          "type": "minecraft:loot_table",
-          "value": "fabled_roots:item/diamond_spear",
+          "type": "minecraft:item",
+          "name": "minecraft:diamond_spear",
           "weight": 20
         },
         {
