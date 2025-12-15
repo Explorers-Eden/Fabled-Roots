@@ -37,7 +37,7 @@
                 "minecraft:tooltip_display": {
                   "hidden_components": ["minecraft:dyed_color"]
                 },
-                "minecraft:dyed_color": 11074815,
+                "minecraft:dyed_color": 6109851,
                 "minecraft:tooltip_style": "fabled_roots:endling",
                 "minecraft:item_model": "fabled_roots:journal",
                 "minecraft:enchantment_glint_override": false

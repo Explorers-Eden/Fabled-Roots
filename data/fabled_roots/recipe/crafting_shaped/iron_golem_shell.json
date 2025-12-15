@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "X": "minecraft:fire_charge"
+    "X": "minecraft:raw_iron"
   },
   "pattern": [
     "XXX",
