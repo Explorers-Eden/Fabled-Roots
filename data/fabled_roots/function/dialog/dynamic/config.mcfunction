@@ -137,9 +137,13 @@ $dialog show @s \
       "template":"$(command_template)"\
     }\
   },\
-  "no":{\
-    "label":{\
-      "translate":"mco.selectServer.close"\
+  "no": {\
+    "label": {\
+      "translate": "menu.fabled_roots.back"\
+    },\
+    "action": {\
+      "type": "show_dialog",\
+      "dialog": "fabled_roots:admin"\
     }\
   }\
 }

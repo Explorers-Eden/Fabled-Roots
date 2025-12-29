@@ -1,0 +1,50 @@
+{
+  "type": "minecraft:confirmation",
+  "body": [
+    {
+      "type": "minecraft:plain_message",
+      "contents": {
+        "translate": "menu.fabled_roots.admin_reset.description",
+        "color": "red"
+      },
+      "width": 256
+    }
+  ],
+  "inputs": [
+    {
+      "type": "minecraft:text",
+      "key": "player",
+      "label": {
+        "translate": "option.fabled_roots.playername_input"
+      },
+      "max_length": 16
+    }
+  ],
+  "can_close_with_escape": true,
+  "external_title": {
+    "translate": "menu.fabled_roots.title.admin_reset.external"
+  },
+  "title": {
+    "translate": "menu.fabled_roots.title.admin_reset"
+  },
+  "pause": true,
+  "after_action": "close",
+  "yes": {
+    "label": {
+      "translate": "menu.fabled_roots.confirm"
+    },
+    "action": {
+      "type": "minecraft:dynamic/run_command",
+      "template": "function fabled_roots:admin_reset {player:$(player)}"
+    }
+  },
+  "no": {
+    "label": {
+      "translate": "menu.fabled_roots.back"
+    },
+    "action": {
+      "type": "show_dialog",
+      "dialog": "fabled_roots:admin"
+    }
+  }
+}

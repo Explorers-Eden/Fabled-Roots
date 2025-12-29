@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:multi_action",
+  "can_close_with_escape": true,
+  "external_title": {
+    "translate": "menu.fabled_roots.title.admin.external"
+  },
+  "title": {
+    "translate": "menu.fabled_roots.title.admin"
+  },
+  "pause": true,
+  "exit_action": {
+    "label": {
+      "translate": "mco.selectServer.close"
+    }
+  },
+  "columns": 1,
+  "actions": [
+    {
+      "label": {
+        "translate": "menu.fabled_roots.config.title"
+      },
+      "action": {
+        "type": "minecraft:run_command",
+        "command": "function fabled_roots:dialog/dynamic/config with storage eden:settings fabled_roots"
+      }
+    },
+    {
+      "label": {
+        "translate": "menu.fabled_roots.title.admin_reset"
+      },
+      "action": {
+        "type": "show_dialog",
+        "dialog": "fabled_roots:admin_reset"
+      }
+    }
+  ]
+}

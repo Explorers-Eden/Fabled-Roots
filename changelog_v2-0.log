@@ -1,0 +1,8 @@
+## Changes:
+- Added Phantom Membrane to bartering table of Moonshroud Descendants
+- Race abilities are no longer triggered when player is in spectator
+- Turtlekin & Netherian abilities are now triggered when sprinting instead of crouching
+- Aetherian ability is now triggered by holding jump
+- Added option to config menu for admins to reset another players roots
+
+## Fixes:
