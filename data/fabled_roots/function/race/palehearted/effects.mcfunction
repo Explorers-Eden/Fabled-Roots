@@ -1,4 +1,4 @@
-execute if entity @e[type=player,tag=fabled_roots.palehearted,distance=1..24] run effect give @s minecraft:regeneration 2 0 true
+execute if entity @e[type=player,tag=fabled_roots.palehearted,distance=1..24] run effect give @s minecraft:regeneration 5 0 true
 execute if biome ~ ~ ~ minecraft:pale_garden run effect give @s minecraft:strength 2 0 true
 execute if biome ~ ~ ~ minecraft:pale_garden run effect give @s minecraft:luck 2 0 true
 

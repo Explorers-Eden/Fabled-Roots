@@ -49,7 +49,11 @@
                     }
                   }
                 ],
-                "minecraft:tooltip_style": "fabled_roots:moonshroud"
+                "minecraft:tooltip_style": "fabled_roots:moonshroud",
+                "swing_animation": {
+                  "type": "stab",
+                  "duration": 10
+                }
               }
             }
           ]

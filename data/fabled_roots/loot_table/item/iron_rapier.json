@@ -48,7 +48,11 @@
                     "slot": "mainhand"
                   }
                 ],
-                "minecraft:tooltip_style": "fabled_roots:palehearted"
+                "minecraft:tooltip_style": "fabled_roots:palehearted",
+                "swing_animation": {
+                  "type": "stab",
+                  "duration": 20
+                }
               }
             },
             {

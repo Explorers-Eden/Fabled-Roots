@@ -1,4 +1,4 @@
-execute if entity @e[type=player,tag=fabled_roots.dunesworn,distance=1..24] run effect give @s minecraft:regeneration 2 0 true
+execute if entity @e[type=player,tag=fabled_roots.dunesworn,distance=1..24] run effect give @s minecraft:regeneration 5 0 true
 execute if biome ~ ~ ~ #minecraft:has_structure/desert_pyramid run effect give @s minecraft:strength 2 0 true
 execute if biome ~ ~ ~ #minecraft:has_structure/desert_pyramid run effect give @s minecraft:luck 2 0 true
 
