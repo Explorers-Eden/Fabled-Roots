@@ -1,6 +1,10 @@
 ##add default values
 execute unless data storage eden:settings fabled_roots run function fabled_roots:default_values
-execute unless data storage eden:datapack fabled_roots{version:"1.8"} run function fabled_roots:default_values
+execute unless data storage eden:datapack fabled_roots{version:"2.2"} run data modify storage eden:settings fabled_roots merge value {\
+    starter_equip:once,\
+    starter_equip_initial:true,\
+    command_template:"function fabled_roots:dialog/command_template/config {starter_equip:$(starter_equip),npc_spawning:$(npc_spawning),pvp:$(pvp),prefix:$(prefix),seeinvis:$(seeinvis)}"\
+}
 
 ##forceload spawn chunk in case it isn't loaded
 forceload add 0 0
@@ -81,4 +85,4 @@ team modify fabled_roots.decoy collisionRule never
 team modify fabled_roots.decoy nametagVisibility never
 
 ##set data pack version
-data modify storage eden:datapack fabled_roots.version set value "2.1"
+data modify storage eden:datapack fabled_roots.version set value "2.2"

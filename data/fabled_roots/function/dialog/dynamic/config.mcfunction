@@ -117,6 +117,29 @@ $dialog show @s \
           "initial":$(npc_spawning_initial)\
         }\
       ]\
+    },\
+    {\
+      "type":"minecraft:single_option",\
+      "key":"starter_equip",\
+      "width": 256,\
+      "label":{\
+        "translate":"option.fabled_roots.config.starter_equip"\
+      },\
+      "options":[\
+        {\
+          "id":"always",\
+          "display":{\
+            "translate":"option.fabled_roots.starter_equip.always"\
+          }\
+        },\
+        {\
+          "id":"once",\
+          "display":{\
+            "translate":"option.fabled_roots.starter_equip.once"\
+          },\
+          "initial":$(starter_equip_initial)\
+        }\
+      ]\
     }\
   ],\
   "can_close_with_escape":true,\

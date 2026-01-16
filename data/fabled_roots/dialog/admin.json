@@ -32,6 +32,16 @@
         "type": "show_dialog",
         "dialog": "fabled_roots:admin_reset"
       }
+    },
+    {
+      "label": {
+        "translate": "menu.fabled_roots.title.uninstall",
+        "color": "gray"
+      },
+      "action": {
+        "type": "show_dialog",
+        "dialog": "fabled_roots:uninstall"
+      }
     }
   ]
 }

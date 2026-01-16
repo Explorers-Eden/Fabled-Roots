@@ -1,0 +1,46 @@
+{
+  "type": "minecraft:confirmation",
+  "body": [
+    {
+      "type": "minecraft:plain_message",
+      "contents": {
+        "translate": "menu.fabled_roots.uninstall.description",
+        "color": "red"
+      }
+    },
+    {
+      "type": "minecraft:plain_message",
+      "contents": {
+        "translate": "menu.fabled_roots.uninstall.description_2",
+        "color": "gray"
+      }
+    }
+  ],
+  "can_close_with_escape": true,
+  "external_title": {
+    "translate": "menu.fabled_roots.title.uninstall.external"
+  },
+  "title": {
+    "translate": "menu.fabled_roots.title.uninstall"
+  },
+  "pause": true,
+  "after_action": "close",
+  "yes": {
+    "label": {
+      "translate": "menu.fabled_roots.confirm"
+    },
+    "action": {
+      "type": "run_command",
+      "command": "function fabled_roots:uninstall"
+    }
+  },
+  "no": {
+    "label": {
+      "translate": "menu.fabled_roots.back"
+    },
+    "action": {
+      "type": "show_dialog",
+      "dialog": "fabled_roots:admin"
+    }
+  }
+}
