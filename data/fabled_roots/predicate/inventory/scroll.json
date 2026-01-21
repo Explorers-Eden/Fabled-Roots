@@ -1,0 +1,61 @@
+{
+  "condition": "minecraft:any_of",
+  "terms": [
+    {
+      "condition": "minecraft:entity_properties",
+      "entity": "this",
+      "predicate": {
+        "slots": {
+          "player.cursor": {
+            "items": "minecraft:music_disc_5",
+            "components": {
+              "minecraft:item_model": "fabled_roots:scroll"
+            }
+          }
+        }
+      }
+    },
+    {
+      "condition": "minecraft:entity_properties",
+      "entity": "this",
+      "predicate": {
+        "slots": {
+          "weapon.*": {
+            "items": "minecraft:music_disc_5",
+            "components": {
+              "minecraft:item_model": "fabled_roots:scroll"
+            }
+          }
+        }
+      }
+    },
+    {
+      "condition": "minecraft:entity_properties",
+      "entity": "this",
+      "predicate": {
+        "slots": {
+          "hotbar.*": {
+            "items": "minecraft:music_disc_5",
+            "components": {
+              "minecraft:item_model": "fabled_roots:scroll"
+            }
+          }
+        }
+      }
+    },
+    {
+      "condition": "minecraft:entity_properties",
+      "entity": "this",
+      "predicate": {
+        "slots": {
+          "inventory.*": {
+            "items": "minecraft:music_disc_5",
+            "components": {
+              "minecraft:item_model": "fabled_roots:scroll"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

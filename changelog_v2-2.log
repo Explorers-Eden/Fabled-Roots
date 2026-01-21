@@ -1,6 +1,0 @@
-## Changes:
-- Added option to admin config menu to choose whether players always get the starting class equipment or just once
-- Added uninstall function to admin menu
-
-## Fixes:
-- Config resetting with reload in versions other than 1.8

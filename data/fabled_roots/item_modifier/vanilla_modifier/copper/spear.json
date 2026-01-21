@@ -1,0 +1,27 @@
+{
+  "function": "minecraft:set_components",
+  "components": {
+    "minecraft:custom_data": {
+      "fabled_roots": {
+        "type": "spear"
+      }
+    },
+    "minecraft:attribute_modifiers": [
+      {
+        "type": "minecraft:attack_damage",
+        "id": "fabled_roots:vanilla_attack",
+        "amount": 1,
+        "operation": "add_value",
+        "slot": "mainhand"
+      },
+      {
+        "type": "minecraft:attack_speed",
+        "id": "fabled_roots:vanilla_speed",
+        "amount": -2.82,
+        "operation": "add_value",
+        "slot": "mainhand"
+      }
+    ],
+    "minecraft:tooltip_style": "fabled_roots:aetherian"
+  }
+}

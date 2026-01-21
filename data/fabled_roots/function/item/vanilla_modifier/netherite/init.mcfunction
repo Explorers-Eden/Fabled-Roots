@@ -1,0 +1,6 @@
+function fabled_roots:item/vanilla_modifier/netherite/sword
+function fabled_roots:item/vanilla_modifier/netherite/hoe
+function fabled_roots:item/vanilla_modifier/netherite/axe
+function fabled_roots:item/vanilla_modifier/netherite/pickaxe
+function fabled_roots:item/vanilla_modifier/netherite/shovel
+function fabled_roots:item/vanilla_modifier/netherite/spear

@@ -3,7 +3,7 @@
   "components": {
     "minecraft:custom_data": {
       "fabled_roots": {
-        "type": "axe"
+        "type": "hoe"
       }
     },
     "minecraft:attribute_modifiers": [
