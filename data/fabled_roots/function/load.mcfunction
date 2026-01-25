@@ -85,4 +85,4 @@ team modify fabled_roots.decoy collisionRule never
 team modify fabled_roots.decoy nametagVisibility never
 
 ##set data pack version
-data modify storage eden:datapack fabled_roots.version set value "2.2"
+data modify storage eden:datapack fabled_roots.version set value "2.3.1"

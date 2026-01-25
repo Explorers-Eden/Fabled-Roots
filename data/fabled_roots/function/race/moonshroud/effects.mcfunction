@@ -4,3 +4,5 @@ execute if predicate fabled_roots:time/night_time run effect give @s minecraft:l
 
 execute as @s[gamemode=!spectator] if predicate fabled_roots:entity/is_crouching run effect give @s minecraft:invisibility 2 0 true
 execute as @s[gamemode=!spectator] if predicate fabled_roots:entity/is_crouching if predicate {"condition":"minecraft:random_chance","chance":0.25} run particle dust{color:[0.690,0.718,0.839],scale:1} ~ ~ ~ .5 .5 .5 1 3 normal
+
+team join fabled_roots.moonshroud

@@ -5,3 +5,5 @@ execute if biome ~ ~ ~ #minecraft:has_structure/desert_pyramid run effect give @
 execute as @s[gamemode=!spectator] if predicate fabled_roots:entity/is_crouching if items entity @s weapon.* minecraft:wet_sponge run particle dust{color:[0.761,0.655,0.427],scale:1} ~ ~ ~ .5 .5 .5 1 15 normal
 execute as @s[gamemode=!spectator] if predicate fabled_roots:entity/is_crouching if items entity @s weapon.mainhand minecraft:wet_sponge run item modify entity @s weapon.mainhand {"function":"minecraft:set_item","item":"minecraft:sponge"}
 execute as @s[gamemode=!spectator] if predicate fabled_roots:entity/is_crouching if items entity @s weapon.offhand minecraft:wet_sponge run item modify entity @s weapon.offhand {"function":"minecraft:set_item","item":"minecraft:sponge"}
+
+team join fabled_roots.dunesworn

@@ -4,3 +4,5 @@ execute if biome ~ ~ ~ #minecraft:is_ocean run effect give @s minecraft:luck 2 0
 
 execute as @s[gamemode=!spectator] if predicate fabled_roots:entity/is_sprinting run effect give @s minecraft:conduit_power 15 0 true
 execute as @s[gamemode=!spectator] if predicate fabled_roots:entity/is_sprinting run particle dust{color:[0.235,0.573,0.643],scale:1} ~ ~ ~ .5 .5 .5 1 5 normal
+
+team join fabled_roots.turtlekin

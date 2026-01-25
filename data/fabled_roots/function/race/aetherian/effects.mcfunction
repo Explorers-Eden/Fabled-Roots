@@ -4,3 +4,5 @@ execute if predicate {"condition":"minecraft:location_check","predicate":{"posit
 
 execute as @s[gamemode=!spectator] if predicate fabled_roots:entity/is_jumping run effect give @s minecraft:levitation 2 0 true
 execute as @s[gamemode=!spectator] if predicate fabled_roots:entity/is_jumping run particle dust{color:[0.831,0.945,1.000],scale:1} ~ ~ ~ .5 .5 .5 1 5 normal
+
+team join fabled_roots.aetherian
