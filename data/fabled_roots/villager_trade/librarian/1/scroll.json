@@ -1,0 +1,29 @@
+{
+  "gives": {
+    "id": "minecraft:music_disc_5",
+    "components": {
+                "minecraft:item_name": {
+                  "translate": "item.fabled_roots.scroll"
+                },
+                "minecraft:item_model": "fabled_roots:scroll",
+                "minecraft:rarity": "common",
+                "minecraft:custom_data": {
+                  "fabled_roots": {
+                    "item": "scroll"
+                  }
+                },
+                "!minecraft:jukebox_playable": {},
+                "minecraft:tooltip_style": "fabled_roots:generic",
+                "minecraft:max_stack_size": 16,
+                "minecraft:enchantable": {
+                  "value": 100
+                }
+              }
+  },
+  "max_uses": 12,
+  "reputation_discount": 0.05,
+  "wants": {
+    "count": 1,
+    "id": "minecraft:emerald"
+  }
+}

@@ -17,7 +17,7 @@
                 "minecraft:tooltip_style": "fabled_roots:frostborne",
                 "minecraft:lore": [
                   {
-                    "translate": "enchantment.fabled_roots.cold_blfrostbiteoom",
+                    "translate": "enchantment.fabled_roots.frostbite",
                     "color": "gray",
                     "bold": false,
                     "italic": false
