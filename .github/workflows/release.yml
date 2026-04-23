@@ -29,69 +29,56 @@ jobs:
         shell: bash
         run: |
           python - <<'PY'
-          import json
-          import os
-          import yaml
+          import json, os, yaml
 
-          info_path = "release_infos.yml"
-          if not os.path.exists(info_path):
-              raise FileNotFoundError("release_infos.yml not found")
-
-          with open(info_path, "r", encoding="utf-8") as f:
+          with open("release_infos.yml", "r", encoding="utf-8") as f:
               info = yaml.safe_load(f)
 
           project_id = info.get("Project-ID")
-          raw_versions = info.get("Meta Data", {}).get("Versions", [])
-          meta_versions = [str(v) for v in raw_versions]
+          game_versions = [str(v) for v in info.get("Meta Data", {}).get("Versions", [])]
           details = info.get("Details", {})
 
-          version_type = str(details.get("Version type", "Release")).strip()
+          version_type = str(details.get("Version type", "Release")).strip().lower()
           version_number = str(details.get("Version number", "")).strip()
-          version_subtitle = str(details.get("Version subtitle", "")).strip()
+          release_name = str(details.get("Version subtitle", "")).strip()
+
+          if version_type not in {"release", "beta", "alpha"}:
+              raise ValueError("Version type must be Release, Beta, or Alpha")
+
+          changelog_path = next(
+              (p for p in ["Changelog.log", "changelog.log"] if os.path.exists(p)),
+              None
+          )
 
           if not project_id:
-              raise ValueError("Project-ID missing in release_infos.yml")
-          if not meta_versions:
-              raise ValueError("Meta Data -> Versions missing or empty in release_infos.yml")
+              raise ValueError("Project-ID missing")
+          if not game_versions:
+              raise ValueError("Meta Data -> Versions missing")
           if not version_number:
-              raise ValueError("Details -> Version number missing in release_infos.yml")
-          if not version_subtitle:
-              raise ValueError("Details -> Version subtitle missing in release_infos.yml")
+              raise ValueError("Details -> Version number missing")
+          if not release_name:
+              raise ValueError("Details -> Version subtitle missing")
+          if not changelog_path:
+              raise FileNotFoundError("Changelog.log or changelog.log missing")
 
-          changelog_path = None
-          for candidate in ["Changelog.log", "changelog.log"]:
-              if os.path.exists(candidate):
-                  changelog_path = candidate
-                  break
-
-          if changelog_path is None:
-              raise FileNotFoundError("Neither Changelog.log nor changelog.log was found")
-
-          version_type_lower = version_type.lower()
-          if version_type_lower not in {"release", "beta", "alpha"}:
-              raise ValueError(f"Unsupported version type '{version_type}'. Use Release, Beta, or Alpha.")
-
-          tag_name = f"v{version_number}"
-          zip_name = f"fabled_roots_{version_number}.zip"
-          jar_name = f"fabled_roots_{version_number}_universal.jar"
-          mod_version_number = f"{version_number}-mod"
-          mod_release_name = f"{version_subtitle} - Universal Mod"
-
-          is_prerelease = "true" if version_type_lower in {"beta", "alpha"} else "false"
+          outputs = {
+              "project_id": project_id,
+              "version_number": version_number,
+              "mod_version_number": f"{version_number}-mod",
+              "release_name": release_name,
+              "mod_release_name": f"{release_name} - Universal Mod",
+              "tag_name": f"v{version_number}",
+              "zip_name": f"fabled_roots_{version_number}.zip",
+              "jar_name": f"fabled-roots-{version_number}.jar",
+              "version_type": version_type,
+              "is_prerelease": "true" if version_type in {"beta", "alpha"} else "false",
+              "changelog_path": changelog_path,
+              "game_versions_json": json.dumps(game_versions),
+          }
 
           with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
-              out.write(f"project_id={project_id}\n")
-              out.write(f"version_number={version_number}\n")
-              out.write(f"mod_version_number={mod_version_number}\n")
-              out.write(f"release_name={version_subtitle}\n")
-              out.write(f"mod_release_name={mod_release_name}\n")
-              out.write(f"tag_name={tag_name}\n")
-              out.write(f"zip_name={zip_name}\n")
-              out.write(f"jar_name={jar_name}\n")
-              out.write(f"version_type={version_type_lower}\n")
-              out.write(f"is_prerelease={is_prerelease}\n")
-              out.write(f"changelog_path={changelog_path}\n")
-              out.write(f"game_versions_json={json.dumps(meta_versions)}\n")
+              for key, value in outputs.items():
+                  out.write(f"{key}={value}\n")
           PY
 
       - name: Build datapack zip and universal mod jar
@@ -99,122 +86,131 @@ jobs:
           ZIP_NAME: ${{ steps.meta.outputs.zip_name }}
           JAR_NAME: ${{ steps.meta.outputs.jar_name }}
           VERSION_NUMBER: ${{ steps.meta.outputs.version_number }}
+          PROJECT_ID: ${{ steps.meta.outputs.project_id }}
         run: |
           python - <<'PY'
+          import json
           import os
           import shutil
           import zipfile
           from pathlib import Path
 
-          mod_id = "fabled_roots"
-          mod_name = "Fabled Roots"
-          version_number = os.environ["VERSION_NUMBER"]
           zip_name = os.environ["ZIP_NAME"]
           jar_name = os.environ["JAR_NAME"]
+          version_number = os.environ["VERSION_NUMBER"]
+          project_id = os.environ["PROJECT_ID"]
 
-          required_paths = ["assets", "data", "LICENSE", "pack.mcmeta", "pack.png"]
-          missing = [p for p in required_paths if not os.path.exists(p)]
+          mod_id = "mr_fabled_roots"
+          mod_name = "Fabled Roots"
+          description = "Fabled Roots adds 10 unique races and 10 powerful classes to Minecraft, along with new weapons, items, spells and structures to explore."
+          icon = "fabled-roots_pack.png"
+
+          required = ["assets", "data", "LICENSE", "pack.mcmeta", "pack.png"]
+          missing = [p for p in required if not os.path.exists(p)]
           if missing:
               raise FileNotFoundError(f"Missing required files/folders: {', '.join(missing)}")
 
-          def add_common_files(zf):
+          def add_pack_files(zf):
               for folder in ["assets", "data"]:
                   for root, _, files in os.walk(folder):
                       for file in files:
-                          full_path = os.path.join(root, file)
-                          arcname = os.path.relpath(full_path, ".")
-                          zf.write(full_path, arcname)
-
+                          full = os.path.join(root, file)
+                          zf.write(full, os.path.relpath(full, "."))
               for file in ["LICENSE", "pack.mcmeta", "pack.png"]:
                   zf.write(file, file)
 
           with zipfile.ZipFile(zip_name, "w", zipfile.ZIP_DEFLATED) as zf:
-              add_common_files(zf)
+              add_pack_files(zf)
 
-          build_dir = Path("build/universal_mod")
-          if build_dir.exists():
-              shutil.rmtree(build_dir)
+          build = Path("build/universal_mod")
+          if build.exists():
+              shutil.rmtree(build)
 
-          (build_dir / "META-INF").mkdir(parents=True)
+          (build / "META-INF").mkdir(parents=True)
 
-          for folder in ["assets", "data"]:
-              shutil.copytree(folder, build_dir / folder)
+          shutil.copytree("assets", build / "assets")
+          shutil.copytree("data", build / "data")
+          shutil.copy2("LICENSE", build / "LICENSE")
+          shutil.copy2("pack.mcmeta", build / "pack.mcmeta")
+          shutil.copy2("pack.png", build / "pack.png")
+          shutil.copy2("pack.png", build / icon)
 
-          for file in ["LICENSE", "pack.mcmeta", "pack.png"]:
-              shutil.copy2(file, build_dir / file)
+          fabric_json = {
+              "schemaVersion": 1,
+              "id": mod_id,
+              "version": version_number,
+              "name": mod_name,
+              "description": description,
+              "authors": [],
+              "contact": {
+                  "homepage": "https://modrinth.com/datapack/fabled-roots",
+                  "sources": "https://github.com/Explorers-Eden/Fabled-Roots"
+              },
+              "license": "GPL-3.0-or-later",
+              "icon": icon,
+              "environment": "*",
+              "depends": {
+                  "fabric-resource-loader-v0": "*"
+              }
+          }
 
-          (build_dir / "fabric.mod.json").write_text(f'''{{
-            "schemaVersion": 1,
-            "id": "{mod_id}",
-            "version": "{version_number}",
-            "name": "{mod_name}",
-            "description": "Fabled Roots packaged as a universal data/resource mod.",
-            "authors": ["NiceRon", "Explorers-Eden"],
-            "license": "GPL-3.0",
-            "icon": "pack.png",
-            "environment": "*",
-            "depends": {{
-              "minecraft": "*"
-            }}
-          }}
-          ''', encoding="utf-8")
+          quilt_json = {
+              "schema_version": 1,
+              "quilt_loader": {
+                  "group": "com.modrinth",
+                  "id": mod_id,
+                  "version": version_number,
+                  "metadata": {
+                      "name": mod_name,
+                      "description": description,
+                      "contributors": {},
+                      "contact": {
+                          "homepage": "https://modrinth.com/datapack/fabled-roots",
+                          "sources": "https://github.com/Explorers-Eden/Fabled-Roots"
+                      },
+                      "icon": icon
+                  },
+                  "intermediate_mappings": "net.fabricmc:intermediary",
+                  "depends": [
+                      {
+                          "id": "quilt_resource_loader",
+                          "versions": "*",
+                          "unless": "fabric-resource-loader-v0"
+                      }
+                  ]
+              }
+          }
 
-          (build_dir / "quilt.mod.json").write_text(f'''{{
-            "schema_version": 1,
-            "quilt_loader": {{
-              "group": "explorers_eden",
-              "id": "{mod_id}",
-              "version": "{version_number}",
-              "metadata": {{
-                "name": "{mod_name}",
-                "description": "Fabled Roots packaged as a universal data/resource mod.",
-                "contributors": {{
-                  "NiceRon": "Owner",
-                  "Explorers-Eden": "Publisher"
-                }},
-                "license": "GPL-3.0",
-                "icon": "pack.png"
-              }},
-              "depends": [
-                {{
-                  "id": "minecraft",
-                  "versions": "*"
-                }}
-              ]
-            }}
-          }}
-          ''', encoding="utf-8")
+          forge_toml = f"""
+          modLoader = 'lowcodefml'
+          loaderVersion = '[40,)'
+          license = 'GPL-3.0-or-later'
+          showAsResourcePack = false
+          mods = [
+            {{ modId = '{mod_id}', version = '{version_number}', displayName = '{mod_name}', description = '{description}', logoFile = '{icon}', updateJSONURL = 'https://api.modrinth.com/updates/{project_id}/forge_updates.json', credits = 'Generated by Modrinth', authors = '', displayURL = 'https://modrinth.com/datapack/fabled-roots' }},
+          ]
+          """
 
-          forge_toml = f'''modLoader="lowcodefml"
-          loaderVersion="[1,)"
-          license="GPL-3.0"
-          issueTrackerURL="https://github.com/Explorers-Eden/Fabled-Roots/issues"
+          neoforge_toml = f"""
+          modLoader = 'javafml'
+          loaderVersion = '[1,)'
+          license = 'GPL-3.0-or-later'
+          showAsResourcePack = false
+          mods = [
+            {{ modId = '{mod_id}', version = '{version_number}', displayName = '{mod_name}', description = '{description}', logoFile = '{icon}', updateJSONURL = 'https://api.modrinth.com/updates/{project_id}/forge_updates.json?neoforge=only', credits = 'Generated by Modrinth', authors = '', displayURL = 'https://modrinth.com/datapack/fabled-roots' }},
+          ]
+          """
 
-          [[mods]]
-          modId="{mod_id}"
-          version="{version_number}"
-          displayName="{mod_name}"
-          logoFile="pack.png"
-          authors="NiceRon, Explorers-Eden"
-          description=''' + "'''" + '''Fabled Roots packaged as a universal data/resource mod.''' + "'''" + f'''
-
-          [[dependencies.{mod_id}]]
-          modId="minecraft"
-          mandatory=true
-          versionRange="[0,)"
-          ordering="NONE"
-          side="BOTH"
-          '''
-
-          (build_dir / "META-INF" / "mods.toml").write_text(forge_toml, encoding="utf-8")
-          (build_dir / "META-INF" / "neoforge.mods.toml").write_text(forge_toml, encoding="utf-8")
+          (build / "fabric.mod.json").write_text(json.dumps(fabric_json, separators=(",", ":")), encoding="utf-8")
+          (build / "quilt.mod.json").write_text(json.dumps(quilt_json, separators=(",", ":")), encoding="utf-8")
+          (build / "META-INF" / "mods.toml").write_text(forge_toml.strip() + "\n", encoding="utf-8")
+          (build / "META-INF" / "neoforge.mods.toml").write_text(neoforge_toml.strip() + "\n", encoding="utf-8")
 
           with zipfile.ZipFile(jar_name, "w", zipfile.ZIP_DEFLATED) as zf:
-              for root, _, files in os.walk(build_dir):
+              for root, _, files in os.walk(build):
                   for file in files:
-                      full_path = Path(root) / file
-                      arcname = full_path.relative_to(build_dir)
-                      zf.write(full_path, arcname.as_posix())
+                      full = Path(root) / file
+                      zf.write(full, full.relative_to(build).as_posix())
 
           print(f"Created {zip_name}")
           print(f"Created {jar_name}")
@@ -259,9 +255,7 @@ jobs:
           LOADERS_JSON: '["datapack"]'
         run: |
           python - <<'PY'
-          import json
-          import os
-          import requests
+          import json, os, requests
 
           token = os.environ["MODRINTH_TOKEN"]
           if not token:
@@ -287,15 +281,13 @@ jobs:
               "primary_file": "file"
           }
 
-          headers = {
-              "Authorization": token,
-              "User-Agent": "Explorers-Eden-Fabled-Roots-GitHub-Action"
-          }
-
           with open(file_name, "rb") as f:
               response = requests.post(
                   "https://api.modrinth.com/v2/version",
-                  headers=headers,
+                  headers={
+                      "Authorization": token,
+                      "User-Agent": "Explorers-Eden-Fabled-Roots-GitHub-Action"
+                  },
                   files={
                       "data": (None, json.dumps(payload), "application/json"),
                       "file": (file_name, f, "application/zip"),
@@ -323,9 +315,7 @@ jobs:
           LOADERS_JSON: '["fabric", "forge", "quilt", "neoforge"]'
         run: |
           python - <<'PY'
-          import json
-          import os
-          import requests
+          import json, os, requests
 
           token = os.environ["MODRINTH_TOKEN"]
           if not token:
@@ -351,15 +341,13 @@ jobs:
               "primary_file": "file"
           }
 
-          headers = {
-              "Authorization": token,
-              "User-Agent": "Explorers-Eden-Fabled-Roots-GitHub-Action"
-          }
-
           with open(file_name, "rb") as f:
               response = requests.post(
                   "https://api.modrinth.com/v2/version",
-                  headers=headers,
+                  headers={
+                      "Authorization": token,
+                      "User-Agent": "Explorers-Eden-Fabled-Roots-GitHub-Action"
+                  },
                   files={
                       "data": (None, json.dumps(payload), "application/json"),
                       "file": (file_name, f, "application/java-archive"),
