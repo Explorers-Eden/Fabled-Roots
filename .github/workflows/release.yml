@@ -31,7 +31,6 @@ jobs:
           python - <<'PY'
           import json
           import os
-          import sys
           import yaml
 
           info_path = "release_infos.yml"
@@ -59,9 +58,8 @@ jobs:
           if not version_subtitle:
               raise ValueError("Details -> Version subtitle missing in release_infos.yml")
 
-          changelog_candidates = ["Changelog.log", "changelog.log"]
           changelog_path = None
-          for candidate in changelog_candidates:
+          for candidate in ["Changelog.log", "changelog.log"]:
               if os.path.exists(candidate):
                   changelog_path = candidate
                   break
@@ -69,52 +67,57 @@ jobs:
           if changelog_path is None:
               raise FileNotFoundError("Neither Changelog.log nor changelog.log was found")
 
-          tag_name = f"v{version_number}"
-          zip_name = f"fabled_roots_{version_number}.zip"
-
           version_type_lower = version_type.lower()
           if version_type_lower not in {"release", "beta", "alpha"}:
-              raise ValueError(
-                  f"Unsupported version type '{version_type}'. Use Release, Beta, or Alpha."
-              )
+              raise ValueError(f"Unsupported version type '{version_type}'. Use Release, Beta, or Alpha.")
+
+          tag_name = f"v{version_number}"
+          zip_name = f"fabled_roots_{version_number}.zip"
+          jar_name = f"fabled_roots_{version_number}_universal.jar"
+          mod_version_number = f"{version_number}-mod"
+          mod_release_name = f"{version_subtitle} - Universal Mod"
 
           is_prerelease = "true" if version_type_lower in {"beta", "alpha"} else "false"
 
           with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
               out.write(f"project_id={project_id}\n")
               out.write(f"version_number={version_number}\n")
+              out.write(f"mod_version_number={mod_version_number}\n")
               out.write(f"release_name={version_subtitle}\n")
+              out.write(f"mod_release_name={mod_release_name}\n")
               out.write(f"tag_name={tag_name}\n")
               out.write(f"zip_name={zip_name}\n")
+              out.write(f"jar_name={jar_name}\n")
               out.write(f"version_type={version_type_lower}\n")
               out.write(f"is_prerelease={is_prerelease}\n")
               out.write(f"changelog_path={changelog_path}\n")
               out.write(f"game_versions_json={json.dumps(meta_versions)}\n")
           PY
 
-      - name: Build release zip
+      - name: Build datapack zip and universal mod jar
         env:
           ZIP_NAME: ${{ steps.meta.outputs.zip_name }}
+          JAR_NAME: ${{ steps.meta.outputs.jar_name }}
+          VERSION_NUMBER: ${{ steps.meta.outputs.version_number }}
         run: |
           python - <<'PY'
           import os
+          import shutil
           import zipfile
+          from pathlib import Path
 
+          mod_id = "fabled_roots"
+          mod_name = "Fabled Roots"
+          version_number = os.environ["VERSION_NUMBER"]
           zip_name = os.environ["ZIP_NAME"]
+          jar_name = os.environ["JAR_NAME"]
 
-          required_paths = [
-              "assets",
-              "data",
-              "LICENSE",
-              "pack.mcmeta",
-              "pack.png",
-          ]
-
+          required_paths = ["assets", "data", "LICENSE", "pack.mcmeta", "pack.png"]
           missing = [p for p in required_paths if not os.path.exists(p)]
           if missing:
               raise FileNotFoundError(f"Missing required files/folders: {', '.join(missing)}")
 
-          with zipfile.ZipFile(zip_name, "w", zipfile.ZIP_DEFLATED) as zf:
+          def add_common_files(zf):
               for folder in ["assets", "data"]:
                   for root, _, files in os.walk(folder):
                       for file in files:
@@ -125,7 +128,96 @@ jobs:
               for file in ["LICENSE", "pack.mcmeta", "pack.png"]:
                   zf.write(file, file)
 
+          with zipfile.ZipFile(zip_name, "w", zipfile.ZIP_DEFLATED) as zf:
+              add_common_files(zf)
+
+          build_dir = Path("build/universal_mod")
+          if build_dir.exists():
+              shutil.rmtree(build_dir)
+
+          (build_dir / "META-INF").mkdir(parents=True)
+
+          for folder in ["assets", "data"]:
+              shutil.copytree(folder, build_dir / folder)
+
+          for file in ["LICENSE", "pack.mcmeta", "pack.png"]:
+              shutil.copy2(file, build_dir / file)
+
+          (build_dir / "fabric.mod.json").write_text(f'''{{
+            "schemaVersion": 1,
+            "id": "{mod_id}",
+            "version": "{version_number}",
+            "name": "{mod_name}",
+            "description": "Fabled Roots packaged as a universal data/resource mod.",
+            "authors": ["NiceRon", "Explorers-Eden"],
+            "license": "GPL-3.0",
+            "icon": "pack.png",
+            "environment": "*",
+            "depends": {{
+              "minecraft": "*"
+            }}
+          }}
+          ''', encoding="utf-8")
+
+          (build_dir / "quilt.mod.json").write_text(f'''{{
+            "schema_version": 1,
+            "quilt_loader": {{
+              "group": "explorers_eden",
+              "id": "{mod_id}",
+              "version": "{version_number}",
+              "metadata": {{
+                "name": "{mod_name}",
+                "description": "Fabled Roots packaged as a universal data/resource mod.",
+                "contributors": {{
+                  "NiceRon": "Owner",
+                  "Explorers-Eden": "Publisher"
+                }},
+                "license": "GPL-3.0",
+                "icon": "pack.png"
+              }},
+              "depends": [
+                {{
+                  "id": "minecraft",
+                  "versions": "*"
+                }}
+              ]
+            }}
+          }}
+          ''', encoding="utf-8")
+
+          forge_toml = f'''modLoader="lowcodefml"
+          loaderVersion="[1,)"
+          license="GPL-3.0"
+          issueTrackerURL="https://github.com/Explorers-Eden/Fabled-Roots/issues"
+
+          [[mods]]
+          modId="{mod_id}"
+          version="{version_number}"
+          displayName="{mod_name}"
+          logoFile="pack.png"
+          authors="NiceRon, Explorers-Eden"
+          description=''' + "'''" + '''Fabled Roots packaged as a universal data/resource mod.''' + "'''" + f'''
+
+          [[dependencies.{mod_id}]]
+          modId="minecraft"
+          mandatory=true
+          versionRange="[0,)"
+          ordering="NONE"
+          side="BOTH"
+          '''
+
+          (build_dir / "META-INF" / "mods.toml").write_text(forge_toml, encoding="utf-8")
+          (build_dir / "META-INF" / "neoforge.mods.toml").write_text(forge_toml, encoding="utf-8")
+
+          with zipfile.ZipFile(jar_name, "w", zipfile.ZIP_DEFLATED) as zf:
+              for root, _, files in os.walk(build_dir):
+                  for file in files:
+                      full_path = Path(root) / file
+                      arcname = full_path.relative_to(build_dir)
+                      zf.write(full_path, arcname.as_posix())
+
           print(f"Created {zip_name}")
+          print(f"Created {jar_name}")
           PY
 
       - name: Create or update GitHub Release
@@ -135,6 +227,7 @@ jobs:
           RELEASE_NAME: ${{ steps.meta.outputs.release_name }}
           CHANGELOG_PATH: ${{ steps.meta.outputs.changelog_path }}
           ZIP_NAME: ${{ steps.meta.outputs.zip_name }}
+          JAR_NAME: ${{ steps.meta.outputs.jar_name }}
           IS_PRERELEASE: ${{ steps.meta.outputs.is_prerelease }}
         run: |
           set -euo pipefail
@@ -145,15 +238,15 @@ jobs:
               --notes-file "$CHANGELOG_PATH" \
               $([ "$IS_PRERELEASE" = "true" ] && echo "--prerelease" || echo "")
           else
-            gh release create "$TAG_NAME" "$ZIP_NAME" \
+            gh release create "$TAG_NAME" "$ZIP_NAME" "$JAR_NAME" \
               --title "$RELEASE_NAME" \
               --notes-file "$CHANGELOG_PATH" \
               $([ "$IS_PRERELEASE" = "true" ] && echo "--prerelease" || echo "")
           fi
 
-          gh release upload "$TAG_NAME" "$ZIP_NAME" --clobber
+          gh release upload "$TAG_NAME" "$ZIP_NAME" "$JAR_NAME" --clobber
 
-      - name: Upload version to Modrinth
+      - name: Upload datapack version to Modrinth
         env:
           MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
           PROJECT_ID: ${{ steps.meta.outputs.project_id }}
@@ -162,7 +255,8 @@ jobs:
           VERSION_TYPE: ${{ steps.meta.outputs.version_type }}
           CHANGELOG_PATH: ${{ steps.meta.outputs.changelog_path }}
           GAME_VERSIONS_JSON: ${{ steps.meta.outputs.game_versions_json }}
-          ZIP_NAME: ${{ steps.meta.outputs.zip_name }}
+          FILE_NAME: ${{ steps.meta.outputs.zip_name }}
+          LOADERS_JSON: '["datapack"]'
         run: |
           python - <<'PY'
           import json
@@ -170,29 +264,23 @@ jobs:
           import requests
 
           token = os.environ["MODRINTH_TOKEN"]
-          project_id = os.environ["PROJECT_ID"]
-          version_number = os.environ["VERSION_NUMBER"]
-          release_name = os.environ["RELEASE_NAME"]
-          version_type = os.environ["VERSION_TYPE"]
-          changelog_path = os.environ["CHANGELOG_PATH"]
-          zip_name = os.environ["ZIP_NAME"]
-          game_versions = json.loads(os.environ["GAME_VERSIONS_JSON"])
-
           if not token:
               raise RuntimeError("MODRINTH_TOKEN secret is missing")
 
-          with open(changelog_path, "r", encoding="utf-8") as f:
+          with open(os.environ["CHANGELOG_PATH"], "r", encoding="utf-8") as f:
               changelog = f.read()
 
+          file_name = os.environ["FILE_NAME"]
+
           payload = {
-              "project_id": project_id,
-              "name": release_name,
-              "version_number": version_number,
+              "project_id": os.environ["PROJECT_ID"],
+              "name": os.environ["RELEASE_NAME"],
+              "version_number": os.environ["VERSION_NUMBER"],
               "changelog": changelog,
               "dependencies": [],
-              "game_versions": [str(v) for v in game_versions],
-              "version_type": version_type,
-              "loaders": ["datapack"],
+              "game_versions": json.loads(os.environ["GAME_VERSIONS_JSON"]),
+              "version_type": os.environ["VERSION_TYPE"],
+              "loaders": json.loads(os.environ["LOADERS_JSON"]),
               "featured": True,
               "status": "listed",
               "file_parts": ["file"],
@@ -204,23 +292,84 @@ jobs:
               "User-Agent": "Explorers-Eden-Fabled-Roots-GitHub-Action"
           }
 
-          with open(zip_name, "rb") as f:
-              files = {
-                  "data": (None, json.dumps(payload), "application/json"),
-                  "file": (zip_name, f, "application/zip"),
-              }
-
+          with open(file_name, "rb") as f:
               response = requests.post(
                   "https://api.modrinth.com/v2/version",
                   headers=headers,
-                  files=files,
+                  files={
+                      "data": (None, json.dumps(payload), "application/json"),
+                      "file": (file_name, f, "application/zip"),
+                  },
                   timeout=300,
               )
 
           if response.status_code >= 300:
               print(response.text)
-              raise RuntimeError(f"Modrinth upload failed: {response.status_code}")
+              raise RuntimeError(f"Modrinth datapack upload failed: {response.status_code}")
 
-          print("Modrinth version uploaded successfully")
-          print(response.text)
+          print("Modrinth datapack version uploaded successfully")
+          PY
+
+      - name: Upload universal mod version to Modrinth
+        env:
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+          PROJECT_ID: ${{ steps.meta.outputs.project_id }}
+          VERSION_NUMBER: ${{ steps.meta.outputs.mod_version_number }}
+          RELEASE_NAME: ${{ steps.meta.outputs.mod_release_name }}
+          VERSION_TYPE: ${{ steps.meta.outputs.version_type }}
+          CHANGELOG_PATH: ${{ steps.meta.outputs.changelog_path }}
+          GAME_VERSIONS_JSON: ${{ steps.meta.outputs.game_versions_json }}
+          FILE_NAME: ${{ steps.meta.outputs.jar_name }}
+          LOADERS_JSON: '["fabric", "forge", "quilt", "neoforge"]'
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import requests
+
+          token = os.environ["MODRINTH_TOKEN"]
+          if not token:
+              raise RuntimeError("MODRINTH_TOKEN secret is missing")
+
+          with open(os.environ["CHANGELOG_PATH"], "r", encoding="utf-8") as f:
+              changelog = f.read()
+
+          file_name = os.environ["FILE_NAME"]
+
+          payload = {
+              "project_id": os.environ["PROJECT_ID"],
+              "name": os.environ["RELEASE_NAME"],
+              "version_number": os.environ["VERSION_NUMBER"],
+              "changelog": changelog,
+              "dependencies": [],
+              "game_versions": json.loads(os.environ["GAME_VERSIONS_JSON"]),
+              "version_type": os.environ["VERSION_TYPE"],
+              "loaders": json.loads(os.environ["LOADERS_JSON"]),
+              "featured": True,
+              "status": "listed",
+              "file_parts": ["file"],
+              "primary_file": "file"
+          }
+
+          headers = {
+              "Authorization": token,
+              "User-Agent": "Explorers-Eden-Fabled-Roots-GitHub-Action"
+          }
+
+          with open(file_name, "rb") as f:
+              response = requests.post(
+                  "https://api.modrinth.com/v2/version",
+                  headers=headers,
+                  files={
+                      "data": (None, json.dumps(payload), "application/json"),
+                      "file": (file_name, f, "application/java-archive"),
+                  },
+                  timeout=300,
+              )
+
+          if response.status_code >= 300:
+              print(response.text)
+              raise RuntimeError(f"Modrinth universal mod upload failed: {response.status_code}")
+
+          print("Modrinth universal mod version uploaded successfully")
           PY
