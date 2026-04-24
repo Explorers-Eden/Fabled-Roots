@@ -29,7 +29,13 @@ jobs:
         shell: bash
         run: |
           python - <<'PY'
-          import json, os, yaml
+          import json
+          import os
+          import yaml
+
+          PACK_NAME = "Fabled Roots"
+          ZIP_PREFIX = "fabled_roots"
+          JAR_PREFIX = "fabled-roots"
 
           with open("release_infos.yml", "r", encoding="utf-8") as f:
               info = yaml.safe_load(f)
@@ -51,13 +57,13 @@ jobs:
           )
 
           if not project_id:
-              raise ValueError("Project-ID missing")
+              raise ValueError("Project-ID missing in release_infos.yml")
           if not game_versions:
-              raise ValueError("Meta Data -> Versions missing")
+              raise ValueError("Meta Data -> Versions missing in release_infos.yml")
           if not version_number:
-              raise ValueError("Details -> Version number missing")
+              raise ValueError("Details -> Version number missing in release_infos.yml")
           if not release_name:
-              raise ValueError("Details -> Version subtitle missing")
+              raise ValueError("Details -> Version subtitle missing in release_infos.yml")
           if not changelog_path:
               raise FileNotFoundError("Changelog.log or changelog.log missing")
 
@@ -68,12 +74,13 @@ jobs:
               "release_name": release_name,
               "mod_release_name": f"{release_name} - Universal Mod",
               "tag_name": f"v{version_number}",
-              "zip_name": f"fabled_roots_{version_number}.zip",
-              "jar_name": f"fabled-roots-{version_number}.jar",
+              "zip_name": f"{ZIP_PREFIX}_{version_number}.zip",
+              "jar_name": f"{JAR_PREFIX}-{version_number}.jar",
               "version_type": version_type,
               "is_prerelease": "true" if version_type in {"beta", "alpha"} else "false",
               "changelog_path": changelog_path,
               "game_versions_json": json.dumps(game_versions),
+              "pack_name": PACK_NAME,
           }
 
           with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
@@ -102,16 +109,21 @@ jobs:
 
           mod_id = "mr_fabled_roots"
           mod_name = "Fabled Roots"
+          slug = "fabled-roots"
           description = "Fabled Roots adds 10 unique races and 10 powerful classes to Minecraft, along with new weapons, items, spells and structures to explore."
           icon = "fabled-roots_pack.png"
+          homepage = f"https://modrinth.com/datapack/{slug}"
+          sources = f"https://github.com/Explorers-Eden/{slug}"
 
-          required = ["assets", "data", "LICENSE", "pack.mcmeta", "pack.png"]
+          required = ["data", "LICENSE", "pack.mcmeta", "pack.png"]
           missing = [p for p in required if not os.path.exists(p)]
           if missing:
               raise FileNotFoundError(f"Missing required files/folders: {', '.join(missing)}")
 
           def add_pack_files(zf):
               for folder in ["assets", "data"]:
+                  if not os.path.exists(folder):
+                      continue
                   for root, _, files in os.walk(folder):
                       for file in files:
                           full = os.path.join(root, file)
@@ -128,7 +140,8 @@ jobs:
 
           (build / "META-INF").mkdir(parents=True)
 
-          shutil.copytree("assets", build / "assets")
+          if os.path.exists("assets"):
+              shutil.copytree("assets", build / "assets")
           shutil.copytree("data", build / "data")
           shutil.copy2("LICENSE", build / "LICENSE")
           shutil.copy2("pack.mcmeta", build / "pack.mcmeta")
@@ -143,8 +156,8 @@ jobs:
               "description": description,
               "authors": [],
               "contact": {
-                  "homepage": "https://modrinth.com/datapack/fabled-roots",
-                  "sources": "https://github.com/Explorers-Eden/Fabled-Roots"
+                  "homepage": homepage,
+                  "sources": sources,
               },
               "license": "GPL-3.0-or-later",
               "icon": icon,
@@ -165,19 +178,19 @@ jobs:
                       "description": description,
                       "contributors": {},
                       "contact": {
-                          "homepage": "https://modrinth.com/datapack/fabled-roots",
-                          "sources": "https://github.com/Explorers-Eden/Fabled-Roots"
+                          "homepage": homepage,
+                          "sources": sources,
                       },
-                      "icon": icon
+                      "icon": icon,
                   },
                   "intermediate_mappings": "net.fabricmc:intermediary",
                   "depends": [
                       {
                           "id": "quilt_resource_loader",
                           "versions": "*",
-                          "unless": "fabric-resource-loader-v0"
+                          "unless": "fabric-resource-loader-v0",
                       }
-                  ]
+                  ],
               }
           }
 
@@ -187,7 +200,7 @@ jobs:
           license = 'GPL-3.0-or-later'
           showAsResourcePack = false
           mods = [
-            {{ modId = '{mod_id}', version = '{version_number}', displayName = '{mod_name}', description = '{description}', logoFile = '{icon}', updateJSONURL = 'https://api.modrinth.com/updates/{project_id}/forge_updates.json', credits = 'Generated by Modrinth', authors = '', displayURL = 'https://modrinth.com/datapack/fabled-roots' }},
+            {{ modId = '{mod_id}', version = '{version_number}', displayName = '{mod_name}', description = '{description}', logoFile = '{icon}', updateJSONURL = 'https://api.modrinth.com/updates/{project_id}/forge_updates.json', credits = 'Generated by Modrinth', authors = '', displayURL = '{homepage}' }},
           ]
           """
 
@@ -197,7 +210,7 @@ jobs:
           license = 'GPL-3.0-or-later'
           showAsResourcePack = false
           mods = [
-            {{ modId = '{mod_id}', version = '{version_number}', displayName = '{mod_name}', description = '{description}', logoFile = '{icon}', updateJSONURL = 'https://api.modrinth.com/updates/{project_id}/forge_updates.json?neoforge=only', credits = 'Generated by Modrinth', authors = '', displayURL = 'https://modrinth.com/datapack/fabled-roots' }},
+            {{ modId = '{mod_id}', version = '{version_number}', displayName = '{mod_name}', description = '{description}', logoFile = '{icon}', updateJSONURL = 'https://api.modrinth.com/updates/{project_id}/forge_updates.json?neoforge=only', credits = 'Generated by Modrinth', authors = '', displayURL = '{homepage}' }},
           ]
           """
 
@@ -228,16 +241,21 @@ jobs:
         run: |
           set -euo pipefail
 
+          PRERELEASE_FLAG=""
+          if [ "$IS_PRERELEASE" = "true" ]; then
+            PRERELEASE_FLAG="--prerelease"
+          fi
+
           if gh release view "$TAG_NAME" >/dev/null 2>&1; then
             gh release edit "$TAG_NAME" \
               --title "$RELEASE_NAME" \
               --notes-file "$CHANGELOG_PATH" \
-              $([ "$IS_PRERELEASE" = "true" ] && echo "--prerelease" || echo "")
+              $PRERELEASE_FLAG
           else
             gh release create "$TAG_NAME" "$ZIP_NAME" "$JAR_NAME" \
               --title "$RELEASE_NAME" \
               --notes-file "$CHANGELOG_PATH" \
-              $([ "$IS_PRERELEASE" = "true" ] && echo "--prerelease" || echo "")
+              $PRERELEASE_FLAG
           fi
 
           gh release upload "$TAG_NAME" "$ZIP_NAME" "$JAR_NAME" --clobber
@@ -255,7 +273,9 @@ jobs:
           LOADERS_JSON: '["datapack"]'
         run: |
           python - <<'PY'
-          import json, os, requests
+          import json
+          import os
+          import requests
 
           token = os.environ["MODRINTH_TOKEN"]
           if not token:
@@ -278,7 +298,7 @@ jobs:
               "featured": True,
               "status": "listed",
               "file_parts": ["file"],
-              "primary_file": "file"
+              "primary_file": "file",
           }
 
           with open(file_name, "rb") as f:
@@ -286,7 +306,7 @@ jobs:
                   "https://api.modrinth.com/v2/version",
                   headers={
                       "Authorization": token,
-                      "User-Agent": "Explorers-Eden-Fabled-Roots-GitHub-Action"
+                      "User-Agent": "Explorers-Eden-Fabled-Roots-GitHub-Action",
                   },
                   files={
                       "data": (None, json.dumps(payload), "application/json"),
@@ -315,7 +335,9 @@ jobs:
           LOADERS_JSON: '["fabric", "forge", "quilt", "neoforge"]'
         run: |
           python - <<'PY'
-          import json, os, requests
+          import json
+          import os
+          import requests
 
           token = os.environ["MODRINTH_TOKEN"]
           if not token:
@@ -338,7 +360,7 @@ jobs:
               "featured": True,
               "status": "listed",
               "file_parts": ["file"],
-              "primary_file": "file"
+              "primary_file": "file",
           }
 
           with open(file_name, "rb") as f:
@@ -346,7 +368,7 @@ jobs:
                   "https://api.modrinth.com/v2/version",
                   headers={
                       "Authorization": token,
-                      "User-Agent": "Explorers-Eden-Fabled-Roots-GitHub-Action"
+                      "User-Agent": "Explorers-Eden-Fabled-Roots-GitHub-Action",
                   },
                   files={
                       "data": (None, json.dumps(payload), "application/json"),
