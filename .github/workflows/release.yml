@@ -5,6 +5,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   release:
@@ -23,6 +24,98 @@ jobs:
 
       - name: Install Python dependencies
         run: pip install pyyaml requests
+
+      - name: Create temporary Crowdin config
+        shell: bash
+        run: |
+          cat > .crowdin-temp.yml <<'EOF'
+          project_id_env: CROWDIN_PROJECT_ID
+          api_token_env: CROWDIN_PERSONAL_TOKEN
+          base_path: .
+          preserve_hierarchy: true
+
+          files:
+            - source: /assets/fabled_roots/lang/en_us.json
+              dest: /Fabled Roots.json
+              translation: /assets/fabled_roots/lang/%locale_with_underscore%.json
+          EOF
+
+      - name: Back up English source lang file
+        shell: bash
+        run: |
+          mkdir -p .crowdin-backup
+          cp assets/fabled_roots/lang/en_us.json .crowdin-backup/en_us.json
+
+      - name: Upload Fabled Roots source lang to Crowdin
+        uses: crowdin/github-action@v2
+        with:
+          config: .crowdin-temp.yml
+          upload_sources: true
+          upload_translations: false
+          download_translations: false
+        env:
+          CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
+          CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+
+      - name: Download Fabled Roots translations from Crowdin
+        uses: crowdin/github-action@v2
+        with:
+          config: .crowdin-temp.yml
+          upload_sources: false
+          upload_translations: false
+          download_translations: true
+          skip_untranslated_files: false
+          push_translations: false
+          create_pull_request: false
+        env:
+          CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
+          CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Clean downloaded Crowdin files
+        shell: bash
+        run: |
+          rm -f .crowdin-temp.yml
+          rm -f assets/fabled_roots/lang/en_US.json
+          cp .crowdin-backup/en_us.json assets/fabled_roots/lang/en_us.json
+          rm -rf .crowdin-backup
+
+          python - <<'PY'
+          from pathlib import Path
+          import os
+
+          lang_dir = Path('assets/fabled_roots/lang')
+          if not lang_dir.exists():
+              raise FileNotFoundError(lang_dir)
+
+          for path in sorted(lang_dir.glob('*.json')):
+              lower_name = path.name.lower()
+              if path.name == lower_name:
+                  continue
+
+              target = path.with_name(lower_name)
+              if target.exists():
+                  path.unlink()
+                  continue
+
+              tmp = path.with_name(path.name + '.tmp_case_rename')
+              path.rename(tmp)
+              tmp.rename(target)
+          PY
+
+      - name: Commit Crowdin translation updates
+        shell: bash
+        run: |
+          if git diff --quiet -- assets/fabled_roots/lang; then
+            echo "No Crowdin translation changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/fabled_roots/lang
+          git commit -m "Update Fabled Roots translations from Crowdin"
+          git push
 
       - name: Read release metadata
         id: meta
