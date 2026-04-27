@@ -25,6 +25,7 @@ jobs:
       - name: Install Python dependencies
         run: pip install pyyaml requests
 
+
       - name: Create temporary Crowdin config
         shell: bash
         run: |
@@ -40,22 +41,23 @@ jobs:
               translation: /assets/fabled_roots/lang/%locale_with_underscore%.json
           EOF
 
-      - name: Back up English source lang file
-        shell: bash
-        run: |
-          mkdir -p .crowdin-backup
-          cp assets/fabled_roots/lang/en_us.json .crowdin-backup/en_us.json
-
-      - name: Upload Fabled Roots source lang to Crowdin
+      - name: Upload Fabled Roots source to Crowdin
         uses: crowdin/github-action@v2
         with:
           config: .crowdin-temp.yml
           upload_sources: true
           upload_translations: false
           download_translations: false
+          create_pull_request: false
+          push_translations: false
         env:
           CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
           CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+
+      - name: Protect English source file
+        shell: bash
+        run: |
+          cp assets/fabled_roots/lang/en_us.json /tmp/fabled_roots-en_us.json
 
       - name: Download Fabled Roots translations from Crowdin
         uses: crowdin/github-action@v2
@@ -65,57 +67,54 @@ jobs:
           upload_translations: false
           download_translations: true
           skip_untranslated_files: false
-          push_translations: false
           create_pull_request: false
+          push_translations: false
         env:
           CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
           CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Clean downloaded Crowdin files
+      - name: Clean downloaded translations and restore English source
         shell: bash
         run: |
+          set -euo pipefail
+
+          # The temporary Crowdin config must never be committed.
           rm -f .crowdin-temp.yml
+
+          # Crowdin may export the source language as en_US.json. Minecraft uses en_us.json,
+          # and the source file from the repo must stay authoritative.
           rm -f assets/fabled_roots/lang/en_US.json
-          cp .crowdin-backup/en_us.json assets/fabled_roots/lang/en_us.json
-          rm -rf .crowdin-backup
+          cp /tmp/fabled_roots-en_us.json assets/fabled_roots/lang/en_us.json
 
-          python - <<'PY'
-          from pathlib import Path
-          import os
+          # Crowdin exports locale names like de_DE.json, but Minecraft lang files are lowercase.
+          find assets/fabled_roots/lang -maxdepth 1 -type f -name "*.json" | while read -r file; do
+            dir="$(dirname "$file")"
+            base="$(basename "$file")"
+            lower="$(echo "$base" | tr '[:upper:]' '[:lower:]')"
+            if [ "$base" != "$lower" ]; then
+              tmp="$dir/.tmp-$lower"
+              mv "$file" "$tmp"
+              mv "$tmp" "$dir/$lower"
+            fi
+          done
 
-          lang_dir = Path('assets/fabled_roots/lang')
-          if not lang_dir.exists():
-              raise FileNotFoundError(lang_dir)
-
-          for path in sorted(lang_dir.glob('*.json')):
-              lower_name = path.name.lower()
-              if path.name == lower_name:
-                  continue
-
-              target = path.with_name(lower_name)
-              if target.exists():
-                  path.unlink()
-                  continue
-
-              tmp = path.with_name(path.name + '.tmp_case_rename')
-              path.rename(tmp)
-              tmp.rename(target)
-          PY
-
-      - name: Commit Crowdin translation updates
+      - name: Commit downloaded translation files to repo
         shell: bash
         run: |
-          if git diff --quiet -- assets/fabled_roots/lang; then
-            echo "No Crowdin translation changes to commit."
-            exit 0
-          fi
+          set -euo pipefail
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git add assets/fabled_roots/lang
-          git commit -m "Update Fabled Roots translations from Crowdin"
-          git push
+          git restore --staged assets/fabled_roots/lang/en_us.json || true
+
+          if git diff --cached --quiet; then
+            echo "No translation changes to commit"
+          else
+            git commit -m "Update Fabled Roots translations from Crowdin"
+            git push origin HEAD:${{ github.ref_name }}
+          fi
 
       - name: Read release metadata
         id: meta
