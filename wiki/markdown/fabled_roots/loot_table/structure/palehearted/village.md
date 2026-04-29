@@ -13,5 +13,4 @@
 | Feather | 1 | 1 | 1 | 2.3% |
 | Gold Nugget | 1–3 | 1 | 1 | 2.3% |
 | Loot Table (fabled_roots:pool/journal/new_horizons/palehearted) | 1 | 2 | 3 | 42.9% |
-| Empty | 1 | 2 | 2 | 28.6% |
 | Horn of Roots | 1 | 2 | 2 | 28.6% |

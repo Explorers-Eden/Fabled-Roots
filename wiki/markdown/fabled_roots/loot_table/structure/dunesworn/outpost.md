@@ -14,7 +14,6 @@
 | Tripwire Hook | 1–3 | 4 | 3 | 13.6% |
 | Enchanted Book | 1 | 4 | 1 | 4.5% |
 | Horn of Roots | 1 | 5 | 1 | 100.0% |
-| Empty | 1 | 6 | 3 | 30.0% |
 | Loot Table (fabled_roots:pool/journal/final_days/dunesworn) | 1 | 6 | 3 | 30.0% |
 | Loot Table (fabled_roots:pool/journal/new_horizons/dunesworn) | 1 | 6 | 3 | 30.0% |
 | Buried Treasure Map | 1 | 6 | 1 | 10.0% |

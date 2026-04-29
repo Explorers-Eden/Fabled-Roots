@@ -12,7 +12,6 @@
 | Book | 1 | 1 | 1 | 2.3% |
 | Feather | 1 | 1 | 1 | 2.3% |
 | Gold Nugget | 1–3 | 1 | 1 | 2.3% |
-| Empty | 1 | 2 | 2 | 33.3% |
 | Bundle of Roots | 1 | 2 | 1 | 16.7% |
 | Harness of Roots | 1 | 2 | 1 | 16.7% |
 | item.fabled_roots.stone_broadsword | 1 | 2 | 1 | 16.7% |
@@ -20,5 +19,4 @@
 | Loot Table (fabled_roots:pool/journal/final_days/netherian) | 1 | 3 | 3 | 25.0% |
 | Loot Table (fabled_roots:pool/journal/new_horizons/netherian) | 1 | 3 | 3 | 25.0% |
 | Buried Treasure Map | 1 | 3 | 2 | 16.7% |
-| Empty | 1 | 3 | 2 | 16.7% |
 | Horn of Roots | 1 | 3 | 2 | 16.7% |
