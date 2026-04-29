@@ -257,10 +257,12 @@ function renderMergedPools(pools) {
 
   pools.forEach((pool, poolIndex) => {
     const flattenedEntries = flattenEntries(pool.entries ?? []);
+    const nonEmptyFlattenedEntries = flattenedEntries.filter(entry => entry.item !== "Empty");
+
     const totalWeight = flattenedEntries.reduce((sum, entry) => sum + entry.weight, 0);
 
     const mergedEntries = mergeRowsByItem(
-      flattenedEntries.map(entry => ({
+      nonEmptyFlattenedEntries.map(entry => ({
         ...entry,
         pool: poolIndex + 1
       }))
