@@ -56,6 +56,10 @@ function resolveTextComponent(component) {
   if (typeof component === "string") return component;
 
   if (typeof component === "object") {
+    if (component.translate === "filled_map.buried_treasure") {
+      return "Buried Treasure Map";
+    }
+
     if (component.translate) {
       return lang[component.translate] ?? component.fallback ?? component.translate;
     }
