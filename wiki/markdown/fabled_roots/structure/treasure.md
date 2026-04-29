@@ -1,449 +1,8 @@
 # Treasure
 
-## Treasure/Aetherian
-
-### Blocks
-
-| Block | Count |
-|:-----|:-----:|
-| Chest | 1 |
-| Jigsaw | 1 |
-
-
-### Entities
-
-None found.
-
-
-### Loot Tables
-
-| Loot Table |
-|:-----|
-| fabled_roots:structure/aetherian/treasure |
-
-
-
-## Treasure/Aetherian Start
-
-### Blocks
-
-| Block | Count |
-|:-----|:-----:|
-| Jigsaw | 1 |
-
-
-### Entities
-
-None found.
-
-
-### Loot Tables
-
-None found.
-
-
-
-## Treasure/Dunesworn
-
-### Blocks
-
-| Block | Count |
-|:-----|:-----:|
-| Chest | 1 |
-| Jigsaw | 1 |
-
-
-### Entities
-
-None found.
-
-
-### Loot Tables
-
-| Loot Table |
-|:-----|
-| fabled_roots:structure/dunesworn/treasure |
-
-
-
-## Treasure/Dunesworn Start
-
-### Blocks
-
-| Block | Count |
-|:-----|:-----:|
-| Jigsaw | 1 |
-
-
-### Entities
-
-None found.
-
-
-### Loot Tables
-
-None found.
-
-
-
-## Treasure/Endling
-
-### Blocks
-
-| Block | Count |
-|:-----|:-----:|
-| Chest | 1 |
-| Jigsaw | 1 |
-
-
-### Entities
-
-None found.
-
-
-### Loot Tables
-
-| Loot Table |
-|:-----|
-| fabled_roots:structure/endling/treasure |
-
-
-
-## Treasure/Endling Start
-
-### Blocks
-
-| Block | Count |
-|:-----|:-----:|
-| Jigsaw | 1 |
-
-
-### Entities
-
-None found.
-
-
-### Loot Tables
-
-None found.
-
-
-
-## Treasure/Frostborne
-
-### Blocks
-
-| Block | Count |
-|:-----|:-----:|
-| Chest | 1 |
-| Jigsaw | 1 |
-
-
-### Entities
-
-None found.
-
-
-### Loot Tables
-
-| Loot Table |
-|:-----|
-| fabled_roots:structure/frostborne/treasure |
-
-
-
-## Treasure/Frostborne Start
-
-### Blocks
-
-| Block | Count |
-|:-----|:-----:|
-| Jigsaw | 1 |
-
-
-### Entities
-
-None found.
-
-
-### Loot Tables
-
-None found.
-
-
-
-## Treasure/Moonshroud
-
-### Blocks
-
-| Block | Count |
-|:-----|:-----:|
-| Chest | 1 |
-| Jigsaw | 1 |
-
-
-### Entities
-
-None found.
-
-
-### Loot Tables
-
-| Loot Table |
-|:-----|
-| fabled_roots:structure/moonshroud/treasure |
-
-
-
-## Treasure/Moonshroud Start
-
-### Blocks
-
-| Block | Count |
-|:-----|:-----:|
-| Jigsaw | 1 |
-
-
-### Entities
-
-None found.
-
-
-### Loot Tables
-
-None found.
-
-
-
-## Treasure/Netherian
-
-### Blocks
-
-| Block | Count |
-|:-----|:-----:|
-| Chest | 1 |
-| Jigsaw | 1 |
-
-
-### Entities
-
-None found.
-
-
-### Loot Tables
-
-| Loot Table |
-|:-----|
-| fabled_roots:structure/oakhearted/treasure |
-
-
-
-## Treasure/Netherian Start
-
-### Blocks
-
-| Block | Count |
-|:-----|:-----:|
-| Jigsaw | 1 |
-
-
-### Entities
-
-None found.
-
-
-### Loot Tables
-
-None found.
-
-
-
-## Treasure/Oakhearted
-
-### Blocks
-
-| Block | Count |
-|:-----|:-----:|
-| Chest | 1 |
-| Jigsaw | 1 |
-
-
-### Entities
-
-None found.
-
-
-### Loot Tables
-
-| Loot Table |
-|:-----|
-| fabled_roots:structure/netherian/treasure |
-
-
-
-## Treasure/Oakhearted Start
-
-### Blocks
-
-| Block | Count |
-|:-----|:-----:|
-| Jigsaw | 1 |
-
-
-### Entities
-
-None found.
-
-
-### Loot Tables
-
-None found.
-
-
-
-## Treasure/Orebringer
-
-### Blocks
-
-| Block | Count |
-|:-----|:-----:|
-| Chest | 1 |
-| Jigsaw | 1 |
-
-
-### Entities
-
-None found.
-
-
-### Loot Tables
-
-| Loot Table |
-|:-----|
-| fabled_roots:structure/orebringer/treasure |
-
-
-
-## Treasure/Orebringer Start
-
-### Blocks
-
-| Block | Count |
-|:-----|:-----:|
-| Jigsaw | 1 |
-
-
-### Entities
-
-None found.
-
-
-### Loot Tables
-
-None found.
-
-
-
-## Treasure/Palehearted
-
-### Blocks
-
-| Block | Count |
-|:-----|:-----:|
-| Chest | 1 |
-| Jigsaw | 1 |
-
-
-### Entities
-
-None found.
-
-
-### Loot Tables
-
-| Loot Table |
-|:-----|
-| fabled_roots:structure/palehearted/treasure |
-
-
-
-## Treasure/Palehearted Start
-
-### Blocks
-
-| Block | Count |
-|:-----|:-----:|
-| Jigsaw | 1 |
-
-
-### Entities
-
-None found.
-
-
-### Loot Tables
-
-None found.
-
-
-
-## Treasure/Turtlekin
-
-### Blocks
-
-| Block | Count |
-|:-----|:-----:|
-| Chest | 1 |
-| Jigsaw | 1 |
-
-
-### Entities
-
-None found.
-
-
-### Loot Tables
-
-| Loot Table |
-|:-----|
-| fabled_roots:structure/turtlekin/treasure |
-
-
-
-## Treasure/Turtlekin Start
-
-### Blocks
-
-| Block | Count |
-|:-----|:-----:|
-| Jigsaw | 1 |
-
-
-### Entities
-
-None found.
-
-
-### Loot Tables
-
-None found.
-
-
-
 ## Summary
 
-### Blocks
-
-| Block | Count |
-|:-----|:-----:|
-| Jigsaw | 20 |
-| Chest | 10 |
-
-
-### Entities
-
-None found.
-
+The structure is composed of the following blocks: Jigsaw, Chest.
 
 ### Loot Tables
 
@@ -461,3 +20,473 @@ None found.
 | fabled_roots:structure/turtlekin/treasure |
 
 
+
+<details>
+<summary><strong>Treasure/Aetherian</strong></summary>
+
+### Blocks
+
+| Block | Count |
+|:-----|:-----:|
+| Chest | 1 |
+| Jigsaw | 1 |
+
+
+### Entities
+
+None found.
+
+
+### Loot Tables
+
+| Loot Table |
+|:-----|
+| fabled_roots:structure/aetherian/treasure |
+
+
+</details>
+
+<details>
+<summary><strong>Treasure/Aetherian Start</strong></summary>
+
+### Blocks
+
+| Block | Count |
+|:-----|:-----:|
+| Jigsaw | 1 |
+
+
+### Entities
+
+None found.
+
+
+### Loot Tables
+
+None found.
+
+
+</details>
+
+<details>
+<summary><strong>Treasure/Dunesworn</strong></summary>
+
+### Blocks
+
+| Block | Count |
+|:-----|:-----:|
+| Chest | 1 |
+| Jigsaw | 1 |
+
+
+### Entities
+
+None found.
+
+
+### Loot Tables
+
+| Loot Table |
+|:-----|
+| fabled_roots:structure/dunesworn/treasure |
+
+
+</details>
+
+<details>
+<summary><strong>Treasure/Dunesworn Start</strong></summary>
+
+### Blocks
+
+| Block | Count |
+|:-----|:-----:|
+| Jigsaw | 1 |
+
+
+### Entities
+
+None found.
+
+
+### Loot Tables
+
+None found.
+
+
+</details>
+
+<details>
+<summary><strong>Treasure/Endling</strong></summary>
+
+### Blocks
+
+| Block | Count |
+|:-----|:-----:|
+| Chest | 1 |
+| Jigsaw | 1 |
+
+
+### Entities
+
+None found.
+
+
+### Loot Tables
+
+| Loot Table |
+|:-----|
+| fabled_roots:structure/endling/treasure |
+
+
+</details>
+
+<details>
+<summary><strong>Treasure/Endling Start</strong></summary>
+
+### Blocks
+
+| Block | Count |
+|:-----|:-----:|
+| Jigsaw | 1 |
+
+
+### Entities
+
+None found.
+
+
+### Loot Tables
+
+None found.
+
+
+</details>
+
+<details>
+<summary><strong>Treasure/Frostborne</strong></summary>
+
+### Blocks
+
+| Block | Count |
+|:-----|:-----:|
+| Chest | 1 |
+| Jigsaw | 1 |
+
+
+### Entities
+
+None found.
+
+
+### Loot Tables
+
+| Loot Table |
+|:-----|
+| fabled_roots:structure/frostborne/treasure |
+
+
+</details>
+
+<details>
+<summary><strong>Treasure/Frostborne Start</strong></summary>
+
+### Blocks
+
+| Block | Count |
+|:-----|:-----:|
+| Jigsaw | 1 |
+
+
+### Entities
+
+None found.
+
+
+### Loot Tables
+
+None found.
+
+
+</details>
+
+<details>
+<summary><strong>Treasure/Moonshroud</strong></summary>
+
+### Blocks
+
+| Block | Count |
+|:-----|:-----:|
+| Chest | 1 |
+| Jigsaw | 1 |
+
+
+### Entities
+
+None found.
+
+
+### Loot Tables
+
+| Loot Table |
+|:-----|
+| fabled_roots:structure/moonshroud/treasure |
+
+
+</details>
+
+<details>
+<summary><strong>Treasure/Moonshroud Start</strong></summary>
+
+### Blocks
+
+| Block | Count |
+|:-----|:-----:|
+| Jigsaw | 1 |
+
+
+### Entities
+
+None found.
+
+
+### Loot Tables
+
+None found.
+
+
+</details>
+
+<details>
+<summary><strong>Treasure/Netherian</strong></summary>
+
+### Blocks
+
+| Block | Count |
+|:-----|:-----:|
+| Chest | 1 |
+| Jigsaw | 1 |
+
+
+### Entities
+
+None found.
+
+
+### Loot Tables
+
+| Loot Table |
+|:-----|
+| fabled_roots:structure/oakhearted/treasure |
+
+
+</details>
+
+<details>
+<summary><strong>Treasure/Netherian Start</strong></summary>
+
+### Blocks
+
+| Block | Count |
+|:-----|:-----:|
+| Jigsaw | 1 |
+
+
+### Entities
+
+None found.
+
+
+### Loot Tables
+
+None found.
+
+
+</details>
+
+<details>
+<summary><strong>Treasure/Oakhearted</strong></summary>
+
+### Blocks
+
+| Block | Count |
+|:-----|:-----:|
+| Chest | 1 |
+| Jigsaw | 1 |
+
+
+### Entities
+
+None found.
+
+
+### Loot Tables
+
+| Loot Table |
+|:-----|
+| fabled_roots:structure/netherian/treasure |
+
+
+</details>
+
+<details>
+<summary><strong>Treasure/Oakhearted Start</strong></summary>
+
+### Blocks
+
+| Block | Count |
+|:-----|:-----:|
+| Jigsaw | 1 |
+
+
+### Entities
+
+None found.
+
+
+### Loot Tables
+
+None found.
+
+
+</details>
+
+<details>
+<summary><strong>Treasure/Orebringer</strong></summary>
+
+### Blocks
+
+| Block | Count |
+|:-----|:-----:|
+| Chest | 1 |
+| Jigsaw | 1 |
+
+
+### Entities
+
+None found.
+
+
+### Loot Tables
+
+| Loot Table |
+|:-----|
+| fabled_roots:structure/orebringer/treasure |
+
+
+</details>
+
+<details>
+<summary><strong>Treasure/Orebringer Start</strong></summary>
+
+### Blocks
+
+| Block | Count |
+|:-----|:-----:|
+| Jigsaw | 1 |
+
+
+### Entities
+
+None found.
+
+
+### Loot Tables
+
+None found.
+
+
+</details>
+
+<details>
+<summary><strong>Treasure/Palehearted</strong></summary>
+
+### Blocks
+
+| Block | Count |
+|:-----|:-----:|
+| Chest | 1 |
+| Jigsaw | 1 |
+
+
+### Entities
+
+None found.
+
+
+### Loot Tables
+
+| Loot Table |
+|:-----|
+| fabled_roots:structure/palehearted/treasure |
+
+
+</details>
+
+<details>
+<summary><strong>Treasure/Palehearted Start</strong></summary>
+
+### Blocks
+
+| Block | Count |
+|:-----|:-----:|
+| Jigsaw | 1 |
+
+
+### Entities
+
+None found.
+
+
+### Loot Tables
+
+None found.
+
+
+</details>
+
+<details>
+<summary><strong>Treasure/Turtlekin</strong></summary>
+
+### Blocks
+
+| Block | Count |
+|:-----|:-----:|
+| Chest | 1 |
+| Jigsaw | 1 |
+
+
+### Entities
+
+None found.
+
+
+### Loot Tables
+
+| Loot Table |
+|:-----|
+| fabled_roots:structure/turtlekin/treasure |
+
+
+</details>
+
+<details>
+<summary><strong>Treasure/Turtlekin Start</strong></summary>
+
+### Blocks
+
+| Block | Count |
+|:-----|:-----:|
+| Jigsaw | 1 |
+
+
+### Entities
+
+None found.
+
+
+### Loot Tables
+
+None found.
+
+
+</details>
