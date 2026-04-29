@@ -17,4 +17,4 @@
 | Empty | 1 | 6 | 3 | 30.0% |
 | Loot Table (fabled_roots:pool/journal/final_days/oakhearted) | 1 | 6 | 3 | 30.0% |
 | Loot Table (fabled_roots:pool/journal/new_horizons/oakhearted) | 1 | 6 | 3 | 30.0% |
-| filled_map.buried_treasure | 1 | 6 | 1 | 10.0% |
+| Buried Treasure Map | 1 | 6 | 1 | 10.0% |

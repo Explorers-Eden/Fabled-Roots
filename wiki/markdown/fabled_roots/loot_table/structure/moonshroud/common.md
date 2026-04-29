@@ -19,6 +19,6 @@
 | Wooden Throwing Knife | 1 | 2 | 1 | 16.7% |
 | Loot Table (fabled_roots:pool/journal/final_days/moonshroud) | 1 | 3 | 3 | 25.0% |
 | Loot Table (fabled_roots:pool/journal/new_horizons/moonshroud) | 1 | 3 | 3 | 25.0% |
+| Buried Treasure Map | 1 | 3 | 2 | 16.7% |
 | Empty | 1 | 3 | 2 | 16.7% |
-| filled_map.buried_treasure | 1 | 3 | 2 | 16.7% |
 | Horn of Roots | 1 | 3 | 2 | 16.7% |
