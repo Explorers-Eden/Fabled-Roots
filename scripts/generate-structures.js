@@ -1,3 +1,4 @@
+// scripts/generate-structures.js
 const fs = require("fs");
 const path = require("path");
 const nbt = require("prismarine-nbt");
@@ -225,17 +226,21 @@ async function readNbtFile(file) {
   return nbt.simplify(parsed.parsed);
 }
 
-function removeStaleMarkdownFiles(validOutputFiles) {
-  const markdownFiles = walk(outputRoot).filter(
-    file => file.split(path.sep).includes("structure") && file.endsWith(".md")
-  );
+function removeStaleMarkdownFiles(validOutputFiles, namespaces) {
+  for (const namespace of namespaces) {
+    const structureRoot = path.join(outputRoot, namespace, "structure");
 
-  for (const file of markdownFiles) {
-    const normalized = path.normalize(file);
+    if (!fs.existsSync(structureRoot)) continue;
 
-    if (!validOutputFiles.has(normalized)) {
-      fs.rmSync(file);
-      console.log(`Removed stale ${file}`);
+    const markdownFiles = walk(structureRoot).filter(file => file.endsWith(".md"));
+
+    for (const file of markdownFiles) {
+      const normalized = path.normalize(file);
+
+      if (!validOutputFiles.has(normalized)) {
+        fs.rmSync(file);
+        console.log(`Removed stale ${file}`);
+      }
     }
   }
 }
@@ -266,8 +271,11 @@ async function main() {
   }
 
   const validOutputFiles = new Set();
+  const namespaces = new Set();
 
   for (const group of groups.values()) {
+    namespaces.add(group.namespace);
+
     const structures = [];
     const totals = {
       blockCounts: new Map(),
@@ -304,7 +312,7 @@ async function main() {
     console.log(`Generated ${outputPath}`);
   }
 
-  removeStaleMarkdownFiles(validOutputFiles);
+  removeStaleMarkdownFiles(validOutputFiles, namespaces);
 }
 
 main().catch(error => {
