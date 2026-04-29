@@ -2,18 +2,4 @@
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
-| Loot Table | 1 | 1 | 40 | 6.7% |
-| Loot Table | 1 | 1 | 40 | 6.7% |
-| Loot Table | 1 | 1 | 40 | 6.7% |
-| Loot Table | 1 | 1 | 40 | 6.7% |
-| Loot Table | 1 | 1 | 40 | 6.7% |
-| Loot Table | 1 | 1 | 40 | 6.7% |
-| Loot Table | 1 | 1 | 40 | 6.7% |
-| Loot Table | 1 | 1 | 40 | 6.7% |
-| Loot Table | 1 | 1 | 40 | 6.7% |
-| Loot Table | 1 | 1 | 40 | 6.7% |
-| Loot Table | 1 | 1 | 40 | 6.7% |
-| Loot Table | 1 | 1 | 40 | 6.7% |
-| Loot Table | 1 | 1 | 40 | 6.7% |
-| Loot Table | 1 | 1 | 40 | 6.7% |
-| Loot Table | 1 | 1 | 40 | 6.7% |
+| Loot Table (unknown) | 1 | 1 | 600 | 100.0% |

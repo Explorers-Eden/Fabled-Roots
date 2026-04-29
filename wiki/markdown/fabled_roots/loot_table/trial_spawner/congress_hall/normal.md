@@ -12,7 +12,5 @@
 | Cooked Chicken | 1–4 | 1 | 1 | 3.8% |
 | Emerald | 1–3 | 1 | 1 | 3.8% |
 | Wind Charge | 4–12 | 1 | 1 | 3.8% |
-| Loot Table | 1 | 2 | 1 | 33.3% |
-| Loot Table | 1 | 2 | 1 | 33.3% |
-| Loot Table | 1 | 2 | 1 | 33.3% |
-| Loot Table | 1 | 3 | 1 | 100.0% |
+| Loot Table (unknown) | 1 | 2 | 3 | 100.0% |
+| Loot Table (unknown) | 1 | 3 | 1 | 100.0% |

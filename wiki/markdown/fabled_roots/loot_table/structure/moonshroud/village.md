@@ -12,6 +12,5 @@
 | Feather | 1 | 1 | 1 | 2.3% |
 | Gold Nugget | 1–3 | 1 | 1 | 2.3% |
 | Lantern | 1 | 1 | 1 | 2.3% |
-| Loot Table | 1 | 2 | 3 | 42.9% |
+| Loot Table (unknown) | 1 | 2 | 5 | 71.4% |
 | Empty | 1 | 2 | 2 | 28.6% |
-| Loot Table | 1 | 2 | 2 | 28.6% |

@@ -13,12 +13,8 @@
 | Glowstone Dust | 1–3 | 1 | 1 | 2.3% |
 | Sunflower | 1 | 1 | 1 | 2.3% |
 | Empty | 1 | 2 | 2 | 33.3% |
-| Loot Table | 1 | 2 | 1 | 16.7% |
-| Loot Table | 1 | 2 | 1 | 16.7% |
+| Loot Table (unknown) | 1 | 2 | 2 | 33.3% |
 | Stone Spear | 1 | 2 | 1 | 16.7% |
 | Wooden Spear | 1 | 2 | 1 | 16.7% |
-| Loot Table | 1 | 3 | 3 | 25.0% |
-| Loot Table | 1 | 3 | 3 | 25.0% |
+| Loot Table (unknown) | 1 | 3 | 10 | 83.3% |
 | Empty | 1 | 3 | 2 | 16.7% |
-| Loot Table | 1 | 3 | 2 | 16.7% |
-| Loot Table | 1 | 3 | 2 | 16.7% |

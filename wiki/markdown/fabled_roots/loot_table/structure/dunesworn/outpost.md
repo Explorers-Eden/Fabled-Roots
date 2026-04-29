@@ -12,9 +12,7 @@
 | String | 1–6 | 4 | 4 | 18.2% |
 | Iron Ingot | 1–3 | 4 | 3 | 13.6% |
 | Tripwire Hook | 1–3 | 4 | 3 | 13.6% |
-| Enchanted Book (minecraft:on_random_loot) | 1 | 4 | 1 | 4.5% |
-| Loot Table | 1 | 5 | 1 | 100.0% |
+| Enchanted Book | 1 | 4 | 1 | 4.5% |
+| Loot Table (unknown) | 1 | 5 | 1 | 100.0% |
+| Loot Table (unknown) | 1 | 6 | 7 | 70.0% |
 | Empty | 1 | 6 | 3 | 30.0% |
-| Loot Table | 1 | 6 | 3 | 30.0% |
-| Loot Table | 1 | 6 | 3 | 30.0% |
-| Loot Table | 1 | 6 | 1 | 10.0% |
