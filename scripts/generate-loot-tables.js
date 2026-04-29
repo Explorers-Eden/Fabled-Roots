@@ -300,9 +300,7 @@ function removeStaleMarkdownFiles(validOutputFiles, namespaces) {
 
     if (!fs.existsSync(lootTableRoot)) continue;
 
-    const markdownFiles = walk(lootTableRoot).filter(file => file.endsWith(".md"));
-
-    for (const file of markdownFiles) {
+    for (const file of walk(lootTableRoot).filter(file => file.endsWith(".md"))) {
       const normalized = path.normalize(file);
 
       if (!validOutputFiles.has(normalized)) {
