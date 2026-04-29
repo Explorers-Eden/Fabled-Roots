@@ -2,4 +2,6 @@
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
-| Loot Table (unknown) | 1 | 1 | 80 | 100.0% |
+| Mace | 1 | 1 | 40 | 50.0% |
+| Blaze Mace | 1 | 1 | 20 | 25.0% |
+| Breeze Mace | 1 | 1 | 20 | 25.0% |

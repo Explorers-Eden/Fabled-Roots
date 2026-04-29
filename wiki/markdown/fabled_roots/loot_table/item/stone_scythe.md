@@ -2,4 +2,4 @@
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
-| Stone Sword | 1 | 1 | 1 | 100.0% |
+| Stone Scythe | 1 | 1 | 1 | 100.0% |

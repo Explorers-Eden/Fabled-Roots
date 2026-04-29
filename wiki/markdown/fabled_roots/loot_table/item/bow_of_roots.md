@@ -2,4 +2,4 @@
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
-| Bow | 1 | 1 | 1 | 100.0% |
+| Bow of Roots | 1 | 1 | 1 | 100.0% |

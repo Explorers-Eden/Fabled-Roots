@@ -2,4 +2,4 @@
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
-| Netherite Chestplate | 1 | 1 | 1 | 100.0% |
+| Reinforced Chestplate of Roots | 1 | 1 | 1 | 100.0% |

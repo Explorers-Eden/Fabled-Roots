@@ -2,4 +2,4 @@
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
-| Loot Table (unknown) | 1 | 1 | 440 | 100.0% |
+| Music Disc | 1 | 1 | 440 | 100.0% |

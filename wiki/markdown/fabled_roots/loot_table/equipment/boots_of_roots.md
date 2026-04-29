@@ -2,4 +2,4 @@
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
-| Iron Boots | 1 | 1 | 1 | 100.0% |
+| Boots of Roots | 1 | 1 | 1 | 100.0% |

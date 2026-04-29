@@ -2,4 +2,4 @@
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
-| Netherite Helmet | 1 | 1 | 1 | 100.0% |
+| Reinforced Helmet of Roots | 1 | 1 | 1 | 100.0% |

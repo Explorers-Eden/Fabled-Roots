@@ -2,4 +2,4 @@
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
-| Netherite Leggings | 1 | 1 | 1 | 100.0% |
+| Reinforced Leggings of Roots | 1 | 1 | 1 | 100.0% |

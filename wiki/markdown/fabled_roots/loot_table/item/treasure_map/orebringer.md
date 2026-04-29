@@ -2,4 +2,4 @@
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
-| Map | 1 | 1 | 1 | 100.0% |
+| filled_map.buried_treasure | 1 | 1 | 1 | 100.0% |

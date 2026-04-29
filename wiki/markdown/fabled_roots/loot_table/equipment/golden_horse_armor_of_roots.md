@@ -2,4 +2,4 @@
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
-| Golden Horse Armor | 1 | 1 | 1 | 100.0% |
+| Golden Horse Armor of Roots | 1 | 1 | 1 | 100.0% |

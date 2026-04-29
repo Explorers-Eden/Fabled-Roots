@@ -2,4 +2,4 @@
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
-| Snowball | 1 | 1 | 1 | 100.0% |
+| Diamond Throwing Knife | 1 | 1 | 1 | 100.0% |

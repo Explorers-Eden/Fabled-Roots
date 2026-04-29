@@ -13,8 +13,12 @@
 | Glowstone Dust | 1–3 | 1 | 1 | 2.3% |
 | Sunflower | 1 | 1 | 1 | 2.3% |
 | Empty | 1 | 2 | 2 | 33.3% |
-| Loot Table (unknown) | 1 | 2 | 2 | 33.3% |
+| Bundle of Roots | 1 | 2 | 1 | 16.7% |
+| Harness of Roots | 1 | 2 | 1 | 16.7% |
 | Stone Spear | 1 | 2 | 1 | 16.7% |
 | Wooden Spear | 1 | 2 | 1 | 16.7% |
-| Loot Table (unknown) | 1 | 3 | 10 | 83.3% |
+| Loot Table (fabled_roots:pool/journal/final_days/aetherian) | 1 | 3 | 3 | 25.0% |
+| Loot Table (fabled_roots:pool/journal/new_horizons/aetherian) | 1 | 3 | 3 | 25.0% |
 | Empty | 1 | 3 | 2 | 16.7% |
+| filled_map.buried_treasure | 1 | 3 | 2 | 16.7% |
+| Horn of Roots | 1 | 3 | 2 | 16.7% |

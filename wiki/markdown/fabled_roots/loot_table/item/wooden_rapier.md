@@ -2,4 +2,4 @@
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
-| Wooden Sword | 1 | 1 | 1 | 100.0% |
+| Wooden Rapier | 1 | 1 | 1 | 100.0% |

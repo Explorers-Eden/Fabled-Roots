@@ -2,4 +2,4 @@
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
-| Copper Horse Armor | 1 | 1 | 1 | 100.0% |
+| Copper Horse Armor of Roots | 1 | 1 | 1 | 100.0% |

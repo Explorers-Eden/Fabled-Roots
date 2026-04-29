@@ -2,4 +2,4 @@
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
-| Iron Helmet | 1 | 1 | 1 | 100.0% |
+| Iron Golem Shell | 1 | 1 | 1 | 100.0% |

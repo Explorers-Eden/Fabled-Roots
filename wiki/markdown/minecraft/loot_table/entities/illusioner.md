@@ -4,4 +4,4 @@
 |:-----|:----------:|:----:|:------:|:------:|
 | Totem Of Undying | 1 | 1 | 1 | 100.0% |
 | Lapis Lazuli | 0–1 | 2 | 1 | 100.0% |
-| Loot Table (unknown) | 1 | 3 | 1 | 100.0% |
+| Loot Table (fabled_roots:pool/enchanted_scroll) | 1 | 3 | 1 | 100.0% |

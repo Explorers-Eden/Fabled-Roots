@@ -13,6 +13,8 @@
 | Iron Ingot | 1–3 | 4 | 3 | 13.6% |
 | Tripwire Hook | 1–3 | 4 | 3 | 13.6% |
 | Enchanted Book | 1 | 4 | 1 | 4.5% |
-| Loot Table (unknown) | 1 | 5 | 1 | 100.0% |
-| Loot Table (unknown) | 1 | 6 | 7 | 70.0% |
+| Horn of Roots | 1 | 5 | 1 | 100.0% |
 | Empty | 1 | 6 | 3 | 30.0% |
+| Loot Table (fabled_roots:pool/journal/final_days/oakhearted) | 1 | 6 | 3 | 30.0% |
+| Loot Table (fabled_roots:pool/journal/new_horizons/oakhearted) | 1 | 6 | 3 | 30.0% |
+| filled_map.buried_treasure | 1 | 6 | 1 | 10.0% |

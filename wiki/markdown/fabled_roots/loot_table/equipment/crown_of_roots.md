@@ -2,4 +2,4 @@
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
-| Music Disc 5 | 1 | 1 | 60 | 100.0% |
+| Crown of Roots | 1 | 1 | 60 | 100.0% |

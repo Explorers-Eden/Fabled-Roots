@@ -2,4 +2,4 @@
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
-| Diamond Horse Armor | 1 | 1 | 1 | 100.0% |
+| Diamond Horse Armor of Roots | 1 | 1 | 1 | 100.0% |

@@ -2,4 +2,4 @@
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
-| Stone Sword | 1 | 1 | 1 | 100.0% |
+| item.fabled_roots.stone_broadsword | 1 | 1 | 1 | 100.0% |

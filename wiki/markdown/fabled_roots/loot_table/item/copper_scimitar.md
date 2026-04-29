@@ -2,4 +2,4 @@
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
-| Copper Sword | 1 | 1 | 1 | 100.0% |
+| Copper Scimitar | 1 | 1 | 1 | 100.0% |

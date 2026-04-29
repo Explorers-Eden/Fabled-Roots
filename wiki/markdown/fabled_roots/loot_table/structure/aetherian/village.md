@@ -12,5 +12,6 @@
 | Feather | 1 | 1 | 1 | 2.3% |
 | Glowstone Dust | 1–3 | 1 | 1 | 2.3% |
 | Sunflower | 1 | 1 | 1 | 2.3% |
-| Loot Table (unknown) | 1 | 2 | 5 | 71.4% |
+| Loot Table (fabled_roots:pool/journal/new_horizons/aetherian) | 1 | 2 | 3 | 42.9% |
 | Empty | 1 | 2 | 2 | 28.6% |
+| Horn of Roots | 1 | 2 | 2 | 28.6% |

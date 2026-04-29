@@ -2,4 +2,7 @@
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
-| Loot Table (unknown) | 1 | 1 | 80 | 100.0% |
+| Boots of Roots | 1 | 1 | 20 | 25.0% |
+| Chestplate of Roots | 1 | 1 | 20 | 25.0% |
+| Helmet of Roots | 1 | 1 | 20 | 25.0% |
+| Leggings of Roots | 1 | 1 | 20 | 25.0% |

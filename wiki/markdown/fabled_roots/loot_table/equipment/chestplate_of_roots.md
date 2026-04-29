@@ -2,4 +2,4 @@
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
-| Iron Chestplate | 1 | 1 | 1 | 100.0% |
+| Chestplate of Roots | 1 | 1 | 1 | 100.0% |

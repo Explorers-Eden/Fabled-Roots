@@ -2,4 +2,4 @@
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
-| Wooden Sword | 1 | 1 | 1 | 100.0% |
+| Wooden Scythe | 1 | 1 | 1 | 100.0% |

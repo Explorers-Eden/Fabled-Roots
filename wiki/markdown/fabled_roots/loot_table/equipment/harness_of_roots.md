@@ -2,4 +2,4 @@
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
-| White Harness | 1 | 1 | 1 | 100.0% |
+| Harness of Roots | 1 | 1 | 1 | 100.0% |
