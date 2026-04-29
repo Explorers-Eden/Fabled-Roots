@@ -1,24 +1,14 @@
-# Outpost
-
-## Summary
+# Contents
 
 The structure is composed of the following blocks: Deepslate Bricks, Purpur Block, End Stone Bricks, Oak Planks, Pale Oak Planks, Terracotta, Stripped Oak Log, Sandstone, Smooth Sandstone, Mossy Stone Bricks, Oak Log, Pale Oak Log, Stripped Jungle Log, Purpur Pillar, Cut Sandstone, Jungle Fence, Oak Fence, Pale Oak Fence, Oak Slab, Pale Oak Slab, Purpur Stairs, Sandstone Stairs, Purple Stained Glass Pane, Sandstone Slab, Deepslate Brick Stairs, Mossy Stone Brick Stairs, Purpur Slab, End Stone Brick Slab, Oak Stairs, Pale Oak Stairs, Chiseled Sandstone, End Rod, Smooth Sandstone Slab, Mossy Cobblestone, Deepslate Brick Wall, End Stone Brick Stairs, End Stone Brick Wall, Mossy Stone Brick Wall, Sandstone Wall, Smooth Sandstone Stairs, Torch, Chest, Deepslate Brick Slab, Mossy Stone Brick Slab, Soul Torch, Wall Torch, Soul Wall Torch.
 
-### Loot Tables
 
-| Loot Table |
-|:-----|
-| fabled_roots:structure/dunesworn/outpost |
-| fabled_roots:structure/endling/outpost |
-| fabled_roots:structure/oakhearted/outpost |
-| fabled_roots:structure/palehearted/outpost |
-
-
+## Per-Structure File Contents
 
 <details>
 <summary><strong>Outpost/Dunesworn</strong></summary>
 
-The structure is composed of the following blocks: Terracotta, Sandstone, Smooth Sandstone, Stripped Jungle Log, Cut Sandstone, Jungle Fence, Sandstone Stairs, Sandstone Slab, Chiseled Sandstone, Smooth Sandstone Slab, Sandstone Wall, Smooth Sandstone Stairs, Torch, Chest, Wall Torch.
+The structure part is composed of the following blocks: Terracotta, Sandstone, Smooth Sandstone, Stripped Jungle Log, Cut Sandstone, Jungle Fence, Sandstone Stairs, Sandstone Slab, Chiseled Sandstone, Smooth Sandstone Slab, Sandstone Wall, Smooth Sandstone Stairs, Torch, Chest, Wall Torch.
 
 ### Blocks
 
@@ -43,7 +33,7 @@ The structure is composed of the following blocks: Terracotta, Sandstone, Smooth
 
 ### Entities
 
-None found.
+*None*
 
 
 ### Loot Tables
@@ -58,7 +48,7 @@ None found.
 <details>
 <summary><strong>Outpost/Endling</strong></summary>
 
-The structure is composed of the following blocks: Purpur Block, End Stone Bricks, Purpur Pillar, Purpur Stairs, Purple Stained Glass Pane, Purpur Slab, End Stone Brick Slab, End Rod, End Stone Brick Stairs, End Stone Brick Wall, Chest.
+The structure part is composed of the following blocks: Purpur Block, End Stone Bricks, Purpur Pillar, Purpur Stairs, Purple Stained Glass Pane, Purpur Slab, End Stone Brick Slab, End Rod, End Stone Brick Stairs, End Stone Brick Wall, Chest.
 
 ### Blocks
 
@@ -79,7 +69,7 @@ The structure is composed of the following blocks: Purpur Block, End Stone Brick
 
 ### Entities
 
-None found.
+*None*
 
 
 ### Loot Tables
@@ -94,7 +84,7 @@ None found.
 <details>
 <summary><strong>Outpost/Oakhearted</strong></summary>
 
-The structure is composed of the following blocks: Oak Planks, Stripped Oak Log, Mossy Stone Bricks, Oak Log, Oak Fence, Oak Slab, Mossy Stone Brick Stairs, Oak Stairs, Mossy Cobblestone, Mossy Stone Brick Wall, Mossy Stone Brick Slab, Torch, Chest, Wall Torch.
+The structure part is composed of the following blocks: Oak Planks, Stripped Oak Log, Mossy Stone Bricks, Oak Log, Oak Fence, Oak Slab, Mossy Stone Brick Stairs, Oak Stairs, Mossy Cobblestone, Mossy Stone Brick Wall, Mossy Stone Brick Slab, Torch, Chest, Wall Torch.
 
 ### Blocks
 
@@ -118,7 +108,7 @@ The structure is composed of the following blocks: Oak Planks, Stripped Oak Log,
 
 ### Entities
 
-None found.
+*None*
 
 
 ### Loot Tables
@@ -133,7 +123,7 @@ None found.
 <details>
 <summary><strong>Outpost/Palehearted</strong></summary>
 
-The structure is composed of the following blocks: Deepslate Bricks, Pale Oak Planks, Pale Oak Log, Pale Oak Fence, Pale Oak Slab, Deepslate Brick Stairs, Pale Oak Stairs, Deepslate Brick Wall, Deepslate Brick Slab, Soul Torch, Chest, Soul Wall Torch.
+The structure part is composed of the following blocks: Deepslate Bricks, Pale Oak Planks, Pale Oak Log, Pale Oak Fence, Pale Oak Slab, Deepslate Brick Stairs, Pale Oak Stairs, Deepslate Brick Wall, Deepslate Brick Slab, Soul Torch, Chest, Soul Wall Torch.
 
 ### Blocks
 
@@ -155,7 +145,7 @@ The structure is composed of the following blocks: Deepslate Bricks, Pale Oak Pl
 
 ### Entities
 
-None found.
+*None*
 
 
 ### Loot Tables
