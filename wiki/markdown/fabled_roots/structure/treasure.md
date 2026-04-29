@@ -2,7 +2,7 @@
 
 ## Summary
 
-The structure is composed of the following blocks: Jigsaw, Chest.
+The structure is composed of the following blocks: Chest.
 
 ### Loot Tables
 
@@ -24,12 +24,13 @@ The structure is composed of the following blocks: Jigsaw, Chest.
 <details>
 <summary><strong>Treasure/Aetherian</strong></summary>
 
+The structure is composed of the following blocks: Chest.
+
 ### Blocks
 
 | Block | Count |
 |:-----|:-----:|
 | Chest | 1 |
-| Jigsaw | 1 |
 
 
 ### Entities
@@ -49,11 +50,11 @@ None found.
 <details>
 <summary><strong>Treasure/Aetherian Start</strong></summary>
 
+The structure does not contain any notable blocks.
+
 ### Blocks
 
-| Block | Count |
-|:-----|:-----:|
-| Jigsaw | 1 |
+None found.
 
 
 ### Entities
@@ -71,12 +72,13 @@ None found.
 <details>
 <summary><strong>Treasure/Dunesworn</strong></summary>
 
+The structure is composed of the following blocks: Chest.
+
 ### Blocks
 
 | Block | Count |
 |:-----|:-----:|
 | Chest | 1 |
-| Jigsaw | 1 |
 
 
 ### Entities
@@ -96,11 +98,11 @@ None found.
 <details>
 <summary><strong>Treasure/Dunesworn Start</strong></summary>
 
+The structure does not contain any notable blocks.
+
 ### Blocks
 
-| Block | Count |
-|:-----|:-----:|
-| Jigsaw | 1 |
+None found.
 
 
 ### Entities
@@ -118,12 +120,13 @@ None found.
 <details>
 <summary><strong>Treasure/Endling</strong></summary>
 
+The structure is composed of the following blocks: Chest.
+
 ### Blocks
 
 | Block | Count |
 |:-----|:-----:|
 | Chest | 1 |
-| Jigsaw | 1 |
 
 
 ### Entities
@@ -143,11 +146,11 @@ None found.
 <details>
 <summary><strong>Treasure/Endling Start</strong></summary>
 
+The structure does not contain any notable blocks.
+
 ### Blocks
 
-| Block | Count |
-|:-----|:-----:|
-| Jigsaw | 1 |
+None found.
 
 
 ### Entities
@@ -165,12 +168,13 @@ None found.
 <details>
 <summary><strong>Treasure/Frostborne</strong></summary>
 
+The structure is composed of the following blocks: Chest.
+
 ### Blocks
 
 | Block | Count |
 |:-----|:-----:|
 | Chest | 1 |
-| Jigsaw | 1 |
 
 
 ### Entities
@@ -190,11 +194,11 @@ None found.
 <details>
 <summary><strong>Treasure/Frostborne Start</strong></summary>
 
+The structure does not contain any notable blocks.
+
 ### Blocks
 
-| Block | Count |
-|:-----|:-----:|
-| Jigsaw | 1 |
+None found.
 
 
 ### Entities
@@ -212,12 +216,13 @@ None found.
 <details>
 <summary><strong>Treasure/Moonshroud</strong></summary>
 
+The structure is composed of the following blocks: Chest.
+
 ### Blocks
 
 | Block | Count |
 |:-----|:-----:|
 | Chest | 1 |
-| Jigsaw | 1 |
 
 
 ### Entities
@@ -237,11 +242,11 @@ None found.
 <details>
 <summary><strong>Treasure/Moonshroud Start</strong></summary>
 
+The structure does not contain any notable blocks.
+
 ### Blocks
 
-| Block | Count |
-|:-----|:-----:|
-| Jigsaw | 1 |
+None found.
 
 
 ### Entities
@@ -259,12 +264,13 @@ None found.
 <details>
 <summary><strong>Treasure/Netherian</strong></summary>
 
+The structure is composed of the following blocks: Chest.
+
 ### Blocks
 
 | Block | Count |
 |:-----|:-----:|
 | Chest | 1 |
-| Jigsaw | 1 |
 
 
 ### Entities
@@ -284,11 +290,11 @@ None found.
 <details>
 <summary><strong>Treasure/Netherian Start</strong></summary>
 
+The structure does not contain any notable blocks.
+
 ### Blocks
 
-| Block | Count |
-|:-----|:-----:|
-| Jigsaw | 1 |
+None found.
 
 
 ### Entities
@@ -306,12 +312,13 @@ None found.
 <details>
 <summary><strong>Treasure/Oakhearted</strong></summary>
 
+The structure is composed of the following blocks: Chest.
+
 ### Blocks
 
 | Block | Count |
 |:-----|:-----:|
 | Chest | 1 |
-| Jigsaw | 1 |
 
 
 ### Entities
@@ -331,11 +338,11 @@ None found.
 <details>
 <summary><strong>Treasure/Oakhearted Start</strong></summary>
 
+The structure does not contain any notable blocks.
+
 ### Blocks
 
-| Block | Count |
-|:-----|:-----:|
-| Jigsaw | 1 |
+None found.
 
 
 ### Entities
@@ -353,12 +360,13 @@ None found.
 <details>
 <summary><strong>Treasure/Orebringer</strong></summary>
 
+The structure is composed of the following blocks: Chest.
+
 ### Blocks
 
 | Block | Count |
 |:-----|:-----:|
 | Chest | 1 |
-| Jigsaw | 1 |
 
 
 ### Entities
@@ -378,11 +386,11 @@ None found.
 <details>
 <summary><strong>Treasure/Orebringer Start</strong></summary>
 
+The structure does not contain any notable blocks.
+
 ### Blocks
 
-| Block | Count |
-|:-----|:-----:|
-| Jigsaw | 1 |
+None found.
 
 
 ### Entities
@@ -400,12 +408,13 @@ None found.
 <details>
 <summary><strong>Treasure/Palehearted</strong></summary>
 
+The structure is composed of the following blocks: Chest.
+
 ### Blocks
 
 | Block | Count |
 |:-----|:-----:|
 | Chest | 1 |
-| Jigsaw | 1 |
 
 
 ### Entities
@@ -425,11 +434,11 @@ None found.
 <details>
 <summary><strong>Treasure/Palehearted Start</strong></summary>
 
+The structure does not contain any notable blocks.
+
 ### Blocks
 
-| Block | Count |
-|:-----|:-----:|
-| Jigsaw | 1 |
+None found.
 
 
 ### Entities
@@ -447,12 +456,13 @@ None found.
 <details>
 <summary><strong>Treasure/Turtlekin</strong></summary>
 
+The structure is composed of the following blocks: Chest.
+
 ### Blocks
 
 | Block | Count |
 |:-----|:-----:|
 | Chest | 1 |
-| Jigsaw | 1 |
 
 
 ### Entities
@@ -472,11 +482,11 @@ None found.
 <details>
 <summary><strong>Treasure/Turtlekin Start</strong></summary>
 
+The structure does not contain any notable blocks.
+
 ### Blocks
 
-| Block | Count |
-|:-----|:-----:|
-| Jigsaw | 1 |
+None found.
 
 
 ### Entities

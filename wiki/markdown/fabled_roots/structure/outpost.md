@@ -18,6 +18,8 @@ The structure is composed of the following blocks: Deepslate Bricks, Purpur Bloc
 <details>
 <summary><strong>Outpost/Dunesworn</strong></summary>
 
+The structure is composed of the following blocks: Terracotta, Sandstone, Smooth Sandstone, Stripped Jungle Log, Cut Sandstone, Jungle Fence, Sandstone Stairs, Sandstone Slab, Chiseled Sandstone, Smooth Sandstone Slab, Sandstone Wall, Smooth Sandstone Stairs, Torch, Chest, Wall Torch.
+
 ### Blocks
 
 | Block | Count |
@@ -56,6 +58,8 @@ None found.
 <details>
 <summary><strong>Outpost/Endling</strong></summary>
 
+The structure is composed of the following blocks: Purpur Block, End Stone Bricks, Purpur Pillar, Purpur Stairs, Purple Stained Glass Pane, Purpur Slab, End Stone Brick Slab, End Rod, End Stone Brick Stairs, End Stone Brick Wall, Chest.
+
 ### Blocks
 
 | Block | Count |
@@ -89,6 +93,8 @@ None found.
 
 <details>
 <summary><strong>Outpost/Oakhearted</strong></summary>
+
+The structure is composed of the following blocks: Oak Planks, Stripped Oak Log, Mossy Stone Bricks, Oak Log, Oak Fence, Oak Slab, Mossy Stone Brick Stairs, Oak Stairs, Mossy Cobblestone, Mossy Stone Brick Wall, Mossy Stone Brick Slab, Torch, Chest, Wall Torch.
 
 ### Blocks
 
@@ -126,6 +132,8 @@ None found.
 
 <details>
 <summary><strong>Outpost/Palehearted</strong></summary>
+
+The structure is composed of the following blocks: Deepslate Bricks, Pale Oak Planks, Pale Oak Log, Pale Oak Fence, Pale Oak Slab, Deepslate Brick Stairs, Pale Oak Stairs, Deepslate Brick Wall, Deepslate Brick Slab, Soul Torch, Chest, Soul Wall Torch.
 
 ### Blocks
 

@@ -2,7 +2,7 @@
 
 ## Summary
 
-The structure is composed of the following blocks: Stone, Dirt, Sand, Pale Moss Block, Grass Block, Moss Block, Dark Oak Leaves, Netherrack, Pale Oak Leaves, End Stone, Coarse Dirt, Ice, Pale Moss Carpet, Short Grass, Rooted Dirt, Dark Oak Wood, Snow, Mycelium, Dark Prismarine Slab, Waxed Exposed Cut Copper Slab, Tall Grass, Smooth Sandstone, Snow Block, Crimson Nylium, Mud, Pale Oak Trapdoor, Spruce Fence, Pale Oak Wood, Seagrass, Vine, Cyan Stained Glass, Iron Bars, Oak Slab, Podzol, Pale Hanging Moss, Packed Ice, Light Blue Stained Glass Pane, Diorite, Calcite, Jungle Trapdoor, Oak Leaves, Oak Log, Smooth Sandstone Slab, Light Blue Glazed Terracotta, Purpur Slab, Quartz Pillar, Smooth Sandstone Stairs, Spruce Trapdoor, Pale Oak Log, Prismarine Bricks, White Stained Glass Pane, Cactus, Farmland, Polished Diorite, End Stone Brick Stairs, Pale Oak Fence, Oak Fence, Quartz Slab, Tall Seagrass, Dirt Path, Smooth Quartz Stairs, Oak Wood, Waxed Exposed Cut Copper, Carrots, Stone Bricks, Diorite Slab, Birch Planks, Crimson Trapdoor, Dandelion, Nether Brick Fence, Spruce Stairs, Tuff, Hanging Roots, Pale Oak Sapling, Polished Diorite Slab, Birch Stairs, Cut Sandstone, Lapis Block, End Stone Brick Wall, Blue Ice, Chorus Plant, Dark Oak Trapdoor, Birch Trapdoor, Nether Brick Wall, Pale Oak Planks, End Stone Brick Slab, End Stone Bricks, Powder Snow, Prismarine Brick Stairs, Prismarine Wall, Diorite Wall, Jigsaw, Moss Carpet, Soul Campfire, Chest, Copper Ore, Crimson Roots, Glow Lichen, Chiseled Sandstone, Chiseled Stone Bricks, Closed Eyeblossom, Crimson Fence, Gold Block, Nether Brick Slab, Pumpkin Stem, Smooth Quartz Slab, Stripped Dark Oak Log, Carved Pumpkin, Firefly Bush, Spruce Wall Sign, Campfire, Open Eyeblossom, Purpur Stairs, Sandstone, Spruce Fence Gate, Yellow Wall Banner, Lantern, Purpur Pillar, Stripped Pale Oak Log, Bookshelf, Coal Ore, Dark Oak Stairs, Redstone Ore, Spruce Planks, Azure Bluet, Cornflower, Diorite Stairs, Gold Ore, Horn Coral, Pale Oak Stairs, Stripped Crimson Stem, Warped Trapdoor, Birch Slab, Bubble Coral Fan, Chorus Flower, Dark Oak Door, Dark Oak Log, Dark Prismarine, Nether Brick Stairs, Oxeye Daisy, Pale Oak Door, Poppy, Shroomlight, Spruce Slab, Twisting Vines Plant, Cracked Nether Bricks, Crimson Fungus, Fire Coral, Furnace, Light Blue Candle, Packed Mud, Polished Diorite Stairs, Tube Coral, Warped Fence Gate, Azalea, Chiseled Nether Bricks, Crafting Table, Creaking Heart, Exposed Copper Lantern, Flowering Azalea, Green Bed, Horn Coral Fan, Iron Chain, Nether Bricks, Weathered Copper Lantern, White Candle, Bell, Blast Furnace, Cartography Table, Chipped Anvil, Composter, Dark Oak Pressure Plate, Dark Prismarine Stairs, Exposed Copper Chain, Fletching Table, Gravel, Hay Block, Jukebox, Light, Mud Brick Wall, Quartz Block, Sea Lantern, Smithing Table, Soul Fire, Soul Soil, Stonecutter, Target, Twisting Vines, Water Cauldron.
+The structure is composed of the following blocks: Stone, Dirt, Sand, Pale Moss Block, Grass Block, Moss Block, Dark Oak Leaves, Netherrack, Pale Oak Leaves, End Stone, Coarse Dirt, Ice, Pale Moss Carpet, Short Grass, Rooted Dirt, Dark Oak Wood, Snow, Mycelium, Dark Prismarine Slab, Waxed Exposed Cut Copper Slab, Tall Grass, Smooth Sandstone, Snow Block, Crimson Nylium, Mud, Pale Oak Trapdoor, Spruce Fence, Pale Oak Wood, Seagrass, Vine, Cyan Stained Glass, Iron Bars, Oak Slab, Podzol, Pale Hanging Moss, Packed Ice, Light Blue Stained Glass Pane, Diorite, Calcite, Jungle Trapdoor, Oak Leaves, Oak Log, Smooth Sandstone Slab, Light Blue Glazed Terracotta, Purpur Slab, Quartz Pillar, Smooth Sandstone Stairs, Spruce Trapdoor, Pale Oak Log, Prismarine Bricks, White Stained Glass Pane, Cactus, Farmland, Polished Diorite, End Stone Brick Stairs, Pale Oak Fence, Oak Fence, Quartz Slab, Tall Seagrass, Dirt Path, Smooth Quartz Stairs, Oak Wood, Waxed Exposed Cut Copper, Carrots, Stone Bricks, Diorite Slab, Birch Planks, Crimson Trapdoor, Dandelion, Nether Brick Fence, Spruce Stairs, Tuff, Hanging Roots, Pale Oak Sapling, Polished Diorite Slab, Birch Stairs, Cut Sandstone, Lapis Block, End Stone Brick Wall, Blue Ice, Chorus Plant, Dark Oak Trapdoor, Birch Trapdoor, Nether Brick Wall, Pale Oak Planks, End Stone Brick Slab, End Stone Bricks, Powder Snow, Prismarine Brick Stairs, Prismarine Wall, Diorite Wall, Moss Carpet, Soul Campfire, Chest, Copper Ore, Crimson Roots, Glow Lichen, Chiseled Sandstone, Chiseled Stone Bricks, Closed Eyeblossom, Crimson Fence, Gold Block, Nether Brick Slab, Pumpkin Stem, Smooth Quartz Slab, Stripped Dark Oak Log, Carved Pumpkin, Firefly Bush, Spruce Wall Sign, Campfire, Open Eyeblossom, Purpur Stairs, Sandstone, Spruce Fence Gate, Yellow Wall Banner, Lantern, Purpur Pillar, Stripped Pale Oak Log, Bookshelf, Coal Ore, Dark Oak Stairs, Redstone Ore, Spruce Planks, Azure Bluet, Cornflower, Diorite Stairs, Gold Ore, Horn Coral, Pale Oak Stairs, Stripped Crimson Stem, Warped Trapdoor, Birch Slab, Bubble Coral Fan, Chorus Flower, Dark Oak Door, Dark Oak Log, Dark Prismarine, Nether Brick Stairs, Oxeye Daisy, Pale Oak Door, Poppy, Shroomlight, Spruce Slab, Twisting Vines Plant, Cracked Nether Bricks, Crimson Fungus, Fire Coral, Furnace, Light Blue Candle, Packed Mud, Polished Diorite Stairs, Tube Coral, Warped Fence Gate, Azalea, Chiseled Nether Bricks, Crafting Table, Creaking Heart, Exposed Copper Lantern, Flowering Azalea, Green Bed, Horn Coral Fan, Iron Chain, Nether Bricks, Weathered Copper Lantern, White Candle, Bell, Blast Furnace, Cartography Table, Chipped Anvil, Composter, Dark Oak Pressure Plate, Dark Prismarine Stairs, Exposed Copper Chain, Fletching Table, Gravel, Hay Block, Jukebox, Light, Mud Brick Wall, Quartz Block, Sea Lantern, Smithing Table, Soul Fire, Soul Soil, Stonecutter, Target, Twisting Vines, Water Cauldron.
 
 Additionally, the following entities may spawn during its generation: Cow.
 
@@ -25,6 +25,8 @@ Additionally, the following entities may spawn during its generation: Cow.
 
 <details>
 <summary><strong>Shelter/Aetherian</strong></summary>
+
+The structure is composed of the following blocks: Stone, Moss Block, Grass Block, Dark Oak Leaves, Dirt, Short Grass, Rooted Dirt, Coarse Dirt, Tall Grass, Mud, Vine, Dark Prismarine Slab, Oak Leaves, Quartz Pillar, Quartz Slab, Smooth Quartz Stairs, Oak Wood, Seagrass, Dandelion, Oak Fence, Hanging Roots, Tall Seagrass, Moss Carpet, Pale Oak Fence, Smooth Quartz Slab, Bookshelf, Azure Bluet, Cornflower, Oxeye Daisy, Poppy, Azalea, Flowering Azalea, Chest, Quartz Block, Soul Fire, Soul Soil.
 
 ### Blocks
 
@@ -85,6 +87,8 @@ None found.
 <details>
 <summary><strong>Shelter/Dunesworn</strong></summary>
 
+The structure is composed of the following blocks: Sand, Smooth Sandstone, Smooth Sandstone Slab, Smooth Sandstone Stairs, Cactus, Cut Sandstone, Lapis Block, Birch Trapdoor, Chiseled Sandstone, Gold Block, Sandstone, Yellow Wall Banner, Campfire, Bell, Chest, Water Cauldron.
+
 ### Blocks
 
 | Block | Count |
@@ -104,7 +108,6 @@ None found.
 | Campfire | 4 |
 | Bell | 1 |
 | Chest | 1 |
-| Jigsaw | 1 |
 | Water Cauldron | 1 |
 
 
@@ -125,11 +128,11 @@ None found.
 <details>
 <summary><strong>Shelter/Dunesworn Start</strong></summary>
 
+The structure does not contain any notable blocks.
+
 ### Blocks
 
-| Block | Count |
-|:-----|:-----:|
-| Jigsaw | 1 |
+None found.
 
 
 ### Entities
@@ -147,6 +150,8 @@ None found.
 <details>
 <summary><strong>Shelter/Endling</strong></summary>
 
+The structure is composed of the following blocks: End Stone, Purpur Slab, End Stone Brick Wall, Chorus Plant, End Stone Bricks, End Stone Brick Slab, Purpur Stairs, End Stone Brick Stairs, Purpur Pillar, Chorus Flower, Chest, Soul Campfire.
+
 ### Blocks
 
 | Block | Count |
@@ -162,7 +167,6 @@ None found.
 | Purpur Pillar | 7 |
 | Chorus Flower | 4 |
 | Chest | 1 |
-| Jigsaw | 1 |
 | Soul Campfire | 1 |
 
 
@@ -183,11 +187,11 @@ None found.
 <details>
 <summary><strong>Shelter/Endling Start</strong></summary>
 
+The structure does not contain any notable blocks.
+
 ### Blocks
 
-| Block | Count |
-|:-----|:-----:|
-| Jigsaw | 1 |
+None found.
 
 
 ### Entities
@@ -204,6 +208,8 @@ None found.
 
 <details>
 <summary><strong>Shelter/Frostborne</strong></summary>
+
+The structure is composed of the following blocks: Dirt, Ice, Grass Block, Snow, Waxed Exposed Cut Copper Slab, Snow Block, Light Blue Stained Glass Pane, Diorite, Calcite, Packed Ice, Light Blue Glazed Terracotta, White Stained Glass Pane, Farmland, Polished Diorite, Dirt Path, Waxed Exposed Cut Copper, Carrots, Diorite Slab, Polished Diorite Slab, Blue Ice, Powder Snow, Diorite Wall, Pumpkin Stem, Stripped Dark Oak Log, Carved Pumpkin, Dark Oak Stairs, Diorite Stairs, Dark Oak Door, Chest, Polished Diorite Stairs, Light Blue Candle, Cartography Table, Jukebox.
 
 ### Blocks
 
@@ -241,7 +247,6 @@ None found.
 | Polished Diorite Stairs | 3 |
 | Light Blue Candle | 2 |
 | Cartography Table | 1 |
-| Jigsaw | 1 |
 | Jukebox | 1 |
 
 
@@ -262,11 +267,11 @@ None found.
 <details>
 <summary><strong>Shelter/Frostborne Start</strong></summary>
 
+The structure does not contain any notable blocks.
+
 ### Blocks
 
-| Block | Count |
-|:-----|:-----:|
-| Jigsaw | 1 |
+None found.
 
 
 ### Entities
@@ -283,6 +288,8 @@ None found.
 
 <details>
 <summary><strong>Shelter/Moonshroud</strong></summary>
+
+The structure is composed of the following blocks: Dirt, Mycelium, Coarse Dirt, Iron Bars, Jungle Trapdoor, End Stone Brick Stairs, Stone Bricks, Birch Planks, End Stone, Birch Stairs, Soul Campfire, Chiseled Stone Bricks, Birch Slab, End Stone Brick Slab, Chest, Hay Block, Light.
 
 ### Blocks
 
@@ -304,7 +311,6 @@ None found.
 | End Stone Brick Slab | 4 |
 | Chest | 1 |
 | Hay Block | 1 |
-| Jigsaw | 1 |
 | Light | 1 |
 
 
@@ -325,11 +331,11 @@ None found.
 <details>
 <summary><strong>Shelter/Moonshroud Start</strong></summary>
 
+The structure does not contain any notable blocks.
+
 ### Blocks
 
-| Block | Count |
-|:-----|:-----:|
-| Jigsaw | 1 |
+None found.
 
 
 ### Entities
@@ -346,6 +352,8 @@ None found.
 
 <details>
 <summary><strong>Shelter/Netherian</strong></summary>
+
+The structure is composed of the following blocks: Netherrack, Crimson Nylium, Crimson Trapdoor, Nether Brick Fence, Nether Brick Wall, Crimson Roots, Crimson Fence, Nether Brick Slab, Stripped Crimson Stem, Nether Brick Stairs, Shroomlight, Twisting Vines Plant, Cracked Nether Bricks, Crimson Fungus, Chiseled Nether Bricks, Nether Bricks, Chest, Twisting Vines.
 
 ### Blocks
 
@@ -388,6 +396,10 @@ None found.
 <details>
 <summary><strong>Shelter/Oakhearted</strong></summary>
 
+The structure is composed of the following blocks: Dirt, Dark Oak Leaves, Grass Block, Dark Oak Wood, Spruce Fence, Podzol, Coarse Dirt, Spruce Trapdoor, Moss Block, Spruce Stairs, Spruce Wall Sign, Spruce Fence Gate, Lantern, Spruce Planks, Dark Oak Log, Spruce Slab, Packed Mud, Green Bed, Campfire, Chest, Composter, Crafting Table, Dark Oak Pressure Plate, Fletching Table, Gravel, Mud Brick Wall, Target.
+
+Additionally, the following entities may spawn during its generation: Cow.
+
 ### Blocks
 
 | Block | Count |
@@ -417,7 +429,6 @@ None found.
 | Dark Oak Pressure Plate | 1 |
 | Fletching Table | 1 |
 | Gravel | 1 |
-| Jigsaw | 1 |
 | Mud Brick Wall | 1 |
 | Target | 1 |
 
@@ -441,11 +452,11 @@ None found.
 <details>
 <summary><strong>Shelter/Oakhearted Start</strong></summary>
 
+The structure does not contain any notable blocks.
+
 ### Blocks
 
-| Block | Count |
-|:-----|:-----:|
-| Jigsaw | 1 |
+None found.
 
 
 ### Entities
@@ -462,6 +473,8 @@ None found.
 
 <details>
 <summary><strong>Shelter/Orebringer</strong></summary>
+
+The structure is composed of the following blocks: Stone, Oak Slab, Oak Log, Tuff, Oak Fence, Copper Ore, Glow Lichen, Coal Ore, Redstone Ore, Gold Ore, Furnace, Chest, Exposed Copper Lantern, Iron Chain, Weathered Copper Lantern, Blast Furnace, Chipped Anvil, Crafting Table, Exposed Copper Chain, Smithing Table, Spruce Trapdoor.
 
 ### Blocks
 
@@ -507,6 +520,8 @@ None found.
 <details>
 <summary><strong>Shelter/Palehearted</strong></summary>
 
+The structure is composed of the following blocks: Dirt, Pale Moss Block, Pale Oak Leaves, Pale Moss Carpet, Pale Oak Trapdoor, Pale Oak Wood, Pale Hanging Moss, Ice, Pale Oak Log, Rooted Dirt, Snow, Pale Oak Fence, Pale Oak Sapling, Dark Oak Trapdoor, Pale Oak Planks, Closed Eyeblossom, Firefly Bush, Open Eyeblossom, Stripped Pale Oak Log, Packed Ice, Hanging Roots, Pale Oak Stairs, Pale Oak Door, Creaking Heart, White Candle, Carved Pumpkin, Chest, Light Blue Candle, Stonecutter.
+
 ### Blocks
 
 | Block | Count |
@@ -538,7 +553,6 @@ None found.
 | White Candle | 2 |
 | Carved Pumpkin | 1 |
 | Chest | 1 |
-| Jigsaw | 1 |
 | Light Blue Candle | 1 |
 | Stonecutter | 1 |
 
@@ -560,11 +574,11 @@ None found.
 <details>
 <summary><strong>Shelter/Palehearted Start</strong></summary>
 
+The structure does not contain any notable blocks.
+
 ### Blocks
 
-| Block | Count |
-|:-----|:-----:|
-| Jigsaw | 1 |
+None found.
 
 
 ### Entities
@@ -581,6 +595,8 @@ None found.
 
 <details>
 <summary><strong>Shelter/Turtlekin</strong></summary>
+
+The structure is composed of the following blocks: Sand, Dark Prismarine Slab, Cyan Stained Glass, Seagrass, Prismarine Bricks, Prismarine Brick Stairs, Prismarine Wall, Tall Seagrass, Horn Coral, Warped Trapdoor, Bubble Coral Fan, Dark Prismarine, Campfire, Fire Coral, Tube Coral, Warped Fence Gate, Horn Coral Fan, Chest, Dark Prismarine Stairs, Sea Lantern.
 
 ### Blocks
 
@@ -605,7 +621,6 @@ None found.
 | Horn Coral Fan | 2 |
 | Chest | 1 |
 | Dark Prismarine Stairs | 1 |
-| Jigsaw | 1 |
 | Sea Lantern | 1 |
 
 
@@ -626,11 +641,11 @@ None found.
 <details>
 <summary><strong>Shelter/Turtlekin Start</strong></summary>
 
+The structure does not contain any notable blocks.
+
 ### Blocks
 
-| Block | Count |
-|:-----|:-----:|
-| Jigsaw | 1 |
+None found.
 
 
 ### Entities
