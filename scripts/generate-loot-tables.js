@@ -49,28 +49,30 @@ function getStackSize(entry) {
   return "1";
 }
 
-function getBookLabel(entry) {
-  const enchantFn =
-    entry.functions?.find(f => f.function === "minecraft:enchant_with_levels") ||
-    entry.functions?.find(f => f.function === "minecraft:enchant_randomly");
-
-  if (!enchantFn?.options) return "Enchanted Book";
-
-  return `Enchanted Book (${cleanTag(enchantFn.options)})`;
-}
-
-function getItemName(entry) {
-  if (entry.type === "minecraft:empty") return "Empty";
-
-  if (
+function isEnchantedBook(entry) {
+  return (
     entry.name === "minecraft:book" &&
     entry.functions?.some(
       f =>
         f.function === "minecraft:enchant_with_levels" ||
         f.function === "minecraft:enchant_randomly"
     )
-  ) {
-    return getBookLabel(entry);
+  );
+}
+
+function getItemName(entry) {
+  if (entry.type === "minecraft:empty") return "Empty";
+
+  if (isEnchantedBook(entry)) {
+    return "Enchanted Book";
+  }
+
+  if (entry.type === "minecraft:loot_table") {
+    return `Loot Table (${cleanTag(entry.name ?? "unknown")})`;
+  }
+
+  if (entry.type === "minecraft:tag") {
+    return `Tag (${cleanTag(entry.name ?? "unknown")})`;
   }
 
   if (entry.name) return titleCase(entry.name);
@@ -94,15 +96,6 @@ function flattenEntries(entries, inheritedWeight = 1) {
       continue;
     }
 
-    if (entry.type === "minecraft:tag") {
-      result.push({
-        item: `Tag (${cleanTag(entry.name ?? "unknown")})`,
-        stackSize: getStackSize(entry),
-        weight: combinedWeight
-      });
-      continue;
-    }
-
     result.push({
       item: getItemName(entry),
       stackSize: getStackSize(entry),
@@ -113,20 +106,45 @@ function flattenEntries(entries, inheritedWeight = 1) {
   return result;
 }
 
+function mergeRowsByItem(rows) {
+  const merged = new Map();
+
+  for (const row of rows) {
+    const key = `${row.pool}::${row.item}::${row.stackSize}`;
+
+    if (!merged.has(key)) {
+      merged.set(key, { ...row });
+      continue;
+    }
+
+    const existing = merged.get(key);
+    existing.weight += row.weight;
+  }
+
+  return [...merged.values()];
+}
+
 function renderMergedPools(pools) {
   const rows = [];
 
   pools.forEach((pool, poolIndex) => {
     const flattenedEntries = flattenEntries(pool.entries ?? []);
+    const mergedEntries = mergeRowsByItem(
+      flattenedEntries.map(entry => ({
+        ...entry,
+        pool: poolIndex + 1
+      }))
+    );
+
     const totalWeight = flattenedEntries.reduce((sum, entry) => sum + entry.weight, 0);
 
-    for (const entry of flattenedEntries) {
+    for (const entry of mergedEntries) {
       const chanceValue = totalWeight > 0 ? entry.weight / totalWeight : 0;
 
       rows.push({
         item: entry.item,
         stackSize: entry.stackSize,
-        pool: poolIndex + 1,
+        pool: entry.pool,
         weight: entry.weight,
         chanceValue,
         chance: `${(chanceValue * 100).toFixed(1)}%`
