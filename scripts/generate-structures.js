@@ -190,33 +190,47 @@ ${lootTables.map(id => `| ${id} |`).join("\n")}
 }
 
 function renderStructureSection(structureFile, data) {
-  return `## ${titleCase(structureFile)}
+  return `<details>
+<summary><strong>${titleCase(structureFile)}</strong></summary>
 
 ${renderCountTable("Blocks", "Block", sortedCountRows(data.blockCounts))}
 
 ${renderCountTable("Entities", "Entity", sortedCountRows(data.entityCounts))}
 
 ${renderLootTableTable(sortedLootTables(data.lootTables))}
-`;
+
+</details>`;
 }
 
 function renderSummarySection(totals) {
+  const blocks = sortedCountRows(totals.blockCounts).map(([name]) => titleCase(name));
+  const entities = sortedCountRows(totals.entityCounts).map(([name]) => titleCase(name));
+  const lootTables = sortedLootTables(totals.lootTables);
+
+  const blocksLine =
+    blocks.length > 0
+      ? `The structure is composed of the following blocks: ${blocks.join(", ")}.`
+      : `The structure does not contain any notable blocks.`;
+
+  const entitiesLine =
+    entities.length > 0
+      ? `Additionally, the following entities may spawn during its generation: ${entities.join(", ")}.`
+      : ``;
+
   return `## Summary
 
-${renderCountTable("Blocks", "Block", sortedCountRows(totals.blockCounts))}
+${blocksLine}
 
-${renderCountTable("Entities", "Entity", sortedCountRows(totals.entityCounts))}
-
-${renderLootTableTable(sortedLootTables(totals.lootTables))}
+${entitiesLine ? entitiesLine + "\n\n" : ""}${renderLootTableTable(lootTables)}
 `;
 }
 
 function generateMarkdown(groupName, structures, totals) {
   return `# ${titleCase(groupName)}
 
-${structures.map(entry => renderStructureSection(entry.structureFile, entry.data)).join("\n\n")}
-
 ${renderSummarySection(totals)}
+
+${structures.map(entry => renderStructureSection(entry.structureFile, entry.data)).join("\n\n")}
 `;
 }
 
