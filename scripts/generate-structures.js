@@ -11,7 +11,8 @@ const IGNORED_BLOCKS = new Set([
   "minecraft:cave_air",
   "minecraft:void_air",
   "minecraft:water",
-  "minecraft:lava"
+  "minecraft:lava",
+  "minecraft:jigsaw"
 ]);
 
 const IGNORED_ENTITIES = new Set([
@@ -189,23 +190,9 @@ ${lootTables.map(id => `| ${id} |`).join("\n")}
 `;
 }
 
-function renderStructureSection(structureFile, data) {
-  return `<details>
-<summary><strong>${titleCase(structureFile)}</strong></summary>
-
-${renderCountTable("Blocks", "Block", sortedCountRows(data.blockCounts))}
-
-${renderCountTable("Entities", "Entity", sortedCountRows(data.entityCounts))}
-
-${renderLootTableTable(sortedLootTables(data.lootTables))}
-
-</details>`;
-}
-
-function renderSummarySection(totals) {
-  const blocks = sortedCountRows(totals.blockCounts).map(([name]) => titleCase(name));
-  const entities = sortedCountRows(totals.entityCounts).map(([name]) => titleCase(name));
-  const lootTables = sortedLootTables(totals.lootTables);
+function renderTextSummary(data) {
+  const blocks = sortedCountRows(data.blockCounts).map(([name]) => titleCase(name));
+  const entities = sortedCountRows(data.entityCounts).map(([name]) => titleCase(name));
 
   const blocksLine =
     blocks.length > 0
@@ -217,11 +204,28 @@ function renderSummarySection(totals) {
       ? `Additionally, the following entities may spawn during its generation: ${entities.join(", ")}.`
       : ``;
 
+  return `${blocksLine}
+
+${entitiesLine ? entitiesLine + "\n\n" : ""}`;
+}
+
+function renderStructureSection(structureFile, data) {
+  return `<details>
+<summary><strong>${titleCase(structureFile)}</strong></summary>
+
+${renderTextSummary(data)}${renderCountTable("Blocks", "Block", sortedCountRows(data.blockCounts))}
+
+${renderCountTable("Entities", "Entity", sortedCountRows(data.entityCounts))}
+
+${renderLootTableTable(sortedLootTables(data.lootTables))}
+
+</details>`;
+}
+
+function renderSummarySection(totals) {
   return `## Summary
 
-${blocksLine}
-
-${entitiesLine ? entitiesLine + "\n\n" : ""}${renderLootTableTable(lootTables)}
+${renderTextSummary(totals)}${renderLootTableTable(sortedLootTables(totals.lootTables))}
 `;
 }
 
