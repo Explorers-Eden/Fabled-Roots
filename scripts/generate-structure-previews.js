@@ -24,42 +24,12 @@ const IGNORED_BLOCKS = new Set([
   "minecraft:barrier",
   "minecraft:light",
   "minecraft:water",
-  "minecraft:flowing_water",
-  "minecraft:lava",
-  "minecraft:flowing_lava"
+  "minecraft:flowing_water"
 ]);
 
-// These blocks use entity/special renderers or otherwise have no ordinary baked
-// block-model elements in vanilla assets. They get explicit preview renderers.
-const SPECIAL_RENDERER_BLOCKS = new Set([
-  "minecraft:chest",
-  "minecraft:trapped_chest",
-  "minecraft:ender_chest"
-]);
-
-// Only render block families that this previewer can draw reliably with baked
-// model quads. Everything else is skipped instead of represented by a fake
-// default cube. Add new families here as the renderer gains support for them.
-const SUPPORTED_GENERIC_BLOCK_PATTERNS = [
-  /(^|_)stone(_|$)/, /(^|_)deepslate(_|$)/, /(^|_)tuff(_|$)/, /(^|_)andesite(_|$)/, /(^|_)diorite(_|$)/, /(^|_)granite(_|$)/,
-  /(^|_)sand(_|$)/, /(^|_)sandstone(_|$)/, /(^|_)red_sand(_|$)/, /(^|_)terracotta(_|$)/, /(^|_)concrete(_|$)/, /(^|_)bricks?(_|$)/,
-  /(^|_)planks?(_|$)/, /(^|_)log(_|$)/, /(^|_)wood(_|$)/, /(^|_)stem(_|$)/, /(^|_)hyphae(_|$)/, /(^|_)bamboo(_|$)/,
-  /(^|_)leaves(_|$)/, /(^|_)wool(_|$)/, /(^|_)glass(_|$)/, /(^|_)ice(_|$)/, /(^|_)snow(_|$)/, /(^|_)clay(_|$)/,
-  /(^|_)ore(_|$)/, /(^|_)block(_|$)/, /(^|_)slab(_|$)/, /(^|_)stairs(_|$)/, /(^|_)wall(_|$)/, /(^|_)fence(_|$)/,
-  /(^|_)carpet(_|$)/, /(^|_)pane(_|$)/, /(^|_)bars(_|$)/, /(^|_)cactus(_|$)/, /(^|_)torch(_|$)/, /(^|_)lantern(_|$)/
-];
-
-function isGenericPreviewSupported(blockName) {
-  if (!blockName.startsWith("minecraft:")) return true;
-  if (SPECIAL_RENDERER_BLOCKS.has(blockName)) return false;
-
-  const short = blockName.replace(/^minecraft:/, "");
-  return SUPPORTED_GENERIC_BLOCK_PATTERNS.some(pattern => pattern.test(short));
-}
-
-function hasResolvableTexture(quads) {
-  return quads.some(quad => Boolean(quad.texture));
-}
+// Do not invent a fake full cube when a block has no resolved model elements.
+// Missing/special-rendered blocks should be omitted rather than appearing as
+// bogus oak-plank/default cubes in previews.
 
 const modelCache = new Map();
 const resolvedModelCache = new Map();
@@ -75,7 +45,7 @@ const stats = {
   textureHits: 0,
   textureMisses: 0,
   bakedQuads: 0,
-  cubeFallbacks: 0
+  skippedMissingModels: 0
 };
 
 function walk(dir) {
@@ -462,29 +432,21 @@ function multiplyTint(color, tint) {
   };
 }
 
-function needsPlainsGrassTint(blockName, faceName, tintIndex) {
+function needsPlainsGrassTint(blockName, faceName) {
   const short = blockName.replace(/^minecraft:/, "");
-
-  // Vanilla baked models mark biome-colored grass faces with tintindex 0.
-  // This catches grass_block_side_overlay on the sides, not just the top face.
-  if (tintIndex !== undefined && tintIndex !== null) {
-    if (short.includes("grass") || short === "fern" || short === "large_fern") return true;
-  }
-
   if (short === "grass_block") return faceName === "up";
   if (short === "short_grass" || short === "tall_grass" || short === "fern" || short === "large_fern") return true;
   return short.includes("grass") && !short.includes("grass_block_side");
 }
 
-function needsPlainsFoliageTint(blockName, tintIndex) {
+function needsPlainsFoliageTint(blockName) {
   const short = blockName.replace(/^minecraft:/, "");
-  if (tintIndex !== undefined && tintIndex !== null && (short.includes("leaves") || short === "vine")) return true;
   return short.includes("leaves") || short === "vine" || short === "cave_vines" || short === "hanging_roots";
 }
 
-function applyBiomeTint(color, blockName, faceName, tintIndex) {
-  if (needsPlainsGrassTint(blockName, faceName, tintIndex)) return multiplyTint(color, PLAINS_GRASS_TINT);
-  if (needsPlainsFoliageTint(blockName, tintIndex)) return multiplyTint(color, PLAINS_FOLIAGE_TINT);
+function applyBiomeTint(color, blockName, faceName) {
+  if (needsPlainsGrassTint(blockName, faceName)) return multiplyTint(color, PLAINS_GRASS_TINT);
+  if (needsPlainsFoliageTint(blockName)) return multiplyTint(color, PLAINS_FOLIAGE_TINT);
   return color;
 }
 
@@ -636,7 +598,7 @@ function drawTexturedQuad(png, quad) {
       if (texture && !sampled) continue;
 
       const base = sampled ?? fallback;
-      const tinted = applyBiomeTint(base, quad.blockName, quad.faceName, quad.tintIndex);
+      const tinted = applyBiomeTint(base, quad.blockName, quad.faceName);
       blendPixel(png, x, y, shadeColor(tinted, quad.shade));
     }
   }
@@ -847,38 +809,10 @@ function bakeElementQuads(blockName, modelTextures, element, variant) {
       texture: getTextureForFace(modelTextures, faceData, faceName),
       uv: faceData.uv,
       uvRotation: faceData.rotation ?? 0,
-      tintIndex: faceData.tintindex,
       shade: faceShade(faceName),
       depthOffset: faceDepth(transformed)
     });
   }
-
-  return quads;
-}
-
-function bakeChestQuads(blockName, properties = {}) {
-  // Chests are block-entity rendered in Minecraft, so there is no normal block
-  // model to bake. Draw a deliberately simple chest-sized box instead of using
-  // any generic cube fallback.
-  const facing = properties.facing ?? "north";
-  const variant = { x: 0, y: { north: 0, east: 90, south: 180, west: 270 }[facing] ?? 0 };
-  const quads = bakeElementQuads(
-    blockName,
-    {},
-    {
-      from: [1, 0, 1],
-      to: [15, 14, 15],
-      faces: {
-        up: { uv: [1, 1, 15, 15] },
-        down: { uv: [1, 1, 15, 15] },
-        north: { uv: [1, 2, 15, 16] },
-        south: { uv: [1, 2, 15, 16] },
-        west: { uv: [1, 2, 15, 16] },
-        east: { uv: [1, 2, 15, 16] }
-      }
-    },
-    variant
-  );
 
   return quads;
 }
@@ -888,18 +822,6 @@ function bakeBlockModel(blockName, properties = {}) {
 
   if (bakedModelCache.has(cacheKey)) return bakedModelCache.get(cacheKey);
 
-  if (SPECIAL_RENDERER_BLOCKS.has(blockName)) {
-    const baked = bakeChestQuads(blockName, properties);
-    stats.bakedQuads += baked.length;
-    bakedModelCache.set(cacheKey, baked);
-    return baked;
-  }
-
-  if (!isGenericPreviewSupported(blockName)) {
-    bakedModelCache.set(cacheKey, []);
-    return [];
-  }
-
   const variants = getModelVariantsFromBlockState(blockName, properties);
   const baked = [];
 
@@ -908,9 +830,7 @@ function bakeBlockModel(blockName, properties = {}) {
     const elements = model.elements ?? [];
 
     if (elements.length === 0) {
-      // Kill generic cube fallbacks entirely. Missing/unbakeable models should
-      // not invent blocks that are not actually in the structure preview.
-      stats.cubeFallbacks++;
+      stats.skippedMissingModels++;
       continue;
     }
 
@@ -919,11 +839,9 @@ function bakeBlockModel(blockName, properties = {}) {
     }
   }
 
-  const textured = hasResolvableTexture(baked) ? baked : [];
-
-  stats.bakedQuads += textured.length;
-  bakedModelCache.set(cacheKey, textured);
-  return textured;
+  stats.bakedQuads += baked.length;
+  bakedModelCache.set(cacheKey, baked);
+  return baked;
 }
 
 function makeBlockQuads(block, offsetX, offsetY, scale) {
@@ -1394,7 +1312,7 @@ async function main() {
   if (groups.size === 0) console.warn("No structure groups were found.");
 
   console.log(`Generated ${stats.mainImages} preview image(s).`);
-  console.log(`Baked ${stats.bakedQuads} model quad(s), used ${stats.cubeFallbacks} cube fallback(s).`);
+  console.log(`Baked ${stats.bakedQuads} model quad(s), skipped ${stats.skippedMissingModels} block model(s) with no renderable elements.`);
   console.log(`Texture files loaded: ${stats.textureHits}; missing/fallback lookups: ${stats.textureMisses}.`);
 
   removeStaleOutputFiles(validOutputFiles);
