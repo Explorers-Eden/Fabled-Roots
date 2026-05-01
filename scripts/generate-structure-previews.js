@@ -2,7 +2,7 @@
 const fs = require("fs");
 const path = require("path");
 const nbt = require("prismarine-nbt");
-const puppeteer = require("puppeteer-core");
+const puppeteer = require("puppeteer");
 const { Vec3 } = require("vec3");
 
 const standaloneViewer = require("prismarine-viewer").standalone;
@@ -491,20 +491,20 @@ function makeEmptyWorld() {
 }
 
 function getChromiumExecutable() {
+  // Prefer an explicitly configured browser, otherwise let Puppeteer use the
+  // Chrome it downloaded during npm install. Avoid Ubuntu chromium-browser,
+  // because that package installs via Snap and hangs on GitHub Actions.
   const candidates = [
     process.env.CHROME_BIN,
     process.env.CHROMIUM_BIN,
-    "/usr/bin/chromium-browser",
-    "/usr/bin/chromium",
-    "/usr/bin/google-chrome",
-    "/usr/bin/google-chrome-stable"
+    process.env.PUPPETEER_EXECUTABLE_PATH
   ].filter(Boolean);
 
   for (const candidate of candidates) {
     if (fs.existsSync(candidate)) return candidate;
   }
 
-  throw new Error("Could not find Chromium executable.");
+  return null;
 }
 
 async function wait(ms) {
@@ -532,9 +532,11 @@ async function renderWorldImage(blocks, outputPath, port) {
 
   viewer.update();
 
+  const executablePath = getChromiumExecutable();
+
   const browser = await puppeteer.launch({
-    executablePath: getChromiumExecutable(),
-    headless: false,
+    ...(executablePath ? { executablePath } : {}),
+    headless: "new",
     args: [
       "--no-sandbox",
       "--disable-setuid-sandbox",
