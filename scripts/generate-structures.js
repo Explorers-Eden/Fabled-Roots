@@ -634,16 +634,10 @@ ${lootTables.map(([id, count]) => `| ${id} | ${count} |`).join("\n")}
 
 async function renderGeneratedLootSection(lootTables) {
   const sorted = sortedLootTables(lootTables);
-  const totalLootContainers = sorted.reduce((sum, [, count]) => sum + count, 0);
 
-  if (sorted.length === 0 || totalLootContainers === 0) {
+  if (sorted.length === 0) {
     return "";
   }
-
-const intro =
-  sorted.length === 1
-    ? `The structure generates ${totalLootContainers} loot ${pluralize(totalLootContainers, "container")} which ${totalLootContainers === 1 ? "uses" : "use"} 1 loot table:`
-    : `The structure generates ${totalLootContainers} loot ${pluralize(totalLootContainers, "container")} using ${sorted.length} loot tables:`;
 
   const tables = [];
 
@@ -658,21 +652,17 @@ const intro =
       content = await renderMergedPools(json.pools ?? []);
     }
 
-    if (sorted.length === 1) {
-      tables.push(content);
-    } else {
-      tables.push(`<details>
+    tables.push(`<details>
 <summary><strong>${id}</strong> (${count} ${pluralize(count, "use")})</summary>
 
 ${content}
 
 </details>`);
-    }
   }
 
   return `# Generated Loot.
 
-${intro}
+There are ${sorted.length} loot tables used in this structure:
 <br>
 
 ${tables.join("\n\n")}
