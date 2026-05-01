@@ -11,6 +11,15 @@ const vanillaAssetRoot = process.env.VANILLA_ASSET_ROOT ?? path.join(".cache", "
 const generateCenterView = String(process.env.STRUCTURE_PREVIEW_CENTER_VIEW ?? "true") !== "false";
 const centerViewSuffix = process.env.STRUCTURE_PREVIEW_CENTER_SUFFIX ?? "-center";
 
+// The center image is a player-POV style perspective render.
+// Use an isometric fallback only if STRUCTURE_PREVIEW_CENTER_MODE=isometric.
+const centerViewMode = process.env.STRUCTURE_PREVIEW_CENTER_MODE ?? "pov";
+const povWidth = Number(process.env.STRUCTURE_PREVIEW_POV_WIDTH ?? 1280);
+const povHeight = Number(process.env.STRUCTURE_PREVIEW_POV_HEIGHT ?? 720);
+const povFovDegrees = Number(process.env.STRUCTURE_PREVIEW_POV_FOV ?? 72);
+const povYawDegrees = Number(process.env.STRUCTURE_PREVIEW_POV_YAW ?? 45);
+const povPitchDegrees = Number(process.env.STRUCTURE_PREVIEW_POV_PITCH ?? -8);
+
 const tileWidth = Number(process.env.STRUCTURE_PREVIEW_TILE_WIDTH ?? 32);
 const tileHeight = Number(process.env.STRUCTURE_PREVIEW_TILE_HEIGHT ?? 18);
 const blockHeight = Number(process.env.STRUCTURE_PREVIEW_BLOCK_HEIGHT ?? 22);
@@ -340,6 +349,43 @@ function fallbackColorForBlock(blockName) {
   return hashColor(blockName);
 }
 
+const PLAINS_GRASS_TINT = { r: 145, g: 189, b: 89 };
+const PLAINS_FOLIAGE_TINT = { r: 119, g: 171, b: 47 };
+
+function multiplyTint(color, tint) {
+  return {
+    r: Math.round((color.r * tint.r) / 255),
+    g: Math.round((color.g * tint.g) / 255),
+    b: Math.round((color.b * tint.b) / 255),
+    a: color.a ?? 255
+  };
+}
+
+function needsPlainsGrassTint(blockName, face) {
+  const short = blockName.replace(/^minecraft:/, "");
+
+  if (short === "grass_block") return face === "top";
+  if (short === "short_grass" || short === "tall_grass" || short === "fern" || short === "large_fern") return true;
+  if (short.includes("grass") && !short.includes("grass_block_side")) return true;
+
+  return false;
+}
+
+function needsPlainsFoliageTint(blockName) {
+  const short = blockName.replace(/^minecraft:/, "");
+
+  if (short.includes("leaves")) return true;
+  if (short === "vine" || short === "cave_vines" || short === "hanging_roots") return true;
+
+  return false;
+}
+
+function applyBiomeTint(color, blockName, face) {
+  if (needsPlainsGrassTint(blockName, face)) return multiplyTint(color, PLAINS_GRASS_TINT);
+  if (needsPlainsFoliageTint(blockName)) return multiplyTint(color, PLAINS_FOLIAGE_TINT);
+  return color;
+}
+
 function sampleTexture(texture, u, v) {
   if (!texture) return null;
 
@@ -430,7 +476,8 @@ function drawTexturedPolygon(png, face) {
       const u = Math.max(0, Math.min(1, (x - minX) / width));
       const v = Math.max(0, Math.min(1, (y - minY) / height));
       const sampled = sampleTexture(texture, u, v) ?? fallback;
-      blendPixel(png, x, y, shadeColor(sampled, face.shade));
+      const tinted = applyBiomeTint(sampled, face.block.name, face.face);
+      blendPixel(png, x, y, shadeColor(tinted, face.shade));
     }
   }
 }
@@ -594,9 +641,227 @@ function getBlocksNearCenter(blocks) {
   return centerBlocks.length > 0 ? centerBlocks : normalized;
 }
 
-function renderCenterViewToPng(blocks) {
-  return renderBlocksToPng(getBlocksNearCenter(blocks));
+function vectorSubtract(a, b) {
+  return { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z };
 }
+
+function rotateYawPitch(point, yawRadians, pitchRadians) {
+  const cosYaw = Math.cos(yawRadians);
+  const sinYaw = Math.sin(yawRadians);
+
+  const x1 = point.x * cosYaw - point.z * sinYaw;
+  const z1 = point.x * sinYaw + point.z * cosYaw;
+
+  const cosPitch = Math.cos(pitchRadians);
+  const sinPitch = Math.sin(pitchRadians);
+
+  const y2 = point.y * cosPitch - z1 * sinPitch;
+  const z2 = point.y * sinPitch + z1 * cosPitch;
+
+  return { x: x1, y: y2, z: z2 };
+}
+
+function projectPoint(point, camera, yawRadians, pitchRadians, focalLength, width, height) {
+  const rotated = rotateYawPitch(vectorSubtract(point, camera), yawRadians, pitchRadians);
+
+  // Camera looks down +Z after transformation.
+  if (rotated.z <= 0.05) return null;
+
+  return {
+    x: width / 2 + (rotated.x / rotated.z) * focalLength,
+    y: height / 2 - (rotated.y / rotated.z) * focalLength,
+    depth: rotated.z
+  };
+}
+
+function blockCorners(block) {
+  const { x, y, z } = block;
+  return {
+    p000: { x, y, z },
+    p100: { x: x + 1, y, z },
+    p010: { x, y: y + 1, z },
+    p110: { x: x + 1, y: y + 1, z },
+    p001: { x, y, z: z + 1 },
+    p101: { x: x + 1, y, z: z + 1 },
+    p011: { x, y: y + 1, z: z + 1 },
+    p111: { x: x + 1, y: y + 1, z: z + 1 }
+  };
+}
+
+function makePovFaces(block, camera, yawRadians, pitchRadians, focalLength, width, height) {
+  const c = blockCorners(block);
+
+  const faceDefs = [
+    {
+      face: "top",
+      corners: [c.p010, c.p110, c.p111, c.p011],
+      normal: { x: 0, y: 1, z: 0 },
+      shade: 1.08
+    },
+    {
+      face: "left",
+      corners: [c.p000, c.p010, c.p011, c.p001],
+      normal: { x: -1, y: 0, z: 0 },
+      shade: 0.82
+    },
+    {
+      face: "right",
+      corners: [c.p100, c.p101, c.p111, c.p110],
+      normal: { x: 1, y: 0, z: 0 },
+      shade: 0.94
+    },
+    {
+      face: "front",
+      corners: [c.p001, c.p011, c.p111, c.p101],
+      normal: { x: 0, y: 0, z: 1 },
+      shade: 0.9
+    },
+    {
+      face: "back",
+      corners: [c.p000, c.p100, c.p110, c.p010],
+      normal: { x: 0, y: 0, z: -1 },
+      shade: 0.86
+    }
+  ];
+
+  const faces = [];
+
+  for (const def of faceDefs) {
+    const faceCenter = def.corners.reduce(
+      (sum, point) => ({
+        x: sum.x + point.x / def.corners.length,
+        y: sum.y + point.y / def.corners.length,
+        z: sum.z + point.z / def.corners.length
+      }),
+      { x: 0, y: 0, z: 0 }
+    );
+
+    const toCamera = {
+      x: camera.x - faceCenter.x,
+      y: camera.y - faceCenter.y,
+      z: camera.z - faceCenter.z
+    };
+
+    // Backface culling: only show faces pointing roughly toward camera.
+    const facing =
+      def.normal.x * toCamera.x +
+      def.normal.y * toCamera.y +
+      def.normal.z * toCamera.z;
+
+    if (facing <= -0.05) continue;
+
+    const points = def.corners.map(point =>
+      projectPoint(point, camera, yawRadians, pitchRadians, focalLength, width, height)
+    );
+
+    if (points.some(point => point === null)) continue;
+
+    const avgDepth = points.reduce((sum, point) => sum + point.depth, 0) / points.length;
+
+    faces.push({
+      face: def.face,
+      block,
+      points,
+      shade: def.shade,
+      depth: avgDepth
+    });
+  }
+
+  return faces;
+}
+
+function drawPerspectiveTexturedPolygon(png, face) {
+  const points = face.points;
+  const minY = Math.floor(Math.max(0, Math.min(...points.map(p => p.y))));
+  const maxY = Math.ceil(Math.min(png.height - 1, Math.max(...points.map(p => p.y))));
+  const minX = Math.floor(Math.max(0, Math.min(...points.map(p => p.x))));
+  const maxX = Math.ceil(Math.min(png.width - 1, Math.max(...points.map(p => p.x))));
+
+  const width = Math.max(1, maxX - minX);
+  const height = Math.max(1, maxY - minY);
+  const textureFace =
+    face.face === "front" || face.face === "back"
+      ? "left"
+      : face.face;
+  const texture = getTextureForBlockFace(face.block, textureFace);
+  const fallback = fallbackColorForBlock(face.block.name);
+
+  for (let y = minY; y <= maxY; y++) {
+    for (let x = minX; x <= maxX; x++) {
+      if (!pointInPolygon(x + 0.5, y + 0.5, points)) continue;
+
+      const u = Math.max(0, Math.min(1, (x - minX) / width));
+      const v = Math.max(0, Math.min(1, (y - minY) / height));
+      const sampled = sampleTexture(texture, u, v) ?? fallback;
+      const tinted = applyBiomeTint(sampled, face.block.name, textureFace);
+      blendPixel(png, x, y, shadeColor(tinted, face.shade));
+    }
+  }
+}
+
+function findCameraPosition(blocks) {
+  const normalized = normalizeBlocks(blocks);
+
+  const minX = Math.min(...normalized.map(block => block.x));
+  const maxX = Math.max(...normalized.map(block => block.x));
+  const minY = Math.min(...normalized.map(block => block.y));
+  const maxY = Math.max(...normalized.map(block => block.y));
+  const minZ = Math.min(...normalized.map(block => block.z));
+  const maxZ = Math.max(...normalized.map(block => block.z));
+
+  const centerX = (minX + maxX + 1) / 2;
+  const centerY = minY + Math.min(2.2, Math.max(1.6, (maxY - minY + 1) * 0.28));
+  const centerZ = (minZ + maxZ + 1) / 2;
+
+  return {
+    x: centerX,
+    y: centerY,
+    z: centerZ
+  };
+}
+
+function renderPlayerPovToPng(blocks) {
+  blocks = normalizeBlocks(blocks);
+
+  if (blocks.length === 0) {
+    const png = new PNG({ width: 32, height: 32 });
+    fillBackground(png);
+    return PNG.sync.write(png);
+  }
+
+  const png = new PNG({ width: povWidth, height: povHeight });
+  fillBackground(png);
+
+  const camera = findCameraPosition(blocks);
+  const yawRadians = (povYawDegrees * Math.PI) / 180;
+  const pitchRadians = (povPitchDegrees * Math.PI) / 180;
+  const focalLength = (povWidth / 2) / Math.tan((povFovDegrees * Math.PI / 180) / 2);
+
+  const faces = [];
+
+  for (const block of blocks) {
+    faces.push(...makePovFaces(block, camera, yawRadians, pitchRadians, focalLength, povWidth, povHeight));
+  }
+
+  // Draw far faces first.
+  faces.sort((a, b) => b.depth - a.depth);
+
+  for (const face of faces) {
+    drawPerspectiveTexturedPolygon(png, face);
+  }
+
+  return PNG.sync.write(png);
+}
+
+function renderCenterViewToPng(blocks) {
+  if (centerViewMode === "isometric") {
+    return renderBlocksToPng(getBlocksNearCenter(blocks));
+  }
+
+  return renderPlayerPovToPng(blocks);
+}
+
+
 
 async function loadBlocksForFiles(files) {
   const allBlocks = [];
