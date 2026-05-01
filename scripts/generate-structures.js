@@ -143,27 +143,6 @@ function fetchJson(url) {
   });
 }
 
-async function fetchVanillaLootTableJson(id) {
-  const cleaned = cleanTag(id);
-  const [namespace, lootPath] = cleaned.includes(":")
-    ? cleaned.split(":")
-    : ["minecraft", cleaned];
-
-  if (namespace !== "minecraft" || !vanillaLootTableVersion) return null;
-
-  const url = `https://raw.githubusercontent.com/misode/mcmeta/${vanillaLootTableVersion}/data/minecraft/loot_table/${lootPath}.json`;
-  const json = await fetchJson(url);
-
-  if (json) {
-    console.log(`Fetched vanilla loot table ${cleaned} from mcmeta ${vanillaLootTableVersion}`);
-  } else {
-    console.warn(`Could not find vanilla loot table ${cleaned} in repo or mcmeta ${vanillaLootTableVersion}`);
-  }
-
-  return json;
-}
-
-
 function titleCase(id) {
   return String(id)
     .replace(/^#/, "")
@@ -369,6 +348,40 @@ function getLootTableFile(id) {
     : ["minecraft", cleaned];
 
   return path.join(inputRoot, namespace, "loot_table", `${lootPath}.json`);
+}
+
+async function fetchVanillaLootTableJson(id) {
+  const cleaned = cleanTag(id);
+  const [namespace, lootPath] = cleaned.includes(":")
+    ? cleaned.split(":")
+    : ["minecraft", cleaned];
+
+  if (namespace !== "minecraft" || !vanillaLootTableVersion) return null;
+
+  const url = `https://raw.githubusercontent.com/misode/mcmeta/${vanillaLootTableVersion}/data/minecraft/loot_table/${lootPath}.json`;
+  const json = await fetchJson(url);
+
+  if (json) {
+    console.log(`Fetched vanilla loot table ${cleaned} from mcmeta ${vanillaLootTableVersion}`);
+  } else {
+    console.warn(`Could not find vanilla loot table ${cleaned} in repo or mcmeta ${vanillaLootTableVersion}`);
+  }
+
+  return json;
+}
+
+async function loadLootTableJson(id) {
+  const file = getLootTableFile(id);
+
+  if (fs.existsSync(file)) {
+    try {
+      return JSON.parse(fs.readFileSync(file, "utf8"));
+    } catch {
+      console.warn(`Could not read loot table: ${file}`);
+    }
+  }
+
+  return await fetchVanillaLootTableJson(id);
 }
 
 function flattenRawEntries(entries, inheritedFunctions = []) {
@@ -587,20 +600,6 @@ ${rows
   .join("\n")}`;
 }
 
-async function loadLootTableJson(id) {
-  const file = getLootTableFile(id);
-
-  if (fs.existsSync(file)) {
-    try {
-      return JSON.parse(fs.readFileSync(file, "utf8"));
-    } catch {
-      console.warn(`Could not read loot table: ${file}`);
-    }
-  }
-
-  return await fetchVanillaLootTableJson(id);
-}
-
 function renderCountTable(title, singular, rows) {
   if (rows.length === 0) {
     return `### ${title}
@@ -641,11 +640,10 @@ async function renderGeneratedLootSection(lootTables) {
     return "";
   }
 
-  const lootList = sorted.map(([id]) => `\`${id}\``).join(", ");
-  const intro =
-    sorted.length === 1
-      ? `The structure generates ${totalLootContainers} loot ${pluralize(totalLootContainers, "container")} which ${totalLootContainers === 1 ? "uses" : "use"} the ${lootList} loot table.`
-      : `The structure generates ${totalLootContainers} loot ${pluralize(totalLootContainers, "container")} using ${sorted.length} loot tables: ${lootList}.`;
+const intro =
+  sorted.length === 1
+    ? `The structure generates ${totalLootContainers} loot ${pluralize(totalLootContainers, "container")} which ${totalLootContainers === 1 ? "uses" : "use"} 1 loot table:`
+    : `The structure generates ${totalLootContainers} loot ${pluralize(totalLootContainers, "container")} using ${sorted.length} loot tables:`;
 
   const tables = [];
 
@@ -678,6 +676,7 @@ ${intro}
 <br>
 
 ${tables.join("\n\n")}
+
 `;
 }
 
@@ -720,7 +719,10 @@ ${renderTextSummary(totals, false)}`;
 }
 
 async function generateMarkdown(groupName, structures, totals) {
-  return `${await renderGeneratedLootSection(totals.lootTables)}${renderSummarySection(totals)}
+  const generatedLoot = await renderGeneratedLootSection(totals.lootTables);
+
+  return `${generatedLoot}${renderSummarySection(totals)}
+
 ## Per-Structure File Contents
 
 ${structures.map(entry => renderStructureSection(entry.structureFile, entry.data)).join("\n\n")}
