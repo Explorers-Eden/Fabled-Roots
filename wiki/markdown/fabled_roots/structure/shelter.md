@@ -1,6 +1,6 @@
 # Generated Loot.
 
-The structure generates 11 loot containers using 10 loot tables:
+There are 10 loot tables used in this structure:
 <br>
 
 <details>
