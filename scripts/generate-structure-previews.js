@@ -569,13 +569,9 @@ function dot2(a, b) {
   return a.x * b.x + a.y * b.y;
 }
 
-function getLocalFaceCoordinates(face, x, y) {
-  // Map screen point onto the face's own two axes instead of the face's screen
-  // bounding box. This keeps texture orientation consistent in isometric view.
-  const [p00, p10, , p01] = face.points;
-  const origin = p00;
-  const uAxis = { x: p10.x - p00.x, y: p10.y - p00.y };
-  const vAxis = { x: p01.x - p00.x, y: p01.y - p00.y };
+function solveFaceCoordinates(origin, uPoint, vPoint, x, y) {
+  const uAxis = { x: uPoint.x - origin.x, y: uPoint.y - origin.y };
+  const vAxis = { x: vPoint.x - origin.x, y: vPoint.y - origin.y };
   const point = { x: x - origin.x, y: y - origin.y };
 
   const uu = dot2(uAxis, uAxis);
@@ -589,13 +585,48 @@ function getLocalFaceCoordinates(face, x, y) {
     return { u: 0, v: 0 };
   }
 
-  const u = (pu * vv - pv * uv) / det;
-  const v = (pv * uu - pu * uv) / det;
-
   return {
-    u: Math.max(0, Math.min(1, u)),
-    v: Math.max(0, Math.min(1, v))
+    u: Math.max(0, Math.min(1, (pu * vv - pv * uv) / det)),
+    v: Math.max(0, Math.min(1, (pv * uu - pu * uv) / det))
   };
+}
+
+function getLocalFaceCoordinates(face, x, y) {
+  // Minecraft's face UV axes are not the same for every face. The previous
+  // renderer projected every texture from the first screen edge, which made
+  // side faces like cactus columns look rotated. These mappings follow the
+  // element-local axes used by each Minecraft model face.
+  const points = face.points;
+  const [a, b, c, d] = points;
+
+  switch (face.faceName) {
+    case "up":
+      // x -> u, z -> v
+      return solveFaceCoordinates(a, b, d, x, y);
+
+    case "down":
+      // x -> u, z -> v, but face is viewed from below in model space.
+      return solveFaceCoordinates(d, c, a, x, y);
+
+    case "north":
+      // x -> u, y -> v
+      return solveFaceCoordinates(a, b, d, x, y);
+
+    case "south":
+      // x -> u, y -> v, opposite horizontal direction from north.
+      return solveFaceCoordinates(d, c, a, x, y);
+
+    case "west":
+      // z -> u, y -> v
+      return solveFaceCoordinates(d, a, c, x, y);
+
+    case "east":
+      // z -> u, y -> v, opposite horizontal direction from west.
+      return solveFaceCoordinates(a, d, b, x, y);
+
+    default:
+      return solveFaceCoordinates(a, b, d, x, y);
+  }
 }
 
 function drawTexturedPolygon(png, face) {
@@ -628,8 +659,7 @@ function drawTexturedPolygon(png, face) {
 function rotatePointAroundOrigin(point, origin, axis, angleDegrees, rescale = false) {
   if (!angleDegrees) return point;
 
-  const correctedAngleDegrees = axis === "y" ? -angleDegrees : angleDegrees;
-  const angle = (correctedAngleDegrees * Math.PI) / 180;
+  const angle = (angleDegrees * Math.PI) / 180;
   const cos = Math.cos(angle);
   const sin = Math.sin(angle);
 
@@ -757,19 +787,24 @@ function createModelFace(block, modelTextures, element, faceName, faceData, poin
 
 function defaultFaceUv(faceName, from, to) {
   // Approximate vanilla default UVs from model element bounds.
+  // The important part is matching the axis pair Minecraft uses per face:
+  // up/down use x,z; north/south use x,y; east/west use z,y.
   const [x0, y0, z0] = from;
   const [x1, y1, z1] = to;
 
   switch (faceName) {
     case "up":
+      return [x0, z0, x1, z1];
     case "down":
       return [x0, z0, x1, z1];
     case "north":
-    case "south":
       return [x0, 16 - y1, x1, 16 - y0];
+    case "south":
+      return [16 - x1, 16 - y1, 16 - x0, 16 - y0];
     case "west":
-    case "east":
       return [z0, 16 - y1, z1, 16 - y0];
+    case "east":
+      return [16 - z1, 16 - y1, 16 - z0, 16 - y0];
     default:
       return [0, 0, 16, 16];
   }
