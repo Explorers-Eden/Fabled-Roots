@@ -8,7 +8,6 @@ const inputRoot = "data";
 const assetsRoot = "assets";
 const outputRoot = path.join("wiki", "markdown");
 const outputExtension = ".md";
-const structureViewerPublicBaseUrl = (process.env.STRUCTURE_VIEWER_PUBLIC_BASE_URL ?? (process.env.GITHUB_REPOSITORY ? `https://cdn.jsdelivr.net/gh/${process.env.GITHUB_REPOSITORY}@${process.env.GITHUB_REF_NAME || "main"}/wiki/viewers/structures` : "/viewers/structures")).replace(/\/$/, "");
 
 const IGNORED_BLOCKS = new Set([
   "minecraft:air",
@@ -713,21 +712,10 @@ function renderSummarySection(totals) {
 ${renderTextSummary(totals, false)}`;
 }
 
-function renderPreviewSection(namespace, structurePath) {
-  const normalizedStructurePath = String(structurePath).split(path.sep).join("/").replace(/^\/+|\/+$/g, "");
-  const src = `${structureViewerPublicBaseUrl}/${namespace}/${normalizedStructurePath}/index.html`;
-
-  return `# Preview
-
-<iframe src="${src}" style="width:100%;height:720px;border:0;border-radius:12px;" loading="lazy" allowfullscreen></iframe>
-
-`;
-}
-
-async function generateMarkdown(namespace, groupName, structures, totals) {
+async function generateMarkdown(groupName, structures, totals) {
   const generatedLoot = await renderGeneratedLootSection(totals.lootTables);
 
-  return `${renderPreviewSection(namespace, groupName)}${generatedLoot}${renderSummarySection(totals)}
+  return `${generatedLoot}${renderSummarySection(totals)}
 
 ## Per-Structure File Contents
 
@@ -1029,7 +1017,7 @@ async function main() {
       fs.mkdirSync(path.dirname(outputPath), { recursive: true });
       fs.writeFileSync(
         outputPath,
-        await generateMarkdown(worldgenInfo.namespace, worldgenInfo.relativePath, structures, totals)
+        await generateMarkdown(worldgenInfo.relativePath, structures, totals)
       );
 
       console.log(`Generated ${outputPath} from ${worldgenFile}`);
@@ -1099,7 +1087,7 @@ async function main() {
     validOutputFiles.add(path.normalize(outputPath));
 
     fs.mkdirSync(path.dirname(outputPath), { recursive: true });
-    fs.writeFileSync(outputPath, await generateMarkdown(group.namespace, group.topFolder, structures, totals));
+    fs.writeFileSync(outputPath, await generateMarkdown(group.topFolder, structures, totals));
 
     console.log(`Generated ${outputPath}`);
   }
