@@ -89,7 +89,7 @@ public class WikiRendererClient implements ClientModInitializer {
         int baseZ = index * 256;
         int cursorX = baseX;
 
-        CommandSourceStack source = server.createCommandSourceStack().withPermission(4).withSuppressedOutput();
+        CommandSourceStack source = server.createCommandSourceStack().withSuppressedOutput();
 
         runCommand(server, source, "fill " + (baseX - 16) + " " + (baseY - 16) + " " + (baseZ - 96) + " " + (baseX + 512) + " " + (baseY + 160) + " " + (baseZ + 96) + " minecraft:air");
 
@@ -125,9 +125,7 @@ public class WikiRendererClient implements ClientModInitializer {
                 client.player.setXRot(28.0f);
             }
 
-            if (client.options.hideGui != null) {
-                client.options.hideGui = true;
-            }
+            client.options.hideGui = true;
         });
 
         sleep(4000);

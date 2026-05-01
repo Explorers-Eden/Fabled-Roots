@@ -20,8 +20,7 @@ function compareVersionParts(a, b) {
 }
 
 function isMinecraftLikeVersion(version) {
-  // Minecraft Java switched versioning in 2026.
-  // Accept classic 1.x(.x) versions and new Java versions like 26.1.2.
+  // Accept classic 1.x Minecraft versions and the 2026+ Java version format like 26.1.2.
   return /^(?:1\.\d+(?:\.\d+)?|2[6-9]\.\d+(?:\.\d+)?)(?:-(?:pre|rc|snapshot)\d+)?$/.test(String(version));
 }
 
