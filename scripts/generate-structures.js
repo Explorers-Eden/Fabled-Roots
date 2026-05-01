@@ -443,7 +443,12 @@ async function getItemName(entry, seenLootTables = new Set()) {
   return titleCase(entry.type ?? "unknown");
 }
 
-async function flattenEntries(entries, inheritedWeight = 1, inheritedFunctions = []) {
+async function flattenEntries(
+  entries,
+  inheritedWeight = 1,
+  inheritedFunctions = [],
+  seenLootTables = new Set()
+) {
   const result = [];
 
   for (const entry of entries ?? []) {
@@ -455,19 +460,69 @@ async function flattenEntries(entries, inheritedWeight = 1, inheritedFunctions =
       ...(entry.functions ?? [])
     ];
 
-    const inheritedEntry = withInheritedFunctions(entry, inheritedFunctions);
-
     if (
       entry.type === "minecraft:alternatives" ||
       entry.type === "minecraft:group" ||
       entry.type === "minecraft:sequence"
     ) {
-      result.push(...await flattenEntries(entry.children ?? [], combinedWeight, entryFunctions));
+      result.push(
+        ...await flattenEntries(
+          entry.children ?? [],
+          combinedWeight,
+          entryFunctions,
+          seenLootTables
+        )
+      );
       continue;
     }
 
+    if (entry.type === "minecraft:loot_table") {
+      const lootTable = cleanTag(entry.value ?? entry.name ?? "unknown");
+
+      if (seenLootTables.has(lootTable)) {
+        result.push({
+          item: `Loot Table (${lootTable})`,
+          stackSize: getStackSize(withInheritedFunctions(entry, inheritedFunctions)),
+          weight: combinedWeight
+        });
+        continue;
+      }
+
+      const nestedJson = await loadLootTableJson(lootTable);
+
+      if (!nestedJson) {
+        result.push({
+          item: `Loot Table (${lootTable})`,
+          stackSize: getStackSize(withInheritedFunctions(entry, inheritedFunctions)),
+          weight: combinedWeight
+        });
+        continue;
+      }
+
+      const nextSeenLootTables = new Set(seenLootTables);
+      nextSeenLootTables.add(lootTable);
+
+      for (const nestedPool of nestedJson.pools ?? []) {
+        result.push(
+          ...await flattenEntries(
+            nestedPool.entries ?? [],
+            combinedWeight,
+            [
+              ...entryFunctions,
+              ...(nestedPool.functions ?? [])
+            ],
+            nextSeenLootTables
+          )
+        );
+      }
+
+      continue;
+    }
+
+    const inheritedEntry = withInheritedFunctions(entry, inheritedFunctions);
+
     result.push({
-      item: await getItemName(inheritedEntry),
+      item: await getItemName(inheritedEntry, seenLootTables),
       stackSize: getStackSize(inheritedEntry),
       weight: combinedWeight
     });
@@ -493,7 +548,7 @@ async function renderMergedPools(pools) {
   const rows = [];
 
   for (const [poolIndex, pool] of (pools ?? []).entries()) {
-    const flattenedEntries = await flattenEntries(pool.entries ?? [], 1, pool.functions ?? []);
+    const flattenedEntries = await flattenEntries(pool.entries ?? [], 1, pool.functions ?? [], new Set());
     const nonEmptyFlattenedEntries = flattenedEntries.filter(entry => entry.item !== "Empty");
     const totalWeight = flattenedEntries.reduce((sum, entry) => sum + entry.weight, 0);
 
@@ -594,24 +649,27 @@ async function renderGeneratedLootSection(lootTables) {
 
   const tables = [];
 
-  for (const [id] of sorted) {
+  for (const [id, count] of sorted) {
     const json = await loadLootTableJson(id);
 
-    if (!json) {
-      tables.push(`## ${id}
+    let content;
 
-Could not find this loot table locally or in mcmeta ${vanillaLootTableVersion ?? "unknown"}.
-`);
-      continue;
+    if (!json) {
+      content = `Could not find this loot table locally or in mcmeta ${vanillaLootTableVersion ?? "unknown"}.`;
+    } else {
+      content = await renderMergedPools(json.pools ?? []);
     }
 
-    tables.push(
-      sorted.length === 1
-        ? await renderMergedPools(json.pools ?? [])
-        : `## ${id}
+    if (sorted.length === 1) {
+      tables.push(content);
+    } else {
+      tables.push(`<details>
+<summary><strong>${id}</strong> (${count} ${pluralize(count, "use")})</summary>
 
-${await renderMergedPools(json.pools ?? [])}`
-    );
+${content}
+
+</details>`);
+    }
   }
 
   return `# Generated Loot.
