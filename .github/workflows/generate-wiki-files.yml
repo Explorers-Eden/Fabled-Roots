@@ -112,7 +112,7 @@ jobs:
               -Dwiki.manifest="$GITHUB_WORKSPACE/tools/wiki-renderer/run/wiki-render-manifest.json" \
               -Dwiki.output="$GITHUB_WORKSPACE/wiki/images/structures" \
               -Dwiki.repo="$GITHUB_WORKSPACE" \
-              --args "--quickPlaySingleplayer WikiRender --width 1280 --height 900"
+              --args="--quickPlaySingleplayer WikiRender --width 1280 --height 900"
 
       - name: Show generated wiki files
         run: |
