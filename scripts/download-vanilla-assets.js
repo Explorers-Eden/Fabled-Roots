@@ -88,6 +88,10 @@ function compareVersionParts(a, b) {
   return String(a).localeCompare(String(b));
 }
 
+function isLikelyMinecraftVersion(version) {
+  return /^1\.\d+(?:\.\d+)?(?:-(?:pre|rc)\d+)?$/.test(String(version));
+}
+
 function getLatestVersionFromReleaseInfo() {
   const file = "release_infos.yml";
   if (!fs.existsSync(file)) return null;
@@ -115,7 +119,7 @@ function getLatestVersionFromReleaseInfo() {
     }
 
     const versionMatch = line.match(/^\s*-\s*["']?([^"'\s#]+)["']?/);
-    if (versionMatch) versions.push(versionMatch[1]);
+    if (versionMatch && isLikelyMinecraftVersion(versionMatch[1])) versions.push(versionMatch[1]);
   }
 
   if (versions.length === 0) return null;

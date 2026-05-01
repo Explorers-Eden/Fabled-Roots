@@ -43,6 +43,12 @@ function compareVersionParts(a, b) {
   return String(a).localeCompare(String(b));
 }
 
+function isLikelyMinecraftVersion(version) {
+  // Avoid picking mod/plugin versions such as 26.1.2 from release_infos.yml.
+  // Minecraft release versions are usually 1.x, optionally with pre/rc suffixes.
+  return /^1\.\d+(?:\.\d+)?(?:-(?:pre|rc)\d+)?$/.test(String(version));
+}
+
 function getLatestMinecraftVersionFromReleaseInfo() {
   const file = "release_infos.yml";
   if (!fs.existsSync(file)) return null;
@@ -70,7 +76,9 @@ function getLatestMinecraftVersionFromReleaseInfo() {
     }
 
     const versionMatch = line.match(/^\s*-\s*["']?([^"'\s#]+)["']?/);
-    if (versionMatch) versions.push(versionMatch[1]);
+    if (versionMatch && isLikelyMinecraftVersion(versionMatch[1])) {
+      versions.push(versionMatch[1]);
+    }
   }
 
   if (versions.length === 0) return null;
