@@ -45,6 +45,8 @@ jobs:
           MC_VERSION="$(node scripts/get-minecraft-version.js)"
           echo "MC_VERSION=$MC_VERSION" >> "$GITHUB_ENV"
           echo "Using Minecraft $MC_VERSION"
+          echo "release_infos.yml version candidates:"
+          grep -A 20 -n "Versions:" release_infos.yml || true
 
       - name: Generate loot table markdown
         run: node scripts/generate-loot-tables.js
@@ -68,7 +70,7 @@ jobs:
           set +e
           timeout 90s gradle runServer \
             -Pminecraft_version="$MC_VERSION" \
-            -Pfabric_loader_version=0.18.4 \
+            -Pfabric_loader_version=0.19.2 \
             --args "nogui"
           SERVER_EXIT=$?
           set -e
@@ -105,7 +107,7 @@ jobs:
           xvfb-run -s "-ac -screen 0 1600x1200x24" \
             gradle -p tools/wiki-renderer runClient \
               -Pminecraft_version="$MC_VERSION" \
-              -Pfabric_loader_version=0.18.4 \
+              -Pfabric_loader_version=0.19.2 \
               -Dwiki.render=true \
               -Dwiki.manifest="$GITHUB_WORKSPACE/tools/wiki-renderer/run/wiki-render-manifest.json" \
               -Dwiki.output="$GITHUB_WORKSPACE/wiki/images/structures" \

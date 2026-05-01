@@ -20,7 +20,9 @@ function compareVersionParts(a, b) {
 }
 
 function isMinecraftLikeVersion(version) {
-  return /^(?:1\.\d+(?:\.\d+)?|[2-9]\d\.\d+(?:\.\d+)?)(?:-(?:pre|rc)\d+)?$/.test(String(version));
+  // Minecraft Java switched versioning in 2026.
+  // Accept classic 1.x(.x) versions and new Java versions like 26.1.2.
+  return /^(?:1\.\d+(?:\.\d+)?|2[6-9]\.\d+(?:\.\d+)?)(?:-(?:pre|rc|snapshot)\d+)?$/.test(String(version));
 }
 
 function getLatestVersionFromReleaseInfo() {
@@ -59,4 +61,9 @@ function getLatestVersionFromReleaseInfo() {
   return versions.sort(compareVersionParts).at(-1);
 }
 
-console.log(process.env.MC_VERSION || getLatestVersionFromReleaseInfo() || "1.21.4");
+const version = process.env.MC_VERSION || getLatestVersionFromReleaseInfo() || "1.21.4";
+if (!isMinecraftLikeVersion(version)) {
+  console.error(`Resolved invalid Minecraft version: ${version}`);
+  process.exit(1);
+}
+console.log(version);
