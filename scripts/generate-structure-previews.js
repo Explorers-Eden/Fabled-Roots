@@ -242,6 +242,13 @@ function getModelVariantFromBlockState(blockName, properties = {}) {
 
   if (Array.isArray(blockState.multipart)) {
     for (const part of blockState.multipart) {
+      // Basic multipart support: choose the first matching part.
+      // This is enough for many panes/fences/plants; complex multipart models are
+      // still approximated as one chosen part to keep rendering fast.
+      if (part.when && !variantMatchesBlockState(stringifyProperties(part.when), properties)) {
+        continue;
+      }
+
       let apply = part.apply;
       if (Array.isArray(apply)) apply = apply[0];
 
@@ -497,6 +504,33 @@ function pointInPolygon(x, y, polygon) {
   return inside;
 }
 
+function getFaceUv(face, u, v) {
+  const uv = face.uv ?? [0, 0, 16, 16];
+
+  const u0 = uv[0] / 16;
+  const v0 = uv[1] / 16;
+  const u1 = uv[2] / 16;
+  const v1 = uv[3] / 16;
+
+  const rotation = ((face.uvRotation ?? 0) % 360 + 360) % 360;
+
+  let ru = u;
+  let rv = v;
+
+  if (rotation === 90) {
+    [ru, rv] = [v, 1 - u];
+  } else if (rotation === 180) {
+    [ru, rv] = [1 - u, 1 - v];
+  } else if (rotation === 270) {
+    [ru, rv] = [1 - v, u];
+  }
+
+  return {
+    u: u0 + (u1 - u0) * ru,
+    v: v0 + (v1 - v0) * rv
+  };
+}
+
 function drawTexturedPolygon(png, face) {
   const points = face.points;
   const minY = Math.floor(Math.min(...points.map(p => p.y)));
@@ -513,43 +547,94 @@ function drawTexturedPolygon(png, face) {
     for (let x = minX; x <= maxX; x++) {
       if (!pointInPolygon(x + 0.5, y + 0.5, points)) continue;
 
-      const u = Math.max(0, Math.min(1, (x - minX) / width));
-      const v = Math.max(0, Math.min(1, (y - minY) / height));
-      const sampled = sampleTexture(texture, u, v) ?? fallback;
-      const tinted = applyBiomeTint(sampled, face.block.name, face.faceName);
+      const localU = Math.max(0, Math.min(1, (x - minX) / width));
+      const localV = Math.max(0, Math.min(1, (y - minY) / height));
+      const uv = getFaceUv(face, localU, localV);
+      const sampled = sampleTexture(texture, uv.u, uv.v);
+
+      // Preserve cutout transparency for flowers, saplings, trapdoors, glass panes, etc.
+      if (texture && !sampled) continue;
+
+      const base = sampled ?? fallback;
+      const tinted = applyBiomeTint(base, face.block.name, face.faceName);
       blendPixel(png, x, y, shadeColor(tinted, face.shade));
     }
   }
 }
 
-function rotateAroundCenter(point, rotation) {
-  let { x, y, z } = point;
+function rotatePointAroundOrigin(point, origin, axis, angleDegrees, rescale = false) {
+  if (!angleDegrees) return point;
 
-  // Minecraft blockstate rotations are around block center.
-  x -= 0.5;
-  y -= 0.5;
-  z -= 0.5;
+  const angle = (angleDegrees * Math.PI) / 180;
+  const cos = Math.cos(angle);
+  const sin = Math.sin(angle);
 
-  const yRadians = ((rotation.y ?? 0) * Math.PI) / 180;
-  const cosY = Math.cos(yRadians);
-  const sinY = Math.sin(yRadians);
+  let x = point.x - origin.x;
+  let y = point.y - origin.y;
+  let z = point.z - origin.z;
 
-  let x1 = x * cosY - z * sinY;
-  let z1 = x * sinY + z * cosY;
-  let y1 = y;
+  if (axis === "x") {
+    const y2 = y * cos - z * sin;
+    const z2 = y * sin + z * cos;
+    y = y2;
+    z = z2;
+  } else if (axis === "y") {
+    const x2 = x * cos - z * sin;
+    const z2 = x * sin + z * cos;
+    x = x2;
+    z = z2;
+  } else if (axis === "z") {
+    const x2 = x * cos - y * sin;
+    const y2 = x * sin + y * cos;
+    x = x2;
+    y = y2;
+  }
 
-  const xRadians = ((rotation.x ?? 0) * Math.PI) / 180;
-  const cosX = Math.cos(xRadians);
-  const sinX = Math.sin(xRadians);
-
-  const y2 = y1 * cosX - z1 * sinX;
-  const z2 = y1 * sinX + z1 * cosX;
+  // Minecraft's "rescale" adjusts bounds to avoid shrinking. This is a simplified
+  // approximation; it keeps the preview visually close without implementing full model baking.
+  const scale = rescale ? 1 / Math.max(Math.abs(cos), Math.abs(sin), 0.0001) : 1;
 
   return {
-    x: x1 + 0.5,
-    y: y2 + 0.5,
-    z: z2 + 0.5
+    x: origin.x + x * scale,
+    y: origin.y + y * scale,
+    z: origin.z + z * scale
   };
+}
+
+function applyElementRotation(point, element) {
+  const rotation = element.rotation;
+  if (!rotation) return point;
+
+  const origin = {
+    x: (rotation.origin?.[0] ?? 8) / 16,
+    y: (rotation.origin?.[1] ?? 8) / 16,
+    z: (rotation.origin?.[2] ?? 8) / 16
+  };
+
+  return rotatePointAroundOrigin(
+    point,
+    origin,
+    rotation.axis ?? "y",
+    Number(rotation.angle ?? 0),
+    Boolean(rotation.rescale)
+  );
+}
+
+function applyBlockstateRotation(point, rotation) {
+  let rotated = point;
+
+  // Minecraft model variant rotations are around block center.
+  const center = { x: 0.5, y: 0.5, z: 0.5 };
+
+  if (rotation.x) {
+    rotated = rotatePointAroundOrigin(rotated, center, "x", rotation.x, false);
+  }
+
+  if (rotation.y) {
+    rotated = rotatePointAroundOrigin(rotated, center, "y", rotation.y, false);
+  }
+
+  return rotated;
 }
 
 function isoPoint(x, y, z, offsetX, offsetY, scale = 1) {
@@ -559,8 +644,9 @@ function isoPoint(x, y, z, offsetX, offsetY, scale = 1) {
   };
 }
 
-function projectModelPoint(block, localPoint, rotation, offsetX, offsetY, scale) {
-  const rotated = rotateAroundCenter(localPoint, rotation);
+function projectModelPoint(block, localPoint, element, rotation, offsetX, offsetY, scale) {
+  const elementRotated = applyElementRotation(localPoint, element);
+  const rotated = applyBlockstateRotation(elementRotated, rotation);
 
   return isoPoint(
     block.x + rotated.x,
@@ -585,18 +671,44 @@ function faceDepth(points3d) {
 }
 
 function createModelFace(block, modelTextures, element, faceName, faceData, points3d, offsetX, offsetY, scale) {
+  const transformedPoints3d = points3d.map(point =>
+    applyBlockstateRotation(applyElementRotation(point, element), block.rotation)
+  );
+
   const points = points3d.map(point =>
-    projectModelPoint(block, point, block.rotation, offsetX, offsetY, scale)
+    projectModelPoint(block, point, element, block.rotation, offsetX, offsetY, scale)
   );
 
   return {
     block,
     faceName,
     texture: getTextureForFace(block, modelTextures, faceData, faceName),
+    uv: faceData?.uv,
+    uvRotation: faceData?.rotation ?? 0,
     points,
     shade: faceShade(faceName),
-    depth: block.x + block.y + block.z + faceDepth(points3d)
+    depth: block.x + block.y + block.z + faceDepth(transformedPoints3d)
   };
+}
+
+function defaultFaceUv(faceName, from, to) {
+  // Approximate vanilla default UVs from model element bounds.
+  const [x0, y0, z0] = from;
+  const [x1, y1, z1] = to;
+
+  switch (faceName) {
+    case "up":
+    case "down":
+      return [x0, z0, x1, z1];
+    case "north":
+    case "south":
+      return [x0, 16 - y1, x1, 16 - y0];
+    case "west":
+    case "east":
+      return [z0, 16 - y1, z1, 16 - y0];
+    default:
+      return [0, 0, 16, 16];
+  }
 }
 
 function makeElementFaces(block, element, modelTextures, offsetX, offsetY, scale) {
@@ -651,8 +763,13 @@ function makeElementFaces(block, element, modelTextures, offsetX, offsetY, scale
   };
 
   for (const [faceName, points3d] of Object.entries(faceDefs)) {
-    const faceData = element.faces?.[faceName];
-    if (!faceData) continue;
+    const rawFaceData = element.faces?.[faceName];
+    if (!rawFaceData) continue;
+
+    const faceData = {
+      ...rawFaceData,
+      uv: rawFaceData.uv ?? defaultFaceUv(faceName, from, to)
+    };
 
     faces.push(
       createModelFace(
@@ -1131,6 +1248,7 @@ async function main() {
 
   console.log(`Generated ${stats.mainImages} preview image(s).`);
   console.log(`Rendered ${stats.modelFaces} model face(s), used ${stats.cubeFallbacks} cube fallback(s).`);
+  console.log("Model renderer uses blockstate variants, model element geometry, per-face UVs, texture alpha, and basic element/block rotations.");
   console.log(`Texture files loaded: ${stats.textureHits}; missing/fallback lookups: ${stats.textureMisses}.`);
 
   removeStaleOutputFiles(validOutputFiles);
