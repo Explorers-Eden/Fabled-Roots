@@ -16,37 +16,22 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install system dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y xvfb xauth libgl1-mesa-dri libgl1-mesa-dev libegl1-mesa-dev libxi6 libxrender1 libxtst6 libxrandr2 libxxf86vm1 libxcursor1 libxinerama1 libnss3 libasound2t64 rsync
-
-      - name: Setup Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: 25
-
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: 9.4.0
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
 
-      - name: Install Node dependencies
-        run: npm install --no-save prismarine-nbt
+      - name: Install dependencies
+        run: npm install --no-save prismarine-nbt pngjs
 
-      - name: Detect Minecraft version
-        run: |
-          MC_VERSION="$(node scripts/get-minecraft-version.js)"
-          echo "MC_VERSION=$MC_VERSION" >> "$GITHUB_ENV"
-          echo "Using Minecraft $MC_VERSION"
-          echo "release_infos.yml version candidates:"
-          grep -A 20 -n "Versions:" release_infos.yml || true
+      - name: Cache vanilla assets
+        uses: actions/cache@v4
+        with:
+          path: .cache/vanilla-assets
+          key: vanilla-assets-${{ hashFiles('release_infos.yml', 'pack.mcmeta') }}
+
+      - name: Download vanilla assets
+        run: node scripts/download-vanilla-assets.js
 
       - name: Generate loot table markdown
         run: node scripts/generate-loot-tables.js
@@ -54,109 +39,8 @@ jobs:
       - name: Generate structure markdown
         run: node scripts/generate-structures.js
 
-      - name: Generate render manifest
-        run: node scripts/generate-render-manifest.js
-
-      - name: Prepare renderer world
-        run: |
-          set -euo pipefail
-
-          cd tools/wiki-renderer
-          mkdir -p run
-          echo "eula=true" > run/eula.txt
-
-          # Create a temporary vanilla/Fabric world. The server is only used to
-          # create a save folder; the actual screenshots are taken by the client.
-          set +e
-          timeout 90s gradle runServer \
-            -Pminecraft_version="$MC_VERSION" \
-            -Pfabric_loader_version=0.19.2 \
-            --args "nogui"
-          SERVER_EXIT=$?
-          set -e
-
-          # 124 is expected because timeout stops the server after it creates the world.
-          if [ "$SERVER_EXIT" -ne 0 ] && [ "$SERVER_EXIT" -ne 124 ]; then
-            echo "Gradle runServer failed with exit code $SERVER_EXIT"
-            exit "$SERVER_EXIT"
-          fi
-
-          rm -rf run/saves/WikiRender
-          mkdir -p run/saves
-
-          if [ -d run/world ]; then
-            mv run/world run/saves/WikiRender
-          else
-            echo "Server did not create run/world"
-            ls -la run
-            exit 1
-          fi
-
-          mkdir -p run/saves/WikiRender/datapacks/source_pack
-          cd ../..
-          rsync -a --delete \
-            --exclude ".git" \
-            --exclude ".github" \
-            --exclude "wiki" \
-            --exclude "node_modules" \
-            --exclude "tools/wiki-renderer/run" \
-            data assets pack.mcmeta tools/wiki-renderer/run/saves/WikiRender/datapacks/source_pack/ 2>/dev/null || true
-
-      - name: Render structure preview images with Minecraft
-        shell: bash
-        run: |
-          set -uo pipefail
-          mkdir -p tools/wiki-renderer/run/wiki-render-debug
-
-          echo "Render manifest:"
-          ls -lah tools/wiki-renderer/run/wiki-render-manifest.json || true
-          node -e "const m=require('./tools/wiki-renderer/run/wiki-render-manifest.json'); console.log(JSON.stringify({groups:m.groups?.length, first:m.groups?.[0]}, null, 2))" || true
-
-          set +e
-          xvfb-run -a -s "-ac -screen 0 1600x1200x24" \
-            gradle -p tools/wiki-renderer runClient \
-              -Pminecraft_version="$MC_VERSION" \
-              -Pfabric_loader_version=0.19.2 \
-              -Dwiki.render=true \
-              -Dwiki.manifest="$GITHUB_WORKSPACE/tools/wiki-renderer/run/wiki-render-manifest.json" \
-              -Dwiki.output="$GITHUB_WORKSPACE/wiki/images/structures" \
-              -Dwiki.repo="$GITHUB_WORKSPACE" \
-              --stacktrace --info \
-              --args="--width 1280 --height 900" 2>&1 | tee tools/wiki-renderer/run/wiki-render-debug/render-step.log
-          RENDER_EXIT=${PIPESTATUS[0]}
-          set -e
-
-          echo ""
-          echo "===== Render exit code: $RENDER_EXIT ====="
-          echo ""
-          echo "===== Minecraft latest.log ====="
-          if [ -f tools/wiki-renderer/run/logs/latest.log ]; then
-            tail -n 400 tools/wiki-renderer/run/logs/latest.log
-            cp tools/wiki-renderer/run/logs/latest.log tools/wiki-renderer/run/wiki-render-debug/latest.log
-          else
-            echo "No tools/wiki-renderer/run/logs/latest.log found"
-            find tools/wiki-renderer/run -maxdepth 4 -type f | sort | sed 's#^#RUN FILE: #'
-          fi
-
-          echo ""
-          echo "===== Crash reports ====="
-          find tools/wiki-renderer/run/crash-reports -type f -maxdepth 1 -print -exec cat {} \; 2>/dev/null || true
-          cp -r tools/wiki-renderer/run/crash-reports tools/wiki-renderer/run/wiki-render-debug/crash-reports 2>/dev/null || true
-
-          echo ""
-          echo "===== Generated PNGs ====="
-          find wiki/images/structures -type f -name "*.png" -print -exec ls -lh {} \; 2>/dev/null || true
-
-          exit "$RENDER_EXIT"
-
-
-      - name: Upload Minecraft render debug logs
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: minecraft-render-debug-logs
-          path: tools/wiki-renderer/run/wiki-render-debug/**
-          if-no-files-found: warn
+      - name: Generate structure preview images
+        run: node scripts/generate-structure-previews.js
 
       - name: Show generated wiki files
         run: |
