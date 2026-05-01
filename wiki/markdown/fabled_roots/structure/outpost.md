@@ -1,3 +1,87 @@
+# Generated Loot.
+
+The structure generates 4 loot containers using 4 loot tables: `fabled_roots:structure/dunesworn/outpost`, `fabled_roots:structure/endling/outpost`, `fabled_roots:structure/oakhearted/outpost`, `fabled_roots:structure/palehearted/outpost`.
+<br>
+
+## fabled_roots:structure/dunesworn/outpost
+
+| Item | Stack Size | Pool | Weight | Chance |
+|:-----|:----------:|:----:|:------:|:------:|
+| Crossbow | 1 | 1 | 1 | 100.0% |
+| Cactus | 3–5 | 2 | 7 | 41.2% |
+| Dead Bush | 2–5 | 2 | 5 | 29.4% |
+| Tall Dry Grass | 3–5 | 2 | 5 | 29.4% |
+| Sandstone | 2–3 | 3 | 1 | 100.0% |
+| Experience Bottle | 1 | 4 | 7 | 31.8% |
+| Arrow | 2–7 | 4 | 4 | 18.2% |
+| String | 1–6 | 4 | 4 | 18.2% |
+| Iron Ingot | 1–3 | 4 | 3 | 13.6% |
+| Tripwire Hook | 1–3 | 4 | 3 | 13.6% |
+| Enchanted Book | 1 | 4 | 1 | 4.5% |
+| Horn of Roots | 1 | 5 | 1 | 100.0% |
+| Loot Table (fabled_roots:pool/journal/final_days/dunesworn) | 1 | 6 | 3 | 30.0% |
+| Loot Table (fabled_roots:pool/journal/new_horizons/dunesworn) | 1 | 6 | 3 | 30.0% |
+| Buried Treasure Map | 1 | 6 | 1 | 10.0% |
+
+## fabled_roots:structure/endling/outpost
+
+| Item | Stack Size | Pool | Weight | Chance |
+|:-----|:----------:|:----:|:------:|:------:|
+| Crossbow | 1 | 1 | 1 | 100.0% |
+| Chorus Fruit | 3–5 | 2 | 7 | 46.7% |
+| Popped Chorus Fruit | 3–5 | 2 | 5 | 33.3% |
+| Chorus Flower | 2–5 | 2 | 3 | 20.0% |
+| Purpur Block | 2–3 | 3 | 1 | 100.0% |
+| Experience Bottle | 1 | 4 | 7 | 31.8% |
+| Arrow | 2–7 | 4 | 4 | 18.2% |
+| String | 1–6 | 4 | 4 | 18.2% |
+| Iron Ingot | 1–3 | 4 | 3 | 13.6% |
+| Tripwire Hook | 1–3 | 4 | 3 | 13.6% |
+| Enchanted Book | 1 | 4 | 1 | 4.5% |
+| Horn of Roots | 1 | 5 | 1 | 100.0% |
+| Loot Table (fabled_roots:pool/journal/final_days/endling) | 1 | 6 | 3 | 30.0% |
+| Loot Table (fabled_roots:pool/journal/new_horizons/endling) | 1 | 6 | 3 | 30.0% |
+| Buried Treasure Map | 1 | 6 | 1 | 10.0% |
+
+## fabled_roots:structure/oakhearted/outpost
+
+| Item | Stack Size | Pool | Weight | Chance |
+|:-----|:----------:|:----:|:------:|:------:|
+| Crossbow | 1 | 1 | 1 | 100.0% |
+| Wheat | 3–5 | 2 | 7 | 41.2% |
+| Carrot | 3–5 | 2 | 5 | 29.4% |
+| Potato | 2–5 | 2 | 5 | 29.4% |
+| Oak Log | 2–3 | 3 | 1 | 100.0% |
+| Experience Bottle | 1 | 4 | 7 | 31.8% |
+| Arrow | 2–7 | 4 | 4 | 18.2% |
+| String | 1–6 | 4 | 4 | 18.2% |
+| Iron Ingot | 1–3 | 4 | 3 | 13.6% |
+| Tripwire Hook | 1–3 | 4 | 3 | 13.6% |
+| Enchanted Book | 1 | 4 | 1 | 4.5% |
+| Horn of Roots | 1 | 5 | 1 | 100.0% |
+| Loot Table (fabled_roots:pool/journal/final_days/oakhearted) | 1 | 6 | 3 | 30.0% |
+| Loot Table (fabled_roots:pool/journal/new_horizons/oakhearted) | 1 | 6 | 3 | 30.0% |
+| Buried Treasure Map | 1 | 6 | 1 | 10.0% |
+
+## fabled_roots:structure/palehearted/outpost
+
+| Item | Stack Size | Pool | Weight | Chance |
+|:-----|:----------:|:----:|:------:|:------:|
+| Crossbow | 1 | 1 | 1 | 100.0% |
+| Pale Moss Block | 3–5 | 2 | 7 | 41.2% |
+| Open Eyeblossom | 3–5 | 2 | 5 | 29.4% |
+| Pale Hanging Moss | 2–5 | 2 | 5 | 29.4% |
+| Pale Oak Log | 2–3 | 3 | 1 | 100.0% |
+| Experience Bottle | 1 | 4 | 7 | 31.8% |
+| Arrow | 2–7 | 4 | 4 | 18.2% |
+| String | 1–6 | 4 | 4 | 18.2% |
+| Iron Ingot | 1–3 | 4 | 3 | 13.6% |
+| Tripwire Hook | 1–3 | 4 | 3 | 13.6% |
+| Enchanted Book | 1 | 4 | 1 | 4.5% |
+| Horn of Roots | 1 | 5 | 1 | 100.0% |
+| Loot Table (fabled_roots:pool/journal/final_days/palehearted) | 1 | 6 | 3 | 30.0% |
+| Loot Table (fabled_roots:pool/journal/new_horizons/palehearted) | 1 | 6 | 3 | 30.0% |
+| Buried Treasure Map | 1 | 6 | 1 | 10.0% |
 # Contents
 
 The structure is composed of the following blocks: Deepslate Bricks, Purpur Block, End Stone Bricks, Oak Planks, Pale Oak Planks, Terracotta, Stripped Oak Log, Sandstone, Smooth Sandstone, Mossy Stone Bricks, Oak Log, Pale Oak Log, Stripped Jungle Log, Purpur Pillar, Cut Sandstone, Jungle Fence, Oak Fence, Pale Oak Fence, Oak Slab, Pale Oak Slab, Purpur Stairs, Sandstone Stairs, Purple Stained Glass Pane, Sandstone Slab, Deepslate Brick Stairs, Mossy Stone Brick Stairs, Purpur Slab, End Stone Brick Slab, Oak Stairs, Pale Oak Stairs, Chiseled Sandstone, End Rod, Smooth Sandstone Slab, Mossy Cobblestone, Deepslate Brick Wall, End Stone Brick Stairs, End Stone Brick Wall, Mossy Stone Brick Wall, Sandstone Wall, Smooth Sandstone Stairs, Torch, Chest, Deepslate Brick Slab, Mossy Stone Brick Slab, Soul Torch, Wall Torch, Soul Wall Torch.
@@ -38,9 +122,9 @@ The structure part is composed of the following blocks: Terracotta, Sandstone, S
 
 ### Loot Tables
 
-| Loot Table |
-|:-----|
-| fabled_roots:structure/dunesworn/outpost |
+| Loot Table | Count |
+|:-----|:-----:|
+| fabled_roots:structure/dunesworn/outpost | 1 |
 
 
 </details>
@@ -74,9 +158,9 @@ The structure part is composed of the following blocks: Purpur Block, End Stone 
 
 ### Loot Tables
 
-| Loot Table |
-|:-----|
-| fabled_roots:structure/endling/outpost |
+| Loot Table | Count |
+|:-----|:-----:|
+| fabled_roots:structure/endling/outpost | 1 |
 
 
 </details>
@@ -113,9 +197,9 @@ The structure part is composed of the following blocks: Oak Planks, Stripped Oak
 
 ### Loot Tables
 
-| Loot Table |
-|:-----|
-| fabled_roots:structure/oakhearted/outpost |
+| Loot Table | Count |
+|:-----|:-----:|
+| fabled_roots:structure/oakhearted/outpost | 1 |
 
 
 </details>
@@ -150,9 +234,9 @@ The structure part is composed of the following blocks: Deepslate Bricks, Pale O
 
 ### Loot Tables
 
-| Loot Table |
-|:-----|
-| fabled_roots:structure/palehearted/outpost |
+| Loot Table | Count |
+|:-----|:-----:|
+| fabled_roots:structure/palehearted/outpost | 1 |
 
 
 </details>

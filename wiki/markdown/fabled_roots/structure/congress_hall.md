@@ -1,3 +1,177 @@
+# Generated Loot.
+
+The structure generates 10 loot containers using 10 loot tables: `fabled_roots:structure/aetherian/rare`, `fabled_roots:structure/dunesworn/rare`, `fabled_roots:structure/endling/rare`, `fabled_roots:structure/frostborne/rare`, `fabled_roots:structure/moonshroud/rare`, `fabled_roots:structure/netherian/rare`, `fabled_roots:structure/oakhearted/rare`, `fabled_roots:structure/orebringer/rare`, `fabled_roots:structure/palehearted/rare`, `fabled_roots:structure/turtlekin/rare`.
+<br>
+
+## fabled_roots:structure/aetherian/rare
+
+| Item | Stack Size | Pool | Weight | Chance |
+|:-----|:----------:|:----:|:------:|:------:|
+| Enchanted Book | 1 | 1 | 4 | 18.2% |
+| Bow of Roots | 1 | 1 | 3 | 13.6% |
+| Lapis Lazuli | 2–4 | 1 | 3 | 13.6% |
+| Shield | 1 | 1 | 3 | 13.6% |
+| Golden Carrot | 1–2 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/armor_of_roots) | 1 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/horse_armor_of_roots) | 1 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/spear) | 1 | 1 | 2 | 9.1% |
+| Music Disc | 1 | 1 | 1 | 4.5% |
+| Loot Table (fabled_roots:equipment/crown_of_roots) | 1 | 2 | 1 | 20.0% |
+| Loot Table (fabled_roots:pool/reinforced_armor_of_roots) | 1 | 2 | 1 | 20.0% |
+| Reinforced Sword of Roots | 1 | 2 | 1 | 20.0% |
+
+## fabled_roots:structure/dunesworn/rare
+
+| Item | Stack Size | Pool | Weight | Chance |
+|:-----|:----------:|:----:|:------:|:------:|
+| Enchanted Book | 1 | 1 | 4 | 18.2% |
+| Bow of Roots | 1 | 1 | 3 | 13.6% |
+| Lapis Lazuli | 2–4 | 1 | 3 | 13.6% |
+| Shield | 1 | 1 | 3 | 13.6% |
+| Golden Carrot | 1–2 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/armor_of_roots) | 1 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/horse_armor_of_roots) | 1 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/scimitar) | 1 | 1 | 2 | 9.1% |
+| Music Disc | 1 | 1 | 1 | 4.5% |
+| Loot Table (fabled_roots:equipment/crown_of_roots) | 1 | 2 | 1 | 20.0% |
+| Loot Table (fabled_roots:pool/reinforced_armor_of_roots) | 1 | 2 | 1 | 20.0% |
+| Reinforced Sword of Roots | 1 | 2 | 1 | 20.0% |
+
+## fabled_roots:structure/endling/rare
+
+| Item | Stack Size | Pool | Weight | Chance |
+|:-----|:----------:|:----:|:------:|:------:|
+| Enchanted Book | 1 | 1 | 4 | 18.2% |
+| Bow of Roots | 1 | 1 | 3 | 13.6% |
+| Lapis Lazuli | 2–4 | 1 | 3 | 13.6% |
+| Shield | 1 | 1 | 3 | 13.6% |
+| Golden Carrot | 1–2 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/armor_of_roots) | 1 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/horse_armor_of_roots) | 1 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/scythe) | 1 | 1 | 2 | 9.1% |
+| Music Disc | 1 | 1 | 1 | 4.5% |
+| Loot Table (fabled_roots:equipment/crown_of_roots) | 1 | 2 | 1 | 20.0% |
+| Loot Table (fabled_roots:pool/reinforced_armor_of_roots) | 1 | 2 | 1 | 20.0% |
+| Reinforced Sword of Roots | 1 | 2 | 1 | 20.0% |
+
+## fabled_roots:structure/frostborne/rare
+
+| Item | Stack Size | Pool | Weight | Chance |
+|:-----|:----------:|:----:|:------:|:------:|
+| Enchanted Book | 1 | 1 | 4 | 18.2% |
+| Bow of Roots | 1 | 1 | 3 | 13.6% |
+| Lapis Lazuli | 2–4 | 1 | 3 | 13.6% |
+| Shield | 1 | 1 | 3 | 13.6% |
+| Golden Carrot | 1–2 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/armor_of_roots) | 1 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/club) | 1 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/horse_armor_of_roots) | 1 | 1 | 2 | 9.1% |
+| Music Disc | 1 | 1 | 1 | 4.5% |
+| Loot Table (fabled_roots:equipment/crown_of_roots) | 1 | 2 | 1 | 20.0% |
+| Loot Table (fabled_roots:pool/reinforced_armor_of_roots) | 1 | 2 | 1 | 20.0% |
+| Reinforced Sword of Roots | 1 | 2 | 1 | 20.0% |
+
+## fabled_roots:structure/moonshroud/rare
+
+| Item | Stack Size | Pool | Weight | Chance |
+|:-----|:----------:|:----:|:------:|:------:|
+| Enchanted Book | 1 | 1 | 4 | 18.2% |
+| Bow of Roots | 1 | 1 | 3 | 13.6% |
+| Lapis Lazuli | 2–4 | 1 | 3 | 13.6% |
+| Shield | 1 | 1 | 3 | 13.6% |
+| Golden Carrot | 1–2 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/armor_of_roots) | 1 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/horse_armor_of_roots) | 1 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/throwing_knife) | 1 | 1 | 2 | 9.1% |
+| Music Disc | 1 | 1 | 1 | 4.5% |
+| Loot Table (fabled_roots:equipment/crown_of_roots) | 1 | 2 | 1 | 20.0% |
+| Loot Table (fabled_roots:pool/reinforced_armor_of_roots) | 1 | 2 | 1 | 20.0% |
+| Reinforced Sword of Roots | 1 | 2 | 1 | 20.0% |
+
+## fabled_roots:structure/netherian/rare
+
+| Item | Stack Size | Pool | Weight | Chance |
+|:-----|:----------:|:----:|:------:|:------:|
+| Enchanted Book | 1 | 1 | 4 | 18.2% |
+| Bow of Roots | 1 | 1 | 3 | 13.6% |
+| Lapis Lazuli | 2–4 | 1 | 3 | 13.6% |
+| Shield | 1 | 1 | 3 | 13.6% |
+| Golden Carrot | 1–2 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/armor_of_roots) | 1 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/broadsword) | 1 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/horse_armor_of_roots) | 1 | 1 | 2 | 9.1% |
+| Music Disc | 1 | 1 | 1 | 4.5% |
+| Loot Table (fabled_roots:equipment/crown_of_roots) | 1 | 2 | 1 | 20.0% |
+| Loot Table (fabled_roots:pool/reinforced_armor_of_roots) | 1 | 2 | 1 | 20.0% |
+| Reinforced Sword of Roots | 1 | 2 | 1 | 20.0% |
+
+## fabled_roots:structure/oakhearted/rare
+
+| Item | Stack Size | Pool | Weight | Chance |
+|:-----|:----------:|:----:|:------:|:------:|
+| Enchanted Book | 1 | 1 | 4 | 18.2% |
+| Bow of Roots | 1 | 1 | 3 | 13.6% |
+| Lapis Lazuli | 2–4 | 1 | 3 | 13.6% |
+| Shield | 1 | 1 | 3 | 13.6% |
+| Golden Carrot | 1–2 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/armor_of_roots) | 1 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/hatchet) | 1 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/horse_armor_of_roots) | 1 | 1 | 2 | 9.1% |
+| Music Disc | 1 | 1 | 1 | 4.5% |
+| Loot Table (fabled_roots:equipment/crown_of_roots) | 1 | 2 | 1 | 20.0% |
+| Loot Table (fabled_roots:pool/reinforced_armor_of_roots) | 1 | 2 | 1 | 20.0% |
+| Reinforced Sword of Roots | 1 | 2 | 1 | 20.0% |
+
+## fabled_roots:structure/orebringer/rare
+
+| Item | Stack Size | Pool | Weight | Chance |
+|:-----|:----------:|:----:|:------:|:------:|
+| Enchanted Book | 1 | 1 | 4 | 18.2% |
+| Bow of Roots | 1 | 1 | 3 | 13.6% |
+| Lapis Lazuli | 2–4 | 1 | 3 | 13.6% |
+| Shield | 1 | 1 | 3 | 13.6% |
+| Golden Carrot | 1–2 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/armor_of_roots) | 1 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/horse_armor_of_roots) | 1 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/mace) | 1 | 1 | 2 | 9.1% |
+| Music Disc | 1 | 1 | 1 | 4.5% |
+| Loot Table (fabled_roots:equipment/crown_of_roots) | 1 | 2 | 1 | 20.0% |
+| Loot Table (fabled_roots:pool/reinforced_armor_of_roots) | 1 | 2 | 1 | 20.0% |
+| Reinforced Sword of Roots | 1 | 2 | 1 | 20.0% |
+
+## fabled_roots:structure/palehearted/rare
+
+| Item | Stack Size | Pool | Weight | Chance |
+|:-----|:----------:|:----:|:------:|:------:|
+| Enchanted Book | 1 | 1 | 4 | 18.2% |
+| Bow of Roots | 1 | 1 | 3 | 13.6% |
+| Lapis Lazuli | 2–4 | 1 | 3 | 13.6% |
+| Shield | 1 | 1 | 3 | 13.6% |
+| Golden Carrot | 1–2 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/armor_of_roots) | 1 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/horse_armor_of_roots) | 1 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/rapier) | 1 | 1 | 2 | 9.1% |
+| Music Disc | 1 | 1 | 1 | 4.5% |
+| Loot Table (fabled_roots:equipment/crown_of_roots) | 1 | 2 | 1 | 20.0% |
+| Loot Table (fabled_roots:pool/reinforced_armor_of_roots) | 1 | 2 | 1 | 20.0% |
+| Reinforced Sword of Roots | 1 | 2 | 1 | 20.0% |
+
+## fabled_roots:structure/turtlekin/rare
+
+| Item | Stack Size | Pool | Weight | Chance |
+|:-----|:----------:|:----:|:------:|:------:|
+| Enchanted Book | 1 | 1 | 4 | 18.2% |
+| Bow of Roots | 1 | 1 | 3 | 13.6% |
+| Lapis Lazuli | 2–4 | 1 | 3 | 13.6% |
+| Shield | 1 | 1 | 3 | 13.6% |
+| Golden Carrot | 1–2 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/armor_of_roots) | 1 | 1 | 2 | 9.1% |
+| Loot Table (fabled_roots:pool/horse_armor_of_roots) | 1 | 1 | 2 | 9.1% |
+| Trident | 1 | 1 | 2 | 9.1% |
+| Music Disc | 1 | 1 | 1 | 4.5% |
+| Loot Table (fabled_roots:equipment/crown_of_roots) | 1 | 2 | 1 | 20.0% |
+| Loot Table (fabled_roots:pool/reinforced_armor_of_roots) | 1 | 2 | 1 | 20.0% |
+| Reinforced Sword of Roots | 1 | 2 | 1 | 20.0% |
 # Contents
 
 The structure is composed of the following blocks: Stone Bricks, Dirt, Stone, Chiseled Stone Bricks, End Stone, Netherrack, Sandstone, Ice, Sand, Pale Moss Block, Crimson Nylium, Mycelium, Podzol, Snow Block, Iron Bars, Packed Ice, Moss Block, Dark Oak Leaves, Blue Ice, Snow, Dark Prismarine Slab, Nether Bricks, Stone Brick Stairs, Pale Moss Carpet, Smooth Sandstone Slab, Seagrass, Chorus Plant, Vine, Prismarine Bricks, Leaf Litter, End Stone Brick Wall, Nether Brick Wall, Copper Ore, Crimson Roots, Calcite, Pale Oak Slab, Mud, Purpur Stairs, Stripped Pale Oak Log, Tall Seagrass, Grass Block, Oak Slab, Smooth Quartz, Twisting Vines Plant, Dark Prismarine Stairs, Lapis Block, Smooth Quartz Stairs, Spruce Stairs, Jungle Trapdoor, Purpur Pillar, Pale Hanging Moss, Smooth Quartz Slab, Quartz Pillar, Vault, Diorite, Spruce Fence, Cut Sandstone, Dark Oak Log, Dark Prismarine, Spruce Trapdoor, Powder Snow, Closed Eyeblossom, Polished Diorite, Yellow Wall Banner, Dead Bush, Soul Campfire, Stone Brick Slab, Campfire, Chiseled Sandstone, Chorus Flower, Gold Block, Tall Grass, Birch Stairs, Pale Oak Sapling, Brain Coral, Chain, Chiseled Nether Bricks, Crimson Fungus, Horn Coral, Prismarine Brick Stairs, Quartz Stairs, Twisting Vines, Dandelion, End Stone Brick Stairs, Fire Coral Fan, Fire Coral Wall Fan, Lantern, Lectern, Nether Brick Stairs, Oak Log, Oak Stairs, Pale Oak Stairs, Polished Diorite Stairs, Short Grass, Smooth Sandstone Stairs, Trial Spawner, Tube Coral.
@@ -120,18 +294,18 @@ The structure part is composed of the following blocks: Stone Bricks, Dirt, Ston
 
 ### Loot Tables
 
-| Loot Table |
-|:-----|
-| fabled_roots:structure/aetherian/rare |
-| fabled_roots:structure/dunesworn/rare |
-| fabled_roots:structure/endling/rare |
-| fabled_roots:structure/frostborne/rare |
-| fabled_roots:structure/moonshroud/rare |
-| fabled_roots:structure/netherian/rare |
-| fabled_roots:structure/oakhearted/rare |
-| fabled_roots:structure/orebringer/rare |
-| fabled_roots:structure/palehearted/rare |
-| fabled_roots:structure/turtlekin/rare |
+| Loot Table | Count |
+|:-----|:-----:|
+| fabled_roots:structure/aetherian/rare | 1 |
+| fabled_roots:structure/dunesworn/rare | 1 |
+| fabled_roots:structure/endling/rare | 1 |
+| fabled_roots:structure/frostborne/rare | 1 |
+| fabled_roots:structure/moonshroud/rare | 1 |
+| fabled_roots:structure/netherian/rare | 1 |
+| fabled_roots:structure/oakhearted/rare | 1 |
+| fabled_roots:structure/orebringer/rare | 1 |
+| fabled_roots:structure/palehearted/rare | 1 |
+| fabled_roots:structure/turtlekin/rare | 1 |
 
 
 </details>
