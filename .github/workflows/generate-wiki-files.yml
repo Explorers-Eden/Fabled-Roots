@@ -103,8 +103,17 @@ jobs:
             data assets pack.mcmeta tools/wiki-renderer/run/saves/WikiRender/datapacks/source_pack/ 2>/dev/null || true
 
       - name: Render structure preview images with Minecraft
+        shell: bash
         run: |
-          xvfb-run -s "-ac -screen 0 1600x1200x24" \
+          set -uo pipefail
+          mkdir -p tools/wiki-renderer/run/wiki-render-debug
+
+          echo "Render manifest:"
+          ls -lah tools/wiki-renderer/run/wiki-render-manifest.json || true
+          node -e "const m=require('./tools/wiki-renderer/run/wiki-render-manifest.json'); console.log(JSON.stringify({groups:m.groups?.length, first:m.groups?.[0]}, null, 2))" || true
+
+          set +e
+          xvfb-run -a -s "-ac -screen 0 1600x1200x24" \
             gradle -p tools/wiki-renderer runClient \
               -Pminecraft_version="$MC_VERSION" \
               -Pfabric_loader_version=0.19.2 \
@@ -112,7 +121,42 @@ jobs:
               -Dwiki.manifest="$GITHUB_WORKSPACE/tools/wiki-renderer/run/wiki-render-manifest.json" \
               -Dwiki.output="$GITHUB_WORKSPACE/wiki/images/structures" \
               -Dwiki.repo="$GITHUB_WORKSPACE" \
-              --args="--quickPlaySingleplayer WikiRender --width 1280 --height 900"
+              --stacktrace --info \
+              --args="--quickPlaySingleplayer WikiRender --width 1280 --height 900" 2>&1 | tee tools/wiki-renderer/run/wiki-render-debug/render-step.log
+          RENDER_EXIT=${PIPESTATUS[0]}
+          set -e
+
+          echo ""
+          echo "===== Render exit code: $RENDER_EXIT ====="
+          echo ""
+          echo "===== Minecraft latest.log ====="
+          if [ -f tools/wiki-renderer/run/logs/latest.log ]; then
+            tail -n 400 tools/wiki-renderer/run/logs/latest.log
+            cp tools/wiki-renderer/run/logs/latest.log tools/wiki-renderer/run/wiki-render-debug/latest.log
+          else
+            echo "No tools/wiki-renderer/run/logs/latest.log found"
+            find tools/wiki-renderer/run -maxdepth 4 -type f | sort | sed 's#^#RUN FILE: #'
+          fi
+
+          echo ""
+          echo "===== Crash reports ====="
+          find tools/wiki-renderer/run/crash-reports -type f -maxdepth 1 -print -exec cat {} \; 2>/dev/null || true
+          cp -r tools/wiki-renderer/run/crash-reports tools/wiki-renderer/run/wiki-render-debug/crash-reports 2>/dev/null || true
+
+          echo ""
+          echo "===== Generated PNGs ====="
+          find wiki/images/structures -type f -name "*.png" -print -exec ls -lh {} \; 2>/dev/null || true
+
+          exit "$RENDER_EXIT"
+
+
+      - name: Upload Minecraft render debug logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: minecraft-render-debug-logs
+          path: tools/wiki-renderer/run/wiki-render-debug/**
+          if-no-files-found: warn
 
       - name: Show generated wiki files
         run: |

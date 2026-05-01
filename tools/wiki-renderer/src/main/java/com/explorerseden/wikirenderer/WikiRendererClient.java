@@ -45,7 +45,7 @@ public class WikiRendererClient implements ClientModInitializer {
             }
 
             JsonArray groups = manifest.getAsJsonArray("groups");
-            System.out.println("[WikiRenderer] Rendering " + groups.size() + " structure group(s).");
+            System.out.println("[WikiRenderer] Rendering " + groups.size() + " structure group(s). Manifest: " + manifestPath + " Output: " + outputRoot);
 
             int groupIndex = 0;
             for (JsonElement groupElement : groups) {
@@ -153,7 +153,7 @@ public class WikiRendererClient implements ClientModInitializer {
             throw new IllegalStateException("Screenshot was not created: " + outputPath);
         }
 
-        System.out.println("[WikiRenderer] Generated " + outputPath);
+        System.out.println("[WikiRenderer] Generated " + outputPath + " (" + Files.size(outputPath) + " bytes)");
     }
 
     private void runCommand(MinecraftServer server, CommandSourceStack source, String command) {
