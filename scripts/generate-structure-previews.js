@@ -204,16 +204,46 @@ function normalizeVariant(variant) {
   return variant ?? null;
 }
 
-function getModelVariantFromBlockState(blockName, properties = {}) {
+function whenClauseMatches(when, properties = {}) {
+  if (!when) return true;
+
+  if (Array.isArray(when.OR)) {
+    return when.OR.some(clause => whenClauseMatches(clause, properties));
+  }
+
+  if (Array.isArray(when.AND)) {
+    return when.AND.every(clause => whenClauseMatches(clause, properties));
+  }
+
+  for (const [key, expected] of Object.entries(when)) {
+    if (key === "OR" || key === "AND") continue;
+
+    const actual = String(properties[key]);
+    const allowed = String(expected).split("|");
+
+    if (!allowed.includes(actual)) return false;
+  }
+
+  return true;
+}
+
+function normalizeVariant(variant) {
+  if (Array.isArray(variant)) return variant[0] ?? null;
+  return variant ?? null;
+}
+
+function getModelVariantsFromBlockState(blockName, properties = {}) {
   const [namespace, blockPath] = splitResourceLocation(blockName);
   const blockState = readJsonAsset(`assets/${namespace}/blockstates/${blockPath}.json`);
 
   if (!blockState) {
-    return {
-      model: `${namespace}:block/${blockPath}`,
-      x: 0,
-      y: 0
-    };
+    return [
+      {
+        model: `${namespace}:block/${blockPath}`,
+        x: 0,
+        y: 0
+      }
+    ];
   }
 
   if (blockState.variants) {
@@ -232,41 +262,45 @@ function getModelVariantFromBlockState(blockName, properties = {}) {
     variant = normalizeVariant(variant);
 
     if (variant?.model) {
-      return {
-        model: variant.model,
-        x: Number(variant.x ?? 0),
-        y: Number(variant.y ?? 0)
-      };
+      return [
+        {
+          model: variant.model,
+          x: Number(variant.x ?? 0),
+          y: Number(variant.y ?? 0)
+        }
+      ];
     }
   }
 
   if (Array.isArray(blockState.multipart)) {
+    const variants = [];
+
     for (const part of blockState.multipart) {
-      // Basic multipart support: choose the first matching part.
-      // This is enough for many panes/fences/plants; complex multipart models are
-      // still approximated as one chosen part to keep rendering fast.
-      if (part.when && !variantMatchesBlockState(stringifyProperties(part.when), properties)) {
-        continue;
-      }
+      if (!whenClauseMatches(part.when, properties)) continue;
 
-      let apply = part.apply;
-      if (Array.isArray(apply)) apply = apply[0];
+      const applies = Array.isArray(part.apply) ? part.apply : [part.apply];
 
-      if (apply?.model) {
-        return {
-          model: apply.model,
-          x: Number(apply.x ?? 0),
-          y: Number(apply.y ?? 0)
-        };
+      for (const apply of applies) {
+        if (apply?.model) {
+          variants.push({
+            model: apply.model,
+            x: Number(apply.x ?? 0),
+            y: Number(apply.y ?? 0)
+          });
+        }
       }
     }
+
+    if (variants.length > 0) return variants;
   }
 
-  return {
-    model: `${namespace}:block/${blockPath}`,
-    x: 0,
-    y: 0
-  };
+  return [
+    {
+      model: `${namespace}:block/${blockPath}`,
+      x: 0,
+      y: 0
+    }
+  ];
 }
 
 function resolveTextureReference(textureRef, textures = {}) {
@@ -531,15 +565,45 @@ function getFaceUv(face, u, v) {
   };
 }
 
+function dot2(a, b) {
+  return a.x * b.x + a.y * b.y;
+}
+
+function getLocalFaceCoordinates(face, x, y) {
+  // Map screen point onto the face's own two axes instead of the face's screen
+  // bounding box. This keeps texture orientation consistent in isometric view.
+  const [p00, p10, , p01] = face.points;
+  const origin = p00;
+  const uAxis = { x: p10.x - p00.x, y: p10.y - p00.y };
+  const vAxis = { x: p01.x - p00.x, y: p01.y - p00.y };
+  const point = { x: x - origin.x, y: y - origin.y };
+
+  const uu = dot2(uAxis, uAxis);
+  const uv = dot2(uAxis, vAxis);
+  const vv = dot2(vAxis, vAxis);
+  const pu = dot2(point, uAxis);
+  const pv = dot2(point, vAxis);
+  const det = uu * vv - uv * uv;
+
+  if (Math.abs(det) < 0.000001) {
+    return { u: 0, v: 0 };
+  }
+
+  const u = (pu * vv - pv * uv) / det;
+  const v = (pv * uu - pu * uv) / det;
+
+  return {
+    u: Math.max(0, Math.min(1, u)),
+    v: Math.max(0, Math.min(1, v))
+  };
+}
+
 function drawTexturedPolygon(png, face) {
   const points = face.points;
   const minY = Math.floor(Math.min(...points.map(p => p.y)));
   const maxY = Math.ceil(Math.max(...points.map(p => p.y)));
   const minX = Math.floor(Math.min(...points.map(p => p.x)));
   const maxX = Math.ceil(Math.max(...points.map(p => p.x)));
-
-  const width = Math.max(1, maxX - minX);
-  const height = Math.max(1, maxY - minY);
   const texture = face.texture;
   const fallback = fallbackColorForBlock(face.block.name);
 
@@ -547,12 +611,11 @@ function drawTexturedPolygon(png, face) {
     for (let x = minX; x <= maxX; x++) {
       if (!pointInPolygon(x + 0.5, y + 0.5, points)) continue;
 
-      const localU = Math.max(0, Math.min(1, (x - minX) / width));
-      const localV = Math.max(0, Math.min(1, (y - minY) / height));
-      const uv = getFaceUv(face, localU, localV);
+      const local = getLocalFaceCoordinates(face, x + 0.5, y + 0.5);
+      const uv = getFaceUv(face, local.u, local.v);
       const sampled = sampleTexture(texture, uv.u, uv.v);
 
-      // Preserve cutout transparency for flowers, saplings, trapdoors, glass panes, etc.
+      // Preserve cutout texture transparency.
       if (texture && !sampled) continue;
 
       const base = sampled ?? fallback;
@@ -808,26 +871,68 @@ function makeCubeFallbackFaces(block, offsetX, offsetY, scale) {
 }
 
 function makeBlockFaces(block, offsetX, offsetY, scale) {
-  const variant = getModelVariantFromBlockState(block.name, block.properties);
-  const model = mergeModel(variant.model);
-  const elements = model.elements ?? [];
-  block.rotation = {
-    x: variant.x ?? 0,
-    y: variant.y ?? 0
-  };
-
-  if (elements.length === 0) {
-    return makeCubeFallbackFaces(block, offsetX, offsetY, scale);
-  }
-
+  const variants = getModelVariantsFromBlockState(block.name, block.properties);
   const faces = [];
 
-  for (const element of elements) {
-    faces.push(...makeElementFaces(block, element, model.textures, offsetX, offsetY, scale));
+  for (const variant of variants) {
+    const model = mergeModel(variant.model);
+    const elements = model.elements ?? [];
+
+    const blockVariant = {
+      ...block,
+      rotation: {
+        x: variant.x ?? 0,
+        y: variant.y ?? 0
+      }
+    };
+
+    if (elements.length === 0) {
+      faces.push(...makeCubeFallbackFaces(blockVariant, offsetX, offsetY, scale));
+      continue;
+    }
+
+    for (const element of elements) {
+      faces.push(...makeElementFaces(blockVariant, element, model.textures, offsetX, offsetY, scale));
+    }
   }
 
   stats.modelFaces += faces.length;
   return faces;
+}
+
+
+function parseBlockStateString(state) {
+  if (!state || typeof state !== "string") return null;
+
+  const match = state.match(/^([^[]+)(?:\[(.*)\])?$/);
+  if (!match) return null;
+
+  const name = match[1];
+  const properties = {};
+
+  if (match[2]) {
+    for (const part of match[2].split(",")) {
+      const [key, value] = part.split("=");
+      if (key && value !== undefined) properties[key] = value;
+    }
+  }
+
+  return { name, properties };
+}
+
+function getJigsawReplacement(block) {
+  const nbtData = block.nbt;
+  if (!nbtData || typeof nbtData !== "object") return null;
+
+  const finalState =
+    nbtData.final_state ??
+    nbtData.finalState ??
+    nbtData.FinalState;
+
+  const parsed = parseBlockStateString(finalState);
+  if (!parsed || parsed.name === "minecraft:air") return null;
+
+  return parsed;
 }
 
 function collectBlocksFromStructure(structure) {
@@ -836,7 +941,17 @@ function collectBlocksFromStructure(structure) {
 
   for (const block of structure.blocks ?? []) {
     const state = palette[block.state];
-    const blockName = getBlockNameFromPaletteEntry(state);
+    let blockName = getBlockNameFromPaletteEntry(state);
+    let properties = state?.Properties ?? state?.properties ?? {};
+
+    if (blockName === "minecraft:jigsaw") {
+      const replacement = getJigsawReplacement(block);
+
+      if (!replacement) continue;
+
+      blockName = replacement.name;
+      properties = replacement.properties;
+    }
 
     if (!blockName || IGNORED_BLOCKS.has(blockName)) continue;
 
@@ -848,7 +963,7 @@ function collectBlocksFromStructure(structure) {
       y: Number(pos[1]),
       z: Number(pos[2]),
       name: blockName,
-      properties: state?.Properties ?? state?.properties ?? {}
+      properties
     });
   }
 
@@ -1248,7 +1363,7 @@ async function main() {
 
   console.log(`Generated ${stats.mainImages} preview image(s).`);
   console.log(`Rendered ${stats.modelFaces} model face(s), used ${stats.cubeFallbacks} cube fallback(s).`);
-  console.log("Model renderer uses blockstate variants, model element geometry, per-face UVs, texture alpha, and basic element/block rotations.");
+  console.log("Model renderer uses blockstate variants, model element geometry, per-face UVs, texture alpha, and multipart models, blockstate data, element/block rotations, per-face UV axes, and alpha cutouts.");
   console.log(`Texture files loaded: ${stats.textureHits}; missing/fallback lookups: ${stats.textureMisses}.`);
 
   removeStaleOutputFiles(validOutputFiles);
