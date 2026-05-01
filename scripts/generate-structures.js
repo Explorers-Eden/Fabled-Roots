@@ -395,16 +395,15 @@ function flattenRawEntries(entries, inheritedFunctions = []) {
   return result;
 }
 
-function getSingleEntryFromLootTable(id, seen = new Set()) {
+async function getSingleEntryFromLootTable(id, seen = new Set()) {
   const cleaned = cleanTag(id);
   if (seen.has(cleaned)) return null;
   seen.add(cleaned);
 
-  const file = getLootTableFile(cleaned);
-  if (!fs.existsSync(file)) return null;
+  const json = await loadLootTableJson(cleaned);
+  if (!json) return null;
 
   try {
-    const json = JSON.parse(fs.readFileSync(file, "utf8"));
     const entries = [];
 
     for (const pool of json.pools ?? []) {
@@ -420,14 +419,14 @@ function getSingleEntryFromLootTable(id, seen = new Set()) {
   return null;
 }
 
-function getItemName(entry, seenLootTables = new Set()) {
+async function getItemName(entry, seenLootTables = new Set()) {
   if (entry.type === "minecraft:empty") return "Empty";
 
   if (entry.type === "minecraft:loot_table") {
     const lootTable = cleanTag(entry.value ?? entry.name ?? "unknown");
-    const singleEntry = getSingleEntryFromLootTable(lootTable, seenLootTables);
+    const singleEntry = await getSingleEntryFromLootTable(lootTable, seenLootTables);
 
-    if (singleEntry) return getItemName(singleEntry, seenLootTables);
+    if (singleEntry) return await getItemName(singleEntry, seenLootTables);
 
     return `Loot Table (${lootTable})`;
   }
@@ -444,7 +443,7 @@ function getItemName(entry, seenLootTables = new Set()) {
   return titleCase(entry.type ?? "unknown");
 }
 
-function flattenEntries(entries, inheritedWeight = 1, inheritedFunctions = []) {
+async function flattenEntries(entries, inheritedWeight = 1, inheritedFunctions = []) {
   const result = [];
 
   for (const entry of entries ?? []) {
@@ -463,12 +462,12 @@ function flattenEntries(entries, inheritedWeight = 1, inheritedFunctions = []) {
       entry.type === "minecraft:group" ||
       entry.type === "minecraft:sequence"
     ) {
-      result.push(...flattenEntries(entry.children ?? [], combinedWeight, entryFunctions));
+      result.push(...await flattenEntries(entry.children ?? [], combinedWeight, entryFunctions));
       continue;
     }
 
     result.push({
-      item: getItemName(inheritedEntry),
+      item: await getItemName(inheritedEntry),
       stackSize: getStackSize(inheritedEntry),
       weight: combinedWeight
     });
@@ -490,11 +489,11 @@ function mergeRowsByItem(rows) {
   return [...merged.values()];
 }
 
-function renderMergedPools(pools) {
+async function renderMergedPools(pools) {
   const rows = [];
 
-  pools.forEach((pool, poolIndex) => {
-    const flattenedEntries = flattenEntries(pool.entries ?? [], 1, pool.functions ?? []);
+  for (const [poolIndex, pool] of (pools ?? []).entries()) {
+    const flattenedEntries = await flattenEntries(pool.entries ?? [], 1, pool.functions ?? []);
     const nonEmptyFlattenedEntries = flattenedEntries.filter(entry => entry.item !== "Empty");
     const totalWeight = flattenedEntries.reduce((sum, entry) => sum + entry.weight, 0);
 
@@ -517,7 +516,7 @@ function renderMergedPools(pools) {
         chance: `${(chanceValue * 100).toFixed(1)}%`
       });
     }
-  });
+  }
 
   rows.sort(
     (a, b) =>
@@ -608,10 +607,10 @@ Could not find this loot table locally or in mcmeta ${vanillaLootTableVersion ??
 
     tables.push(
       sorted.length === 1
-        ? renderMergedPools(json.pools ?? [])
+        ? await renderMergedPools(json.pools ?? [])
         : `## ${id}
 
-${renderMergedPools(json.pools ?? [])}`
+${await renderMergedPools(json.pools ?? [])}`
     );
   }
 
