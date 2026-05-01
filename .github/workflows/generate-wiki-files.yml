@@ -16,13 +16,29 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xvfb libxi-dev libglu1-mesa-dev libglew-dev pkg-config
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
 
       - name: Install dependencies
-        run: npm install --no-save prismarine-nbt pngjs
+        run: |
+          npm install --no-save \
+            prismarine-nbt \
+            prismarine-viewer \
+            prismarine-world \
+            prismarine-chunk \
+            prismarine-block \
+            prismarine-registry \
+            minecraft-data \
+            vec3 \
+            three \
+            node-canvas-webgl
 
       - name: Cache vanilla assets
         uses: actions/cache@v4
@@ -40,7 +56,7 @@ jobs:
         run: node scripts/generate-structures.js
 
       - name: Generate structure preview images
-        run: node scripts/generate-structure-previews.js
+        run: xvfb-run -s "-ac -screen 0 1600x1200x24" node scripts/generate-structure-previews.js
 
       - name: Show generated wiki files
         run: |

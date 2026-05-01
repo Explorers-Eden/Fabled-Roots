@@ -1,45 +1,25 @@
 // scripts/generate-structure-previews.js
+/* global THREE */
+global.THREE = require("three");
+global.Worker = require("worker_threads").Worker;
+
 const fs = require("fs");
 const path = require("path");
 const nbt = require("prismarine-nbt");
-const { PNG } = require("pngjs");
+const { createCanvas } = require("node-canvas-webgl/lib");
+const { Vec3 } = require("vec3");
+const { Viewer, WorldView, getBufferFromStream } = require("prismarine-viewer").viewer;
 
 const inputRoot = process.env.STRUCTURE_INPUT_ROOT ?? "data";
 const outputRoot = process.env.STRUCTURE_PREVIEW_OUTPUT_ROOT ?? path.join("wiki", "images", "structures");
-const vanillaAssetRoot = process.env.VANILLA_ASSET_ROOT ?? path.join(".cache", "vanilla-assets");
-const generateWorldgenStructurePreviews = String(process.env.STRUCTURE_PREVIEW_WORLDGEN ?? "true") !== "false";
 
-const tileWidth = Number(process.env.STRUCTURE_PREVIEW_TILE_WIDTH ?? 32);
-const tileHeight = Number(process.env.STRUCTURE_PREVIEW_TILE_HEIGHT ?? 18);
-const blockHeight = Number(process.env.STRUCTURE_PREVIEW_BLOCK_HEIGHT ?? 22);
-const padding = Number(process.env.STRUCTURE_PREVIEW_PADDING ?? 48);
-const maxImageSize = Number(process.env.STRUCTURE_PREVIEW_MAX_SIZE ?? 2800);
-const transparentBackground = String(process.env.STRUCTURE_PREVIEW_TRANSPARENT ?? "true") !== "false";
+const width = Number(process.env.STRUCTURE_PREVIEW_WIDTH ?? 1200);
+const height = Number(process.env.STRUCTURE_PREVIEW_HEIGHT ?? 900);
+const viewDistance = Number(process.env.STRUCTURE_PREVIEW_VIEW_DISTANCE ?? 8);
 
-const IGNORED_BLOCKS = new Set([
-  "minecraft:air",
-  "minecraft:cave_air",
-  "minecraft:void_air",
-  "minecraft:structure_void",
-  "minecraft:barrier",
-  "minecraft:light"
-]);
-
-const modelCache = new Map();
-const resolvedModelCache = new Map();
-const textureCache = new Map();
-const fallbackColorCache = new Map();
-
-const stats = {
-  mainImages: 0,
-  structuresRead: 0,
-  poolsRead: 0,
-  jigsawPoolsFollowed: 0,
-  textureHits: 0,
-  textureMisses: 0,
-  modelFaces: 0,
-  cubeFallbacks: 0
-};
+const cameraDistanceMultiplier = Number(process.env.STRUCTURE_PREVIEW_CAMERA_DISTANCE_MULTIPLIER ?? 1.55);
+const cameraHeightMultiplier = Number(process.env.STRUCTURE_PREVIEW_CAMERA_HEIGHT_MULTIPLIER ?? 0.85);
+const baseY = Number(process.env.STRUCTURE_PREVIEW_BASE_Y ?? 64);
 
 function walk(dir) {
   let files = [];
@@ -54,6 +34,66 @@ function walk(dir) {
   return files;
 }
 
+function compareVersionParts(a, b) {
+  const aParts = String(a).split(".").map(part => Number(part));
+  const bParts = String(b).split(".").map(part => Number(part));
+  const length = Math.max(aParts.length, bParts.length);
+
+  for (let i = 0; i < length; i++) {
+    const aValue = Number.isFinite(aParts[i]) ? aParts[i] : 0;
+    const bValue = Number.isFinite(bParts[i]) ? bParts[i] : 0;
+    if (aValue !== bValue) return aValue - bValue;
+  }
+
+  return String(a).localeCompare(String(b));
+}
+
+function getLatestMinecraftVersionFromReleaseInfo() {
+  const file = "release_infos.yml";
+  if (!fs.existsSync(file)) return null;
+
+  const lines = fs.readFileSync(file, "utf8").split(/\r?\n/);
+  const versions = [];
+  let inVersions = false;
+  let versionsIndent = null;
+
+  for (const line of lines) {
+    const match = line.match(/^(\s*)Versions\s*:/);
+
+    if (match) {
+      inVersions = true;
+      versionsIndent = match[1].length;
+      continue;
+    }
+
+    if (!inVersions) continue;
+
+    const currentIndent = line.match(/^(\s*)/)?.[1].length ?? 0;
+
+    if (line.trim() && currentIndent <= versionsIndent && !line.trim().startsWith("-")) {
+      break;
+    }
+
+    const versionMatch = line.match(/^\s*-\s*["']?([^"'\s#]+)["']?/);
+    if (versionMatch) versions.push(versionMatch[1]);
+  }
+
+  if (versions.length === 0) return null;
+  return versions.sort(compareVersionParts).at(-1);
+}
+
+function getMinecraftVersion() {
+  return process.env.MC_VERSION || getLatestMinecraftVersionFromReleaseInfo() || "1.21.4";
+}
+
+const version = getMinecraftVersion();
+const registry = require("prismarine-registry")(version);
+const Block = require("prismarine-block")(registry);
+const World = require("prismarine-world")(version);
+const Chunk = require("prismarine-chunk")(version);
+
+const plainsBiomeId = registry.biomesByName?.plains?.id ?? 1;
+
 function splitResourceLocation(id, defaultNamespace = "minecraft") {
   if (String(id).includes(":")) {
     const [namespace, ...rest] = String(id).split(":");
@@ -63,24 +103,14 @@ function splitResourceLocation(id, defaultNamespace = "minecraft") {
   return [defaultNamespace, String(id)];
 }
 
-function getStructureInfo(file) {
-  const parts = file.split(path.sep);
-  const dataIndex = parts.indexOf("data");
-  const structureIndex = parts.indexOf("structure");
+function readJsonIfExists(file) {
+  if (!fs.existsSync(file)) return null;
 
-  if (dataIndex === -1 || structureIndex === -1) return null;
-  if (structureIndex !== dataIndex + 2) return null;
-
-  const namespace = parts[dataIndex + 1];
-  const relativeParts = parts.slice(structureIndex + 1);
-  if (relativeParts.length === 0) return null;
-
-  const topFolder =
-    relativeParts.length > 1
-      ? relativeParts[0]
-      : path.basename(relativeParts[0], ".nbt");
-
-  return { namespace, topFolder };
+  try {
+    return JSON.parse(fs.readFileSync(file, "utf8"));
+  } catch {
+    return null;
+  }
 }
 
 function getWorldgenStructureInfo(file) {
@@ -102,1016 +132,14 @@ function getWorldgenStructureInfo(file) {
   };
 }
 
-function getPalette(structure) {
-  if (Array.isArray(structure.palette)) return structure.palette;
-  if (Array.isArray(structure.palettes?.[0])) return structure.palettes[0];
-  return [];
+function getTemplatePoolFile(poolId) {
+  const [namespace, poolPath] = splitResourceLocation(poolId);
+  return path.join(inputRoot, namespace, "worldgen", "template_pool", `${poolPath}.json`);
 }
 
-function getBlockNameFromPaletteEntry(entry) {
-  return entry?.Name ?? entry?.name ?? null;
-}
-
-async function readNbtFile(file) {
-  const buffer = fs.readFileSync(file);
-  const parsed = await nbt.parse(buffer);
-  stats.structuresRead++;
-  return nbt.simplify(parsed.parsed);
-}
-
-function readAssetBuffer(assetPath) {
-  const local = path.join(...assetPath.split("/"));
-  if (fs.existsSync(local)) return fs.readFileSync(local);
-
-  const vanilla = path.join(vanillaAssetRoot, ...assetPath.split("/"));
-  if (fs.existsSync(vanilla)) return fs.readFileSync(vanilla);
-
-  return null;
-}
-
-function readJsonAsset(assetPath) {
-  if (modelCache.has(assetPath)) return modelCache.get(assetPath);
-
-  const buffer = readAssetBuffer(assetPath);
-  if (!buffer) {
-    modelCache.set(assetPath, null);
-    return null;
-  }
-
-  try {
-    const json = JSON.parse(buffer.toString("utf8"));
-    modelCache.set(assetPath, json);
-    return json;
-  } catch {
-    modelCache.set(assetPath, null);
-    return null;
-  }
-}
-
-function readTextureAsset(assetPath) {
-  if (textureCache.has(assetPath)) return textureCache.get(assetPath);
-
-  const buffer = readAssetBuffer(assetPath);
-  if (!buffer) {
-    textureCache.set(assetPath, null);
-    stats.textureMisses++;
-    return null;
-  }
-
-  try {
-    const png = PNG.sync.read(buffer);
-    textureCache.set(assetPath, png);
-    stats.textureHits++;
-    return png;
-  } catch {
-    textureCache.set(assetPath, null);
-    stats.textureMisses++;
-    return null;
-  }
-}
-
-function stringifyProperties(properties = {}) {
-  return Object.entries(properties)
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([key, value]) => `${key}=${value}`)
-    .join(",");
-}
-
-function parseVariantKey(key) {
-  if (!key) return {};
-
-  const result = {};
-  for (const part of key.split(",")) {
-    const [name, value] = part.split("=");
-    if (name && value !== undefined) result[name] = value;
-  }
-
-  return result;
-}
-
-function variantMatchesBlockState(variantKey, properties = {}) {
-  const variant = parseVariantKey(variantKey);
-
-  for (const [key, value] of Object.entries(variant)) {
-    if (String(properties[key]) !== String(value)) return false;
-  }
-
-  return true;
-}
-
-function normalizeVariant(variant) {
-  if (Array.isArray(variant)) return variant[0] ?? null;
-  return variant ?? null;
-}
-
-function whenClauseMatches(when, properties = {}) {
-  if (!when) return true;
-
-  if (Array.isArray(when.OR)) {
-    return when.OR.some(clause => whenClauseMatches(clause, properties));
-  }
-
-  if (Array.isArray(when.AND)) {
-    return when.AND.every(clause => whenClauseMatches(clause, properties));
-  }
-
-  for (const [key, expected] of Object.entries(when)) {
-    if (key === "OR" || key === "AND") continue;
-
-    const actual = String(properties[key]);
-    const allowed = String(expected).split("|");
-
-    if (!allowed.includes(actual)) return false;
-  }
-
-  return true;
-}
-
-function normalizeVariant(variant) {
-  if (Array.isArray(variant)) return variant[0] ?? null;
-  return variant ?? null;
-}
-
-function getModelVariantsFromBlockState(blockName, properties = {}) {
-  const [namespace, blockPath] = splitResourceLocation(blockName);
-  const blockState = readJsonAsset(`assets/${namespace}/blockstates/${blockPath}.json`);
-
-  if (!blockState) {
-    return [
-      {
-        model: `${namespace}:block/${blockPath}`,
-        x: 0,
-        y: 0
-      }
-    ];
-  }
-
-  if (blockState.variants) {
-    const exactKey = stringifyProperties(properties);
-    let variant = blockState.variants[exactKey];
-
-    if (!variant) {
-      const matchingKey = Object.keys(blockState.variants).find(key =>
-        variantMatchesBlockState(key, properties)
-      );
-      if (matchingKey) variant = blockState.variants[matchingKey];
-    }
-
-    if (!variant) variant = blockState.variants[""] ?? Object.values(blockState.variants)[0];
-
-    variant = normalizeVariant(variant);
-
-    if (variant?.model) {
-      return [
-        {
-          model: variant.model,
-          x: Number(variant.x ?? 0),
-          y: Number(variant.y ?? 0)
-        }
-      ];
-    }
-  }
-
-  if (Array.isArray(blockState.multipart)) {
-    const variants = [];
-
-    for (const part of blockState.multipart) {
-      if (!whenClauseMatches(part.when, properties)) continue;
-
-      const applies = Array.isArray(part.apply) ? part.apply : [part.apply];
-
-      for (const apply of applies) {
-        if (apply?.model) {
-          variants.push({
-            model: apply.model,
-            x: Number(apply.x ?? 0),
-            y: Number(apply.y ?? 0)
-          });
-        }
-      }
-    }
-
-    if (variants.length > 0) return variants;
-  }
-
-  return [
-    {
-      model: `${namespace}:block/${blockPath}`,
-      x: 0,
-      y: 0
-    }
-  ];
-}
-
-function resolveTextureReference(textureRef, textures = {}) {
-  let current = textureRef;
-
-  for (let i = 0; i < 16; i++) {
-    if (!current || typeof current !== "string") return null;
-
-    if (current.startsWith("#")) {
-      current = textures[current.slice(1)];
-      continue;
-    }
-
-    return current;
-  }
-
-  return null;
-}
-
-function mergeModel(modelId, seen = new Set()) {
-  const [namespace, modelPath] = splitResourceLocation(modelId);
-  const key = `${namespace}:${modelPath}`;
-
-  if (resolvedModelCache.has(key)) return resolvedModelCache.get(key);
-  if (seen.has(key)) return { textures: {}, elements: [] };
-
-  seen.add(key);
-
-  const model = readJsonAsset(`assets/${namespace}/models/${modelPath}.json`);
-  if (!model) {
-    const empty = { textures: {}, elements: [] };
-    resolvedModelCache.set(key, empty);
-    return empty;
-  }
-
-  let parent = { textures: {}, elements: [] };
-
-  if (model.parent) {
-    parent = mergeModel(model.parent, seen);
-  }
-
-  const merged = {
-    textures: {
-      ...parent.textures,
-      ...(model.textures ?? {})
-    },
-    elements: model.elements ?? parent.elements ?? []
-  };
-
-  resolvedModelCache.set(key, merged);
-  return merged;
-}
-
-function getTextureForFace(block, modelTextures, faceData, faceName) {
-  const textureRef =
-    faceData?.texture ??
-    modelTextures[faceName] ??
-    modelTextures.all ??
-    modelTextures.side ??
-    modelTextures.particle;
-
-  const textureId = resolveTextureReference(textureRef, modelTextures);
-  if (!textureId) return null;
-
-  const [namespace, texturePath] = splitResourceLocation(textureId);
-  return readTextureAsset(`assets/${namespace}/textures/${texturePath}.png`);
-}
-
-function hashColor(text) {
-  if (fallbackColorCache.has(text)) return fallbackColorCache.get(text);
-
-  let hash = 0;
-  for (let i = 0; i < text.length; i++) {
-    hash = ((hash << 5) - hash + text.charCodeAt(i)) | 0;
-  }
-
-  const hue = Math.abs(hash) % 360;
-  const saturation = 28 + (Math.abs(hash >> 8) % 28);
-  const lightness = 45 + (Math.abs(hash >> 16) % 18);
-  const color = hslToRgb(hue, saturation, lightness);
-
-  fallbackColorCache.set(text, color);
-  return color;
-}
-
-function hslToRgb(h, s, l) {
-  s /= 100;
-  l /= 100;
-
-  const c = (1 - Math.abs(2 * l - 1)) * s;
-  const x = c * (1 - Math.abs((h / 60) % 2 - 1));
-  const m = l - c / 2;
-
-  let r = 0;
-  let g = 0;
-  let b = 0;
-
-  if (h < 60) [r, g, b] = [c, x, 0];
-  else if (h < 120) [r, g, b] = [x, c, 0];
-  else if (h < 180) [r, g, b] = [0, c, x];
-  else if (h < 240) [r, g, b] = [0, x, c];
-  else if (h < 300) [r, g, b] = [x, 0, c];
-  else [r, g, b] = [c, 0, x];
-
-  return {
-    r: Math.round((r + m) * 255),
-    g: Math.round((g + m) * 255),
-    b: Math.round((b + m) * 255),
-    a: 255
-  };
-}
-
-function fallbackColorForBlock(blockName) {
-  const short = blockName.replace(/^minecraft:/, "");
-
-  if (short.includes("leaves")) return { r: 79, g: 140, b: 58, a: 190 };
-  if (short.includes("grass") || short.includes("moss")) return { r: 102, g: 138, b: 58, a: 210 };
-  if (short.includes("dirt") || short.includes("mud")) return { r: 121, g: 83, b: 58, a: 255 };
-  if (short.includes("spruce")) return { r: 122, g: 83, b: 48, a: 255 };
-  if (short.includes("oak")) return { r: 185, g: 139, b: 75, a: 255 };
-  if (short.includes("log") || short.includes("wood") || short.includes("planks")) return { r: 138, g: 90, b: 47, a: 255 };
-  if (short.includes("deepslate") || short.includes("blackstone") || short.includes("basalt")) return { r: 63, g: 65, b: 72, a: 255 };
-  if (short.includes("stone") || short.includes("tuff") || short.includes("andesite")) return { r: 119, g: 119, b: 119, a: 255 };
-  if (short.includes("sand")) return { r: 214, g: 194, b: 122, a: 255 };
-  if (short.includes("amethyst") || short.includes("purple")) return { r: 143, g: 104, b: 200, a: 255 };
-  if (short.includes("water")) return { r: 61, g: 117, b: 196, a: 145 };
-  if (short.includes("lava")) return { r: 230, g: 90, b: 30, a: 255 };
-  if (short.includes("glass")) return { r: 158, g: 208, b: 221, a: 120 };
-  if (short.includes("copper")) return { r: 184, g: 121, b: 83, a: 255 };
-  if (short.includes("bookshelf") || short.includes("lectern")) return { r: 154, g: 106, b: 50, a: 255 };
-  if (short.includes("chest") || short.includes("barrel")) return { r: 176, g: 111, b: 40, a: 255 };
-
-  return hashColor(blockName);
-}
-
-const PLAINS_GRASS_TINT = { r: 145, g: 189, b: 89 };
-const PLAINS_FOLIAGE_TINT = { r: 119, g: 171, b: 47 };
-
-function multiplyTint(color, tint) {
-  return {
-    r: Math.round((color.r * tint.r) / 255),
-    g: Math.round((color.g * tint.g) / 255),
-    b: Math.round((color.b * tint.b) / 255),
-    a: color.a ?? 255
-  };
-}
-
-function needsPlainsGrassTint(blockName, faceName) {
-  const short = blockName.replace(/^minecraft:/, "");
-  if (short === "grass_block") return faceName === "up";
-  if (short === "short_grass" || short === "tall_grass" || short === "fern" || short === "large_fern") return true;
-  return short.includes("grass") && !short.includes("grass_block_side");
-}
-
-function needsPlainsFoliageTint(blockName) {
-  const short = blockName.replace(/^minecraft:/, "");
-  return short.includes("leaves") || short === "vine" || short === "cave_vines" || short === "hanging_roots";
-}
-
-function applyBiomeTint(color, blockName, faceName) {
-  if (needsPlainsGrassTint(blockName, faceName)) return multiplyTint(color, PLAINS_GRASS_TINT);
-  if (needsPlainsFoliageTint(blockName)) return multiplyTint(color, PLAINS_FOLIAGE_TINT);
-  return color;
-}
-
-function sampleTexture(texture, u, v) {
-  if (!texture) return null;
-
-  const x = Math.max(0, Math.min(texture.width - 1, Math.floor(u * texture.width)));
-  const y = Math.max(0, Math.min(texture.height - 1, Math.floor(v * texture.height)));
-  const idx = (texture.width * y + x) << 2;
-  const alpha = texture.data[idx + 3];
-
-  if (alpha < 16) return null;
-
-  return {
-    r: texture.data[idx],
-    g: texture.data[idx + 1],
-    b: texture.data[idx + 2],
-    a: alpha
-  };
-}
-
-function shadeColor(color, factor) {
-  return {
-    r: Math.max(0, Math.min(255, Math.round(color.r * factor))),
-    g: Math.max(0, Math.min(255, Math.round(color.g * factor))),
-    b: Math.max(0, Math.min(255, Math.round(color.b * factor))),
-    a: color.a ?? 255
-  };
-}
-
-function blendPixel(png, x, y, color) {
-  x = Math.round(x);
-  y = Math.round(y);
-
-  if (x < 0 || y < 0 || x >= png.width || y >= png.height) return;
-
-  const idx = (png.width * y + x) << 2;
-  const alpha = (color.a ?? 255) / 255;
-
-  if (alpha >= 1 || png.data[idx + 3] === 0) {
-    png.data[idx] = color.r;
-    png.data[idx + 1] = color.g;
-    png.data[idx + 2] = color.b;
-    png.data[idx + 3] = Math.round(alpha * 255);
-    return;
-  }
-
-  const existingAlpha = png.data[idx + 3] / 255;
-  const outAlpha = alpha + existingAlpha * (1 - alpha);
-
-  png.data[idx] = Math.round((color.r * alpha + png.data[idx] * existingAlpha * (1 - alpha)) / outAlpha);
-  png.data[idx + 1] = Math.round((color.g * alpha + png.data[idx + 1] * existingAlpha * (1 - alpha)) / outAlpha);
-  png.data[idx + 2] = Math.round((color.b * alpha + png.data[idx + 2] * existingAlpha * (1 - alpha)) / outAlpha);
-  png.data[idx + 3] = Math.round(outAlpha * 255);
-}
-
-function pointInPolygon(x, y, polygon) {
-  let inside = false;
-
-  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
-    const xi = polygon[i].x;
-    const yi = polygon[i].y;
-    const xj = polygon[j].x;
-    const yj = polygon[j].y;
-
-    const intersects =
-      yi > y !== yj > y &&
-      x < ((xj - xi) * (y - yi)) / (yj - yi || 0.000001) + xi;
-
-    if (intersects) inside = !inside;
-  }
-
-  return inside;
-}
-
-function getFaceUv(face, u, v) {
-  const uv = face.uv ?? [0, 0, 16, 16];
-
-  const u0 = uv[0] / 16;
-  const v0 = uv[1] / 16;
-  const u1 = uv[2] / 16;
-  const v1 = uv[3] / 16;
-
-  // Global correction: the isometric screen-space face axes were effectively
-  // sampling textures 90° clockwise. Rotate UV sampling 90° counter-clockwise
-  // before applying the model's own per-face UV rotation.
-  let ru = 1 - v;
-  let rv = u;
-
-  const rotation = ((face.uvRotation ?? 0) % 360 + 360) % 360;
-
-  if (rotation === 90) {
-    [ru, rv] = [rv, 1 - ru];
-  } else if (rotation === 180) {
-    [ru, rv] = [1 - ru, 1 - rv];
-  } else if (rotation === 270) {
-    [ru, rv] = [1 - rv, ru];
-  }
-
-  return {
-    u: u0 + (u1 - u0) * ru,
-    v: v0 + (v1 - v0) * rv
-  };
-}
-
-function dot2(a, b) {
-  return a.x * b.x + a.y * b.y;
-}
-
-function solveFaceCoordinates(origin, uPoint, vPoint, x, y) {
-  const uAxis = { x: uPoint.x - origin.x, y: uPoint.y - origin.y };
-  const vAxis = { x: vPoint.x - origin.x, y: vPoint.y - origin.y };
-  const point = { x: x - origin.x, y: y - origin.y };
-
-  const uu = dot2(uAxis, uAxis);
-  const uv = dot2(uAxis, vAxis);
-  const vv = dot2(vAxis, vAxis);
-  const pu = dot2(point, uAxis);
-  const pv = dot2(point, vAxis);
-  const det = uu * vv - uv * uv;
-
-  if (Math.abs(det) < 0.000001) {
-    return { u: 0, v: 0 };
-  }
-
-  return {
-    u: Math.max(0, Math.min(1, (pu * vv - pv * uv) / det)),
-    v: Math.max(0, Math.min(1, (pv * uu - pu * uv) / det))
-  };
-}
-
-function getLocalFaceCoordinates(face, x, y) {
-  // Minecraft's face UV axes are not the same for every face. The previous
-  // renderer projected every texture from the first screen edge, which made
-  // side faces like cactus columns look rotated. These mappings follow the
-  // element-local axes used by each Minecraft model face.
-  const points = face.points;
-  const [a, b, c, d] = points;
-
-  switch (face.faceName) {
-    case "up":
-      // x -> u, z -> v
-      return solveFaceCoordinates(a, b, d, x, y);
-
-    case "down":
-      // x -> u, z -> v, but face is viewed from below in model space.
-      return solveFaceCoordinates(d, c, a, x, y);
-
-    case "north":
-      // x -> u, y -> v
-      return solveFaceCoordinates(a, b, d, x, y);
-
-    case "south":
-      // x -> u, y -> v, opposite horizontal direction from north.
-      return solveFaceCoordinates(d, c, a, x, y);
-
-    case "west":
-      // z -> u, y -> v
-      return solveFaceCoordinates(d, a, c, x, y);
-
-    case "east":
-      // z -> u, y -> v, opposite horizontal direction from west.
-      return solveFaceCoordinates(a, d, b, x, y);
-
-    default:
-      return solveFaceCoordinates(a, b, d, x, y);
-  }
-}
-
-function drawTexturedPolygon(png, face) {
-  const points = face.points;
-  const minY = Math.floor(Math.min(...points.map(p => p.y)));
-  const maxY = Math.ceil(Math.max(...points.map(p => p.y)));
-  const minX = Math.floor(Math.min(...points.map(p => p.x)));
-  const maxX = Math.ceil(Math.max(...points.map(p => p.x)));
-  const texture = face.texture;
-  const fallback = fallbackColorForBlock(face.block.name);
-
-  for (let y = minY; y <= maxY; y++) {
-    for (let x = minX; x <= maxX; x++) {
-      if (!pointInPolygon(x + 0.5, y + 0.5, points)) continue;
-
-      const local = getLocalFaceCoordinates(face, x + 0.5, y + 0.5);
-      const uv = getFaceUv(face, local.u, local.v);
-      const sampled = sampleTexture(texture, uv.u, uv.v);
-
-      // Preserve cutout texture transparency.
-      if (texture && !sampled) continue;
-
-      const base = sampled ?? fallback;
-      const tinted = applyBiomeTint(base, face.block.name, face.faceName);
-      blendPixel(png, x, y, shadeColor(tinted, face.shade));
-    }
-  }
-}
-
-function rotatePointAroundOrigin(point, origin, axis, angleDegrees, rescale = false) {
-  if (!angleDegrees) return point;
-
-  const angle = (angleDegrees * Math.PI) / 180;
-  const cos = Math.cos(angle);
-  const sin = Math.sin(angle);
-
-  let x = point.x - origin.x;
-  let y = point.y - origin.y;
-  let z = point.z - origin.z;
-
-  if (axis === "x") {
-    const y2 = y * cos - z * sin;
-    const z2 = y * sin + z * cos;
-    y = y2;
-    z = z2;
-  } else if (axis === "y") {
-    const x2 = x * cos - z * sin;
-    const z2 = x * sin + z * cos;
-    x = x2;
-    z = z2;
-  } else if (axis === "z") {
-    const x2 = x * cos - y * sin;
-    const y2 = x * sin + y * cos;
-    x = x2;
-    y = y2;
-  }
-
-  // Minecraft's "rescale" adjusts bounds to avoid shrinking. This is a simplified
-  // approximation; it keeps the preview visually close without implementing full model baking.
-  const scale = rescale ? 1 / Math.max(Math.abs(cos), Math.abs(sin), 0.0001) : 1;
-
-  return {
-    x: origin.x + x * scale,
-    y: origin.y + y * scale,
-    z: origin.z + z * scale
-  };
-}
-
-function applyElementRotation(point, element) {
-  const rotation = element.rotation;
-  if (!rotation) return point;
-
-  const origin = {
-    x: (rotation.origin?.[0] ?? 8) / 16,
-    y: (rotation.origin?.[1] ?? 8) / 16,
-    z: (rotation.origin?.[2] ?? 8) / 16
-  };
-
-  return rotatePointAroundOrigin(
-    point,
-    origin,
-    rotation.axis ?? "y",
-    Number(rotation.angle ?? 0),
-    Boolean(rotation.rescale)
-  );
-}
-
-function applyBlockstateRotation(point, rotation) {
-  let rotated = point;
-
-  // Minecraft model variant rotations are around block center.
-  const center = { x: 0.5, y: 0.5, z: 0.5 };
-
-  if (rotation.x) {
-    rotated = rotatePointAroundOrigin(rotated, center, "x", rotation.x, false);
-  }
-
-  if (rotation.y) {
-    rotated = rotatePointAroundOrigin(rotated, center, "y", rotation.y, false);
-  }
-
-  return rotated;
-}
-
-function isoPoint(x, y, z, offsetX, offsetY, scale = 1) {
-  return {
-    x: offsetX + (x - z) * (tileWidth / 2) * scale,
-    y: offsetY + (x + z) * (tileHeight / 2) * scale - y * blockHeight * scale
-  };
-}
-
-function projectModelPoint(block, localPoint, element, rotation, offsetX, offsetY, scale) {
-  const elementRotated = applyElementRotation(localPoint, element);
-  const rotated = applyBlockstateRotation(elementRotated, rotation);
-
-  return isoPoint(
-    block.x + rotated.x,
-    block.y + rotated.y,
-    block.z + rotated.z,
-    offsetX,
-    offsetY,
-    scale
-  );
-}
-
-function faceShade(faceName) {
-  if (faceName === "up") return 1.15;
-  if (faceName === "down") return 0.68;
-  if (faceName === "north" || faceName === "south") return 0.82;
-  if (faceName === "east" || faceName === "west") return 0.96;
-  return 1.0;
-}
-
-function faceDepth(points3d) {
-  return points3d.reduce((sum, point) => sum + point.x + point.y + point.z, 0) / points3d.length;
-}
-
-function createModelFace(block, modelTextures, element, faceName, faceData, points3d, offsetX, offsetY, scale) {
-  const transformedPoints3d = points3d.map(point =>
-    applyBlockstateRotation(applyElementRotation(point, element), block.rotation)
-  );
-
-  const points = points3d.map(point =>
-    projectModelPoint(block, point, element, block.rotation, offsetX, offsetY, scale)
-  );
-
-  return {
-    block,
-    faceName,
-    texture: getTextureForFace(block, modelTextures, faceData, faceName),
-    uv: faceData?.uv,
-    uvRotation: faceData?.rotation ?? 0,
-    points,
-    shade: faceShade(faceName),
-    depth: block.x + block.y + block.z + faceDepth(transformedPoints3d)
-  };
-}
-
-function defaultFaceUv(faceName, from, to) {
-  // Approximate vanilla default UVs from model element bounds.
-  // The important part is matching the axis pair Minecraft uses per face:
-  // up/down use x,z; north/south use x,y; east/west use z,y.
-  const [x0, y0, z0] = from;
-  const [x1, y1, z1] = to;
-
-  switch (faceName) {
-    case "up":
-      return [x0, z0, x1, z1];
-    case "down":
-      return [x0, z0, x1, z1];
-    case "north":
-      return [x0, 16 - y1, x1, 16 - y0];
-    case "south":
-      return [16 - x1, 16 - y1, 16 - x0, 16 - y0];
-    case "west":
-      return [z0, 16 - y1, z1, 16 - y0];
-    case "east":
-      return [16 - z1, 16 - y1, 16 - z0, 16 - y0];
-    default:
-      return [0, 0, 16, 16];
-  }
-}
-
-function makeElementFaces(block, element, modelTextures, offsetX, offsetY, scale) {
-  const from = element.from ?? [0, 0, 0];
-  const to = element.to ?? [16, 16, 16];
-
-  const x0 = from[0] / 16;
-  const y0 = from[1] / 16;
-  const z0 = from[2] / 16;
-  const x1 = to[0] / 16;
-  const y1 = to[1] / 16;
-  const z1 = to[2] / 16;
-
-  const faces = [];
-  const faceDefs = {
-    up: [
-      { x: x0, y: y1, z: z0 },
-      { x: x1, y: y1, z: z0 },
-      { x: x1, y: y1, z: z1 },
-      { x: x0, y: y1, z: z1 }
-    ],
-    down: [
-      { x: x0, y: y0, z: z0 },
-      { x: x0, y: y0, z: z1 },
-      { x: x1, y: y0, z: z1 },
-      { x: x1, y: y0, z: z0 }
-    ],
-    north: [
-      { x: x0, y: y0, z: z0 },
-      { x: x1, y: y0, z: z0 },
-      { x: x1, y: y1, z: z0 },
-      { x: x0, y: y1, z: z0 }
-    ],
-    south: [
-      { x: x0, y: y0, z: z1 },
-      { x: x0, y: y1, z: z1 },
-      { x: x1, y: y1, z: z1 },
-      { x: x1, y: y0, z: z1 }
-    ],
-    west: [
-      { x: x0, y: y0, z: z0 },
-      { x: x0, y: y1, z: z0 },
-      { x: x0, y: y1, z: z1 },
-      { x: x0, y: y0, z: z1 }
-    ],
-    east: [
-      { x: x1, y: y0, z: z0 },
-      { x: x1, y: y0, z: z1 },
-      { x: x1, y: y1, z: z1 },
-      { x: x1, y: y1, z: z0 }
-    ]
-  };
-
-  for (const [faceName, points3d] of Object.entries(faceDefs)) {
-    const rawFaceData = element.faces?.[faceName];
-    if (!rawFaceData) continue;
-
-    const faceData = {
-      ...rawFaceData,
-      uv: rawFaceData.uv ?? defaultFaceUv(faceName, from, to)
-    };
-
-    faces.push(
-      createModelFace(
-        block,
-        modelTextures,
-        element,
-        faceName,
-        faceData,
-        points3d,
-        offsetX,
-        offsetY,
-        scale
-      )
-    );
-  }
-
-  return faces;
-}
-
-function makeCubeFallbackFaces(block, offsetX, offsetY, scale) {
-  stats.cubeFallbacks++;
-
-  const element = {
-    from: [0, 0, 0],
-    to: [16, 16, 16],
-    faces: {
-      up: {},
-      north: {},
-      south: {},
-      east: {},
-      west: {}
-    }
-  };
-
-  return makeElementFaces(block, {}, element, offsetX, offsetY, scale);
-}
-
-function makeBlockFaces(block, offsetX, offsetY, scale) {
-  const variants = getModelVariantsFromBlockState(block.name, block.properties);
-  const faces = [];
-
-  for (const variant of variants) {
-    const model = mergeModel(variant.model);
-    const elements = model.elements ?? [];
-
-    const blockVariant = {
-      ...block,
-      rotation: {
-        x: variant.x ?? 0,
-        y: variant.y ?? 0
-      }
-    };
-
-    if (elements.length === 0) {
-      faces.push(...makeCubeFallbackFaces(blockVariant, offsetX, offsetY, scale));
-      continue;
-    }
-
-    for (const element of elements) {
-      faces.push(...makeElementFaces(blockVariant, element, model.textures, offsetX, offsetY, scale));
-    }
-  }
-
-  stats.modelFaces += faces.length;
-  return faces;
-}
-
-
-function parseBlockStateString(state) {
-  if (!state || typeof state !== "string") return null;
-
-  const match = state.match(/^([^[]+)(?:\[(.*)\])?$/);
-  if (!match) return null;
-
-  const name = match[1];
-  const properties = {};
-
-  if (match[2]) {
-    for (const part of match[2].split(",")) {
-      const [key, value] = part.split("=");
-      if (key && value !== undefined) properties[key] = value;
-    }
-  }
-
-  return { name, properties };
-}
-
-function getJigsawReplacement(block) {
-  const nbtData = block.nbt;
-  if (!nbtData || typeof nbtData !== "object") return null;
-
-  const finalState =
-    nbtData.final_state ??
-    nbtData.finalState ??
-    nbtData.FinalState;
-
-  const parsed = parseBlockStateString(finalState);
-  if (!parsed || parsed.name === "minecraft:air") return null;
-
-  return parsed;
-}
-
-function collectBlocksFromStructure(structure) {
-  const palette = getPalette(structure);
-  const blocks = [];
-
-  for (const block of structure.blocks ?? []) {
-    const state = palette[block.state];
-    let blockName = getBlockNameFromPaletteEntry(state);
-    let properties = state?.Properties ?? state?.properties ?? {};
-
-    if (blockName === "minecraft:jigsaw") {
-      const replacement = getJigsawReplacement(block);
-
-      if (!replacement) continue;
-
-      blockName = replacement.name;
-      properties = replacement.properties;
-    }
-
-    if (!blockName || IGNORED_BLOCKS.has(blockName)) continue;
-
-    const pos = block.pos ?? block.position;
-    if (!Array.isArray(pos) || pos.length < 3) continue;
-
-    blocks.push({
-      x: Number(pos[0]),
-      y: Number(pos[1]),
-      z: Number(pos[2]),
-      name: blockName,
-      properties
-    });
-  }
-
-  return blocks;
-}
-
-function normalizeBlocks(blocks) {
-  if (blocks.length === 0) return blocks;
-
-  const minX = Math.min(...blocks.map(b => b.x));
-  const minY = Math.min(...blocks.map(b => b.y));
-  const minZ = Math.min(...blocks.map(b => b.z));
-
-  return blocks.map(block => ({
-    ...block,
-    x: block.x - minX,
-    y: block.y - minY,
-    z: block.z - minZ
-  }));
-}
-
-function computeBounds(blocks, scale = 1) {
-  let minX = Infinity;
-  let maxX = -Infinity;
-  let minY = Infinity;
-  let maxY = -Infinity;
-
-  const update = point => {
-    if (point.x < minX) minX = point.x;
-    if (point.x > maxX) maxX = point.x;
-    if (point.y < minY) minY = point.y;
-    if (point.y > maxY) maxY = point.y;
-  };
-
-  for (const block of blocks) {
-    update(isoPoint(block.x, block.y, block.z, 0, 0, scale));
-    update(isoPoint(block.x + 1, block.y, block.z, 0, 0, scale));
-    update(isoPoint(block.x, block.y + 1, block.z, 0, 0, scale));
-    update(isoPoint(block.x + 1, block.y + 1, block.z, 0, 0, scale));
-    update(isoPoint(block.x, block.y, block.z + 1, 0, 0, scale));
-    update(isoPoint(block.x + 1, block.y, block.z + 1, 0, 0, scale));
-    update(isoPoint(block.x, block.y + 1, block.z + 1, 0, 0, scale));
-    update(isoPoint(block.x + 1, block.y + 1, block.z + 1, 0, 0, scale));
-  }
-
-  if (!Number.isFinite(minX)) {
-    return { minX: 0, maxX: 1, minY: 0, maxY: 1 };
-  }
-
-  return { minX, maxX, minY, maxY };
-}
-
-function fillBackground(png) {
-  if (transparentBackground) return;
-
-  for (let y = 0; y < png.height; y++) {
-    for (let x = 0; x < png.width; x++) {
-      blendPixel(png, x, y, { r: 16, g: 24, b: 32, a: 255 });
-    }
-  }
-}
-
-function renderBlocksToPng(blocks) {
-  blocks = normalizeBlocks(blocks);
-
-  if (blocks.length === 0) {
-    const png = new PNG({ width: 32, height: 32 });
-    fillBackground(png);
-    return PNG.sync.write(png);
-  }
-
-  const baseBounds = computeBounds(blocks, 1);
-  const baseWidth = baseBounds.maxX - baseBounds.minX + padding * 2;
-  const baseHeight = baseBounds.maxY - baseBounds.minY + padding * 2;
-  const scale = Math.min(1, maxImageSize / Math.max(baseWidth, baseHeight));
-  const bounds = computeBounds(blocks, scale);
-
-  const width = Math.max(1, Math.ceil(bounds.maxX - bounds.minX + padding * 2));
-  const height = Math.max(1, Math.ceil(bounds.maxY - bounds.minY + padding * 2));
-
-  const png = new PNG({ width, height });
-  fillBackground(png);
-
-  const offsetX = padding - bounds.minX;
-  const offsetY = padding - bounds.minY;
-
-  const faces = [];
-
-  for (const block of blocks) {
-    faces.push(...makeBlockFaces(block, offsetX, offsetY, scale));
-  }
-
-  faces.sort((a, b) => a.depth - b.depth);
-
-  for (const face of faces) {
-    drawTexturedPolygon(png, face);
-  }
-
-  return PNG.sync.write(png);
-}
-
-function readJsonIfExists(file) {
-  if (!fs.existsSync(file)) return null;
-
-  try {
-    return JSON.parse(fs.readFileSync(file, "utf8"));
-  } catch {
-    return null;
-  }
+function getStructureNbtFileFromLocation(location) {
+  const [namespace, structurePath] = splitResourceLocation(location);
+  return path.join(inputRoot, namespace, "structure", `${structurePath}.nbt`);
 }
 
 function addResourceLocation(value, result) {
@@ -1155,16 +183,6 @@ function collectTemplatePoolsFromObject(value, result = new Set()) {
   return result;
 }
 
-function getTemplatePoolFile(poolId) {
-  const [namespace, poolPath] = splitResourceLocation(poolId);
-  return path.join(inputRoot, namespace, "worldgen", "template_pool", `${poolPath}.json`);
-}
-
-function getStructureNbtFileFromLocation(location) {
-  const [namespace, structurePath] = splitResourceLocation(location);
-  return path.join(inputRoot, namespace, "structure", `${structurePath}.nbt`);
-}
-
 function collectElementLocations(element, result = new Set()) {
   if (!element || typeof element !== "object") return result;
 
@@ -1183,6 +201,12 @@ function collectElementLocations(element, result = new Set()) {
   }
 
   return result;
+}
+
+async function readNbtFile(file) {
+  const buffer = fs.readFileSync(file);
+  const parsed = await nbt.parse(buffer);
+  return nbt.simplify(parsed.parsed);
 }
 
 function collectJigsawPoolsFromNbt(value, result = new Set()) {
@@ -1226,11 +250,7 @@ async function collectJigsawPoolsFromStructureFile(structureFile) {
   }
 }
 
-async function collectStructureFilesFromTemplatePool(
-  poolId,
-  seenPools = new Set(),
-  result = new Set()
-) {
+async function collectStructureFilesFromTemplatePool(poolId, seenPools = new Set(), result = new Set()) {
   if (seenPools.has(poolId)) return result;
   seenPools.add(poolId);
 
@@ -1238,15 +258,12 @@ async function collectStructureFilesFromTemplatePool(
   const poolJson = readJsonIfExists(poolFile);
   if (!poolJson) return result;
 
-  stats.poolsRead++;
-
   for (const element of poolJson.elements ?? []) {
     const elementData = element.element ?? element;
     const locations = collectElementLocations(elementData);
 
     for (const location of locations) {
       const structureFile = getStructureNbtFileFromLocation(location);
-
       if (!fs.existsSync(structureFile)) continue;
 
       const alreadyHadFile = result.has(structureFile);
@@ -1256,7 +273,6 @@ async function collectStructureFilesFromTemplatePool(
         const jigsawPools = await collectJigsawPoolsFromStructureFile(structureFile);
 
         for (const nestedPool of jigsawPools) {
-          stats.jigsawPoolsFollowed++;
           await collectStructureFilesFromTemplatePool(nestedPool, seenPools, result);
         }
       }
@@ -1290,36 +306,8 @@ async function collectStructureFilesForWorldgenStructure(worldgenFile) {
   };
 }
 
-function getDirectStructureGroups() {
-  const structureFiles = walk(inputRoot)
-    .filter(file => file.endsWith(".nbt"))
-    .map(file => ({ file, info: getStructureInfo(file) }))
-    .filter(entry => entry.info !== null);
-
-  const groups = new Map();
-
-  for (const { file, info } of structureFiles) {
-    const key = `${info.namespace}:${info.topFolder}`;
-
-    if (!groups.has(key)) {
-      groups.set(key, {
-        namespace: info.namespace,
-        outputName: info.topFolder,
-        files: []
-      });
-    }
-
-    groups.get(key).files.push(file);
-  }
-
-  return groups;
-}
-
 async function getWorldgenStructureGroups() {
   const groups = new Map();
-
-  if (!generateWorldgenStructurePreviews) return groups;
-
   const worldgenFiles = walk(inputRoot)
     .filter(file => file.endsWith(".json"))
     .filter(file => getWorldgenStructureInfo(file) !== null);
@@ -1332,25 +320,232 @@ async function getWorldgenStructureGroups() {
       continue;
     }
 
-    groups.set(group.id, {
-      namespace: group.namespace,
-      outputName: group.relativePath,
-      files: group.files
-    });
+    groups.set(group.id, group);
   }
 
   return groups;
 }
 
+function getPalette(structure) {
+  if (Array.isArray(structure.palette)) return structure.palette;
+  if (Array.isArray(structure.palettes?.[0])) return structure.palettes[0];
+  return [];
+}
+
+function getBlockNameFromPaletteEntry(entry) {
+  return entry?.Name ?? entry?.name ?? null;
+}
+
+function parseBlockStateString(state) {
+  if (!state || typeof state !== "string") return null;
+
+  const match = state.match(/^([^[]+)(?:\[(.*)\])?$/);
+  if (!match) return null;
+
+  const name = match[1];
+  const properties = {};
+
+  if (match[2]) {
+    for (const part of match[2].split(",")) {
+      const [key, value] = part.split("=");
+      if (key && value !== undefined) properties[key] = value;
+    }
+  }
+
+  return { name, properties };
+}
+
+function getJigsawReplacement(block) {
+  const nbtData = block.nbt;
+  if (!nbtData || typeof nbtData !== "object") return null;
+
+  const finalState =
+    nbtData.final_state ??
+    nbtData.finalState ??
+    nbtData.FinalState;
+
+  const parsed = parseBlockStateString(finalState);
+  if (!parsed || parsed.name === "minecraft:air") return null;
+
+  return parsed;
+}
+
+function blockStateToString(blockName, properties = {}) {
+  const entries = Object.entries(properties ?? {});
+  if (entries.length === 0) return blockName;
+
+  return `${blockName}[${entries.map(([key, value]) => `${key}=${value}`).join(",")}]`;
+}
+
+function createBlock(blockName, properties = {}) {
+  const blockString = blockStateToString(blockName, properties);
+
+  try {
+    return Block.fromString(blockString, plainsBiomeId);
+  } catch {}
+
+  const shortName = blockName.replace(/^minecraft:/, "");
+  const blockInfo = registry.blocksByName?.[shortName];
+
+  if (!blockInfo) {
+    console.warn(`Unknown block ${blockString}; using stone fallback`);
+    return Block.fromString("minecraft:stone", plainsBiomeId);
+  }
+
+  try {
+    return Block.fromProperties(blockInfo.id, properties, plainsBiomeId);
+  } catch {
+    return Block.fromString(shortName, plainsBiomeId);
+  }
+}
+
+function collectBlocksFromStructure(structure, offset) {
+  const palette = getPalette(structure);
+  const blocks = [];
+
+  for (const block of structure.blocks ?? []) {
+    const state = palette[block.state];
+    let blockName = getBlockNameFromPaletteEntry(state);
+    let properties = state?.Properties ?? state?.properties ?? {};
+
+    if (blockName === "minecraft:jigsaw") {
+      const replacement = getJigsawReplacement(block);
+      if (!replacement) continue;
+      blockName = replacement.name;
+      properties = replacement.properties;
+    }
+
+    if (!blockName || blockName.endsWith(":air") || blockName === "minecraft:structure_void") continue;
+
+    const pos = block.pos ?? block.position;
+    if (!Array.isArray(pos) || pos.length < 3) continue;
+
+    blocks.push({
+      x: Number(pos[0]) + offset.x,
+      y: Number(pos[1]) + offset.y,
+      z: Number(pos[2]) + offset.z,
+      blockName,
+      properties
+    });
+  }
+
+  return blocks;
+}
+
 async function loadBlocksForFiles(files) {
   const allBlocks = [];
+  let cursorX = 0;
 
   for (const file of files) {
     const structure = await readNbtFile(file);
-    allBlocks.push(...collectBlocksFromStructure(structure));
+    const size = structure.size ?? [0, 0, 0];
+
+    allBlocks.push(
+      ...collectBlocksFromStructure(structure, {
+        x: cursorX,
+        y: baseY,
+        z: 0
+      })
+    );
+
+    // Lay template pieces next to each other. This is deterministic and avoids
+    // pretending to simulate random jigsaw placement while still showing every
+    // possible piece used by the generated structure.
+    cursorX += Number(size[0] ?? 0) + 2;
   }
 
   return allBlocks;
+}
+
+async function placeBlocks(world, blocks) {
+  for (const entry of blocks) {
+    const block = createBlock(entry.blockName, entry.properties);
+    await world.setBlock(new Vec3(entry.x, entry.y, entry.z), block);
+  }
+}
+
+function getBounds(blocks) {
+  if (blocks.length === 0) {
+    return {
+      minX: 0,
+      maxX: 1,
+      minY: baseY,
+      maxY: baseY + 1,
+      minZ: 0,
+      maxZ: 1
+    };
+  }
+
+  return {
+    minX: Math.min(...blocks.map(block => block.x)),
+    maxX: Math.max(...blocks.map(block => block.x)),
+    minY: Math.min(...blocks.map(block => block.y)),
+    maxY: Math.max(...blocks.map(block => block.y)),
+    minZ: Math.min(...blocks.map(block => block.z)),
+    maxZ: Math.max(...blocks.map(block => block.z))
+  };
+}
+
+async function renderWorldImage(blocks, outputPath) {
+  const world = new World(() => new Chunk());
+  await placeBlocks(world, blocks);
+
+  const bounds = getBounds(blocks);
+  const center = new Vec3(
+    (bounds.minX + bounds.maxX) / 2,
+    (bounds.minY + bounds.maxY) / 2,
+    (bounds.minZ + bounds.maxZ) / 2
+  );
+
+  const sizeX = bounds.maxX - bounds.minX + 1;
+  const sizeY = bounds.maxY - bounds.minY + 1;
+  const sizeZ = bounds.maxZ - bounds.minZ + 1;
+  const largestSize = Math.max(sizeX, sizeY, sizeZ, 16);
+
+  const canvas = createCanvas(width, height);
+  const renderer = new THREE.WebGLRenderer({
+    canvas,
+    alpha: true,
+    antialias: true,
+    preserveDrawingBuffer: true
+  });
+
+  renderer.setSize(width, height, false);
+  renderer.setClearColor(0x000000, 0);
+
+  const viewer = new Viewer(renderer);
+
+  if (!viewer.setVersion(version)) {
+    throw new Error(`prismarine-viewer does not support Minecraft version ${version}`);
+  }
+
+  const worldView = new WorldView(world, viewDistance, center);
+  viewer.listen(worldView);
+
+  const cameraDistance = largestSize * cameraDistanceMultiplier;
+  const cameraHeight = Math.max(sizeY * cameraHeightMultiplier, 12);
+
+  viewer.camera.position.set(
+    center.x + cameraDistance,
+    center.y + cameraHeight,
+    center.z + cameraDistance
+  );
+
+  viewer.camera.lookAt(new THREE.Vector3(center.x, center.y, center.z));
+
+  await worldView.init(center);
+  await viewer.world.waitForChunksToRender();
+
+  renderer.render(viewer.scene, viewer.camera);
+
+  const imageStream = canvas.createPNGStream();
+  const buffer = await getBufferFromStream(imageStream);
+
+  fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+  fs.writeFileSync(outputPath, buffer);
+
+  if (viewer.world?.removeAllListeners) viewer.world.removeAllListeners();
+  renderer.dispose();
 }
 
 function removeStaleOutputFiles(validOutputFiles) {
@@ -1367,43 +562,23 @@ function removeStaleOutputFiles(validOutputFiles) {
 }
 
 async function main() {
+  console.log(`Rendering structure previews with prismarine-viewer for Minecraft ${version}`);
+
   const groups = await getWorldgenStructureGroups();
-
-  if (groups.size === 0) {
-    for (const [key, value] of getDirectStructureGroups()) {
-      groups.set(key, value);
-    }
-  }
-
-  console.log(`Found ${groups.size} rendered structure group(s).`);
-  console.log(`Read ${stats.poolsRead} template pool(s), followed ${stats.jigsawPoolsFollowed} jigsaw pool reference(s).`);
-
   const validOutputFiles = new Set();
 
-  for (const group of groups.values()) {
-    group.files.sort();
+  console.log(`Found ${groups.size} worldgen structure group(s).`);
 
+  for (const group of groups.values()) {
     const blocks = await loadBlocksForFiles(group.files);
-    const outputPath = path.join(outputRoot, group.namespace, `${group.outputName}.png`);
+    const outputPath = path.join(outputRoot, group.namespace, `${group.relativePath}.png`);
 
     validOutputFiles.add(path.normalize(outputPath));
+    await renderWorldImage(blocks, outputPath);
 
-    fs.mkdirSync(path.dirname(outputPath), { recursive: true });
-    fs.writeFileSync(outputPath, renderBlocksToPng(blocks));
-    stats.mainImages++;
-
-    const mainSize = fs.statSync(outputPath).size;
-    console.log(`Generated ${outputPath} from ${group.files.length} structure part(s), ${mainSize} bytes`);
+    const size = fs.statSync(outputPath).size;
+    console.log(`Generated ${outputPath} from ${group.files.length} structure template(s), ${blocks.length} block(s), ${size} bytes`);
   }
-
-  if (groups.size === 0) {
-    console.warn("No structure groups were found.");
-  }
-
-  console.log(`Generated ${stats.mainImages} preview image(s).`);
-  console.log(`Rendered ${stats.modelFaces} model face(s), used ${stats.cubeFallbacks} cube fallback(s).`);
-  console.log("Model renderer uses blockstate variants, model element geometry, per-face UVs, texture alpha, and multipart models, blockstate data, element/block rotations, per-face UV axes, and alpha cutouts.");
-  console.log(`Texture files loaded: ${stats.textureHits}; missing/fallback lookups: ${stats.textureMisses}.`);
 
   removeStaleOutputFiles(validOutputFiles);
 }
