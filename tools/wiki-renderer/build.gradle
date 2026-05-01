@@ -1,5 +1,5 @@
 plugins {
-    id 'net.fabricmc.fabric-loom' version '1.16'
+    id 'net.fabricmc.fabric-loom' version '1.16.1'
     id 'maven-publish'
 }
 
@@ -19,7 +19,7 @@ dependencies {
 
     // Minecraft 26.1+ is unobfuscated. The new net.fabricmc.fabric-loom plugin
     // does not use the old mappings/remap pipeline.
-    implementation "net.fabricmc:fabric-loader:${loaderVersion}"
+    modImplementation "net.fabricmc:fabric-loader:${loaderVersion}"
 }
 
 java {
