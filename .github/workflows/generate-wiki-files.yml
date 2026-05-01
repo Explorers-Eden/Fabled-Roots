@@ -65,10 +65,19 @@ jobs:
 
           # Create a temporary vanilla/Fabric world. The server is only used to
           # create a save folder; the actual screenshots are taken by the client.
+          set +e
           timeout 90s gradle runServer \
             -Pminecraft_version="$MC_VERSION" \
             -Pfabric_loader_version=0.18.4 \
-            --args "nogui" || true
+            --args "nogui"
+          SERVER_EXIT=$?
+          set -e
+
+          # 124 is expected because timeout stops the server after it creates the world.
+          if [ "$SERVER_EXIT" -ne 0 ] && [ "$SERVER_EXIT" -ne 124 ]; then
+            echo "Gradle runServer failed with exit code $SERVER_EXIT"
+            exit "$SERVER_EXIT"
+          fi
 
           rm -rf run/saves/WikiRender
           mkdir -p run/saves
