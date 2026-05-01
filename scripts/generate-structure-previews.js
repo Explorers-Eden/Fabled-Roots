@@ -22,7 +22,19 @@ const IGNORED_BLOCKS = new Set([
   "minecraft:void_air",
   "minecraft:structure_void",
   "minecraft:barrier",
-  "minecraft:light"
+  "minecraft:light",
+  "minecraft:water",
+  "minecraft:flowing_water"
+]);
+
+// These blocks use entity/special renderers or otherwise have no ordinary baked
+// block-model elements in vanilla assets. Rendering them with the generic cube
+// fallback makes them appear as bogus wooden/plank cubes in previews, so omit
+// them instead of inventing geometry that is not present in the structure.
+const SKIP_CUBE_FALLBACK_BLOCKS = new Set([
+  "minecraft:chest",
+  "minecraft:trapped_chest",
+  "minecraft:ender_chest"
 ]);
 
 const modelCache = new Map();
@@ -824,6 +836,11 @@ function bakeBlockModel(blockName, properties = {}) {
     const elements = model.elements ?? [];
 
     if (elements.length === 0) {
+      if (SKIP_CUBE_FALLBACK_BLOCKS.has(blockName)) {
+        bakedModelCache.set(cacheKey, baked);
+        return baked;
+      }
+
       stats.cubeFallbacks++;
 
       baked.push(
