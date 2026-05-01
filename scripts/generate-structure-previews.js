@@ -28,6 +28,7 @@ const IGNORED_BLOCKS = new Set([
 const modelCache = new Map();
 const resolvedModelCache = new Map();
 const textureCache = new Map();
+const bakedModelCache = new Map();
 const fallbackColorCache = new Map();
 
 const stats = {
@@ -37,7 +38,7 @@ const stats = {
   jigsawPoolsFollowed: 0,
   textureHits: 0,
   textureMisses: 0,
-  modelFaces: 0,
+  bakedQuads: 0,
   cubeFallbacks: 0
 };
 
@@ -199,21 +200,11 @@ function variantMatchesBlockState(variantKey, properties = {}) {
   return true;
 }
 
-function normalizeVariant(variant) {
-  if (Array.isArray(variant)) return variant[0] ?? null;
-  return variant ?? null;
-}
-
 function whenClauseMatches(when, properties = {}) {
   if (!when) return true;
 
-  if (Array.isArray(when.OR)) {
-    return when.OR.some(clause => whenClauseMatches(clause, properties));
-  }
-
-  if (Array.isArray(when.AND)) {
-    return when.AND.every(clause => whenClauseMatches(clause, properties));
-  }
+  if (Array.isArray(when.OR)) return when.OR.some(clause => whenClauseMatches(clause, properties));
+  if (Array.isArray(when.AND)) return when.AND.every(clause => whenClauseMatches(clause, properties));
 
   for (const [key, expected] of Object.entries(when)) {
     if (key === "OR" || key === "AND") continue;
@@ -241,7 +232,8 @@ function getModelVariantsFromBlockState(blockName, properties = {}) {
       {
         model: `${namespace}:block/${blockPath}`,
         x: 0,
-        y: 0
+        y: 0,
+        uvlock: false
       }
     ];
   }
@@ -266,7 +258,8 @@ function getModelVariantsFromBlockState(blockName, properties = {}) {
         {
           model: variant.model,
           x: Number(variant.x ?? 0),
-          y: Number(variant.y ?? 0)
+          y: Number(variant.y ?? 0),
+          uvlock: Boolean(variant.uvlock)
         }
       ];
     }
@@ -285,7 +278,8 @@ function getModelVariantsFromBlockState(blockName, properties = {}) {
           variants.push({
             model: apply.model,
             x: Number(apply.x ?? 0),
-            y: Number(apply.y ?? 0)
+            y: Number(apply.y ?? 0),
+            uvlock: Boolean(apply.uvlock)
           });
         }
       }
@@ -298,7 +292,8 @@ function getModelVariantsFromBlockState(blockName, properties = {}) {
     {
       model: `${namespace}:block/${blockPath}`,
       x: 0,
-      y: 0
+      y: 0,
+      uvlock: false
     }
   ];
 }
@@ -354,28 +349,11 @@ function mergeModel(modelId, seen = new Set()) {
   return merged;
 }
 
-function getTextureForFace(block, modelTextures, faceData, faceName) {
-  const textureRef =
-    faceData?.texture ??
-    modelTextures[faceName] ??
-    modelTextures.all ??
-    modelTextures.side ??
-    modelTextures.particle;
-
-  const textureId = resolveTextureReference(textureRef, modelTextures);
-  if (!textureId) return null;
-
-  const [namespace, texturePath] = splitResourceLocation(textureId);
-  return readTextureAsset(`assets/${namespace}/textures/${texturePath}.png`);
-}
-
 function hashColor(text) {
   if (fallbackColorCache.has(text)) return fallbackColorCache.get(text);
 
   let hash = 0;
-  for (let i = 0; i < text.length; i++) {
-    hash = ((hash << 5) - hash + text.charCodeAt(i)) | 0;
-  }
+  for (let i = 0; i < text.length; i++) hash = ((hash << 5) - hash + text.charCodeAt(i)) | 0;
 
   const hue = Math.abs(hash) % 360;
   const saturation = 28 + (Math.abs(hash >> 8) % 28);
@@ -538,77 +516,13 @@ function pointInPolygon(x, y, polygon) {
   return inside;
 }
 
-function getFaceUv(face, u, v) {
-  const uv = face.uv ?? [0, 0, 16, 16];
-
-  const u0 = uv[0] / 16;
-  const v0 = uv[1] / 16;
-  const u1 = uv[2] / 16;
-  const v1 = uv[3] / 16;
-
-  let ru = u;
-  let rv = v;
-
-  // The custom renderer uses an isometric projection, while Minecraft's UVs
-  // are baked per model face. Do the smallest correction per side face only:
-  // vertical side faces use Y as texture V, and the two isometric side planes
-  // need opposite U directions. This fixes the cactus/log-style 90°/mirror
-  // look without rotating every face globally.
-  switch (face.faceName) {
-    case "north":
-      ru = u;
-      rv = 1 - v;
-      break;
-    case "south":
-      ru = 1 - u;
-      rv = 1 - v;
-      break;
-    case "west":
-      ru = 1 - u;
-      rv = 1 - v;
-      break;
-    case "east":
-      ru = u;
-      rv = 1 - v;
-      break;
-    case "down":
-      ru = u;
-      rv = 1 - v;
-      break;
-    case "up":
-    default:
-      ru = u;
-      rv = v;
-      break;
-  }
-
-  const rotation = ((face.uvRotation ?? 0) % 360 + 360) % 360;
-
-  if (rotation === 90) {
-    [ru, rv] = [rv, 1 - ru];
-  } else if (rotation === 180) {
-    [ru, rv] = [1 - ru, 1 - rv];
-  } else if (rotation === 270) {
-    [ru, rv] = [1 - rv, ru];
-  }
-
-  return {
-    u: u0 + (u1 - u0) * ru,
-    v: v0 + (v1 - v0) * rv
-  };
-}
-
 function dot2(a, b) {
   return a.x * b.x + a.y * b.y;
 }
 
-function getLocalFaceCoordinates(face, x, y) {
-  // Map screen point onto the face's own two axes instead of the face's screen
-  // bounding box. This keeps texture orientation consistent in isometric view.
-  const [p00, p10, , p01] = face.points;
-  const origin = p00;
-  const uAxis = { x: p10.x - p00.x, y: p10.y - p00.y };
-  const vAxis = { x: p01.x - p00.x, y: p01.y - p00.y };
+function solve2d(origin, uPoint, vPoint, x, y) {
+  const uAxis = { x: uPoint.x - origin.x, y: uPoint.y - origin.y };
+  const vAxis = { x: vPoint.x - origin.x, y: vPoint.y - origin.y };
   const point = { x: x - origin.x, y: y - origin.y };
 
   const uu = dot2(uAxis, uAxis);
@@ -618,42 +532,68 @@ function getLocalFaceCoordinates(face, x, y) {
   const pv = dot2(point, vAxis);
   const det = uu * vv - uv * uv;
 
-  if (Math.abs(det) < 0.000001) {
-    return { u: 0, v: 0 };
-  }
-
-  const u = (pu * vv - pv * uv) / det;
-  const v = (pv * uu - pu * uv) / det;
+  if (Math.abs(det) < 0.000001) return { u: 0, v: 0 };
 
   return {
-    u: Math.max(0, Math.min(1, u)),
-    v: Math.max(0, Math.min(1, v))
+    u: Math.max(0, Math.min(1, (pu * vv - pv * uv) / det)),
+    v: Math.max(0, Math.min(1, (pv * uu - pu * uv) / det))
   };
 }
 
-function drawTexturedPolygon(png, face) {
-  const points = face.points;
+function getFaceUv(face, localU, localV) {
+  const uv = face.uv ?? [0, 0, 16, 16];
+
+  const u0 = uv[0] / 16;
+  const v0 = uv[1] / 16;
+  const u1 = uv[2] / 16;
+  const v1 = uv[3] / 16;
+
+  let u = localU;
+  let v = localV;
+
+  const rotation = ((face.uvRotation ?? 0) % 360 + 360) % 360;
+
+  if (rotation === 90) {
+    [u, v] = [v, 1 - u];
+  } else if (rotation === 180) {
+    [u, v] = [1 - u, 1 - v];
+  } else if (rotation === 270) {
+    [u, v] = [1 - v, u];
+  }
+
+  return {
+    u: u0 + (u1 - u0) * u,
+    v: v0 + (v1 - v0) * v
+  };
+}
+
+function drawTexturedQuad(png, quad) {
+  const points = quad.screen;
   const minY = Math.floor(Math.min(...points.map(p => p.y)));
   const maxY = Math.ceil(Math.max(...points.map(p => p.y)));
   const minX = Math.floor(Math.min(...points.map(p => p.x)));
   const maxX = Math.ceil(Math.max(...points.map(p => p.x)));
-  const texture = face.texture;
-  const fallback = fallbackColorForBlock(face.block.name);
+
+  const texture = quad.texture;
+  const fallback = fallbackColorForBlock(quad.blockName);
+
+  // Because this renderer is orthographic/isometric, affine UV interpolation is
+  // stable. This uses baked model-space UV axes rather than ad-hoc screen axes.
+  const [p00, p10, , p01] = points;
 
   for (let y = minY; y <= maxY; y++) {
     for (let x = minX; x <= maxX; x++) {
       if (!pointInPolygon(x + 0.5, y + 0.5, points)) continue;
 
-      const local = getLocalFaceCoordinates(face, x + 0.5, y + 0.5);
-      const uv = getFaceUv(face, local.u, local.v);
+      const local = solve2d(p00, p10, p01, x + 0.5, y + 0.5);
+      const uv = getFaceUv(quad, local.u, local.v);
       const sampled = sampleTexture(texture, uv.u, uv.v);
 
-      // Preserve cutout texture transparency.
       if (texture && !sampled) continue;
 
       const base = sampled ?? fallback;
-      const tinted = applyBiomeTint(base, face.block.name, face.faceName);
-      blendPixel(png, x, y, shadeColor(tinted, face.shade));
+      const tinted = applyBiomeTint(base, quad.blockName, quad.faceName);
+      blendPixel(png, x, y, shadeColor(tinted, quad.shade));
     }
   }
 }
@@ -686,8 +626,6 @@ function rotatePointAroundOrigin(point, origin, axis, angleDegrees, rescale = fa
     y = y2;
   }
 
-  // Minecraft's "rescale" adjusts bounds to avoid shrinking. This is a simplified
-  // approximation; it keeps the preview visually close without implementing full model baking.
   const scale = rescale ? 1 / Math.max(Math.abs(cos), Math.abs(sin), 0.0001) : 1;
 
   return {
@@ -718,17 +656,10 @@ function applyElementRotation(point, element) {
 
 function applyBlockstateRotation(point, rotation) {
   let rotated = point;
-
-  // Minecraft model variant rotations are around block center.
   const center = { x: 0.5, y: 0.5, z: 0.5 };
 
-  if (rotation.x) {
-    rotated = rotatePointAroundOrigin(rotated, center, "x", rotation.x, false);
-  }
-
-  if (rotation.y) {
-    rotated = rotatePointAroundOrigin(rotated, center, "y", rotation.y, false);
-  }
+  if (rotation.x) rotated = rotatePointAroundOrigin(rotated, center, "x", rotation.x, false);
+  if (rotation.y) rotated = rotatePointAroundOrigin(rotated, center, "y", rotation.y, false);
 
   return rotated;
 }
@@ -738,20 +669,6 @@ function isoPoint(x, y, z, offsetX, offsetY, scale = 1) {
     x: offsetX + (x - z) * (tileWidth / 2) * scale,
     y: offsetY + (x + z) * (tileHeight / 2) * scale - y * blockHeight * scale
   };
-}
-
-function projectModelPoint(block, localPoint, element, rotation, offsetX, offsetY, scale) {
-  const elementRotated = applyElementRotation(localPoint, element);
-  const rotated = applyBlockstateRotation(elementRotated, rotation);
-
-  return isoPoint(
-    block.x + rotated.x,
-    block.y + rotated.y,
-    block.z + rotated.z,
-    offsetX,
-    offsetY,
-    scale
-  );
 }
 
 function faceShade(faceName) {
@@ -766,29 +683,7 @@ function faceDepth(points3d) {
   return points3d.reduce((sum, point) => sum + point.x + point.y + point.z, 0) / points3d.length;
 }
 
-function createModelFace(block, modelTextures, element, faceName, faceData, points3d, offsetX, offsetY, scale) {
-  const transformedPoints3d = points3d.map(point =>
-    applyBlockstateRotation(applyElementRotation(point, element), block.rotation)
-  );
-
-  const points = points3d.map(point =>
-    projectModelPoint(block, point, element, block.rotation, offsetX, offsetY, scale)
-  );
-
-  return {
-    block,
-    faceName,
-    texture: getTextureForFace(block, modelTextures, faceData, faceName),
-    uv: faceData?.uv,
-    uvRotation: faceData?.rotation ?? 0,
-    points,
-    shade: faceShade(faceName),
-    depth: block.x + block.y + block.z + faceDepth(transformedPoints3d)
-  };
-}
-
 function defaultFaceUv(faceName, from, to) {
-  // Approximate vanilla default UVs from model element bounds.
   const [x0, y0, z0] = from;
   const [x1, y1, z1] = to;
 
@@ -807,19 +702,30 @@ function defaultFaceUv(faceName, from, to) {
   }
 }
 
-function makeElementFaces(block, element, modelTextures, offsetX, offsetY, scale) {
-  const from = element.from ?? [0, 0, 0];
-  const to = element.to ?? [16, 16, 16];
+function getTextureForFace(modelTextures, faceData, faceName) {
+  const textureRef =
+    faceData?.texture ??
+    modelTextures[faceName] ??
+    modelTextures.all ??
+    modelTextures.side ??
+    modelTextures.particle;
 
-  const x0 = from[0] / 16;
-  const y0 = from[1] / 16;
-  const z0 = from[2] / 16;
-  const x1 = to[0] / 16;
-  const y1 = to[1] / 16;
-  const z1 = to[2] / 16;
+  const textureId = resolveTextureReference(textureRef, modelTextures);
+  if (!textureId) return null;
 
-  const faces = [];
-  const faceDefs = {
+  const [namespace, texturePath] = splitResourceLocation(textureId);
+  return readTextureAsset(`assets/${namespace}/textures/${texturePath}.png`);
+}
+
+function createFaceDefinition(faceName, from, to) {
+  const [x0, y0, z0] = from.map(value => value / 16);
+  const [x1, y1, z1] = to.map(value => value / 16);
+
+  // Point order is always local UV order:
+  // p00 = top-left/origin for texture, p10 = +U, p11 = +U+V, p01 = +V.
+  // This is the important change: model baking owns texture axes before the
+  // isometric projection sees the face.
+  const defs = {
     up: [
       { x: x0, y: y1, z: z0 },
       { x: x1, y: y1, z: z0 },
@@ -827,112 +733,154 @@ function makeElementFaces(block, element, modelTextures, offsetX, offsetY, scale
       { x: x0, y: y1, z: z1 }
     ],
     down: [
-      { x: x0, y: y0, z: z0 },
       { x: x0, y: y0, z: z1 },
       { x: x1, y: y0, z: z1 },
+      { x: x1, y: y0, z: z0 },
+      { x: x0, y: y0, z: z0 }
+    ],
+    // Vertical faces are ordered as Minecraft's model baker sees them from
+    // outside the block: p00 is the texture's top-left corner, p10 is +U,
+    // p01 is +V/down. The previous order used the isometric screen-facing
+    // left/right direction, which mirrored/rotated side textures after block
+    // state y-rotations.
+    north: [
+      { x: x1, y: y1, z: z0 },
+      { x: x0, y: y1, z: z0 },
+      { x: x0, y: y0, z: z0 },
       { x: x1, y: y0, z: z0 }
     ],
-    north: [
-      { x: x0, y: y0, z: z0 },
-      { x: x1, y: y0, z: z0 },
-      { x: x1, y: y1, z: z0 },
-      { x: x0, y: y1, z: z0 }
-    ],
     south: [
-      { x: x0, y: y0, z: z1 },
       { x: x0, y: y1, z: z1 },
       { x: x1, y: y1, z: z1 },
-      { x: x1, y: y0, z: z1 }
-    ],
-    west: [
-      { x: x0, y: y0, z: z0 },
-      { x: x0, y: y1, z: z0 },
-      { x: x0, y: y1, z: z1 },
+      { x: x1, y: y0, z: z1 },
       { x: x0, y: y0, z: z1 }
     ],
+    west: [
+      { x: x0, y: y1, z: z0 },
+      { x: x0, y: y1, z: z1 },
+      { x: x0, y: y0, z: z1 },
+      { x: x0, y: y0, z: z0 }
+    ],
     east: [
-      { x: x1, y: y0, z: z0 },
-      { x: x1, y: y0, z: z1 },
       { x: x1, y: y1, z: z1 },
-      { x: x1, y: y1, z: z0 }
+      { x: x1, y: y1, z: z0 },
+      { x: x1, y: y0, z: z0 },
+      { x: x1, y: y0, z: z1 }
     ]
   };
 
-  for (const [faceName, points3d] of Object.entries(faceDefs)) {
+  return defs[faceName] ?? null;
+}
+
+function bakeElementQuads(blockName, modelTextures, element, variant) {
+  const from = element.from ?? [0, 0, 0];
+  const to = element.to ?? [16, 16, 16];
+  const quads = [];
+
+  for (const faceName of ["up", "down", "north", "south", "west", "east"]) {
     const rawFaceData = element.faces?.[faceName];
     if (!rawFaceData) continue;
+
+    const localPoints = createFaceDefinition(faceName, from, to);
+    if (!localPoints) continue;
 
     const faceData = {
       ...rawFaceData,
       uv: rawFaceData.uv ?? defaultFaceUv(faceName, from, to)
     };
 
-    faces.push(
-      createModelFace(
-        block,
-        modelTextures,
-        element,
-        faceName,
-        faceData,
-        points3d,
-        offsetX,
-        offsetY,
-        scale
-      )
+    const transformed = localPoints.map(point =>
+      applyBlockstateRotation(applyElementRotation(point, element), {
+        x: variant.x ?? 0,
+        y: variant.y ?? 0
+      })
     );
+
+    quads.push({
+      blockName,
+      faceName,
+      points: transformed,
+      texture: getTextureForFace(modelTextures, faceData, faceName),
+      uv: faceData.uv,
+      uvRotation: faceData.rotation ?? 0,
+      shade: faceShade(faceName),
+      depthOffset: faceDepth(transformed)
+    });
   }
 
-  return faces;
+  return quads;
 }
 
-function makeCubeFallbackFaces(block, offsetX, offsetY, scale) {
-  stats.cubeFallbacks++;
+function bakeBlockModel(blockName, properties = {}) {
+  const cacheKey = `${blockName}|${stringifyProperties(properties)}`;
 
-  const element = {
-    from: [0, 0, 0],
-    to: [16, 16, 16],
-    faces: {
-      up: {},
-      north: {},
-      south: {},
-      east: {},
-      west: {}
-    }
-  };
+  if (bakedModelCache.has(cacheKey)) return bakedModelCache.get(cacheKey);
 
-  return makeElementFaces(block, {}, element, offsetX, offsetY, scale);
-}
-
-function makeBlockFaces(block, offsetX, offsetY, scale) {
-  const variants = getModelVariantsFromBlockState(block.name, block.properties);
-  const faces = [];
+  const variants = getModelVariantsFromBlockState(blockName, properties);
+  const baked = [];
 
   for (const variant of variants) {
     const model = mergeModel(variant.model);
     const elements = model.elements ?? [];
 
-    const blockVariant = {
-      ...block,
-      rotation: {
-        x: variant.x ?? 0,
-        y: variant.y ?? 0
-      }
-    };
-
     if (elements.length === 0) {
-      faces.push(...makeCubeFallbackFaces(blockVariant, offsetX, offsetY, scale));
+      stats.cubeFallbacks++;
+
+      baked.push(
+        ...bakeElementQuads(
+          blockName,
+          model.textures ?? {},
+          {
+            from: [0, 0, 0],
+            to: [16, 16, 16],
+            faces: {
+              up: {},
+              down: {},
+              north: {},
+              south: {},
+              west: {},
+              east: {}
+            }
+          },
+          variant
+        )
+      );
+
       continue;
     }
 
     for (const element of elements) {
-      faces.push(...makeElementFaces(blockVariant, element, model.textures, offsetX, offsetY, scale));
+      baked.push(...bakeElementQuads(blockName, model.textures, element, variant));
     }
   }
 
-  stats.modelFaces += faces.length;
-  return faces;
+  stats.bakedQuads += baked.length;
+  bakedModelCache.set(cacheKey, baked);
+  return baked;
 }
 
+function makeBlockQuads(block, offsetX, offsetY, scale) {
+  const bakedModel = bakeBlockModel(block.name, block.properties);
+  const quads = [];
+
+  for (const bakedQuad of bakedModel) {
+    const worldPoints = bakedQuad.points.map(point => ({
+      x: block.x + point.x,
+      y: block.y + point.y,
+      z: block.z + point.z
+    }));
+
+    quads.push({
+      ...bakedQuad,
+      blockName: block.name,
+      block,
+      screen: worldPoints.map(point => isoPoint(point.x, point.y, point.z, offsetX, offsetY, scale)),
+      depth: block.x + block.y + block.z + bakedQuad.depthOffset
+    });
+  }
+
+  return quads;
+}
 
 function parseBlockStateString(state) {
   if (!state || typeof state !== "string") return null;
@@ -979,7 +927,6 @@ function collectBlocksFromStructure(structure) {
 
     if (blockName === "minecraft:jigsaw") {
       const replacement = getJigsawReplacement(block);
-
       if (!replacement) continue;
 
       blockName = replacement.name;
@@ -1042,9 +989,7 @@ function computeBounds(blocks, scale = 1) {
     update(isoPoint(block.x + 1, block.y + 1, block.z + 1, 0, 0, scale));
   }
 
-  if (!Number.isFinite(minX)) {
-    return { minX: 0, maxX: 1, minY: 0, maxY: 1 };
-  }
+  if (!Number.isFinite(minX)) return { minX: 0, maxX: 1, minY: 0, maxY: 1 };
 
   return { minX, maxX, minY, maxY };
 }
@@ -1083,16 +1028,16 @@ function renderBlocksToPng(blocks) {
   const offsetX = padding - bounds.minX;
   const offsetY = padding - bounds.minY;
 
-  const faces = [];
+  const quads = [];
 
   for (const block of blocks) {
-    faces.push(...makeBlockFaces(block, offsetX, offsetY, scale));
+    quads.push(...makeBlockQuads(block, offsetX, offsetY, scale));
   }
 
-  faces.sort((a, b) => a.depth - b.depth);
+  quads.sort((a, b) => a.depth - b.depth);
 
-  for (const face of faces) {
-    drawTexturedPolygon(png, face);
+  for (const quad of quads) {
+    drawTexturedQuad(png, quad);
   }
 
   return PNG.sync.write(png);
@@ -1162,9 +1107,7 @@ function getStructureNbtFileFromLocation(location) {
 function collectElementLocations(element, result = new Set()) {
   if (!element || typeof element !== "object") return result;
 
-  if (typeof element.location === "string") {
-    result.add(element.location);
-  }
+  if (typeof element.location === "string") result.add(element.location);
 
   if (Array.isArray(element.elements)) {
     for (const nested of element.elements) {
@@ -1172,9 +1115,7 @@ function collectElementLocations(element, result = new Set()) {
     }
   }
 
-  if (element.element) {
-    collectElementLocations(element.element, result);
-  }
+  if (element.element) collectElementLocations(element.element, result);
 
   return result;
 }
@@ -1201,9 +1142,7 @@ function collectJigsawPoolsFromNbt(value, result = new Set()) {
     addResourceLocation(value.target_pool, result);
   }
 
-  for (const nested of Object.values(value)) {
-    collectJigsawPoolsFromNbt(nested, result);
-  }
+  for (const nested of Object.values(value)) collectJigsawPoolsFromNbt(nested, result);
 
   return result;
 }
@@ -1220,11 +1159,7 @@ async function collectJigsawPoolsFromStructureFile(structureFile) {
   }
 }
 
-async function collectStructureFilesFromTemplatePool(
-  poolId,
-  seenPools = new Set(),
-  result = new Set()
-) {
+async function collectStructureFilesFromTemplatePool(poolId, seenPools = new Set(), result = new Set()) {
   if (seenPools.has(poolId)) return result;
   seenPools.add(poolId);
 
@@ -1240,7 +1175,6 @@ async function collectStructureFilesFromTemplatePool(
 
     for (const location of locations) {
       const structureFile = getStructureNbtFileFromLocation(location);
-
       if (!fs.existsSync(structureFile)) continue;
 
       const alreadyHadFile = result.has(structureFile);
@@ -1387,16 +1321,13 @@ async function main() {
     stats.mainImages++;
 
     const mainSize = fs.statSync(outputPath).size;
-    console.log(`Generated ${outputPath} from ${group.files.length} structure part(s), ${mainSize} bytes`);
+    console.log(`Generated ${outputPath} from ${group.files.length} structure part(s), ${blocks.length} block(s), ${mainSize} bytes`);
   }
 
-  if (groups.size === 0) {
-    console.warn("No structure groups were found.");
-  }
+  if (groups.size === 0) console.warn("No structure groups were found.");
 
   console.log(`Generated ${stats.mainImages} preview image(s).`);
-  console.log(`Rendered ${stats.modelFaces} model face(s), used ${stats.cubeFallbacks} cube fallback(s).`);
-  console.log("Model renderer uses blockstate variants, model element geometry, per-face UVs, texture alpha, and multipart models, blockstate data, element/block rotations, per-face UV axes, and alpha cutouts.");
+  console.log(`Baked ${stats.bakedQuads} model quad(s), used ${stats.cubeFallbacks} cube fallback(s).`);
   console.log(`Texture files loaded: ${stats.textureHits}; missing/fallback lookups: ${stats.textureMisses}.`);
 
   removeStaleOutputFiles(validOutputFiles);
