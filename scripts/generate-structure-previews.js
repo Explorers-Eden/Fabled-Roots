@@ -710,6 +710,56 @@ function getStructureNbtFileFromLocation(location) {
   return path.join(inputRoot, namespace, "structure", `${structurePath}.nbt`);
 }
 
+
+function addResourceLocation(value, result) {
+  if (typeof value !== "string") return;
+  if (value === "minecraft:empty") return;
+  if (!value.includes(":")) return;
+  if (value.startsWith("#")) return;
+  result.add(value);
+}
+
+function collectJigsawPoolsFromNbt(value, result = new Set()) {
+  if (value === null || value === undefined) return result;
+
+  if (Array.isArray(value)) {
+    for (const item of value) collectJigsawPoolsFromNbt(item, result);
+    return result;
+  }
+
+  if (typeof value !== "object") return result;
+
+  const blockId = value.id ?? value.Id ?? value.Name ?? value.name;
+  const likelyJigsaw =
+    blockId === "minecraft:jigsaw" ||
+    value.pool !== undefined ||
+    value.target_pool !== undefined ||
+    value.final_state !== undefined;
+
+  if (likelyJigsaw) {
+    addResourceLocation(value.pool, result);
+    addResourceLocation(value.target_pool, result);
+  }
+
+  for (const nested of Object.values(value)) {
+    collectJigsawPoolsFromNbt(nested, result);
+  }
+
+  return result;
+}
+
+async function collectJigsawPoolsFromStructureFile(structureFile) {
+  if (!fs.existsSync(structureFile)) return new Set();
+
+  try {
+    const structure = await readNbtFile(structureFile);
+    return collectJigsawPoolsFromNbt(structure);
+  } catch (error) {
+    console.warn(`Could not inspect jigsaw pools in ${structureFile}: ${error.message}`);
+    return new Set();
+  }
+}
+
 async function collectStructureFilesFromTemplatePool(poolId, seenPools = new Set(), result = new Set()) {
   if (seenPools.has(poolId)) return result;
   seenPools.add(poolId);
