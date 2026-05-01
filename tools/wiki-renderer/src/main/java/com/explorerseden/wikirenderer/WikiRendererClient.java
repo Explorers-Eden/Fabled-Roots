@@ -118,11 +118,17 @@ public class WikiRendererClient implements ClientModInitializer {
         int centerY = baseY + Math.max(maxHeight / 2, 8);
         int centerZ = baseZ;
 
+        final double cameraX = centerX + Math.max(totalWidth, 48) * 0.65;
+        final double cameraY = centerY + Math.max(maxHeight, 24) * 0.75;
+        final double cameraZ = centerZ + Math.max(totalWidth, 48) * 0.65;
+        final float cameraYaw = 135.0f;
+        final float cameraPitch = 28.0f;
+
         client.execute(() -> {
             if (client.player != null) {
-                client.player.setPos(centerX + Math.max(totalWidth, 48) * 0.65, centerY + Math.max(maxHeight, 24) * 0.75, centerZ + Math.max(totalWidth, 48) * 0.65);
-                client.player.setYRot(135.0f);
-                client.player.setXRot(28.0f);
+                client.player.setPos(cameraX, cameraY, cameraZ);
+                client.player.setYRot(cameraYaw);
+                client.player.setXRot(cameraPitch);
             }
 
             client.options.hideGui = true;
