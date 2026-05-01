@@ -3,175 +3,345 @@
 The structure generates 10 loot containers using 10 loot tables: `fabled_roots:structure/aetherian/rare`, `fabled_roots:structure/dunesworn/rare`, `fabled_roots:structure/endling/rare`, `fabled_roots:structure/frostborne/rare`, `fabled_roots:structure/moonshroud/rare`, `fabled_roots:structure/netherian/rare`, `fabled_roots:structure/oakhearted/rare`, `fabled_roots:structure/orebringer/rare`, `fabled_roots:structure/palehearted/rare`, `fabled_roots:structure/turtlekin/rare`.
 <br>
 
-## fabled_roots:structure/aetherian/rare
+<details>
+<summary><strong>fabled_roots:structure/aetherian/rare</strong> (1 use)</summary>
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
-| Enchanted Book | 1 | 1 | 4 | 18.2% |
-| Bow of Roots | 1 | 1 | 3 | 13.6% |
-| Lapis Lazuli | 2–4 | 1 | 3 | 13.6% |
-| Shield | 1 | 1 | 3 | 13.6% |
-| Golden Carrot | 1–2 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/armor_of_roots) | 1 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/horse_armor_of_roots) | 1 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/spear) | 1 | 1 | 2 | 9.1% |
-| Music Disc | 1 | 1 | 1 | 4.5% |
-| Loot Table (fabled_roots:equipment/crown_of_roots) | 1 | 2 | 1 | 20.0% |
-| Loot Table (fabled_roots:pool/reinforced_armor_of_roots) | 1 | 2 | 1 | 20.0% |
-| Reinforced Sword of Roots | 1 | 2 | 1 | 20.0% |
+| Copper Horse Armor of Roots | 1 | 1 | 80 | 12.1% |
+| Wooden Spear | 1 | 1 | 80 | 12.1% |
+| Iron Horse Armor of Roots | 1 | 1 | 60 | 9.1% |
+| Stone Spear | 1 | 1 | 60 | 9.1% |
+| Golden Spear | 1 | 1 | 50 | 7.6% |
+| Boots of Roots | 1 | 1 | 40 | 6.1% |
+| Chestplate of Roots | 1 | 1 | 40 | 6.1% |
+| Copper Spear | 1 | 1 | 40 | 6.1% |
+| Golden Horse Armor of Roots | 1 | 1 | 40 | 6.1% |
+| Helmet of Roots | 1 | 1 | 40 | 6.1% |
+| Iron Spear | 1 | 1 | 40 | 6.1% |
+| Leggings of Roots | 1 | 1 | 40 | 6.1% |
+| Diamond Spear | 1 | 1 | 16 | 2.4% |
+| Diamond Horse Armor of Roots | 1 | 1 | 10 | 1.5% |
+| Music Disc | 1 | 1 | 5 | 0.8% |
+| Enchanted Book | 1 | 1 | 4 | 0.6% |
+| Netherite Spear | 1 | 1 | 4 | 0.6% |
+| Bow of Roots | 1 | 1 | 3 | 0.5% |
+| Lapis Lazuli | 2–4 | 1 | 3 | 0.5% |
+| Shield | 1 | 1 | 3 | 0.5% |
+| Golden Carrot | 1–2 | 1 | 2 | 0.3% |
+| Crown of Roots | 1 | 2 | 60 | 42.0% |
+| Reinforced Boots of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Chestplate of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Helmet of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Leggings of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Sword of Roots | 1 | 2 | 1 | 0.7% |
 
-## fabled_roots:structure/dunesworn/rare
+</details>
 
-| Item | Stack Size | Pool | Weight | Chance |
-|:-----|:----------:|:----:|:------:|:------:|
-| Enchanted Book | 1 | 1 | 4 | 18.2% |
-| Bow of Roots | 1 | 1 | 3 | 13.6% |
-| Lapis Lazuli | 2–4 | 1 | 3 | 13.6% |
-| Shield | 1 | 1 | 3 | 13.6% |
-| Golden Carrot | 1–2 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/armor_of_roots) | 1 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/horse_armor_of_roots) | 1 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/scimitar) | 1 | 1 | 2 | 9.1% |
-| Music Disc | 1 | 1 | 1 | 4.5% |
-| Loot Table (fabled_roots:equipment/crown_of_roots) | 1 | 2 | 1 | 20.0% |
-| Loot Table (fabled_roots:pool/reinforced_armor_of_roots) | 1 | 2 | 1 | 20.0% |
-| Reinforced Sword of Roots | 1 | 2 | 1 | 20.0% |
-
-## fabled_roots:structure/endling/rare
-
-| Item | Stack Size | Pool | Weight | Chance |
-|:-----|:----------:|:----:|:------:|:------:|
-| Enchanted Book | 1 | 1 | 4 | 18.2% |
-| Bow of Roots | 1 | 1 | 3 | 13.6% |
-| Lapis Lazuli | 2–4 | 1 | 3 | 13.6% |
-| Shield | 1 | 1 | 3 | 13.6% |
-| Golden Carrot | 1–2 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/armor_of_roots) | 1 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/horse_armor_of_roots) | 1 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/scythe) | 1 | 1 | 2 | 9.1% |
-| Music Disc | 1 | 1 | 1 | 4.5% |
-| Loot Table (fabled_roots:equipment/crown_of_roots) | 1 | 2 | 1 | 20.0% |
-| Loot Table (fabled_roots:pool/reinforced_armor_of_roots) | 1 | 2 | 1 | 20.0% |
-| Reinforced Sword of Roots | 1 | 2 | 1 | 20.0% |
-
-## fabled_roots:structure/frostborne/rare
+<details>
+<summary><strong>fabled_roots:structure/dunesworn/rare</strong> (1 use)</summary>
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
-| Enchanted Book | 1 | 1 | 4 | 18.2% |
-| Bow of Roots | 1 | 1 | 3 | 13.6% |
-| Lapis Lazuli | 2–4 | 1 | 3 | 13.6% |
-| Shield | 1 | 1 | 3 | 13.6% |
-| Golden Carrot | 1–2 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/armor_of_roots) | 1 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/club) | 1 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/horse_armor_of_roots) | 1 | 1 | 2 | 9.1% |
-| Music Disc | 1 | 1 | 1 | 4.5% |
-| Loot Table (fabled_roots:equipment/crown_of_roots) | 1 | 2 | 1 | 20.0% |
-| Loot Table (fabled_roots:pool/reinforced_armor_of_roots) | 1 | 2 | 1 | 20.0% |
-| Reinforced Sword of Roots | 1 | 2 | 1 | 20.0% |
+| Copper Horse Armor of Roots | 1 | 1 | 80 | 12.1% |
+| Wooden Scimitar | 1 | 1 | 80 | 12.1% |
+| Iron Horse Armor of Roots | 1 | 1 | 60 | 9.1% |
+| Stone Scimitar | 1 | 1 | 60 | 9.1% |
+| Golden Scimitar | 1 | 1 | 50 | 7.6% |
+| Boots of Roots | 1 | 1 | 40 | 6.1% |
+| Chestplate of Roots | 1 | 1 | 40 | 6.1% |
+| Copper Scimitar | 1 | 1 | 40 | 6.1% |
+| Golden Horse Armor of Roots | 1 | 1 | 40 | 6.1% |
+| Helmet of Roots | 1 | 1 | 40 | 6.1% |
+| Iron Scimitar | 1 | 1 | 40 | 6.1% |
+| Leggings of Roots | 1 | 1 | 40 | 6.1% |
+| Diamond Scimitar | 1 | 1 | 16 | 2.4% |
+| Diamond Horse Armor of Roots | 1 | 1 | 10 | 1.5% |
+| Music Disc | 1 | 1 | 5 | 0.8% |
+| Enchanted Book | 1 | 1 | 4 | 0.6% |
+| Netherite Scimitar | 1 | 1 | 4 | 0.6% |
+| Bow of Roots | 1 | 1 | 3 | 0.5% |
+| Lapis Lazuli | 2–4 | 1 | 3 | 0.5% |
+| Shield | 1 | 1 | 3 | 0.5% |
+| Golden Carrot | 1–2 | 1 | 2 | 0.3% |
+| Crown of Roots | 1 | 2 | 60 | 42.0% |
+| Reinforced Boots of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Chestplate of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Helmet of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Leggings of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Sword of Roots | 1 | 2 | 1 | 0.7% |
 
-## fabled_roots:structure/moonshroud/rare
+</details>
 
-| Item | Stack Size | Pool | Weight | Chance |
-|:-----|:----------:|:----:|:------:|:------:|
-| Enchanted Book | 1 | 1 | 4 | 18.2% |
-| Bow of Roots | 1 | 1 | 3 | 13.6% |
-| Lapis Lazuli | 2–4 | 1 | 3 | 13.6% |
-| Shield | 1 | 1 | 3 | 13.6% |
-| Golden Carrot | 1–2 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/armor_of_roots) | 1 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/horse_armor_of_roots) | 1 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/throwing_knife) | 1 | 1 | 2 | 9.1% |
-| Music Disc | 1 | 1 | 1 | 4.5% |
-| Loot Table (fabled_roots:equipment/crown_of_roots) | 1 | 2 | 1 | 20.0% |
-| Loot Table (fabled_roots:pool/reinforced_armor_of_roots) | 1 | 2 | 1 | 20.0% |
-| Reinforced Sword of Roots | 1 | 2 | 1 | 20.0% |
-
-## fabled_roots:structure/netherian/rare
-
-| Item | Stack Size | Pool | Weight | Chance |
-|:-----|:----------:|:----:|:------:|:------:|
-| Enchanted Book | 1 | 1 | 4 | 18.2% |
-| Bow of Roots | 1 | 1 | 3 | 13.6% |
-| Lapis Lazuli | 2–4 | 1 | 3 | 13.6% |
-| Shield | 1 | 1 | 3 | 13.6% |
-| Golden Carrot | 1–2 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/armor_of_roots) | 1 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/broadsword) | 1 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/horse_armor_of_roots) | 1 | 1 | 2 | 9.1% |
-| Music Disc | 1 | 1 | 1 | 4.5% |
-| Loot Table (fabled_roots:equipment/crown_of_roots) | 1 | 2 | 1 | 20.0% |
-| Loot Table (fabled_roots:pool/reinforced_armor_of_roots) | 1 | 2 | 1 | 20.0% |
-| Reinforced Sword of Roots | 1 | 2 | 1 | 20.0% |
-
-## fabled_roots:structure/oakhearted/rare
+<details>
+<summary><strong>fabled_roots:structure/endling/rare</strong> (1 use)</summary>
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
-| Enchanted Book | 1 | 1 | 4 | 18.2% |
-| Bow of Roots | 1 | 1 | 3 | 13.6% |
-| Lapis Lazuli | 2–4 | 1 | 3 | 13.6% |
-| Shield | 1 | 1 | 3 | 13.6% |
-| Golden Carrot | 1–2 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/armor_of_roots) | 1 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/hatchet) | 1 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/horse_armor_of_roots) | 1 | 1 | 2 | 9.1% |
-| Music Disc | 1 | 1 | 1 | 4.5% |
-| Loot Table (fabled_roots:equipment/crown_of_roots) | 1 | 2 | 1 | 20.0% |
-| Loot Table (fabled_roots:pool/reinforced_armor_of_roots) | 1 | 2 | 1 | 20.0% |
-| Reinforced Sword of Roots | 1 | 2 | 1 | 20.0% |
+| Copper Horse Armor of Roots | 1 | 1 | 80 | 12.1% |
+| Wooden Scythe | 1 | 1 | 80 | 12.1% |
+| Iron Horse Armor of Roots | 1 | 1 | 60 | 9.1% |
+| Stone Scythe | 1 | 1 | 60 | 9.1% |
+| Golden Scythe | 1 | 1 | 50 | 7.6% |
+| Boots of Roots | 1 | 1 | 40 | 6.1% |
+| Chestplate of Roots | 1 | 1 | 40 | 6.1% |
+| Copper Scythe | 1 | 1 | 40 | 6.1% |
+| Golden Horse Armor of Roots | 1 | 1 | 40 | 6.1% |
+| Helmet of Roots | 1 | 1 | 40 | 6.1% |
+| Iron Scythe | 1 | 1 | 40 | 6.1% |
+| Leggings of Roots | 1 | 1 | 40 | 6.1% |
+| Diamond Scythe | 1 | 1 | 16 | 2.4% |
+| Diamond Horse Armor of Roots | 1 | 1 | 10 | 1.5% |
+| Music Disc | 1 | 1 | 5 | 0.8% |
+| Enchanted Book | 1 | 1 | 4 | 0.6% |
+| Netherite Scythe | 1 | 1 | 4 | 0.6% |
+| Bow of Roots | 1 | 1 | 3 | 0.5% |
+| Lapis Lazuli | 2–4 | 1 | 3 | 0.5% |
+| Shield | 1 | 1 | 3 | 0.5% |
+| Golden Carrot | 1–2 | 1 | 2 | 0.3% |
+| Crown of Roots | 1 | 2 | 60 | 42.0% |
+| Reinforced Boots of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Chestplate of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Helmet of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Leggings of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Sword of Roots | 1 | 2 | 1 | 0.7% |
 
-## fabled_roots:structure/orebringer/rare
+</details>
 
-| Item | Stack Size | Pool | Weight | Chance |
-|:-----|:----------:|:----:|:------:|:------:|
-| Enchanted Book | 1 | 1 | 4 | 18.2% |
-| Bow of Roots | 1 | 1 | 3 | 13.6% |
-| Lapis Lazuli | 2–4 | 1 | 3 | 13.6% |
-| Shield | 1 | 1 | 3 | 13.6% |
-| Golden Carrot | 1–2 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/armor_of_roots) | 1 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/horse_armor_of_roots) | 1 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/mace) | 1 | 1 | 2 | 9.1% |
-| Music Disc | 1 | 1 | 1 | 4.5% |
-| Loot Table (fabled_roots:equipment/crown_of_roots) | 1 | 2 | 1 | 20.0% |
-| Loot Table (fabled_roots:pool/reinforced_armor_of_roots) | 1 | 2 | 1 | 20.0% |
-| Reinforced Sword of Roots | 1 | 2 | 1 | 20.0% |
-
-## fabled_roots:structure/palehearted/rare
-
-| Item | Stack Size | Pool | Weight | Chance |
-|:-----|:----------:|:----:|:------:|:------:|
-| Enchanted Book | 1 | 1 | 4 | 18.2% |
-| Bow of Roots | 1 | 1 | 3 | 13.6% |
-| Lapis Lazuli | 2–4 | 1 | 3 | 13.6% |
-| Shield | 1 | 1 | 3 | 13.6% |
-| Golden Carrot | 1–2 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/armor_of_roots) | 1 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/horse_armor_of_roots) | 1 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/rapier) | 1 | 1 | 2 | 9.1% |
-| Music Disc | 1 | 1 | 1 | 4.5% |
-| Loot Table (fabled_roots:equipment/crown_of_roots) | 1 | 2 | 1 | 20.0% |
-| Loot Table (fabled_roots:pool/reinforced_armor_of_roots) | 1 | 2 | 1 | 20.0% |
-| Reinforced Sword of Roots | 1 | 2 | 1 | 20.0% |
-
-## fabled_roots:structure/turtlekin/rare
+<details>
+<summary><strong>fabled_roots:structure/frostborne/rare</strong> (1 use)</summary>
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
-| Enchanted Book | 1 | 1 | 4 | 18.2% |
-| Bow of Roots | 1 | 1 | 3 | 13.6% |
-| Lapis Lazuli | 2–4 | 1 | 3 | 13.6% |
-| Shield | 1 | 1 | 3 | 13.6% |
-| Golden Carrot | 1–2 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/armor_of_roots) | 1 | 1 | 2 | 9.1% |
-| Loot Table (fabled_roots:pool/horse_armor_of_roots) | 1 | 1 | 2 | 9.1% |
-| Trident | 1 | 1 | 2 | 9.1% |
-| Music Disc | 1 | 1 | 1 | 4.5% |
-| Loot Table (fabled_roots:equipment/crown_of_roots) | 1 | 2 | 1 | 20.0% |
-| Loot Table (fabled_roots:pool/reinforced_armor_of_roots) | 1 | 2 | 1 | 20.0% |
-| Reinforced Sword of Roots | 1 | 2 | 1 | 20.0% |
+| Copper Horse Armor of Roots | 1 | 1 | 80 | 12.1% |
+| Wooden Club | 1 | 1 | 80 | 12.1% |
+| Iron Horse Armor of Roots | 1 | 1 | 60 | 9.1% |
+| Stone Club | 1 | 1 | 60 | 9.1% |
+| Golden Club | 1 | 1 | 50 | 7.6% |
+| Boots of Roots | 1 | 1 | 40 | 6.1% |
+| Chestplate of Roots | 1 | 1 | 40 | 6.1% |
+| Copper Club | 1 | 1 | 40 | 6.1% |
+| Golden Horse Armor of Roots | 1 | 1 | 40 | 6.1% |
+| Helmet of Roots | 1 | 1 | 40 | 6.1% |
+| Iron Club | 1 | 1 | 40 | 6.1% |
+| Leggings of Roots | 1 | 1 | 40 | 6.1% |
+| Diamond Club | 1 | 1 | 16 | 2.4% |
+| Diamond Horse Armor of Roots | 1 | 1 | 10 | 1.5% |
+| Music Disc | 1 | 1 | 5 | 0.8% |
+| Enchanted Book | 1 | 1 | 4 | 0.6% |
+| Netherite Club | 1 | 1 | 4 | 0.6% |
+| Bow of Roots | 1 | 1 | 3 | 0.5% |
+| Lapis Lazuli | 2–4 | 1 | 3 | 0.5% |
+| Shield | 1 | 1 | 3 | 0.5% |
+| Golden Carrot | 1–2 | 1 | 2 | 0.3% |
+| Crown of Roots | 1 | 2 | 60 | 42.0% |
+| Reinforced Boots of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Chestplate of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Helmet of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Leggings of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Sword of Roots | 1 | 2 | 1 | 0.7% |
+
+</details>
+
+<details>
+<summary><strong>fabled_roots:structure/moonshroud/rare</strong> (1 use)</summary>
+
+| Item | Stack Size | Pool | Weight | Chance |
+|:-----|:----------:|:----:|:------:|:------:|
+| Copper Horse Armor of Roots | 1 | 1 | 80 | 12.1% |
+| Wooden Throwing Knife | 1 | 1 | 80 | 12.1% |
+| Iron Horse Armor of Roots | 1 | 1 | 60 | 9.1% |
+| Stone Throwing Knife | 1 | 1 | 60 | 9.1% |
+| Golden Throwing Knife | 1 | 1 | 50 | 7.6% |
+| Boots of Roots | 1 | 1 | 40 | 6.1% |
+| Chestplate of Roots | 1 | 1 | 40 | 6.1% |
+| Copper Throwing Knife | 1 | 1 | 40 | 6.1% |
+| Golden Horse Armor of Roots | 1 | 1 | 40 | 6.1% |
+| Helmet of Roots | 1 | 1 | 40 | 6.1% |
+| Iron Throwing Knife | 1 | 1 | 40 | 6.1% |
+| Leggings of Roots | 1 | 1 | 40 | 6.1% |
+| Diamond Throwing Knife | 1 | 1 | 16 | 2.4% |
+| Diamond Horse Armor of Roots | 1 | 1 | 10 | 1.5% |
+| Music Disc | 1 | 1 | 5 | 0.8% |
+| Enchanted Book | 1 | 1 | 4 | 0.6% |
+| Netherite Throwing Knife | 1 | 1 | 4 | 0.6% |
+| Bow of Roots | 1 | 1 | 3 | 0.5% |
+| Lapis Lazuli | 2–4 | 1 | 3 | 0.5% |
+| Shield | 1 | 1 | 3 | 0.5% |
+| Golden Carrot | 1–2 | 1 | 2 | 0.3% |
+| Crown of Roots | 1 | 2 | 60 | 42.0% |
+| Reinforced Boots of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Chestplate of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Helmet of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Leggings of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Sword of Roots | 1 | 2 | 1 | 0.7% |
+
+</details>
+
+<details>
+<summary><strong>fabled_roots:structure/netherian/rare</strong> (1 use)</summary>
+
+| Item | Stack Size | Pool | Weight | Chance |
+|:-----|:----------:|:----:|:------:|:------:|
+| Copper Horse Armor of Roots | 1 | 1 | 80 | 12.1% |
+| Wooden Broadsword | 1 | 1 | 80 | 12.1% |
+| Iron Horse Armor of Roots | 1 | 1 | 60 | 9.1% |
+| item.fabled_roots.stone_broadsword | 1 | 1 | 60 | 9.1% |
+| Golden Broadsword | 1 | 1 | 50 | 7.6% |
+| Boots of Roots | 1 | 1 | 40 | 6.1% |
+| Chestplate of Roots | 1 | 1 | 40 | 6.1% |
+| Copper Broadsword | 1 | 1 | 40 | 6.1% |
+| Golden Horse Armor of Roots | 1 | 1 | 40 | 6.1% |
+| Helmet of Roots | 1 | 1 | 40 | 6.1% |
+| Iron Broadsword | 1 | 1 | 40 | 6.1% |
+| Leggings of Roots | 1 | 1 | 40 | 6.1% |
+| Diamond Broadsword | 1 | 1 | 16 | 2.4% |
+| Diamond Horse Armor of Roots | 1 | 1 | 10 | 1.5% |
+| Music Disc | 1 | 1 | 5 | 0.8% |
+| Enchanted Book | 1 | 1 | 4 | 0.6% |
+| item.fabled_roots.netherite_broadsword | 1 | 1 | 4 | 0.6% |
+| Bow of Roots | 1 | 1 | 3 | 0.5% |
+| Lapis Lazuli | 2–4 | 1 | 3 | 0.5% |
+| Shield | 1 | 1 | 3 | 0.5% |
+| Golden Carrot | 1–2 | 1 | 2 | 0.3% |
+| Crown of Roots | 1 | 2 | 60 | 42.0% |
+| Reinforced Boots of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Chestplate of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Helmet of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Leggings of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Sword of Roots | 1 | 2 | 1 | 0.7% |
+
+</details>
+
+<details>
+<summary><strong>fabled_roots:structure/oakhearted/rare</strong> (1 use)</summary>
+
+| Item | Stack Size | Pool | Weight | Chance |
+|:-----|:----------:|:----:|:------:|:------:|
+| Copper Horse Armor of Roots | 1 | 1 | 80 | 12.1% |
+| Wooden Hatchet | 1 | 1 | 80 | 12.1% |
+| Iron Horse Armor of Roots | 1 | 1 | 60 | 9.1% |
+| Stone Hatchet | 1 | 1 | 60 | 9.1% |
+| Golden Hatchet | 1 | 1 | 50 | 7.6% |
+| Boots of Roots | 1 | 1 | 40 | 6.1% |
+| Chestplate of Roots | 1 | 1 | 40 | 6.1% |
+| Copper Hatchet | 1 | 1 | 40 | 6.1% |
+| Golden Horse Armor of Roots | 1 | 1 | 40 | 6.1% |
+| Helmet of Roots | 1 | 1 | 40 | 6.1% |
+| Iron Hatchet | 1 | 1 | 40 | 6.1% |
+| Leggings of Roots | 1 | 1 | 40 | 6.1% |
+| Diamond Hatchet | 1 | 1 | 16 | 2.4% |
+| Diamond Horse Armor of Roots | 1 | 1 | 10 | 1.5% |
+| Music Disc | 1 | 1 | 5 | 0.8% |
+| Enchanted Book | 1 | 1 | 4 | 0.6% |
+| Netherite Hatchet | 1 | 1 | 4 | 0.6% |
+| Bow of Roots | 1 | 1 | 3 | 0.5% |
+| Lapis Lazuli | 2–4 | 1 | 3 | 0.5% |
+| Shield | 1 | 1 | 3 | 0.5% |
+| Golden Carrot | 1–2 | 1 | 2 | 0.3% |
+| Crown of Roots | 1 | 2 | 60 | 42.0% |
+| Reinforced Boots of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Chestplate of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Helmet of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Leggings of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Sword of Roots | 1 | 2 | 1 | 0.7% |
+
+</details>
+
+<details>
+<summary><strong>fabled_roots:structure/orebringer/rare</strong> (1 use)</summary>
+
+| Item | Stack Size | Pool | Weight | Chance |
+|:-----|:----------:|:----:|:------:|:------:|
+| Copper Horse Armor of Roots | 1 | 1 | 80 | 15.1% |
+| Mace | 1 | 1 | 80 | 15.1% |
+| Iron Horse Armor of Roots | 1 | 1 | 60 | 11.3% |
+| Blaze Mace | 1 | 1 | 40 | 7.5% |
+| Boots of Roots | 1 | 1 | 40 | 7.5% |
+| Breeze Mace | 1 | 1 | 40 | 7.5% |
+| Chestplate of Roots | 1 | 1 | 40 | 7.5% |
+| Golden Horse Armor of Roots | 1 | 1 | 40 | 7.5% |
+| Helmet of Roots | 1 | 1 | 40 | 7.5% |
+| Leggings of Roots | 1 | 1 | 40 | 7.5% |
+| Diamond Horse Armor of Roots | 1 | 1 | 10 | 1.9% |
+| Music Disc | 1 | 1 | 5 | 0.9% |
+| Enchanted Book | 1 | 1 | 4 | 0.8% |
+| Bow of Roots | 1 | 1 | 3 | 0.6% |
+| Lapis Lazuli | 2–4 | 1 | 3 | 0.6% |
+| Shield | 1 | 1 | 3 | 0.6% |
+| Golden Carrot | 1–2 | 1 | 2 | 0.4% |
+| Crown of Roots | 1 | 2 | 60 | 42.0% |
+| Reinforced Boots of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Chestplate of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Helmet of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Leggings of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Sword of Roots | 1 | 2 | 1 | 0.7% |
+
+</details>
+
+<details>
+<summary><strong>fabled_roots:structure/palehearted/rare</strong> (1 use)</summary>
+
+| Item | Stack Size | Pool | Weight | Chance |
+|:-----|:----------:|:----:|:------:|:------:|
+| Copper Horse Armor of Roots | 1 | 1 | 80 | 12.1% |
+| Wooden Rapier | 1 | 1 | 80 | 12.1% |
+| Iron Horse Armor of Roots | 1 | 1 | 60 | 9.1% |
+| Stone Rapier | 1 | 1 | 60 | 9.1% |
+| Golden Rapier | 1 | 1 | 50 | 7.6% |
+| Boots of Roots | 1 | 1 | 40 | 6.1% |
+| Chestplate of Roots | 1 | 1 | 40 | 6.1% |
+| Copper Rapier | 1 | 1 | 40 | 6.1% |
+| Golden Horse Armor of Roots | 1 | 1 | 40 | 6.1% |
+| Helmet of Roots | 1 | 1 | 40 | 6.1% |
+| Iron Rapier | 1 | 1 | 40 | 6.1% |
+| Leggings of Roots | 1 | 1 | 40 | 6.1% |
+| Diamond Rapier | 1 | 1 | 16 | 2.4% |
+| Diamond Horse Armor of Roots | 1 | 1 | 10 | 1.5% |
+| Music Disc | 1 | 1 | 5 | 0.8% |
+| Enchanted Book | 1 | 1 | 4 | 0.6% |
+| Netherite Rapier | 1 | 1 | 4 | 0.6% |
+| Bow of Roots | 1 | 1 | 3 | 0.5% |
+| Lapis Lazuli | 2–4 | 1 | 3 | 0.5% |
+| Shield | 1 | 1 | 3 | 0.5% |
+| Golden Carrot | 1–2 | 1 | 2 | 0.3% |
+| Crown of Roots | 1 | 2 | 60 | 42.0% |
+| Reinforced Boots of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Chestplate of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Helmet of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Leggings of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Sword of Roots | 1 | 2 | 1 | 0.7% |
+
+</details>
+
+<details>
+<summary><strong>fabled_roots:structure/turtlekin/rare</strong> (1 use)</summary>
+
+| Item | Stack Size | Pool | Weight | Chance |
+|:-----|:----------:|:----:|:------:|:------:|
+| Copper Horse Armor of Roots | 1 | 1 | 80 | 21.5% |
+| Iron Horse Armor of Roots | 1 | 1 | 60 | 16.1% |
+| Boots of Roots | 1 | 1 | 40 | 10.8% |
+| Chestplate of Roots | 1 | 1 | 40 | 10.8% |
+| Golden Horse Armor of Roots | 1 | 1 | 40 | 10.8% |
+| Helmet of Roots | 1 | 1 | 40 | 10.8% |
+| Leggings of Roots | 1 | 1 | 40 | 10.8% |
+| Diamond Horse Armor of Roots | 1 | 1 | 10 | 2.7% |
+| Music Disc | 1 | 1 | 5 | 1.3% |
+| Enchanted Book | 1 | 1 | 4 | 1.1% |
+| Bow of Roots | 1 | 1 | 3 | 0.8% |
+| Lapis Lazuli | 2–4 | 1 | 3 | 0.8% |
+| Shield | 1 | 1 | 3 | 0.8% |
+| Golden Carrot | 1–2 | 1 | 2 | 0.5% |
+| Trident | 1 | 1 | 2 | 0.5% |
+| Crown of Roots | 1 | 2 | 60 | 42.0% |
+| Reinforced Boots of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Chestplate of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Helmet of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Leggings of Roots | 1 | 2 | 20 | 14.0% |
+| Reinforced Sword of Roots | 1 | 2 | 1 | 0.7% |
+
+</details>
 # Contents
 
 The structure is composed of the following blocks: Stone Bricks, Dirt, Stone, Chiseled Stone Bricks, End Stone, Netherrack, Sandstone, Ice, Sand, Pale Moss Block, Crimson Nylium, Mycelium, Podzol, Snow Block, Iron Bars, Packed Ice, Moss Block, Dark Oak Leaves, Blue Ice, Snow, Dark Prismarine Slab, Nether Bricks, Stone Brick Stairs, Pale Moss Carpet, Smooth Sandstone Slab, Seagrass, Chorus Plant, Vine, Prismarine Bricks, Leaf Litter, End Stone Brick Wall, Nether Brick Wall, Copper Ore, Crimson Roots, Calcite, Pale Oak Slab, Mud, Purpur Stairs, Stripped Pale Oak Log, Tall Seagrass, Grass Block, Oak Slab, Smooth Quartz, Twisting Vines Plant, Dark Prismarine Stairs, Lapis Block, Smooth Quartz Stairs, Spruce Stairs, Jungle Trapdoor, Purpur Pillar, Pale Hanging Moss, Smooth Quartz Slab, Quartz Pillar, Vault, Diorite, Spruce Fence, Cut Sandstone, Dark Oak Log, Dark Prismarine, Spruce Trapdoor, Powder Snow, Closed Eyeblossom, Polished Diorite, Yellow Wall Banner, Dead Bush, Soul Campfire, Stone Brick Slab, Campfire, Chiseled Sandstone, Chorus Flower, Gold Block, Tall Grass, Birch Stairs, Pale Oak Sapling, Brain Coral, Chain, Chiseled Nether Bricks, Crimson Fungus, Horn Coral, Prismarine Brick Stairs, Quartz Stairs, Twisting Vines, Dandelion, End Stone Brick Stairs, Fire Coral Fan, Fire Coral Wall Fan, Lantern, Lectern, Nether Brick Stairs, Oak Log, Oak Stairs, Pale Oak Stairs, Polished Diorite Stairs, Short Grass, Smooth Sandstone Stairs, Trial Spawner, Tube Coral.

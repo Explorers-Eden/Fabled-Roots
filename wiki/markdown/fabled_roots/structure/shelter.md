@@ -3,7 +3,8 @@
 The structure generates 11 loot containers using 10 loot tables: `fabled_roots:structure/aetherian/common`, `fabled_roots:structure/dunesworn/common`, `fabled_roots:structure/endling/common`, `fabled_roots:structure/frostborne/common`, `fabled_roots:structure/moonshroud/common`, `fabled_roots:structure/netherian/common`, `fabled_roots:structure/oakhearted/common`, `fabled_roots:structure/orebringer/common`, `fabled_roots:structure/palehearted/common`, `fabled_roots:structure/turtlekin/common`.
 <br>
 
-## fabled_roots:structure/aetherian/common
+<details>
+<summary><strong>fabled_roots:structure/aetherian/common</strong> (1 use)</summary>
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
@@ -21,12 +22,14 @@ The structure generates 11 loot containers using 10 loot tables: `fabled_roots:s
 | Harness of Roots | 1 | 2 | 1 | 16.7% |
 | Stone Spear | 1 | 2 | 1 | 16.7% |
 | Wooden Spear | 1 | 2 | 1 | 16.7% |
-| Loot Table (fabled_roots:pool/journal/final_days/aetherian) | 1 | 3 | 3 | 25.0% |
-| Loot Table (fabled_roots:pool/journal/new_horizons/aetherian) | 1 | 3 | 3 | 25.0% |
-| Buried Treasure Map | 1 | 3 | 2 | 16.7% |
-| Horn of Roots | 1 | 3 | 2 | 16.7% |
+| Written Book | 1 | 3 | 2400 | 99.8% |
+| Buried Treasure Map | 1 | 3 | 2 | 0.1% |
+| Horn of Roots | 1 | 3 | 2 | 0.1% |
 
-## fabled_roots:structure/dunesworn/common
+</details>
+
+<details>
+<summary><strong>fabled_roots:structure/dunesworn/common</strong> (1 use)</summary>
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
@@ -44,12 +47,14 @@ The structure generates 11 loot containers using 10 loot tables: `fabled_roots:s
 | Harness of Roots | 1 | 2 | 1 | 16.7% |
 | Stone Scimitar | 1 | 2 | 1 | 16.7% |
 | Wooden Scimitar | 1 | 2 | 1 | 16.7% |
-| Loot Table (fabled_roots:pool/journal/final_days/dunesworn) | 1 | 3 | 3 | 25.0% |
-| Loot Table (fabled_roots:pool/journal/new_horizons/dunesworn) | 1 | 3 | 3 | 25.0% |
-| Buried Treasure Map | 1 | 3 | 2 | 16.7% |
-| Horn of Roots | 1 | 3 | 2 | 16.7% |
+| Written Book | 1 | 3 | 2400 | 99.8% |
+| Buried Treasure Map | 1 | 3 | 2 | 0.1% |
+| Horn of Roots | 1 | 3 | 2 | 0.1% |
 
-## fabled_roots:structure/endling/common
+</details>
+
+<details>
+<summary><strong>fabled_roots:structure/endling/common</strong> (1 use)</summary>
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
@@ -67,12 +72,14 @@ The structure generates 11 loot containers using 10 loot tables: `fabled_roots:s
 | Harness of Roots | 1 | 2 | 1 | 16.7% |
 | Stone Scythe | 1 | 2 | 1 | 16.7% |
 | Wooden Scythe | 1 | 2 | 1 | 16.7% |
-| Loot Table (fabled_roots:pool/journal/final_days/endling) | 1 | 3 | 3 | 25.0% |
-| Loot Table (fabled_roots:pool/journal/new_horizons/endling) | 1 | 3 | 3 | 25.0% |
-| Buried Treasure Map | 1 | 3 | 2 | 16.7% |
-| Horn of Roots | 1 | 3 | 2 | 16.7% |
+| Written Book | 1 | 3 | 2400 | 99.8% |
+| Buried Treasure Map | 1 | 3 | 2 | 0.1% |
+| Horn of Roots | 1 | 3 | 2 | 0.1% |
 
-## fabled_roots:structure/frostborne/common
+</details>
+
+<details>
+<summary><strong>fabled_roots:structure/frostborne/common</strong> (1 use)</summary>
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
@@ -90,12 +97,14 @@ The structure generates 11 loot containers using 10 loot tables: `fabled_roots:s
 | Harness of Roots | 1 | 2 | 1 | 16.7% |
 | Stone Club | 1 | 2 | 1 | 16.7% |
 | Wooden Club | 1 | 2 | 1 | 16.7% |
-| Loot Table (fabled_roots:pool/journal/final_days/frostborne) | 1 | 3 | 3 | 25.0% |
-| Loot Table (fabled_roots:pool/journal/new_horizons/frostborne) | 1 | 3 | 3 | 25.0% |
-| Buried Treasure Map | 1 | 3 | 2 | 16.7% |
-| Horn of Roots | 1 | 3 | 2 | 16.7% |
+| Written Book | 1 | 3 | 2400 | 99.8% |
+| Buried Treasure Map | 1 | 3 | 2 | 0.1% |
+| Horn of Roots | 1 | 3 | 2 | 0.1% |
 
-## fabled_roots:structure/moonshroud/common
+</details>
+
+<details>
+<summary><strong>fabled_roots:structure/moonshroud/common</strong> (1 use)</summary>
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
@@ -113,12 +122,14 @@ The structure generates 11 loot containers using 10 loot tables: `fabled_roots:s
 | Harness of Roots | 1 | 2 | 1 | 16.7% |
 | Stone Throwing Knife | 1 | 2 | 1 | 16.7% |
 | Wooden Throwing Knife | 1 | 2 | 1 | 16.7% |
-| Loot Table (fabled_roots:pool/journal/final_days/moonshroud) | 1 | 3 | 3 | 25.0% |
-| Loot Table (fabled_roots:pool/journal/new_horizons/moonshroud) | 1 | 3 | 3 | 25.0% |
-| Buried Treasure Map | 1 | 3 | 2 | 16.7% |
-| Horn of Roots | 1 | 3 | 2 | 16.7% |
+| Written Book | 1 | 3 | 2400 | 99.8% |
+| Buried Treasure Map | 1 | 3 | 2 | 0.1% |
+| Horn of Roots | 1 | 3 | 2 | 0.1% |
 
-## fabled_roots:structure/netherian/common
+</details>
+
+<details>
+<summary><strong>fabled_roots:structure/netherian/common</strong> (1 use)</summary>
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
@@ -136,12 +147,14 @@ The structure generates 11 loot containers using 10 loot tables: `fabled_roots:s
 | Harness of Roots | 1 | 2 | 1 | 16.7% |
 | item.fabled_roots.stone_broadsword | 1 | 2 | 1 | 16.7% |
 | Wooden Broadsword | 1 | 2 | 1 | 16.7% |
-| Loot Table (fabled_roots:pool/journal/final_days/netherian) | 1 | 3 | 3 | 25.0% |
-| Loot Table (fabled_roots:pool/journal/new_horizons/netherian) | 1 | 3 | 3 | 25.0% |
-| Buried Treasure Map | 1 | 3 | 2 | 16.7% |
-| Horn of Roots | 1 | 3 | 2 | 16.7% |
+| Written Book | 1 | 3 | 2400 | 99.8% |
+| Buried Treasure Map | 1 | 3 | 2 | 0.1% |
+| Horn of Roots | 1 | 3 | 2 | 0.1% |
 
-## fabled_roots:structure/oakhearted/common
+</details>
+
+<details>
+<summary><strong>fabled_roots:structure/oakhearted/common</strong> (1 use)</summary>
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
@@ -159,12 +172,14 @@ The structure generates 11 loot containers using 10 loot tables: `fabled_roots:s
 | Harness of Roots | 1 | 2 | 1 | 16.7% |
 | Stone Hatchet | 1 | 2 | 1 | 16.7% |
 | Wooden Hatchet | 1 | 2 | 1 | 16.7% |
-| Loot Table (fabled_roots:pool/journal/final_days/oakhearted) | 1 | 3 | 3 | 25.0% |
-| Loot Table (fabled_roots:pool/journal/new_horizons/oakhearted) | 1 | 3 | 3 | 25.0% |
-| Buried Treasure Map | 1 | 3 | 2 | 16.7% |
-| Horn of Roots | 1 | 3 | 2 | 16.7% |
+| Written Book | 1 | 3 | 2400 | 99.8% |
+| Buried Treasure Map | 1 | 3 | 2 | 0.1% |
+| Horn of Roots | 1 | 3 | 2 | 0.1% |
 
-## fabled_roots:structure/orebringer/common
+</details>
+
+<details>
+<summary><strong>fabled_roots:structure/orebringer/common</strong> (2 uses)</summary>
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
@@ -181,12 +196,14 @@ The structure generates 11 loot containers using 10 loot tables: `fabled_roots:s
 | Bundle of Roots | 1 | 2 | 1 | 20.0% |
 | Harness of Roots | 1 | 2 | 1 | 20.0% |
 | Sword of Roots | 1 | 2 | 1 | 20.0% |
-| Loot Table (fabled_roots:pool/journal/final_days/orebringer) | 1 | 3 | 3 | 25.0% |
-| Loot Table (fabled_roots:pool/journal/new_horizons/orebringer) | 1 | 3 | 3 | 25.0% |
-| Buried Treasure Map | 1 | 3 | 2 | 16.7% |
-| Horn of Roots | 1 | 3 | 2 | 16.7% |
+| Written Book | 1 | 3 | 2400 | 99.8% |
+| Buried Treasure Map | 1 | 3 | 2 | 0.1% |
+| Horn of Roots | 1 | 3 | 2 | 0.1% |
 
-## fabled_roots:structure/palehearted/common
+</details>
+
+<details>
+<summary><strong>fabled_roots:structure/palehearted/common</strong> (1 use)</summary>
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
@@ -204,12 +221,14 @@ The structure generates 11 loot containers using 10 loot tables: `fabled_roots:s
 | Harness of Roots | 1 | 2 | 1 | 16.7% |
 | Stone Rapier | 1 | 2 | 1 | 16.7% |
 | Wooden Rapier | 1 | 2 | 1 | 16.7% |
-| Loot Table (fabled_roots:pool/journal/final_days/palehearted) | 1 | 3 | 3 | 25.0% |
-| Loot Table (fabled_roots:pool/journal/new_horizons/palehearted) | 1 | 3 | 3 | 25.0% |
-| Buried Treasure Map | 1 | 3 | 2 | 16.7% |
-| Horn of Roots | 1 | 3 | 2 | 16.7% |
+| Written Book | 1 | 3 | 2400 | 99.8% |
+| Buried Treasure Map | 1 | 3 | 2 | 0.1% |
+| Horn of Roots | 1 | 3 | 2 | 0.1% |
 
-## fabled_roots:structure/turtlekin/common
+</details>
+
+<details>
+<summary><strong>fabled_roots:structure/turtlekin/common</strong> (1 use)</summary>
 
 | Item | Stack Size | Pool | Weight | Chance |
 |:-----|:----------:|:----:|:------:|:------:|
@@ -226,10 +245,11 @@ The structure generates 11 loot containers using 10 loot tables: `fabled_roots:s
 | Bundle of Roots | 1 | 2 | 1 | 20.0% |
 | Harness of Roots | 1 | 2 | 1 | 20.0% |
 | Trident | 1 | 2 | 1 | 20.0% |
-| Loot Table (fabled_roots:pool/journal/final_days/turtlekin) | 1 | 3 | 3 | 25.0% |
-| Loot Table (fabled_roots:pool/journal/new_horizons/turtlekin) | 1 | 3 | 3 | 25.0% |
-| Buried Treasure Map | 1 | 3 | 2 | 16.7% |
-| Horn of Roots | 1 | 3 | 2 | 16.7% |
+| Written Book | 1 | 3 | 2400 | 99.8% |
+| Buried Treasure Map | 1 | 3 | 2 | 0.1% |
+| Horn of Roots | 1 | 3 | 2 | 0.1% |
+
+</details>
 # Contents
 
 The structure is composed of the following blocks: Stone, Dirt, Sand, Pale Moss Block, Grass Block, Moss Block, Dark Oak Leaves, Netherrack, Pale Oak Leaves, End Stone, Coarse Dirt, Ice, Pale Moss Carpet, Short Grass, Rooted Dirt, Dark Oak Wood, Snow, Mycelium, Dark Prismarine Slab, Waxed Exposed Cut Copper Slab, Tall Grass, Smooth Sandstone, Snow Block, Crimson Nylium, Mud, Pale Oak Trapdoor, Spruce Fence, Pale Oak Wood, Seagrass, Vine, Cyan Stained Glass, Iron Bars, Oak Slab, Podzol, Pale Hanging Moss, Packed Ice, Light Blue Stained Glass Pane, Diorite, Calcite, Jungle Trapdoor, Oak Leaves, Oak Log, Smooth Sandstone Slab, Light Blue Glazed Terracotta, Purpur Slab, Quartz Pillar, Smooth Sandstone Stairs, Spruce Trapdoor, Pale Oak Log, Prismarine Bricks, White Stained Glass Pane, Cactus, Farmland, Polished Diorite, End Stone Brick Stairs, Pale Oak Fence, Oak Fence, Quartz Slab, Tall Seagrass, Dirt Path, Smooth Quartz Stairs, Oak Wood, Waxed Exposed Cut Copper, Carrots, Stone Bricks, Diorite Slab, Birch Planks, Crimson Trapdoor, Dandelion, Nether Brick Fence, Spruce Stairs, Tuff, Hanging Roots, Pale Oak Sapling, Polished Diorite Slab, Birch Stairs, Cut Sandstone, Lapis Block, End Stone Brick Wall, Blue Ice, Chorus Plant, Dark Oak Trapdoor, Birch Trapdoor, Nether Brick Wall, Pale Oak Planks, End Stone Brick Slab, End Stone Bricks, Powder Snow, Prismarine Brick Stairs, Prismarine Wall, Diorite Wall, Moss Carpet, Soul Campfire, Chest, Copper Ore, Crimson Roots, Glow Lichen, Chiseled Sandstone, Chiseled Stone Bricks, Closed Eyeblossom, Crimson Fence, Gold Block, Nether Brick Slab, Pumpkin Stem, Smooth Quartz Slab, Stripped Dark Oak Log, Carved Pumpkin, Firefly Bush, Spruce Wall Sign, Campfire, Open Eyeblossom, Purpur Stairs, Sandstone, Spruce Fence Gate, Yellow Wall Banner, Lantern, Purpur Pillar, Stripped Pale Oak Log, Bookshelf, Coal Ore, Dark Oak Stairs, Redstone Ore, Spruce Planks, Azure Bluet, Cornflower, Diorite Stairs, Gold Ore, Horn Coral, Pale Oak Stairs, Stripped Crimson Stem, Warped Trapdoor, Birch Slab, Bubble Coral Fan, Chorus Flower, Dark Oak Door, Dark Oak Log, Dark Prismarine, Nether Brick Stairs, Oxeye Daisy, Pale Oak Door, Poppy, Shroomlight, Spruce Slab, Twisting Vines Plant, Cracked Nether Bricks, Crimson Fungus, Fire Coral, Furnace, Light Blue Candle, Packed Mud, Polished Diorite Stairs, Tube Coral, Warped Fence Gate, Azalea, Chiseled Nether Bricks, Crafting Table, Creaking Heart, Exposed Copper Lantern, Flowering Azalea, Green Bed, Horn Coral Fan, Iron Chain, Nether Bricks, Weathered Copper Lantern, White Candle, Bell, Blast Furnace, Cartography Table, Chipped Anvil, Composter, Dark Oak Pressure Plate, Dark Prismarine Stairs, Exposed Copper Chain, Fletching Table, Gravel, Hay Block, Jukebox, Light, Mud Brick Wall, Quartz Block, Sea Lantern, Smithing Table, Soul Fire, Soul Soil, Stonecutter, Target, Twisting Vines, Water Cauldron.
