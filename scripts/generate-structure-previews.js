@@ -628,7 +628,8 @@ function drawTexturedPolygon(png, face) {
 function rotatePointAroundOrigin(point, origin, axis, angleDegrees, rescale = false) {
   if (!angleDegrees) return point;
 
-  const angle = (angleDegrees * Math.PI) / 180;
+  const correctedAngleDegrees = axis === "y" ? -angleDegrees : angleDegrees;
+  const angle = (correctedAngleDegrees * Math.PI) / 180;
   const cos = Math.cos(angle);
   const sin = Math.sin(angle);
 
