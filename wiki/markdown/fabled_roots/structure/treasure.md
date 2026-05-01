@@ -1,7 +1,6 @@
 # Generated Loot.
 
 There are 10 loot tables used in this structure:
-<br>
 
 <details>
 <summary><strong>fabled_roots:structure/aetherian/treasure</strong> (1 use)</summary>

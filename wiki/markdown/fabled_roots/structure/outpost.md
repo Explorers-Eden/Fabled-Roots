@@ -1,7 +1,6 @@
 # Generated Loot.
 
 There are 4 loot tables used in this structure:
-<br>
 
 <details>
 <summary><strong>fabled_roots:structure/dunesworn/outpost</strong> (1 use)</summary>
