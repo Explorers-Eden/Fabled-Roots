@@ -30,6 +30,8 @@ public class WikiRendererClient implements ClientModInitializer {
         try {
             Minecraft client = Minecraft.getInstance();
 
+            waitForClientStartup(client);
+            openSingleplayerWorld(client, "WikiRender");
             waitForWorld(client);
             sleep(4000);
 
@@ -69,8 +71,72 @@ public class WikiRendererClient implements ClientModInitializer {
         }
     }
 
+    private void waitForClientStartup(Minecraft client) throws InterruptedException {
+        long deadline = System.currentTimeMillis() + 120_000L;
+
+        while (System.currentTimeMillis() < deadline) {
+            // Wait until the client reached a normal menu/render state.
+            if (client.getWindow() != null && client.options != null) {
+                return;
+            }
+
+            sleep(500);
+        }
+
+        throw new IllegalStateException("Timed out waiting for Minecraft client startup.");
+    }
+
+    private void openSingleplayerWorld(Minecraft client, String worldName) throws InterruptedException {
+        if (client.level != null && client.player != null) return;
+
+        System.out.println("[WikiRenderer] Opening singleplayer world: " + worldName);
+
+        client.execute(() -> {
+            try {
+                Object flows = client.getClass().getMethod("createWorldOpenFlows").invoke(client);
+
+                // Minecraft 26.1+ still has a world-open flow, but exact overloads can vary.
+                // Try likely loadLevel overloads reflectively to stay resilient.
+                for (java.lang.reflect.Method method : flows.getClass().getMethods()) {
+                    if (!method.getName().equals("loadLevel")) continue;
+
+                    Class<?>[] parameters = method.getParameterTypes();
+
+                    try {
+                        if (parameters.length == 2 && parameters[1] == String.class) {
+                            Object firstArg = null;
+
+                            // Usually the first argument is a Screen; client.screen is valid here.
+                            if (client.screen != null && parameters[0].isAssignableFrom(client.screen.getClass())) {
+                                firstArg = client.screen;
+                            }
+
+                            method.invoke(flows, firstArg, worldName);
+                            System.out.println("[WikiRenderer] Invoked world open flow: " + method);
+                            return;
+                        }
+
+                        if (parameters.length == 1 && parameters[0] == String.class) {
+                            method.invoke(flows, worldName);
+                            System.out.println("[WikiRenderer] Invoked world open flow: " + method);
+                            return;
+                        }
+                    } catch (Throwable ignored) {
+                        // Try next overload.
+                    }
+                }
+
+                throw new IllegalStateException("Could not find usable loadLevel overload on " + flows.getClass().getName());
+            } catch (Throwable throwable) {
+                throwable.printStackTrace();
+            }
+        });
+
+        sleep(5000);
+    }
+
     private void waitForWorld(Minecraft client) throws InterruptedException {
-        long deadline = System.currentTimeMillis() + 180_000L;
+        long deadline = System.currentTimeMillis() + 240_000L;
 
         while (System.currentTimeMillis() < deadline) {
             if (client.level != null && client.player != null && client.getSingleplayerServer() != null) {

@@ -122,7 +122,7 @@ jobs:
               -Dwiki.output="$GITHUB_WORKSPACE/wiki/images/structures" \
               -Dwiki.repo="$GITHUB_WORKSPACE" \
               --stacktrace --info \
-              --args="--quickPlaySingleplayer WikiRender --width 1280 --height 900" 2>&1 | tee tools/wiki-renderer/run/wiki-render-debug/render-step.log
+              --args="--width 1280 --height 900" 2>&1 | tee tools/wiki-renderer/run/wiki-render-debug/render-step.log
           RENDER_EXIT=${PIPESTATUS[0]}
           set -e
 
