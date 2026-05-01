@@ -16,8 +16,8 @@ const blockHeight = Number(process.env.STRUCTURE_PREVIEW_BLOCK_HEIGHT ?? 22);
 const padding = Number(process.env.STRUCTURE_PREVIEW_PADDING ?? 48);
 const maxImageSize = Number(process.env.STRUCTURE_PREVIEW_MAX_SIZE ?? 2800);
 const transparentBackground = String(process.env.STRUCTURE_PREVIEW_TRANSPARENT ?? "true") !== "false";
-const gifFrames = Math.max(1, Number(process.env.STRUCTURE_PREVIEW_GIF_FRAMES ?? 32));
-const gifDelay = Math.max(1, Number(process.env.STRUCTURE_PREVIEW_GIF_DELAY ?? 80));
+const gifFrames = Math.max(1, Number(process.env.STRUCTURE_PREVIEW_GIF_FRAMES ?? 48));
+const gifDelay = Math.max(1, Number(process.env.STRUCTURE_PREVIEW_GIF_DELAY ?? 110));
 
 const IGNORED_BLOCKS = new Set([
   "minecraft:air",
