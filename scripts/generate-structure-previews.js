@@ -1,14 +1,11 @@
 // scripts/generate-structure-previews.js
-/* global THREE */
-global.THREE = require("three");
-global.Worker = require("worker_threads").Worker;
-
 const fs = require("fs");
 const path = require("path");
 const nbt = require("prismarine-nbt");
-const { createCanvas } = require("node-canvas-webgl/lib");
+const puppeteer = require("puppeteer-core");
 const { Vec3 } = require("vec3");
-const { Viewer, WorldView, getBufferFromStream } = require("prismarine-viewer").viewer;
+
+const standaloneViewer = require("prismarine-viewer").standalone;
 
 const inputRoot = process.env.STRUCTURE_INPUT_ROOT ?? "data";
 const outputRoot = process.env.STRUCTURE_PREVIEW_OUTPUT_ROOT ?? path.join("wiki", "images", "structures");
@@ -16,10 +13,8 @@ const outputRoot = process.env.STRUCTURE_PREVIEW_OUTPUT_ROOT ?? path.join("wiki"
 const width = Number(process.env.STRUCTURE_PREVIEW_WIDTH ?? 1200);
 const height = Number(process.env.STRUCTURE_PREVIEW_HEIGHT ?? 900);
 const viewDistance = Number(process.env.STRUCTURE_PREVIEW_VIEW_DISTANCE ?? 8);
-
-const cameraDistanceMultiplier = Number(process.env.STRUCTURE_PREVIEW_CAMERA_DISTANCE_MULTIPLIER ?? 1.55);
-const cameraHeightMultiplier = Number(process.env.STRUCTURE_PREVIEW_CAMERA_HEIGHT_MULTIPLIER ?? 0.85);
 const baseY = Number(process.env.STRUCTURE_PREVIEW_BASE_Y ?? 64);
+const portBase = Number(process.env.STRUCTURE_PREVIEW_PORT_BASE ?? 31337);
 
 function walk(dir) {
   let files = [];
@@ -448,9 +443,6 @@ async function loadBlocksForFiles(files) {
       })
     );
 
-    // Lay template pieces next to each other. This is deterministic and avoids
-    // pretending to simulate random jigsaw placement while still showing every
-    // possible piece used by the generated structure.
     cursorX += Number(size[0] ?? 0) + 2;
   }
 
@@ -486,66 +478,117 @@ function getBounds(blocks) {
   };
 }
 
-async function renderWorldImage(blocks, outputPath) {
-  const world = new World(() => new Chunk());
+function makeEmptyWorld() {
+  return new World((chunkX, chunkZ) => {
+    const chunk = new Chunk();
+
+    if (typeof chunk.initialize === "function") {
+      chunk.initialize(() => 0, plainsBiomeId);
+    }
+
+    return chunk;
+  });
+}
+
+function getChromiumExecutable() {
+  const candidates = [
+    process.env.CHROME_BIN,
+    process.env.CHROMIUM_BIN,
+    "/usr/bin/chromium-browser",
+    "/usr/bin/chromium",
+    "/usr/bin/google-chrome",
+    "/usr/bin/google-chrome-stable"
+  ].filter(Boolean);
+
+  for (const candidate of candidates) {
+    if (fs.existsSync(candidate)) return candidate;
+  }
+
+  throw new Error("Could not find Chromium executable.");
+}
+
+async function wait(ms) {
+  await new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function renderWorldImage(blocks, outputPath, port) {
+  const world = makeEmptyWorld();
   await placeBlocks(world, blocks);
 
   const bounds = getBounds(blocks);
   const center = new Vec3(
-    (bounds.minX + bounds.maxX) / 2,
-    (bounds.minY + bounds.maxY) / 2,
-    (bounds.minZ + bounds.maxZ) / 2
+    Math.floor((bounds.minX + bounds.maxX) / 2),
+    Math.floor((bounds.minY + bounds.maxY) / 2),
+    Math.floor((bounds.minZ + bounds.maxZ) / 2)
   );
 
-  const sizeX = bounds.maxX - bounds.minX + 1;
-  const sizeY = bounds.maxY - bounds.minY + 1;
-  const sizeZ = bounds.maxZ - bounds.minZ + 1;
-  const largestSize = Math.max(sizeX, sizeY, sizeZ, 16);
-
-  const canvas = createCanvas(width, height);
-  const renderer = new THREE.WebGLRenderer({
-    canvas,
-    alpha: true,
-    antialias: true,
-    preserveDrawingBuffer: true
+  const viewer = standaloneViewer({
+    version,
+    world,
+    center,
+    viewDistance,
+    port
   });
 
-  renderer.setSize(width, height, false);
-  renderer.setClearColor(0x000000, 0);
+  viewer.update();
 
-  const viewer = new Viewer(renderer);
+  const browser = await puppeteer.launch({
+    executablePath: getChromiumExecutable(),
+    headless: false,
+    args: [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--ignore-gpu-blocklist",
+      "--enable-webgl",
+      "--use-gl=swiftshader",
+      "--window-size=1600,1200"
+    ]
+  });
 
-  if (!viewer.setVersion(version)) {
-    throw new Error(`prismarine-viewer does not support Minecraft version ${version}`);
+  try {
+    const page = await browser.newPage();
+    await page.setViewport({ width, height, deviceScaleFactor: 1 });
+    await page.goto(`http://127.0.0.1:${port}`, { waitUntil: "networkidle2", timeout: 60000 });
+
+    // Let chunks, textures, and WebGL finish rendering.
+    await wait(Number(process.env.STRUCTURE_PREVIEW_RENDER_WAIT_MS ?? 3500));
+
+    // Best-effort camera positioning. Prismarine-viewer exposes internals differently
+    // between releases, so this intentionally checks several likely globals.
+    await page.evaluate(() => {
+      const candidates = [
+        window.viewer,
+        window.prismarineViewer,
+        window.bot?.viewer
+      ].filter(Boolean);
+
+      for (const viewer of candidates) {
+        const camera = viewer.camera || viewer.renderer?.camera;
+        const controls = viewer.controls || viewer.orbitControls;
+
+        if (camera) {
+          camera.position.set(camera.position.x + 20, camera.position.y + 20, camera.position.z + 20);
+          camera.updateProjectionMatrix?.();
+        }
+
+        controls?.update?.();
+      }
+    }).catch(() => {});
+
+    fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+    await page.screenshot({
+      path: outputPath,
+      type: "png",
+      omitBackground: true
+    });
+
+    await page.close();
+  } finally {
+    await browser.close();
+
+    if (viewer.close) viewer.close();
+    else if (viewer.server?.close) viewer.server.close();
   }
-
-  const worldView = new WorldView(world, viewDistance, center);
-  viewer.listen(worldView);
-
-  const cameraDistance = largestSize * cameraDistanceMultiplier;
-  const cameraHeight = Math.max(sizeY * cameraHeightMultiplier, 12);
-
-  viewer.camera.position.set(
-    center.x + cameraDistance,
-    center.y + cameraHeight,
-    center.z + cameraDistance
-  );
-
-  viewer.camera.lookAt(new THREE.Vector3(center.x, center.y, center.z));
-
-  await worldView.init(center);
-  await viewer.world.waitForChunksToRender();
-
-  renderer.render(viewer.scene, viewer.camera);
-
-  const imageStream = canvas.createPNGStream();
-  const buffer = await getBufferFromStream(imageStream);
-
-  fs.mkdirSync(path.dirname(outputPath), { recursive: true });
-  fs.writeFileSync(outputPath, buffer);
-
-  if (viewer.world?.removeAllListeners) viewer.world.removeAllListeners();
-  renderer.dispose();
 }
 
 function removeStaleOutputFiles(validOutputFiles) {
@@ -562,22 +605,28 @@ function removeStaleOutputFiles(validOutputFiles) {
 }
 
 async function main() {
-  console.log(`Rendering structure previews with prismarine-viewer for Minecraft ${version}`);
+  console.log(`Rendering structure previews with prismarine-viewer browser renderer for Minecraft ${version}`);
 
   const groups = await getWorldgenStructureGroups();
   const validOutputFiles = new Set();
 
   console.log(`Found ${groups.size} worldgen structure group(s).`);
 
+  let index = 0;
+
   for (const group of groups.values()) {
     const blocks = await loadBlocksForFiles(group.files);
     const outputPath = path.join(outputRoot, group.namespace, `${group.relativePath}.png`);
 
     validOutputFiles.add(path.normalize(outputPath));
-    await renderWorldImage(blocks, outputPath);
+
+    const port = portBase + index;
+    await renderWorldImage(blocks, outputPath, port);
 
     const size = fs.statSync(outputPath).size;
     console.log(`Generated ${outputPath} from ${group.files.length} structure template(s), ${blocks.length} block(s), ${size} bytes`);
+
+    index++;
   }
 
   removeStaleOutputFiles(validOutputFiles);
