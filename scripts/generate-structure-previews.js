@@ -546,17 +546,20 @@ function getFaceUv(face, u, v) {
   const u1 = uv[2] / 16;
   const v1 = uv[3] / 16;
 
+  // Global correction: the isometric screen-space face axes were effectively
+  // sampling textures 90° clockwise. Rotate UV sampling 90° counter-clockwise
+  // before applying the model's own per-face UV rotation.
+  let ru = 1 - v;
+  let rv = u;
+
   const rotation = ((face.uvRotation ?? 0) % 360 + 360) % 360;
 
-  let ru = u;
-  let rv = v;
-
   if (rotation === 90) {
-    [ru, rv] = [v, 1 - u];
+    [ru, rv] = [rv, 1 - ru];
   } else if (rotation === 180) {
-    [ru, rv] = [1 - u, 1 - v];
+    [ru, rv] = [1 - ru, 1 - rv];
   } else if (rotation === 270) {
-    [ru, rv] = [1 - v, u];
+    [ru, rv] = [1 - rv, ru];
   }
 
   return {
