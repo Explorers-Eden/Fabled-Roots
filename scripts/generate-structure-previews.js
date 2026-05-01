@@ -16,9 +16,8 @@ const blockHeight = Number(process.env.STRUCTURE_PREVIEW_BLOCK_HEIGHT ?? 22);
 const padding = Number(process.env.STRUCTURE_PREVIEW_PADDING ?? 48);
 const maxImageSize = Number(process.env.STRUCTURE_PREVIEW_MAX_SIZE ?? 2800);
 const transparentBackground = String(process.env.STRUCTURE_PREVIEW_TRANSPARENT ?? "true") !== "false";
-const gifFrames = Math.max(1, Number(process.env.STRUCTURE_PREVIEW_GIF_FRAMES ?? 48));
-const gifDelay = Math.max(1, Number(process.env.STRUCTURE_PREVIEW_GIF_DELAY ?? 180));
-const gifPingPongDegrees = Math.max(1, Number(process.env.STRUCTURE_PREVIEW_GIF_PINGPONG_DEGREES ?? 28));
+const gifFrames = Math.max(1, Number(process.env.STRUCTURE_PREVIEW_GIF_FRAMES ?? 60));
+const gifDelay = Math.max(1, Number(process.env.STRUCTURE_PREVIEW_GIF_DELAY ?? 160));
 
 const IGNORED_BLOCKS = new Set([
   "minecraft:air",
@@ -1030,11 +1029,10 @@ function getRotationCenter(blocks) {
   };
 }
 
-function getPingPongRotationDegrees(frame) {
+function getRotationDegrees(frame) {
   if (gifFrames <= 1) return 0;
 
-  const t = frame / gifFrames;
-  return Math.sin(t * Math.PI * 2) * gifPingPongDegrees;
+  return (frame / gifFrames) * 360;
 }
 
 function getAnimatedBounds(blocks, scale = 1, center = getRotationCenter(blocks)) {
@@ -1042,7 +1040,7 @@ function getAnimatedBounds(blocks, scale = 1, center = getRotationCenter(blocks)
 
   for (let frame = 0; frame < gifFrames; frame++) {
     const frameBounds = computeBounds(blocks, scale, {
-      degrees: getPingPongRotationDegrees(frame),
+      degrees: getRotationDegrees(frame),
       center
     });
 
@@ -1142,7 +1140,7 @@ function renderBlocksToGif(blocks) {
 
   for (let frame = 0; frame < gifFrames; frame++) {
     const rotation = {
-      degrees: getPingPongRotationDegrees(frame),
+      degrees: getRotationDegrees(frame),
       center
     };
 
