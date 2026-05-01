@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "wiki_renderer",
+  "version": "1.0.0",
+  "name": "Wiki Renderer",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.explorerseden.wikirenderer.WikiRendererClient"
+    ]
+  }
+}

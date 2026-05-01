@@ -19,35 +19,32 @@ jobs:
       - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y xvfb libnss3 libatk-bridge2.0-0 libgtk-3-0 libxss1 libasound2t64 libgbm1 libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
+          sudo apt-get install -y xvfb xauth libgl1-mesa-dri libgl1-mesa-dev libegl1-mesa-dev libxi6 libxrender1 libxtst6 libxrandr2 libxxf86vm1 libxcursor1 libxinerama1 libnss3 libasound2t64 rsync
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 25
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: 9.4.0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
 
-      - name: Install dependencies
+      - name: Install Node dependencies
+        run: npm install --no-save prismarine-nbt
+
+      - name: Detect Minecraft version
         run: |
-          npm install --no-save \
-            prismarine-nbt \
-            prismarine-viewer \
-            prismarine-world \
-            prismarine-chunk \
-            prismarine-block \
-            prismarine-registry \
-            minecraft-data \
-            vec3 \
-            canvas \
-            puppeteer
-
-      - name: Cache vanilla assets
-        uses: actions/cache@v4
-        with:
-          path: .cache/vanilla-assets
-          key: vanilla-assets-${{ hashFiles('release_infos.yml', 'pack.mcmeta') }}
-
-      - name: Download vanilla assets
-        run: node scripts/download-vanilla-assets.js
+          MC_VERSION="$(node scripts/get-minecraft-version.js)"
+          echo "MC_VERSION=$MC_VERSION" >> "$GITHUB_ENV"
+          echo "Using Minecraft $MC_VERSION"
 
       - name: Generate loot table markdown
         run: node scripts/generate-loot-tables.js
@@ -55,8 +52,56 @@ jobs:
       - name: Generate structure markdown
         run: node scripts/generate-structures.js
 
-      - name: Generate structure preview images
-        run: xvfb-run -s "-ac -screen 0 1600x1200x24" node scripts/generate-structure-previews.js
+      - name: Generate render manifest
+        run: node scripts/generate-render-manifest.js
+
+      - name: Prepare renderer world
+        run: |
+          set -euo pipefail
+
+          cd tools/wiki-renderer
+          mkdir -p run
+          echo "eula=true" > run/eula.txt
+
+          # Create a temporary vanilla/Fabric world. The server is only used to
+          # create a save folder; the actual screenshots are taken by the client.
+          timeout 90s gradle runServer \
+            -Pminecraft_version="$MC_VERSION" \
+            -Pfabric_loader_version=0.18.4 \
+            --args "nogui" || true
+
+          rm -rf run/saves/WikiRender
+          mkdir -p run/saves
+
+          if [ -d run/world ]; then
+            mv run/world run/saves/WikiRender
+          else
+            echo "Server did not create run/world"
+            ls -la run
+            exit 1
+          fi
+
+          mkdir -p run/saves/WikiRender/datapacks/source_pack
+          cd ../..
+          rsync -a --delete \
+            --exclude ".git" \
+            --exclude ".github" \
+            --exclude "wiki" \
+            --exclude "node_modules" \
+            --exclude "tools/wiki-renderer/run" \
+            data assets pack.mcmeta tools/wiki-renderer/run/saves/WikiRender/datapacks/source_pack/ 2>/dev/null || true
+
+      - name: Render structure preview images with Minecraft
+        run: |
+          xvfb-run -s "-ac -screen 0 1600x1200x24" \
+            gradle -p tools/wiki-renderer runClient \
+              -Pminecraft_version="$MC_VERSION" \
+              -Pfabric_loader_version=0.18.4 \
+              -Dwiki.render=true \
+              -Dwiki.manifest="$GITHUB_WORKSPACE/tools/wiki-renderer/run/wiki-render-manifest.json" \
+              -Dwiki.output="$GITHUB_WORKSPACE/wiki/images/structures" \
+              -Dwiki.repo="$GITHUB_WORKSPACE" \
+              --args "--quickPlaySingleplayer WikiRender --width 1280 --height 900"
 
       - name: Show generated wiki files
         run: |
