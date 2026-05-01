@@ -1,6 +1,6 @@
 # Generated Loot.
 
-The structure generates 4 loot containers using 4 loot tables: `fabled_roots:structure/dunesworn/outpost`, `fabled_roots:structure/endling/outpost`, `fabled_roots:structure/oakhearted/outpost`, `fabled_roots:structure/palehearted/outpost`.
+The structure generates 4 loot containers using 4 loot tables:
 <br>
 
 <details>
@@ -90,9 +90,11 @@ The structure generates 4 loot containers using 4 loot tables: `fabled_roots:str
 | Buried Treasure Map | 1 | 6 | 1 | 0.0% |
 
 </details>
+
 # Contents
 
 The structure is composed of the following blocks: Deepslate Bricks, Purpur Block, End Stone Bricks, Oak Planks, Pale Oak Planks, Terracotta, Stripped Oak Log, Sandstone, Smooth Sandstone, Mossy Stone Bricks, Oak Log, Pale Oak Log, Stripped Jungle Log, Purpur Pillar, Cut Sandstone, Jungle Fence, Oak Fence, Pale Oak Fence, Oak Slab, Pale Oak Slab, Purpur Stairs, Sandstone Stairs, Purple Stained Glass Pane, Sandstone Slab, Deepslate Brick Stairs, Mossy Stone Brick Stairs, Purpur Slab, End Stone Brick Slab, Oak Stairs, Pale Oak Stairs, Chiseled Sandstone, End Rod, Smooth Sandstone Slab, Mossy Cobblestone, Deepslate Brick Wall, End Stone Brick Stairs, End Stone Brick Wall, Mossy Stone Brick Wall, Sandstone Wall, Smooth Sandstone Stairs, Torch, Chest, Deepslate Brick Slab, Mossy Stone Brick Slab, Soul Torch, Wall Torch, Soul Wall Torch.
+
 
 
 ## Per-Structure File Contents

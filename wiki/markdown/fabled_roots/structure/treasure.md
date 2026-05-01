@@ -1,6 +1,6 @@
 # Generated Loot.
 
-The structure generates 10 loot containers using 10 loot tables: `fabled_roots:structure/aetherian/treasure`, `fabled_roots:structure/dunesworn/treasure`, `fabled_roots:structure/endling/treasure`, `fabled_roots:structure/frostborne/treasure`, `fabled_roots:structure/moonshroud/treasure`, `fabled_roots:structure/netherian/treasure`, `fabled_roots:structure/oakhearted/treasure`, `fabled_roots:structure/orebringer/treasure`, `fabled_roots:structure/palehearted/treasure`, `fabled_roots:structure/turtlekin/treasure`.
+The structure generates 10 loot containers using 10 loot tables:
 <br>
 
 <details>
@@ -382,9 +382,11 @@ The structure generates 10 loot containers using 10 loot tables: `fabled_roots:s
 | Diamond Horse Armor of Roots | 1 | 7 | 5 | 5.3% |
 
 </details>
+
 # Contents
 
 The structure is composed of the following blocks: Chest.
+
 
 
 ## Per-Structure File Contents
