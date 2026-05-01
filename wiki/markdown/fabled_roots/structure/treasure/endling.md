@@ -1,7 +1,3 @@
-# Preview
-
-<iframe src="https://cdn.jsdelivr.net/gh/Explorers-Eden/Fabled-Roots@main/wiki/viewers/structures/fabled_roots/treasure/endling/index.html" style="width:100%;height:720px;border:0;border-radius:12px;" loading="lazy" allowfullscreen></iframe>
-
 # Generated Loot
 
 There is one loot table used in this structure:
