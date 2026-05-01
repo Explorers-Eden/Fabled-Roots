@@ -6,15 +6,12 @@ const { PNG } = require("pngjs");
 
 const inputRoot = process.env.STRUCTURE_INPUT_ROOT ?? "data";
 const outputRoot = process.env.STRUCTURE_PREVIEW_OUTPUT_ROOT ?? path.join("wiki", "images", "structures");
-const vanillaAssetRoot = process.env.VANILLA_ASSET_ROOT ?? path.join(".cache", "vanilla-assets");
 const generateWorldgenStructurePreviews = String(process.env.STRUCTURE_PREVIEW_WORLDGEN ?? "true") !== "false";
 
-
-
-const tileWidth = Number(process.env.STRUCTURE_PREVIEW_TILE_WIDTH ?? 32);
-const tileHeight = Number(process.env.STRUCTURE_PREVIEW_TILE_HEIGHT ?? 18);
-const blockHeight = Number(process.env.STRUCTURE_PREVIEW_BLOCK_HEIGHT ?? 22);
-const padding = Number(process.env.STRUCTURE_PREVIEW_PADDING ?? 48);
+const tileWidth = Number(process.env.STRUCTURE_PREVIEW_TILE_WIDTH ?? 24);
+const tileHeight = Number(process.env.STRUCTURE_PREVIEW_TILE_HEIGHT ?? 14);
+const blockHeight = Number(process.env.STRUCTURE_PREVIEW_BLOCK_HEIGHT ?? 16);
+const padding = Number(process.env.STRUCTURE_PREVIEW_PADDING ?? 44);
 const maxImageSize = Number(process.env.STRUCTURE_PREVIEW_MAX_SIZE ?? 2600);
 const transparentBackground = String(process.env.STRUCTURE_PREVIEW_TRANSPARENT ?? "true") !== "false";
 
@@ -24,19 +21,14 @@ const IGNORED_BLOCKS = new Set([
   "minecraft:void_air",
   "minecraft:structure_void",
   "minecraft:barrier",
-  "minecraft:light",
-  "minecraft:jigsaw"
+  "minecraft:light"
 ]);
 
-const modelCache = new Map();
-const textureCache = new Map();
-const fallbackColorCache = new Map();
-
 const stats = {
-  textureHits: 0,
-  textureMisses: 0,
   mainImages: 0,
-  centerImages: 0
+  structuresRead: 0,
+  poolsRead: 0,
+  jigsawPoolsFollowed: 0
 };
 
 function walk(dir) {
@@ -61,6 +53,10 @@ function splitResourceLocation(id, defaultNamespace = "minecraft") {
   return [defaultNamespace, String(id)];
 }
 
+function titlePath(id) {
+  return String(id).replace(/^#/, "").replace(/^[^:]+:/, "");
+}
+
 function getStructureInfo(file) {
   const parts = file.split(path.sep);
   const dataIndex = parts.indexOf("data");
@@ -81,6 +77,25 @@ function getStructureInfo(file) {
   return { namespace, topFolder };
 }
 
+function getWorldgenStructureInfo(file) {
+  const parts = file.split(path.sep);
+  const dataIndex = parts.indexOf("data");
+  const worldgenIndex = parts.indexOf("worldgen");
+  const structureIndex = parts.indexOf("structure");
+
+  if (dataIndex === -1 || worldgenIndex === -1 || structureIndex === -1) return null;
+  if (worldgenIndex !== dataIndex + 2 || structureIndex !== worldgenIndex + 1) return null;
+
+  const namespace = parts[dataIndex + 1];
+  const relativePath = parts.slice(structureIndex + 1).join("/").replace(/\.json$/, "");
+
+  return {
+    namespace,
+    id: `${namespace}:${relativePath}`,
+    relativePath
+  };
+}
+
 function getPalette(structure) {
   if (Array.isArray(structure.palette)) return structure.palette;
   if (Array.isArray(structure.palettes?.[0])) return structure.palettes[0];
@@ -94,192 +109,297 @@ function getBlockNameFromPaletteEntry(entry) {
 async function readNbtFile(file) {
   const buffer = fs.readFileSync(file);
   const parsed = await nbt.parse(buffer);
+  stats.structuresRead++;
   return nbt.simplify(parsed.parsed);
 }
 
-function readAssetBuffer(assetPath) {
-  const local = path.join(...assetPath.split("/"));
-  if (fs.existsSync(local)) return fs.readFileSync(local);
-
-  const vanilla = path.join(vanillaAssetRoot, ...assetPath.split("/"));
-  if (fs.existsSync(vanilla)) return fs.readFileSync(vanilla);
-
-  return null;
-}
-
-function readJsonAsset(assetPath) {
-  if (modelCache.has(assetPath)) return modelCache.get(assetPath);
-
-  const buffer = readAssetBuffer(assetPath);
-  if (!buffer) {
-    modelCache.set(assetPath, null);
-    return null;
-  }
+function readJsonIfExists(file) {
+  if (!fs.existsSync(file)) return null;
 
   try {
-    const json = JSON.parse(buffer.toString("utf8"));
-    modelCache.set(assetPath, json);
-    return json;
+    return JSON.parse(fs.readFileSync(file, "utf8"));
   } catch {
-    modelCache.set(assetPath, null);
     return null;
   }
 }
 
-function readTextureAsset(assetPath) {
-  if (textureCache.has(assetPath)) return textureCache.get(assetPath);
-
-  const buffer = readAssetBuffer(assetPath);
-  if (!buffer) {
-    stats.textureMisses++;
-    textureCache.set(assetPath, null);
-    return null;
-  }
-
-  try {
-    const png = PNG.sync.read(buffer);
-    stats.textureHits++;
-    textureCache.set(assetPath, png);
-    return png;
-  } catch {
-    stats.textureMisses++;
-    textureCache.set(assetPath, null);
-    return null;
-  }
+function addResourceLocation(value, result) {
+  if (typeof value !== "string") return;
+  if (value === "minecraft:empty") return;
+  if (!value.includes(":")) return;
+  if (value.startsWith("#")) return;
+  result.add(value);
 }
 
-function stringifyProperties(properties = {}) {
-  return Object.entries(properties)
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([key, value]) => `${key}=${value}`)
-    .join(",");
-}
+function collectTemplatePoolsFromObject(value, result = new Set()) {
+  if (value === null || value === undefined) return result;
 
-function parseVariantKey(key) {
-  if (!key) return {};
-
-  const result = {};
-  for (const part of key.split(",")) {
-    const [name, value] = part.split("=");
-    if (name && value !== undefined) result[name] = value;
+  if (typeof value === "string") {
+    addResourceLocation(value, result);
+    return result;
   }
+
+  if (Array.isArray(value)) {
+    for (const item of value) collectTemplatePoolsFromObject(item, result);
+    return result;
+  }
+
+  if (typeof value === "object") {
+    for (const [key, nested] of Object.entries(value)) {
+      if (
+        key === "start_pool" ||
+        key === "fallback" ||
+        key === "pool" ||
+        key === "template_pool" ||
+        key === "target_pool"
+      ) {
+        collectTemplatePoolsFromObject(nested, result);
+        continue;
+      }
+
+      collectTemplatePoolsFromObject(nested, result);
+    }
+  }
+
   return result;
 }
 
-function variantMatchesBlockState(variantKey, properties = {}) {
-  const variant = parseVariantKey(variantKey);
-
-  for (const [key, value] of Object.entries(variant)) {
-    if (String(properties[key]) !== String(value)) return false;
-  }
-
-  return true;
+function getTemplatePoolFile(poolId) {
+  const [namespace, poolPath] = splitResourceLocation(poolId);
+  return path.join(inputRoot, namespace, "worldgen", "template_pool", `${poolPath}.json`);
 }
 
-function getModelIdFromBlockState(blockName, properties = {}) {
-  const [namespace, blockPath] = splitResourceLocation(blockName);
-  const blockState = readJsonAsset(`assets/${namespace}/blockstates/${blockPath}.json`);
+function getStructureNbtFileFromLocation(location) {
+  const [namespace, structurePath] = splitResourceLocation(location);
+  return path.join(inputRoot, namespace, "structure", `${structurePath}.nbt`);
+}
 
-  if (!blockState) return `${namespace}:block/${blockPath}`;
+function collectElementLocations(element, result = new Set()) {
+  if (!element || typeof element !== "object") return result;
 
-  if (blockState.variants) {
-    const exactKey = stringifyProperties(properties);
-    let variant = blockState.variants[exactKey];
-
-    if (!variant) {
-      const matchingKey = Object.keys(blockState.variants).find(key =>
-        variantMatchesBlockState(key, properties)
-      );
-      if (matchingKey) variant = blockState.variants[matchingKey];
-    }
-
-    if (!variant) variant = blockState.variants[""] ?? Object.values(blockState.variants)[0];
-
-    if (Array.isArray(variant)) variant = variant[0];
-    if (variant?.model) return variant.model;
+  if (typeof element.location === "string") {
+    result.add(element.location);
   }
 
-  if (Array.isArray(blockState.multipart)) {
-    for (const part of blockState.multipart) {
-      let apply = part.apply;
-      if (Array.isArray(apply)) apply = apply[0];
-      if (apply?.model) return apply.model;
+  // list_pool_element and nested wrappers
+  if (Array.isArray(element.elements)) {
+    for (const nested of element.elements) {
+      collectElementLocations(nested.element ?? nested, result);
     }
   }
 
-  return `${namespace}:block/${blockPath}`;
+  if (element.element) {
+    collectElementLocations(element.element, result);
+  }
+
+  return result;
 }
 
-function resolveTextureReference(textureRef, textures = {}) {
-  let current = textureRef;
+function collectJigsawPoolsFromNbt(value, result = new Set()) {
+  if (value === null || value === undefined) return result;
 
-  for (let i = 0; i < 16; i++) {
-    if (!current || typeof current !== "string") return null;
-    if (current.startsWith("#")) {
-      current = textures[current.slice(1)];
+  if (Array.isArray(value)) {
+    for (const item of value) collectJigsawPoolsFromNbt(item, result);
+    return result;
+  }
+
+  if (typeof value !== "object") return result;
+
+  const blockId = value.id ?? value.Id ?? value.Name ?? value.name;
+  const likelyJigsaw =
+    blockId === "minecraft:jigsaw" ||
+    value.pool !== undefined ||
+    value.target_pool !== undefined ||
+    value.final_state !== undefined;
+
+  if (likelyJigsaw) {
+    addResourceLocation(value.pool, result);
+    addResourceLocation(value.target_pool, result);
+  }
+
+  for (const nested of Object.values(value)) {
+    collectJigsawPoolsFromNbt(nested, result);
+  }
+
+  return result;
+}
+
+async function collectJigsawPoolsFromStructureFile(structureFile) {
+  if (!fs.existsSync(structureFile)) return new Set();
+
+  try {
+    const structure = await readNbtFile(structureFile);
+    return collectJigsawPoolsFromNbt(structure);
+  } catch (error) {
+    console.warn(`Could not inspect jigsaw pools in ${structureFile}: ${error.message}`);
+    return new Set();
+  }
+}
+
+async function collectStructureFilesFromTemplatePool(
+  poolId,
+  seenPools = new Set(),
+  result = new Set()
+) {
+  if (seenPools.has(poolId)) return result;
+  seenPools.add(poolId);
+
+  const poolFile = getTemplatePoolFile(poolId);
+  const poolJson = readJsonIfExists(poolFile);
+  if (!poolJson) return result;
+
+  stats.poolsRead++;
+
+  for (const element of poolJson.elements ?? []) {
+    const elementData = element.element ?? element;
+    const locations = collectElementLocations(elementData);
+
+    for (const location of locations) {
+      const structureFile = getStructureNbtFileFromLocation(location);
+
+      if (!fs.existsSync(structureFile)) continue;
+
+      if (!result.has(structureFile)) {
+        result.add(structureFile);
+
+        // Important: actual generated structures can continue through jigsaw blocks
+        // into more template pools. Follow those pools so previews do not end up
+        // showing only the start pool.
+        const jigsawPools = await collectJigsawPoolsFromStructureFile(structureFile);
+
+        for (const nestedPool of jigsawPools) {
+          stats.jigsawPoolsFollowed++;
+          await collectStructureFilesFromTemplatePool(nestedPool, seenPools, result);
+        }
+      }
+    }
+  }
+
+  if (poolJson.fallback && poolJson.fallback !== "minecraft:empty") {
+    await collectStructureFilesFromTemplatePool(poolJson.fallback, seenPools, result);
+  }
+
+  return result;
+}
+
+async function collectStructureFilesForWorldgenStructure(worldgenFile) {
+  const info = getWorldgenStructureInfo(worldgenFile);
+  const json = readJsonIfExists(worldgenFile);
+  if (!info || !json) return null;
+
+  const pools = collectTemplatePoolsFromObject(json);
+  const files = new Set();
+
+  for (const poolId of pools) {
+    await collectStructureFilesFromTemplatePool(poolId, new Set(), files);
+  }
+
+  return {
+    namespace: info.namespace,
+    relativePath: info.relativePath,
+    id: info.id,
+    files: [...files].sort()
+  };
+}
+
+function getDirectStructureGroups() {
+  const structureFiles = walk(inputRoot)
+    .filter(file => file.endsWith(".nbt"))
+    .map(file => ({ file, info: getStructureInfo(file) }))
+    .filter(entry => entry.info !== null);
+
+  const groups = new Map();
+
+  for (const { file, info } of structureFiles) {
+    const key = `${info.namespace}:${info.topFolder}`;
+
+    if (!groups.has(key)) {
+      groups.set(key, {
+        namespace: info.namespace,
+        outputName: info.topFolder,
+        files: []
+      });
+    }
+
+    groups.get(key).files.push(file);
+  }
+
+  return groups;
+}
+
+async function getWorldgenStructureGroups() {
+  const groups = new Map();
+
+  if (!generateWorldgenStructurePreviews) return groups;
+
+  const worldgenFiles = walk(inputRoot)
+    .filter(file => file.endsWith(".json"))
+    .filter(file => getWorldgenStructureInfo(file) !== null);
+
+  for (const file of worldgenFiles) {
+    const group = await collectStructureFilesForWorldgenStructure(file);
+
+    if (!group || group.files.length === 0) {
+      console.warn(`No template NBT files found for worldgen structure ${file}`);
       continue;
     }
-    return current;
+
+    groups.set(group.id, {
+      namespace: group.namespace,
+      outputName: group.relativePath,
+      files: group.files
+    });
   }
 
-  return null;
+  return groups;
 }
 
-function mergeModelTextures(modelId, seen = new Set()) {
-  const [namespace, modelPath] = splitResourceLocation(modelId);
-  const key = `${namespace}:${modelPath}`;
-
-  if (seen.has(key)) return {};
-  seen.add(key);
-
-  const model = readJsonAsset(`assets/${namespace}/models/${modelPath}.json`);
-  if (!model) return {};
-
-  const textures = {};
-
-  if (model.parent) Object.assign(textures, mergeModelTextures(model.parent, seen));
-  Object.assign(textures, model.textures ?? {});
-
-  return textures;
-}
-
-function getTextureIdForBlock(block, face) {
-  const modelId = getModelIdFromBlockState(block.name, block.properties);
-  const textures = mergeModelTextures(modelId);
-
-  const preferred =
-    (face === "top" ? textures.top : null) ??
-    (face === "cross" ? textures.cross : null) ??
-    (face === "cross" ? textures.plant : null) ??
-    (face === "left" || face === "right" ? textures.side : null) ??
-    textures.all ??
-    textures.cross ??
-    textures.plant ??
-    textures.side ??
-    textures.end ??
-    textures.front ??
-    textures.north ??
-    textures.south ??
-    textures.east ??
-    textures.west ??
-    textures.particle ??
-    Object.values(textures).find(value => typeof value === "string") ??
-    null;
-
-  return resolveTextureReference(preferred, textures);
-}
-
-function getTextureForBlockFace(block, face) {
-  const textureId = getTextureIdForBlock(block, face);
-  if (!textureId) return null;
-
-  const [namespace, texturePath] = splitResourceLocation(textureId);
-  return readTextureAsset(`assets/${namespace}/textures/${texturePath}.png`);
-}
+const COLOR_SCHEMES = [
+  { patterns: ["amethyst", "purple"], color: { r: 143, g: 104, b: 200, a: 255 } },
+  { patterns: ["budding_amethyst"], color: { r: 128, g: 96, b: 181, a: 255 } },
+  { patterns: ["chest", "barrel"], color: { r: 176, g: 111, b: 40, a: 255 } },
+  { patterns: ["bookshelf", "lectern"], color: { r: 154, g: 106, b: 50, a: 255 } },
+  { patterns: ["cobweb"], color: { r: 221, g: 221, b: 229, a: 155 } },
+  { patterns: ["chain", "iron", "anvil"], color: { r: 85, g: 89, b: 95, a: 255 } },
+  { patterns: ["lantern", "torch", "candle", "glowstone", "shroomlight", "sea_lantern"], color: { r: 214, g: 169, b: 74, a: 255 } },
+  { patterns: ["deepslate", "blackstone", "basalt"], color: { r: 63, g: 65, b: 72, a: 255 } },
+  { patterns: ["tuff"], color: { r: 119, g: 116, b: 109, a: 255 } },
+  { patterns: ["andesite", "diorite", "granite"], color: { r: 137, g: 137, b: 137, a: 255 } },
+  { patterns: ["mossy_stone"], color: { r: 105, g: 125, b: 87, a: 255 } },
+  { patterns: ["stone", "cobblestone", "brick"], color: { r: 119, g: 119, b: 119, a: 255 } },
+  { patterns: ["grass_block", "grass"], color: { r: 145, g: 189, b: 89, a: 210 } },
+  { patterns: ["moss", "azalea", "leaf", "leaves", "vine"], color: { r: 119, g: 171, b: 47, a: 210 } },
+  { patterns: ["dirt", "mud", "podzol", "rooted_dirt"], color: { r: 121, g: 83, b: 58, a: 255 } },
+  { patterns: ["sand", "sandstone"], color: { r: 214, g: 194, b: 122, a: 255 } },
+  { patterns: ["gravel"], color: { r: 119, g: 119, b: 119, a: 255 } },
+  { patterns: ["clay"], color: { r: 154, g: 164, b: 173, a: 255 } },
+  { patterns: ["snow", "ice"], color: { r: 215, g: 238, b: 244, a: 205 } },
+  { patterns: ["spruce"], color: { r: 122, g: 83, b: 48, a: 255 } },
+  { patterns: ["oak"], color: { r: 185, g: 139, b: 75, a: 255 } },
+  { patterns: ["birch"], color: { r: 214, g: 194, b: 122, a: 255 } },
+  { patterns: ["jungle"], color: { r: 176, g: 122, b: 69, a: 255 } },
+  { patterns: ["acacia"], color: { r: 176, g: 91, b: 50, a: 255 } },
+  { patterns: ["dark_oak"], color: { r: 90, g: 56, b: 34, a: 255 } },
+  { patterns: ["mangrove"], color: { r: 141, g: 63, b: 50, a: 255 } },
+  { patterns: ["cherry"], color: { r: 216, g: 154, b: 168, a: 255 } },
+  { patterns: ["bamboo"], color: { r: 196, g: 184, b: 95, a: 255 } },
+  { patterns: ["crimson"], color: { r: 126, g: 46, b: 73, a: 255 } },
+  { patterns: ["warped"], color: { r: 47, g: 140, b: 134, a: 255 } },
+  { patterns: ["planks", "log", "wood", "stem", "hyphae", "slab", "stairs", "fence", "door", "trapdoor", "sign"], color: { r: 138, g: 90, b: 47, a: 255 } },
+  { patterns: ["water"], color: { r: 61, g: 117, b: 196, a: 145 } },
+  { patterns: ["lava"], color: { r: 230, g: 90, b: 30, a: 255 } },
+  { patterns: ["glass"], color: { r: 158, g: 208, b: 221, a: 120 } },
+  { patterns: ["copper"], color: { r: 184, g: 121, b: 83, a: 255 } },
+  { patterns: ["gold"], color: { r: 225, g: 184, b: 76, a: 255 } },
+  { patterns: ["diamond"], color: { r: 95, g: 208, b: 214, a: 255 } },
+  { patterns: ["emerald"], color: { r: 52, g: 182, b: 90, a: 255 } },
+  { patterns: ["lapis"], color: { r: 52, g: 89, b: 201, a: 255 } },
+  { patterns: ["redstone"], color: { r: 177, g: 31, b: 31, a: 255 } },
+  { patterns: ["coal"], color: { r: 47, g: 47, b: 47, a: 255 } },
+  { patterns: ["quartz"], color: { r: 216, g: 208, b: 192, a: 255 } }
+];
 
 function hashColor(text) {
-  if (fallbackColorCache.has(text)) return fallbackColorCache.get(text);
-
   let hash = 0;
   for (let i = 0; i < text.length; i++) {
     hash = ((hash << 5) - hash + text.charCodeAt(i)) | 0;
@@ -288,10 +408,8 @@ function hashColor(text) {
   const hue = Math.abs(hash) % 360;
   const saturation = 28 + (Math.abs(hash >> 8) % 28);
   const lightness = 45 + (Math.abs(hash >> 16) % 18);
-  const color = hslToRgb(hue, saturation, lightness);
 
-  fallbackColorCache.set(text, color);
-  return color;
+  return hslToRgb(hue, saturation, lightness);
 }
 
 function hslToRgb(h, s, l) {
@@ -321,82 +439,16 @@ function hslToRgb(h, s, l) {
   };
 }
 
-function fallbackColorForBlock(blockName) {
+function getBlockColor(blockName) {
   const short = blockName.replace(/^minecraft:/, "");
 
-  if (short.includes("leaves")) return { r: 79, g: 140, b: 58, a: 255 };
-  if (short.includes("grass") || short.includes("moss")) return { r: 102, g: 138, b: 58, a: 255 };
-  if (short.includes("dirt") || short.includes("mud")) return { r: 121, g: 83, b: 58, a: 255 };
-  if (short.includes("spruce")) return { r: 122, g: 83, b: 48, a: 255 };
-  if (short.includes("oak")) return { r: 185, g: 139, b: 75, a: 255 };
-  if (short.includes("log") || short.includes("wood") || short.includes("planks")) return { r: 138, g: 90, b: 47, a: 255 };
-  if (short.includes("deepslate") || short.includes("blackstone") || short.includes("basalt")) return { r: 63, g: 65, b: 72, a: 255 };
-  if (short.includes("stone") || short.includes("tuff") || short.includes("andesite")) return { r: 119, g: 119, b: 119, a: 255 };
-  if (short.includes("sand")) return { r: 214, g: 194, b: 122, a: 255 };
-  if (short.includes("amethyst") || short.includes("purple")) return { r: 143, g: 104, b: 200, a: 255 };
-  if (short.includes("water")) return { r: 61, g: 117, b: 196, a: 180 };
-  if (short.includes("lava")) return { r: 230, g: 90, b: 30, a: 255 };
-  if (short.includes("glass")) return { r: 158, g: 208, b: 221, a: 170 };
-  if (short.includes("copper")) return { r: 184, g: 121, b: 83, a: 255 };
-  if (short.includes("bookshelf") || short.includes("lectern")) return { r: 154, g: 106, b: 50, a: 255 };
-  if (short.includes("chest") || short.includes("barrel")) return { r: 176, g: 111, b: 40, a: 255 };
+  for (const scheme of COLOR_SCHEMES) {
+    if (scheme.patterns.some(pattern => short.includes(pattern))) {
+      return scheme.color;
+    }
+  }
 
   return hashColor(blockName);
-}
-
-const PLAINS_GRASS_TINT = { r: 145, g: 189, b: 89 };
-const PLAINS_FOLIAGE_TINT = { r: 119, g: 171, b: 47 };
-
-function multiplyTint(color, tint) {
-  return {
-    r: Math.round((color.r * tint.r) / 255),
-    g: Math.round((color.g * tint.g) / 255),
-    b: Math.round((color.b * tint.b) / 255),
-    a: color.a ?? 255
-  };
-}
-
-function needsPlainsGrassTint(blockName, face) {
-  const short = blockName.replace(/^minecraft:/, "");
-
-  if (short === "grass_block") return face === "top";
-  if (short === "short_grass" || short === "tall_grass" || short === "fern" || short === "large_fern") return true;
-  if (short.includes("grass") && !short.includes("grass_block_side")) return true;
-
-  return false;
-}
-
-function needsPlainsFoliageTint(blockName) {
-  const short = blockName.replace(/^minecraft:/, "");
-
-  if (short.includes("leaves")) return true;
-  if (short === "vine" || short === "cave_vines" || short === "hanging_roots") return true;
-
-  return false;
-}
-
-function applyBiomeTint(color, blockName, face) {
-  if (needsPlainsGrassTint(blockName, face)) return multiplyTint(color, PLAINS_GRASS_TINT);
-  if (needsPlainsFoliageTint(blockName)) return multiplyTint(color, PLAINS_FOLIAGE_TINT);
-  return color;
-}
-
-function sampleTexture(texture, u, v) {
-  if (!texture) return null;
-
-  const x = Math.max(0, Math.min(texture.width - 1, Math.floor(u * texture.width)));
-  const y = Math.max(0, Math.min(texture.height - 1, Math.floor(v * texture.height)));
-  const idx = (texture.width * y + x) << 2;
-  const alpha = texture.data[idx + 3];
-
-  if (alpha < 16) return null;
-
-  return {
-    r: texture.data[idx],
-    g: texture.data[idx + 1],
-    b: texture.data[idx + 2],
-    a: alpha
-  };
 }
 
 function shadeColor(color, factor) {
@@ -453,26 +505,17 @@ function pointInPolygon(x, y, polygon) {
   return inside;
 }
 
-function drawTexturedPolygon(png, face) {
-  const points = face.points;
+function drawPolygon(png, points, color) {
   const minY = Math.floor(Math.min(...points.map(p => p.y)));
   const maxY = Math.ceil(Math.max(...points.map(p => p.y)));
   const minX = Math.floor(Math.min(...points.map(p => p.x)));
   const maxX = Math.ceil(Math.max(...points.map(p => p.x)));
-  const width = Math.max(1, maxX - minX);
-  const height = Math.max(1, maxY - minY);
-  const texture = getTextureForBlockFace(face.block, face.face);
-  const fallback = fallbackColorForBlock(face.block.name);
 
   for (let y = minY; y <= maxY; y++) {
     for (let x = minX; x <= maxX; x++) {
-      if (!pointInPolygon(x + 0.5, y + 0.5, points)) continue;
-
-      const u = Math.max(0, Math.min(1, (x - minX) / width));
-      const v = Math.max(0, Math.min(1, (y - minY) / height));
-      const sampled = sampleTexture(texture, u, v) ?? fallback;
-      const tinted = applyBiomeTint(sampled, face.block.name, face.face);
-      blendPixel(png, x, y, shadeColor(tinted, face.shade));
+      if (pointInPolygon(x + 0.5, y + 0.5, points)) {
+        blendPixel(png, x, y, color);
+      }
     }
   }
 }
@@ -482,18 +525,6 @@ function isoPoint(x, y, z, offsetX, offsetY, scale = 1) {
     x: offsetX + (x - z) * (tileWidth / 2) * scale,
     y: offsetY + (x + z) * (tileHeight / 2) * scale - y * blockHeight * scale
   };
-}
-
-
-function isTransparentLike(blockName) {
-  const short = blockName.replace(/^minecraft:/, "");
-
-  return (
-    short.includes("glass") ||
-    short.includes("water") ||
-    short.includes("ice") ||
-    short.includes("leaves")
-  );
 }
 
 function isCrossModelBlock(blockName) {
@@ -516,7 +547,7 @@ function isCrossModelBlock(blockName) {
 }
 
 function makeCrossFaces(block, offsetX, offsetY, scale) {
-  const { x, y, z } = block;
+  const { x, y, z, color } = block;
 
   const p0 = isoPoint(x, y, z, offsetX, offsetY, scale);
   const p1 = isoPoint(x + 1, y, z + 1, offsetX, offsetY, scale);
@@ -529,20 +560,8 @@ function makeCrossFaces(block, offsetX, offsetY, scale) {
   const q3 = isoPoint(x, y + 1, z + 1, offsetX, offsetY, scale);
 
   return [
-    {
-      face: "cross",
-      block,
-      points: [p2, p3, p1, p0],
-      shade: 1.0,
-      depth: x + y + z + 2.5
-    },
-    {
-      face: "cross",
-      block,
-      points: [q2, q3, q1, q0],
-      shade: 1.0,
-      depth: x + y + z + 2.55
-    }
+    { points: [p2, p3, p1, p0], color: shadeColor(color, 1.02), depth: x + y + z + 2.5 },
+    { points: [q2, q3, q1, q0], color: shadeColor(color, 0.95), depth: x + y + z + 2.55 }
   ];
 }
 
@@ -551,7 +570,7 @@ function makeCubeFaces(block, offsetX, offsetY, scale) {
     return makeCrossFaces(block, offsetX, offsetY, scale);
   }
 
-  const { x, y, z } = block;
+  const { x, y, z, color } = block;
 
   const p100 = isoPoint(x + 1, y, z, offsetX, offsetY, scale);
   const p010 = isoPoint(x, y + 1, z, offsetX, offsetY, scale);
@@ -562,9 +581,9 @@ function makeCubeFaces(block, offsetX, offsetY, scale) {
   const p111 = isoPoint(x + 1, y + 1, z + 1, offsetX, offsetY, scale);
 
   return [
-    { face: "top", block, points: [p010, p110, p111, p011], shade: 1.12, depth: x + y + z + 3 },
-    { face: "left", block, points: [p001, p011, p111, p101], shade: 0.78, depth: x + y + z + 2 },
-    { face: "right", block, points: [p100, p110, p111, p101], shade: 0.95, depth: x + y + z + 2.1 }
+    { points: [p010, p110, p111, p011], color: shadeColor(color, 1.15), depth: x + y + z + 3 },
+    { points: [p001, p011, p111, p101], color: shadeColor(color, 0.82), depth: x + y + z + 2 },
+    { points: [p100, p110, p111, p101], color: shadeColor(color, 0.96), depth: x + y + z + 2.1 }
   ];
 }
 
@@ -586,7 +605,7 @@ function collectBlocksFromStructure(structure) {
       y: Number(pos[1]),
       z: Number(pos[2]),
       name: blockName,
-      properties: state?.Properties ?? state?.properties ?? {}
+      color: getBlockColor(blockName)
     });
   }
 
@@ -661,8 +680,10 @@ function renderBlocksToPng(blocks) {
   const baseBounds = computeBounds(blocks, 1);
   const baseWidth = baseBounds.maxX - baseBounds.minX + padding * 2;
   const baseHeight = baseBounds.maxY - baseBounds.minY + padding * 2;
+
   const scale = Math.min(1, maxImageSize / Math.max(baseWidth, baseHeight));
   const bounds = computeBounds(blocks, scale);
+
   const width = Math.max(1, Math.ceil(bounds.maxX - bounds.minX + padding * 2));
   const height = Math.max(1, Math.ceil(bounds.maxY - bounds.minY + padding * 2));
 
@@ -671,12 +692,17 @@ function renderBlocksToPng(blocks) {
 
   const offsetX = padding - bounds.minX;
   const offsetY = padding - bounds.minY;
-  const faces = [];
 
-  for (const block of blocks) faces.push(...makeCubeFaces(block, offsetX, offsetY, scale));
+  const faces = [];
+  for (const block of blocks) {
+    faces.push(...makeCubeFaces(block, offsetX, offsetY, scale));
+  }
+
   faces.sort((a, b) => a.depth - b.depth);
 
-  for (const face of faces) drawTexturedPolygon(png, face);
+  for (const face of faces) {
+    drawPolygon(png, face.points, face.color);
+  }
 
   return PNG.sync.write(png);
 }
@@ -705,183 +731,8 @@ function removeStaleOutputFiles(validOutputFiles) {
   }
 }
 
-
-function getWorldgenStructureInfo(file) {
-  const parts = file.split(path.sep);
-  const dataIndex = parts.indexOf("data");
-  const worldgenIndex = parts.indexOf("worldgen");
-  const structureIndex = parts.indexOf("structure");
-
-  if (dataIndex === -1 || worldgenIndex === -1 || structureIndex === -1) return null;
-  if (worldgenIndex !== dataIndex + 2 || structureIndex !== worldgenIndex + 1) return null;
-
-  const namespace = parts[dataIndex + 1];
-  const relativePath = parts.slice(structureIndex + 1).join("/").replace(/\.json$/, "");
-
-  return {
-    namespace,
-    id: `${namespace}:${relativePath}`,
-    relativePath
-  };
-}
-
-function readJsonIfExists(file) {
-  if (!fs.existsSync(file)) return null;
-
-  try {
-    return JSON.parse(fs.readFileSync(file, "utf8"));
-  } catch {
-    return null;
-  }
-}
-
-function collectTemplatePoolsFromObject(value, result = new Set()) {
-  if (value === null || value === undefined) return result;
-
-  if (typeof value === "string") {
-    if (value.includes(":") && !value.startsWith("#")) {
-      result.add(value);
-    }
-    return result;
-  }
-
-  if (Array.isArray(value)) {
-    for (const item of value) collectTemplatePoolsFromObject(item, result);
-    return result;
-  }
-
-  if (typeof value === "object") {
-    for (const [key, nested] of Object.entries(value)) {
-      if (
-        key === "start_pool" ||
-        key === "fallback" ||
-        key === "pool" ||
-        key === "template_pool"
-      ) {
-        collectTemplatePoolsFromObject(nested, result);
-        continue;
-      }
-
-      collectTemplatePoolsFromObject(nested, result);
-    }
-  }
-
-  return result;
-}
-
-function getTemplatePoolFile(poolId) {
-  const [namespace, poolPath] = splitResourceLocation(poolId);
-  return path.join(inputRoot, namespace, "worldgen", "template_pool", `${poolPath}.json`);
-}
-
-function getStructureNbtFileFromLocation(location) {
-  const [namespace, structurePath] = splitResourceLocation(location);
-  return path.join(inputRoot, namespace, "structure", `${structurePath}.nbt`);
-}
-
-function collectStructureFilesFromTemplatePool(poolId, seenPools = new Set(), result = new Set()) {
-  if (seenPools.has(poolId)) return result;
-  seenPools.add(poolId);
-
-  const poolFile = getTemplatePoolFile(poolId);
-  const poolJson = readJsonIfExists(poolFile);
-  if (!poolJson) return result;
-
-  for (const element of poolJson.elements ?? []) {
-    const elementData = element.element ?? element;
-
-    if (elementData.location) {
-      const structureFile = getStructureNbtFileFromLocation(elementData.location);
-      if (fs.existsSync(structureFile)) result.add(structureFile);
-    }
-
-    if (elementData.projection && elementData.element?.location) {
-      const structureFile = getStructureNbtFileFromLocation(elementData.element.location);
-      if (fs.existsSync(structureFile)) result.add(structureFile);
-    }
-  }
-
-  if (poolJson.fallback && poolJson.fallback !== "minecraft:empty") {
-    collectStructureFilesFromTemplatePool(poolJson.fallback, seenPools, result);
-  }
-
-  return result;
-}
-
-function collectStructureFilesForWorldgenStructure(worldgenFile) {
-  const info = getWorldgenStructureInfo(worldgenFile);
-  const json = readJsonIfExists(worldgenFile);
-  if (!info || !json) return null;
-
-  const pools = collectTemplatePoolsFromObject(json);
-  const files = new Set();
-
-  for (const poolId of pools) {
-    collectStructureFilesFromTemplatePool(poolId, new Set(), files);
-  }
-
-  return {
-    namespace: info.namespace,
-    relativePath: info.relativePath,
-    id: info.id,
-    files: [...files].sort()
-  };
-}
-
-function getDirectStructureGroups() {
-  const structureFiles = walk(inputRoot)
-    .filter(file => file.endsWith(".nbt"))
-    .map(file => ({ file, info: getStructureInfo(file) }))
-    .filter(entry => entry.info !== null);
-
-  const groups = new Map();
-
-  for (const { file, info } of structureFiles) {
-    const key = `${info.namespace}:${info.topFolder}`;
-
-    if (!groups.has(key)) {
-      groups.set(key, {
-        namespace: info.namespace,
-        outputName: info.topFolder,
-        files: []
-      });
-    }
-
-    groups.get(key).files.push(file);
-  }
-
-  return groups;
-}
-
-function getWorldgenStructureGroups() {
-  const groups = new Map();
-
-  if (!generateWorldgenStructurePreviews) return groups;
-
-  const worldgenFiles = walk(inputRoot)
-    .filter(file => file.endsWith(".json"))
-    .filter(file => getWorldgenStructureInfo(file) !== null);
-
-  for (const file of worldgenFiles) {
-    const group = collectStructureFilesForWorldgenStructure(file);
-
-    if (!group || group.files.length === 0) {
-      console.warn(`No template NBT files found for worldgen structure ${file}`);
-      continue;
-    }
-
-    groups.set(group.id, {
-      namespace: group.namespace,
-      outputName: group.relativePath,
-      files: group.files
-    });
-  }
-
-  return groups;
-}
-
 async function main() {
-  const groups = getWorldgenStructureGroups();
+  const groups = await getWorldgenStructureGroups();
 
   if (groups.size === 0) {
     for (const [key, value] of getDirectStructureGroups()) {
@@ -890,6 +741,7 @@ async function main() {
   }
 
   console.log(`Found ${groups.size} rendered structure group(s).`);
+  console.log(`Read ${stats.poolsRead} template pool(s), followed ${stats.jigsawPoolsFollowed} jigsaw pool reference(s).`);
 
   const validOutputFiles = new Set();
 
@@ -900,6 +752,7 @@ async function main() {
     const outputPath = path.join(outputRoot, group.namespace, `${group.outputName}.png`);
 
     validOutputFiles.add(path.normalize(outputPath));
+
     fs.mkdirSync(path.dirname(outputPath), { recursive: true });
     fs.writeFileSync(outputPath, renderBlocksToPng(blocks));
     stats.mainImages++;
@@ -913,12 +766,6 @@ async function main() {
   }
 
   console.log(`Generated ${stats.mainImages} preview image(s).`);
-  console.log(`Texture files loaded: ${stats.textureHits}; missing/fallback lookups: ${stats.textureMisses}.`);
-
-  if (stats.textureHits === 0) {
-    console.warn("No texture files were loaded. Check that vanilla assets were extracted and/or resource-pack assets exist.");
-  }
-
   removeStaleOutputFiles(validOutputFiles);
 }
 
