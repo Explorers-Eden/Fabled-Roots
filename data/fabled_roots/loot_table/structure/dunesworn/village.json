@@ -141,6 +141,11 @@
         },
         {
           "type": "minecraft:loot_table",
+          "value": "fabled_roots:pool/journal/daily_life/dunesworn",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:loot_table",
           "value": "fabled_roots:item/dunesworn_horn",
           "weight": 2
         }

@@ -3,7 +3,6 @@ const fs = require("fs");
 const path = require("path");
 const nbt = require("prismarine-nbt");
 const { PNG } = require("pngjs");
-const { GIFEncoder, quantize, applyPalette } = require("gifenc");
 
 const inputRoot = process.env.STRUCTURE_INPUT_ROOT ?? "data";
 const outputRoot = process.env.STRUCTURE_PREVIEW_OUTPUT_ROOT ?? path.join("wiki", "images", "structures");
@@ -14,10 +13,17 @@ const tileWidth = Number(process.env.STRUCTURE_PREVIEW_TILE_WIDTH ?? 32);
 const tileHeight = Number(process.env.STRUCTURE_PREVIEW_TILE_HEIGHT ?? 18);
 const blockHeight = Number(process.env.STRUCTURE_PREVIEW_BLOCK_HEIGHT ?? 22);
 const padding = Number(process.env.STRUCTURE_PREVIEW_PADDING ?? 48);
-const maxImageSize = Number(process.env.STRUCTURE_PREVIEW_MAX_SIZE ?? 2800);
+const maxImageSize = Number(process.env.STRUCTURE_PREVIEW_MAX_SIZE ?? 900);
 const transparentBackground = String(process.env.STRUCTURE_PREVIEW_TRANSPARENT ?? "true") !== "false";
-const gifFrames = Math.max(1, Number(process.env.STRUCTURE_PREVIEW_GIF_FRAMES ?? 60));
-const gifDelay = Math.max(1, Number(process.env.STRUCTURE_PREVIEW_GIF_DELAY ?? 160));
+const pngCompressionLevel = Math.min(9, Math.max(0, Number(process.env.STRUCTURE_PREVIEW_PNG_COMPRESSION ?? 9)));
+const previewSeed = String(process.env.STRUCTURE_PREVIEW_SEED ?? "katters-structures-preview");
+
+const previewRotations = [
+  { name: "north", degrees: 0 },
+  { name: "east", degrees: 90 },
+  { name: "south", degrees: 180 },
+  { name: "west", degrees: 270 }
+];
 
 const IGNORED_BLOCKS = new Set([
   "minecraft:air",
@@ -227,8 +233,44 @@ function whenClauseMatches(when, properties = {}) {
   return true;
 }
 
-function normalizeVariant(variant) {
-  if (Array.isArray(variant)) return variant[0] ?? null;
+function hashString(text) {
+  let hash = 2166136261;
+  for (let i = 0; i < String(text).length; i++) {
+    hash ^= String(text).charCodeAt(i);
+    hash = Math.imul(hash, 16777619);
+  }
+  return hash >>> 0;
+}
+
+function seededRandom(seedText) {
+  let state = hashString(seedText) || 1;
+  state ^= state << 13;
+  state ^= state >>> 17;
+  state ^= state << 5;
+  return ((state >>> 0) / 4294967296);
+}
+
+function chooseWeightedEntry(entries, seedText) {
+  if (!Array.isArray(entries) || entries.length === 0) return null;
+
+  let totalWeight = 0;
+  for (const entry of entries) {
+    totalWeight += Math.max(0, Number(entry?.weight ?? 1));
+  }
+
+  if (totalWeight <= 0) return entries[0] ?? null;
+
+  let roll = seededRandom(seedText) * totalWeight;
+  for (const entry of entries) {
+    roll -= Math.max(0, Number(entry?.weight ?? 1));
+    if (roll <= 0) return entry;
+  }
+
+  return entries[entries.length - 1] ?? null;
+}
+
+function normalizeVariant(variant, seedText = previewSeed) {
+  if (Array.isArray(variant)) return chooseWeightedEntry(variant, seedText);
   return variant ?? null;
 }
 
@@ -260,7 +302,7 @@ function getModelVariantsFromBlockState(blockName, properties = {}) {
 
     if (!variant) variant = blockState.variants[""] ?? Object.values(blockState.variants)[0];
 
-    variant = normalizeVariant(variant);
+    variant = normalizeVariant(variant, `${previewSeed}|blockstate|${blockName}|${stringifyProperties(properties)}`);
 
     if (variant?.model) {
       return [
@@ -280,7 +322,7 @@ function getModelVariantsFromBlockState(blockName, properties = {}) {
     for (const part of blockState.multipart) {
       if (!whenClauseMatches(part.when, properties)) continue;
 
-      const applies = Array.isArray(part.apply) ? part.apply : [part.apply];
+      const applies = Array.isArray(part.apply) ? [normalizeVariant(part.apply, `${previewSeed}|multipart|${blockName}|${stringifyProperties(properties)}|${variants.length}`)] : [part.apply];
 
       for (const apply of applies) {
         if (apply?.model) {
@@ -841,10 +883,96 @@ function bakeElementQuads(blockName, modelTextures, element, variant) {
   return quads;
 }
 
+
+function allFaces(texture = null) {
+  const face = texture ? { texture } : {};
+  return { up: face, down: face, north: face, south: face, west: face, east: face };
+}
+
+function bakeFallbackElements(blockName, elements, variant = { x: 0, y: 0 }) {
+  const baked = [];
+  for (const element of elements) baked.push(...bakeElementQuads(blockName, {}, element, variant));
+  return baked;
+}
+
+function specialBlockModel(blockName, properties = {}) {
+  const short = blockName.replace(/^minecraft:/, "");
+
+  if (short === "chain") {
+    const axis = properties.axis ?? "y";
+    const elements = axis === "x"
+      ? [
+          { from: [0, 6, 7], to: [16, 10, 9], faces: allFaces() },
+          { from: [2, 4, 6], to: [6, 12, 10], faces: allFaces() },
+          { from: [10, 4, 6], to: [14, 12, 10], faces: allFaces() }
+        ]
+      : axis === "z"
+        ? [
+            { from: [7, 6, 0], to: [9, 10, 16], faces: allFaces() },
+            { from: [6, 4, 2], to: [10, 12, 6], faces: allFaces() },
+            { from: [6, 4, 10], to: [10, 12, 14], faces: allFaces() }
+          ]
+        : [
+            { from: [7, 0, 6], to: [9, 16, 10], faces: allFaces() },
+            { from: [6, 2, 4], to: [10, 6, 12], faces: allFaces() },
+            { from: [6, 10, 4], to: [10, 14, 12], faces: allFaces() }
+          ];
+
+    return bakeFallbackElements(blockName, elements);
+  }
+
+  if (short.endsWith("_wall_sign") || short.endsWith("_wall_hanging_sign")) {
+    const y = { south: 0, west: 90, north: 180, east: 270 }[properties.facing ?? "north"] ?? 180;
+    return bakeFallbackElements(blockName, [
+      { from: [2, 4, 14], to: [14, 12, 15.5], faces: allFaces() }
+    ], { x: 0, y });
+  }
+
+  if (short.endsWith("_sign") || short.endsWith("_hanging_sign")) {
+    const rotation = Number(properties.rotation ?? 0);
+    const y = (rotation / 16) * 360;
+    return bakeFallbackElements(blockName, [
+      { from: [2, 5, 7.25], to: [14, 13, 8.75], faces: allFaces() },
+      { from: [7.25, 0, 7.25], to: [8.75, 5, 8.75], faces: allFaces() }
+    ], { x: 0, y });
+  }
+
+  if (short.endsWith("_button")) {
+    const face = properties.face ?? "wall";
+    const powered = properties.powered === "true";
+    const depth = powered ? 1 : 2;
+    const facing = properties.facing ?? "north";
+    let element;
+    let variant = { x: 0, y: 0 };
+
+    if (face === "floor") {
+      element = { from: [5, 0, 6], to: [11, depth, 10], faces: allFaces() };
+      variant.y = { north: 0, east: 90, south: 180, west: 270 }[facing] ?? 0;
+    } else if (face === "ceiling") {
+      element = { from: [5, 16 - depth, 6], to: [11, 16, 10], faces: allFaces() };
+      variant.y = { north: 0, east: 90, south: 180, west: 270 }[facing] ?? 0;
+    } else {
+      element = { from: [5, 6, 14 - depth], to: [11, 10, 16], faces: allFaces() };
+      variant.y = { south: 0, west: 90, north: 180, east: 270 }[facing] ?? 180;
+    }
+
+    return bakeFallbackElements(blockName, [element], variant);
+  }
+
+  return null;
+}
+
 function bakeBlockModel(blockName, properties = {}) {
   const cacheKey = `${blockName}|${stringifyProperties(properties)}`;
 
   if (bakedModelCache.has(cacheKey)) return bakedModelCache.get(cacheKey);
+
+  const special = specialBlockModel(blockName, properties);
+  if (special) {
+    bakedModelCache.set(cacheKey, special);
+    stats.bakedQuads += special.length;
+    return special;
+  }
 
   const variants = getModelVariantsFromBlockState(blockName, properties);
   const baked = [];
@@ -964,9 +1092,15 @@ function collectBlocksFromStructure(structure) {
 function normalizeBlocks(blocks) {
   if (blocks.length === 0) return blocks;
 
-  const minX = Math.min(...blocks.map(b => b.x));
-  const minY = Math.min(...blocks.map(b => b.y));
-  const minZ = Math.min(...blocks.map(b => b.z));
+  let minX = Infinity;
+  let minY = Infinity;
+  let minZ = Infinity;
+
+  for (const block of blocks) {
+    if (block.x < minX) minX = block.x;
+    if (block.y < minY) minY = block.y;
+    if (block.z < minZ) minZ = block.z;
+  }
 
   return blocks.map(block => ({
     ...block,
@@ -1018,10 +1152,17 @@ function fillBackground(png) {
 function getRotationCenter(blocks) {
   if (blocks.length === 0) return { x: 0, z: 0 };
 
-  const minX = Math.min(...blocks.map(block => block.x));
-  const maxX = Math.max(...blocks.map(block => block.x + 1));
-  const minZ = Math.min(...blocks.map(block => block.z));
-  const maxZ = Math.max(...blocks.map(block => block.z + 1));
+  let minX = Infinity;
+  let maxX = -Infinity;
+  let minZ = Infinity;
+  let maxZ = -Infinity;
+
+  for (const block of blocks) {
+    if (block.x < minX) minX = block.x;
+    if (block.x + 1 > maxX) maxX = block.x + 1;
+    if (block.z < minZ) minZ = block.z;
+    if (block.z + 1 > maxZ) maxZ = block.z + 1;
+  }
 
   return {
     x: (minX + maxX) / 2,
@@ -1029,32 +1170,16 @@ function getRotationCenter(blocks) {
   };
 }
 
-function getRotationDegrees(frame) {
-  if (gifFrames <= 1) return 0;
+function getScaledBounds(blocks, rotation) {
+  const baseBounds = computeBounds(blocks, 1, rotation);
+  const baseWidth = baseBounds.maxX - baseBounds.minX + padding * 2;
+  const baseHeight = baseBounds.maxY - baseBounds.minY + padding * 2;
+  const scale = Math.min(1, maxImageSize / Math.max(baseWidth, baseHeight));
 
-  return (frame / gifFrames) * 360;
-}
-
-function getAnimatedBounds(blocks, scale = 1, center = getRotationCenter(blocks)) {
-  let bounds = null;
-
-  for (let frame = 0; frame < gifFrames; frame++) {
-    const frameBounds = computeBounds(blocks, scale, {
-      degrees: getRotationDegrees(frame),
-      center
-    });
-
-    bounds = bounds
-      ? {
-          minX: Math.min(bounds.minX, frameBounds.minX),
-          maxX: Math.max(bounds.maxX, frameBounds.maxX),
-          minY: Math.min(bounds.minY, frameBounds.minY),
-          maxY: Math.max(bounds.maxY, frameBounds.maxY)
-        }
-      : frameBounds;
-  }
-
-  return bounds ?? { minX: 0, maxX: 1, minY: 0, maxY: 1 };
+  return {
+    scale,
+    bounds: computeBounds(blocks, scale, rotation)
+  };
 }
 
 function renderBlocksToPngFrame(blocks, options = {}) {
@@ -1086,69 +1211,35 @@ function renderBlocksToPngFrame(blocks, options = {}) {
   return png;
 }
 
-function encodeGifFrame(gif, png) {
-  const rgba = new Uint8Array(png.data);
-  const opaqueRgba = [];
-
-  for (let i = 0; i < rgba.length; i += 4) {
-    if (transparentBackground && rgba[i + 3] === 0) continue;
-    opaqueRgba.push(rgba[i], rgba[i + 1], rgba[i + 2], 255);
-  }
-
-  const opaquePalette = opaqueRgba.length > 0 ? quantize(new Uint8Array(opaqueRgba), 255) : [];
-  const palette = [[0, 0, 0], ...opaquePalette];
-  const index = new Uint8Array(png.width * png.height);
-
-  if (opaquePalette.length > 0) {
-    const opaqueIndexes = applyPalette(new Uint8Array(opaqueRgba), opaquePalette);
-    let opaqueCursor = 0;
-
-    for (let source = 0, target = 0; source < rgba.length; source += 4, target++) {
-      if (transparentBackground && rgba[source + 3] === 0) {
-        index[target] = 0;
-      } else {
-        index[target] = opaqueIndexes[opaqueCursor++] + 1;
-      }
-    }
-  }
-
-  gif.writeFrame(index, png.width, png.height, {
-    palette,
-    delay: gifDelay,
-    transparent: transparentBackground,
-    transparentIndex: 0
+function encodePng(png) {
+  return PNG.sync.write(png, {
+    colorType: 6,
+    inputColorType: 6,
+    deflateLevel: pngCompressionLevel,
+    filterType: 4
   });
 }
 
-function renderBlocksToGif(blocks) {
+function renderBlocksToPngViews(blocks) {
   blocks = normalizeBlocks(blocks);
 
   if (blocks.length === 0) {
-    const gif = GIFEncoder();
-    encodeGifFrame(gif, renderBlocksToPngFrame([], { bounds: { minX: 0, maxX: 1, minY: 0, maxY: 1 }, scale: 1 }));
-    gif.finish();
-    return Buffer.from(gif.bytesView());
+    const blank = renderBlocksToPngFrame([], { bounds: { minX: 0, maxX: 1, minY: 0, maxY: 1 }, scale: 1 });
+    return previewRotations.map(view => ({ ...view, buffer: encodePng(blank) }));
   }
 
   const center = getRotationCenter(blocks);
-  const baseBounds = getAnimatedBounds(blocks, 1, center);
-  const baseWidth = baseBounds.maxX - baseBounds.minX + padding * 2;
-  const baseHeight = baseBounds.maxY - baseBounds.minY + padding * 2;
-  const scale = Math.min(1, maxImageSize / Math.max(baseWidth, baseHeight));
-  const bounds = getAnimatedBounds(blocks, scale, center);
-  const gif = GIFEncoder();
 
-  for (let frame = 0; frame < gifFrames; frame++) {
-    const rotation = {
-      degrees: getRotationDegrees(frame),
-      center
+  return previewRotations.map(view => {
+    const rotation = { degrees: view.degrees, center };
+    const { bounds, scale } = getScaledBounds(blocks, rotation);
+    const png = renderBlocksToPngFrame(blocks, { bounds, scale, rotation });
+
+    return {
+      ...view,
+      buffer: encodePng(png)
     };
-
-    encodeGifFrame(gif, renderBlocksToPngFrame(blocks, { bounds, scale, rotation }));
-  }
-
-  gif.finish();
-  return Buffer.from(gif.bytesView());
+  });
 }
 
 function readJsonIfExists(file) {
@@ -1438,6 +1529,10 @@ function rotateYProperties(properties, quarterTurns) {
     const [front, top = "up"] = String(rotated.orientation).split("_");
     rotated.orientation = `${rotateYDirection(front, quarterTurns)}_${rotateYDirection(top, quarterTurns)}`;
   }
+  if (rotated.rotation !== undefined) {
+    const value = Number(rotated.rotation);
+    if (Number.isFinite(value)) rotated.rotation = String((value + quarterTurns * 4 + 1600) % 16);
+  }
 
   return rotated;
 }
@@ -1471,19 +1566,26 @@ function transformJigsaw(jigsaw, size, offset, quarterTurns = 0) {
   };
 }
 
-function chooseTemplatePoolLocations(poolJson) {
-  const locations = [];
+function getTemplatePoolChoices(poolJson) {
+  const choices = [];
 
   for (const element of poolJson?.elements ?? []) {
     const elementData = element.element ?? element;
-    const elementLocations = [...collectElementLocations(elementData)];
-    if (elementLocations.length > 0) locations.push(...elementLocations);
+    const weight = Math.max(0, Number(element.weight ?? elementData.weight ?? 1));
+
+    for (const location of collectElementLocations(elementData)) {
+      choices.push({ location, weight });
+    }
   }
 
-  return locations;
+  return choices;
 }
 
-async function chooseStructureFromTemplatePool(poolId, seenPools = new Set()) {
+function chooseTemplatePoolLocations(poolJson) {
+  return getTemplatePoolChoices(poolJson).map(choice => choice.location);
+}
+
+async function chooseStructureFromTemplatePool(poolId, seenPools = new Set(), seedText = previewSeed) {
   if (!poolId || poolId === "minecraft:empty" || seenPools.has(poolId)) return null;
   seenPools.add(poolId);
 
@@ -1491,13 +1593,16 @@ async function chooseStructureFromTemplatePool(poolId, seenPools = new Set()) {
   if (!poolJson) return null;
   stats.poolsRead++;
 
-  for (const location of chooseTemplatePoolLocations(poolJson)) {
-    const structureFile = getStructureNbtFileFromLocation(location);
-    if (fs.existsSync(structureFile)) return { location, structureFile };
+  const choices = getTemplatePoolChoices(poolJson)
+    .filter(choice => fs.existsSync(getStructureNbtFileFromLocation(choice.location)));
+
+  if (choices.length > 0) {
+    const choice = chooseWeightedEntry(choices, `${previewSeed}|pool|${poolId}|${seedText}`) ?? choices[0];
+    return { location: choice.location, structureFile: getStructureNbtFileFromLocation(choice.location) };
   }
 
   if (poolJson.fallback && poolJson.fallback !== "minecraft:empty") {
-    return chooseStructureFromTemplatePool(poolJson.fallback, seenPools);
+    return chooseStructureFromTemplatePool(poolJson.fallback, seenPools, `${seedText}|fallback`);
   }
 
   return null;
@@ -1518,7 +1623,7 @@ function makeBlockKey(block) {
 }
 
 async function assembleJigsawStructureFromPool(startPool, maxDepth = 7) {
-  const start = await chooseStructureFromTemplatePool(startPool);
+  const start = await chooseStructureFromTemplatePool(startPool, new Set(), `${startPool}|start`);
   if (!start) return [];
 
   const blocks = [];
@@ -1548,7 +1653,7 @@ async function assembleJigsawStructureFromPool(startPool, maxDepth = 7) {
       if (!parent.pool || parent.pool === "minecraft:empty") continue;
 
       const worldParent = transformJigsaw(parent, size, item.offset, item.quarterTurns);
-      const childChoice = await chooseStructureFromTemplatePool(parent.pool);
+      const childChoice = await chooseStructureFromTemplatePool(parent.pool, new Set(), `${item.structureFile}|${item.offset.x},${item.offset.y},${item.offset.z}|${item.quarterTurns}|${parent.x},${parent.y},${parent.z}|${parent.name}|${parent.target}|${parent.pool}`);
       if (!childChoice) continue;
 
       stats.jigsawPoolsFollowed++;
@@ -1681,7 +1786,7 @@ async function loadBlocksForFiles(files) {
 function removeStaleOutputFiles(validOutputFiles) {
   if (!fs.existsSync(outputRoot)) return;
 
-  for (const file of walk(outputRoot).filter(file => file.endsWith(".gif"))) {
+  for (const file of walk(outputRoot).filter(file => file.endsWith(".png") || file.endsWith(".gif"))) {
     const normalized = path.normalize(file);
 
     if (!validOutputFiles.has(normalized)) {
@@ -1711,21 +1816,26 @@ async function main() {
     const blocks = Array.isArray(group.blocks) && group.blocks.length > 0
       ? group.blocks
       : await loadBlocksForFiles(group.files);
-    const outputPath = path.join(outputRoot, group.namespace, `${group.outputName}.gif`);
+    const outputDir = path.join(outputRoot, group.namespace, group.outputName);
+    const views = renderBlocksToPngViews(blocks);
 
-    validOutputFiles.add(path.normalize(outputPath));
+    fs.mkdirSync(outputDir, { recursive: true });
 
-    fs.mkdirSync(path.dirname(outputPath), { recursive: true });
-    fs.writeFileSync(outputPath, renderBlocksToGif(blocks));
-    stats.mainImages++;
+    let totalSize = 0;
+    for (const view of views) {
+      const outputPath = path.join(outputDir, `${view.name}.png`);
+      validOutputFiles.add(path.normalize(outputPath));
+      fs.writeFileSync(outputPath, view.buffer);
+      totalSize += fs.statSync(outputPath).size;
+      stats.mainImages++;
+    }
 
-    const mainSize = fs.statSync(outputPath).size;
-    console.log(`Generated ${outputPath} from ${group.files.length} structure part(s), ${blocks.length} block(s), ${mainSize} bytes`);
+    console.log(`Generated ${views.length} PNG preview(s) in ${outputDir} from ${group.files.length} structure part(s), ${blocks.length} block(s), ${totalSize} total bytes`);
   }
 
   if (groups.size === 0) console.warn("No structure groups were found.");
 
-  console.log(`Generated ${stats.mainImages} animated preview GIF(s).`);
+  console.log(`Generated ${stats.mainImages} static preview PNG(s).`);
   console.log(`Baked ${stats.bakedQuads} model quad(s), skipped ${stats.skippedMissingModels} block model(s) with no renderable elements.`);
   console.log(`Texture files loaded: ${stats.textureHits}; missing/fallback lookups: ${stats.textureMisses}.`);
 

@@ -179,6 +179,11 @@
         },
         {
           "type": "minecraft:loot_table",
+          "value": "fabled_roots:pool/journal/daily_life/aetherian",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:loot_table",
           "value": "fabled_roots:item/treasure_map/aetherian",
           "weight": 2
         },

@@ -175,6 +175,11 @@
         },
         {
           "type": "minecraft:loot_table",
+          "value": "fabled_roots:pool/journal/daily_life/turtlekin",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:loot_table",
           "value": "fabled_roots:item/treasure_map/turtlekin",
           "weight": 2
         },

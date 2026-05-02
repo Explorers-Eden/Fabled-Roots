@@ -179,6 +179,11 @@
         },
         {
           "type": "minecraft:loot_table",
+          "value": "fabled_roots:pool/journal/daily_life/oakhearted",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:loot_table",
           "value": "fabled_roots:item/treasure_map/oakhearted",
           "weight": 2
         },

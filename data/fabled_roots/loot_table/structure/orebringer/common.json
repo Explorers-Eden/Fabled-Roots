@@ -175,6 +175,11 @@
         },
         {
           "type": "minecraft:loot_table",
+          "value": "fabled_roots:pool/journal/daily_life/orebringer",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:loot_table",
           "value": "fabled_roots:item/treasure_map/orebringer",
           "weight": 2
         },
