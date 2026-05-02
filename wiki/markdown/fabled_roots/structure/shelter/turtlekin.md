@@ -20,7 +20,7 @@ There is one loot table used in this structure:
 | Bundle of Roots | 1 | 2 | 1 | 20.0% |
 | Harness of Roots | 1 | 2 | 1 | 20.0% |
 | Trident | 1 | 2 | 1 | 20.0% |
-| Written Book | 1 | 3 | 2400 | 99.8% |
+| Written Book | 1 | 3 | 3600 | 99.8% |
 | Buried Treasure Map | 1 | 3 | 2 | 0.1% |
 | Horn of Roots | 1 | 3 | 2 | 0.1% |
 

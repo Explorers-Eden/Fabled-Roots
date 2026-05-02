@@ -15,7 +15,8 @@
 | Bundle of Roots | 1 | 2 | 1 | 20.0% |
 | Harness of Roots | 1 | 2 | 1 | 20.0% |
 | Sword of Roots | 1 | 2 | 1 | 20.0% |
-| Loot Table (fabled_roots:pool/journal/final_days/orebringer) | 1 | 3 | 3 | 25.0% |
-| Loot Table (fabled_roots:pool/journal/new_horizons/orebringer) | 1 | 3 | 3 | 25.0% |
-| Buried Treasure Map | 1 | 3 | 2 | 16.7% |
-| Horn of Roots | 1 | 3 | 2 | 16.7% |
+| Loot Table (fabled_roots:pool/journal/daily_life/orebringer) | 1 | 3 | 3 | 20.0% |
+| Loot Table (fabled_roots:pool/journal/final_days/orebringer) | 1 | 3 | 3 | 20.0% |
+| Loot Table (fabled_roots:pool/journal/new_horizons/orebringer) | 1 | 3 | 3 | 20.0% |
+| Buried Treasure Map | 1 | 3 | 2 | 13.3% |
+| Horn of Roots | 1 | 3 | 2 | 13.3% |

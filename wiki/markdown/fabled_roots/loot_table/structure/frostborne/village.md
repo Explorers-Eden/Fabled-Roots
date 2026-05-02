@@ -12,5 +12,6 @@
 | Feather | 1 | 1 | 1 | 2.3% |
 | Gold Nugget | 1–3 | 1 | 1 | 2.3% |
 | Snowball | 1 | 1 | 1 | 2.3% |
-| Loot Table (fabled_roots:pool/journal/new_horizons/frostborne) | 1 | 2 | 3 | 42.9% |
-| Horn of Roots | 1 | 2 | 2 | 28.6% |
+| Loot Table (fabled_roots:pool/journal/daily_life/frostborne) | 1 | 2 | 3 | 30.0% |
+| Loot Table (fabled_roots:pool/journal/new_horizons/frostborne) | 1 | 2 | 3 | 30.0% |
+| Horn of Roots | 1 | 2 | 2 | 20.0% |
