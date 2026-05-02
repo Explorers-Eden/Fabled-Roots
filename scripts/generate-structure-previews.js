@@ -1358,7 +1358,7 @@ async function collectJigsawPoolsFromStructureFile(structureFile) {
   }
 }
 
-async function collectStructureFilesFromTemplatePool(poolId, seenPools = new Set(), result = new Set()) {
+async function collectStructureFilesFromTemplatePool(poolId, seenPools = new Set(), result = new Set(), seedText = previewSeed) {
   if (seenPools.has(poolId)) return result;
   seenPools.add(poolId);
 
@@ -1368,30 +1368,34 @@ async function collectStructureFilesFromTemplatePool(poolId, seenPools = new Set
 
   stats.poolsRead++;
 
-  for (const element of poolJson.elements ?? []) {
-    const elementData = element.element ?? element;
-    const locations = collectElementLocations(elementData);
+  const choices = getTemplatePoolChoices(poolJson)
+    .filter(choice => fs.existsSync(getStructureNbtFileFromLocation(choice.location)));
+  const choice = chooseWeightedEntry(choices, `${previewSeed}|collect-pool|${poolId}|${seedText}`);
 
-    for (const location of locations) {
-      const structureFile = getStructureNbtFileFromLocation(location);
-      if (!fs.existsSync(structureFile)) continue;
+  if (choice) {
+    const structureFile = getStructureNbtFileFromLocation(choice.location);
+    const alreadyHadFile = result.has(structureFile);
+    result.add(structureFile);
 
-      const alreadyHadFile = result.has(structureFile);
-      result.add(structureFile);
+    if (!alreadyHadFile) {
+      const jigsawPools = await collectJigsawPoolsFromStructureFile(structureFile);
 
-      if (!alreadyHadFile) {
-        const jigsawPools = await collectJigsawPoolsFromStructureFile(structureFile);
-
-        for (const nestedPool of jigsawPools) {
-          stats.jigsawPoolsFollowed++;
-          await collectStructureFilesFromTemplatePool(nestedPool, seenPools, result);
-        }
+      for (const nestedPool of jigsawPools) {
+        stats.jigsawPoolsFollowed++;
+        await collectStructureFilesFromTemplatePool(
+          nestedPool,
+          seenPools,
+          result,
+          `${seedText}|${choice.location}|${nestedPool}`
+        );
       }
     }
+
+    return result;
   }
 
   if (poolJson.fallback && poolJson.fallback !== "minecraft:empty") {
-    await collectStructureFilesFromTemplatePool(poolJson.fallback, seenPools, result);
+    await collectStructureFilesFromTemplatePool(poolJson.fallback, seenPools, result, `${seedText}|fallback`);
   }
 
   return result;
