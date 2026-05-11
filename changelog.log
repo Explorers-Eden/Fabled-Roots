@@ -4,3 +4,4 @@
 - Added a new Journal Book series describing the daily life of normal citizens
 
 ## Fixes:
+- pale_bloom configured feature having the wrong file name (ashen_bloom) resulting in Pale Bloom Scrolls not working
