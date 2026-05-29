@@ -51,7 +51,7 @@
   ],
   "action": {
     "type": "run_command",
-    "command": "trigger fabled_roots.dialog_trigger.wiki set 1"
+    "command": "trigger fabled_roots.dialog_trigger.info set 1"
   }
 },
 {
@@ -79,7 +79,7 @@
   ],
   "action": {
     "type": "run_command",
-    "command": "trigger fabled_roots.dialog_trigger.wiki set 2"
+    "command": "trigger fabled_roots.dialog_trigger.info set 2"
   }
 },
 {
@@ -107,7 +107,7 @@
   ],
   "action": {
     "type": "run_command",
-    "command": "trigger fabled_roots.dialog_trigger.wiki set 3"
+    "command": "trigger fabled_roots.dialog_trigger.info set 3"
   }
 },
 {
@@ -135,7 +135,7 @@
   ],
   "action": {
     "type": "run_command",
-    "command": "trigger fabled_roots.dialog_trigger.wiki set 4"
+    "command": "trigger fabled_roots.dialog_trigger.info set 4"
   }
 },
 {
@@ -163,7 +163,7 @@
   ],
   "action": {
     "type": "run_command",
-    "command": "trigger fabled_roots.dialog_trigger.wiki set 5"
+    "command": "trigger fabled_roots.dialog_trigger.info set 5"
   }
 },
 {
@@ -191,7 +191,7 @@
   ],
   "action": {
     "type": "run_command",
-    "command": "trigger fabled_roots.dialog_trigger.wiki set 6"
+    "command": "trigger fabled_roots.dialog_trigger.info set 6"
   }
 },
 {
@@ -219,7 +219,7 @@
   ],
   "action": {
     "type": "run_command",
-    "command": "trigger fabled_roots.dialog_trigger.wiki set 7"
+    "command": "trigger fabled_roots.dialog_trigger.info set 7"
   }
 },
 {
@@ -247,7 +247,7 @@
   ],
   "action": {
     "type": "run_command",
-    "command": "trigger fabled_roots.dialog_trigger.wiki set 8"
+    "command": "trigger fabled_roots.dialog_trigger.info set 8"
   }
 },
 {
@@ -275,7 +275,7 @@
   ],
   "action": {
     "type": "run_command",
-    "command": "trigger fabled_roots.dialog_trigger.wiki set 9"
+    "command": "trigger fabled_roots.dialog_trigger.info set 9"
   }
 },
 {
@@ -303,7 +303,7 @@
   ],
   "action": {
     "type": "run_command",
-    "command": "trigger fabled_roots.dialog_trigger.wiki set 10"
+    "command": "trigger fabled_roots.dialog_trigger.info set 10"
   }
 }
 

@@ -1,4 +1,4 @@
-
+execute as @s[scores={fabled_roots.dialog_trigger.info=999}] at @s run return run function fabled_roots:info/player/init
 
 execute as @s[scores={fabled_roots.dialog_trigger.info=1}] at @s run return run function fabled_roots:info/class_msg {class:"builder"}
 execute as @s[scores={fabled_roots.dialog_trigger.info=2}] at @s run return run function fabled_roots:info/class_msg {class:"survivor"}

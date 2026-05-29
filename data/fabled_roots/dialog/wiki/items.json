@@ -42,7 +42,7 @@
   },
   "action": {
     "type": "run_command",
-    "command": "trigger fabled_roots.dialog_trigger.wiki set 50"
+    "command": "trigger fabled_roots.dialog_trigger.info set 50"
   }
 },
 {
@@ -61,7 +61,7 @@
   },
   "action": {
     "type": "run_command",
-    "command": "trigger fabled_roots.dialog_trigger.wiki set 51"
+    "command": "trigger fabled_roots.dialog_trigger.info set 51"
   }
 },
 {
@@ -80,7 +80,7 @@
   },
   "action": {
     "type": "run_command",
-    "command": "trigger fabled_roots.dialog_trigger.wiki set 53"
+    "command": "trigger fabled_roots.dialog_trigger.info set 53"
   }
 },
 {
@@ -99,7 +99,7 @@
   },
   "action": {
     "type": "run_command",
-    "command": "trigger fabled_roots.dialog_trigger.wiki set 54"
+    "command": "trigger fabled_roots.dialog_trigger.info set 54"
   }
 },
 {
@@ -118,7 +118,7 @@
   },
   "action": {
     "type": "run_command",
-    "command": "trigger fabled_roots.dialog_trigger.wiki set 55"
+    "command": "trigger fabled_roots.dialog_trigger.info set 55"
   }
 },
 {
@@ -137,7 +137,7 @@
   },
   "action": {
     "type": "run_command",
-    "command": "trigger fabled_roots.dialog_trigger.wiki set 56"
+    "command": "trigger fabled_roots.dialog_trigger.info set 56"
   }
 },
 {
@@ -156,7 +156,7 @@
   },
   "action": {
     "type": "run_command",
-    "command": "trigger fabled_roots.dialog_trigger.wiki set 57"
+    "command": "trigger fabled_roots.dialog_trigger.info set 57"
   }
 },
 {
@@ -175,7 +175,7 @@
   },
   "action": {
     "type": "run_command",
-    "command": "trigger fabled_roots.dialog_trigger.wiki set 58"
+    "command": "trigger fabled_roots.dialog_trigger.info set 58"
   }
 },
 {
@@ -194,7 +194,7 @@
   },
   "action": {
     "type": "run_command",
-    "command": "trigger fabled_roots.dialog_trigger.wiki set 59"
+    "command": "trigger fabled_roots.dialog_trigger.info set 59"
   }
 },
 {
@@ -213,7 +213,7 @@
   },
   "action": {
     "type": "run_command",
-    "command": "trigger fabled_roots.dialog_trigger.wiki set 60"
+    "command": "trigger fabled_roots.dialog_trigger.info set 60"
   }
 },
 {
@@ -232,7 +232,7 @@
   },
   "action": {
     "type": "run_command",
-    "command": "trigger fabled_roots.dialog_trigger.wiki set 61"
+    "command": "trigger fabled_roots.dialog_trigger.info set 61"
   }
 }
 

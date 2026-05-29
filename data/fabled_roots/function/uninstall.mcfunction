@@ -10,7 +10,7 @@ scoreboard objectives remove fabled_roots.technical
 scoreboard objectives remove fabled_roots.dialog_trigger.race
 scoreboard objectives remove fabled_roots.dialog_trigger.class
 scoreboard objectives remove fabled_roots.dialog_trigger.reset
-scoreboard objectives remove fabled_roots.dialog_trigger.wiki
+scoreboard objectives remove fabled_roots.dialog_trigger.info
 scoreboard objectives remove fabled_roots.exp.player.level
 scoreboard objectives remove fabled_roots.exp.class_ability
 scoreboard objectives remove fabled_roots.received_equip
