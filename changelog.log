@@ -2,6 +2,10 @@
 ## Changes:
 - Lang Files are now getting automatically synced with crowdin with new releases
 - Added a new Journal Book series describing the daily life of normal citizens
+- Added option to pause menu options to allow players to change how they trigger their race ability (Crouch, Sprint, Jump, Disabled)
+- Added option to pause menu options for players to get an info chat message about their current race & class
+- Doubled the amount of death messages per race
 
 ## Fixes:
 - pale_bloom configured feature having the wrong file name (ashen_bloom) resulting in Pale Bloom Scrolls not working
+- Miner class getting Hermit Starter Equipment

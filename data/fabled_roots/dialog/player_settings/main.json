@@ -1,0 +1,52 @@
+{
+  "type": "minecraft:multi_action",
+  "inputs": [],
+  "can_close_with_escape": true,
+  "external_title": {
+    "translate": "menu.fabled_roots.title.player_settings.title.prefix.main"
+  },
+  "title": {
+    "translate": "menu.fabled_roots.title.player_settings.title.prefix.main"
+  },
+  "pause": true,
+  "exit_action": {
+    "label": {
+      "translate": "gui.back"
+    },
+    "action": {
+      "type": "minecraft:show_dialog",
+      "dialog": "fabled_roots:pause_screen_main"
+    }
+  },
+  "columns": 1,
+  "actions": [
+    {
+      "label": {
+        "translate": "menu.fabled_roots.title.player_settings.title.hotkeys"
+      },
+      "action": {
+        "type": "show_dialog",
+        "dialog": "fabled_roots:player_settings/hotkeys"
+      }
+    },
+    {
+      "label": {
+        "translate": "menu.fabled_roots.title.player_settings.title.info_msg"
+      },
+      "action": {
+        "type": "minecraft:run_command",
+        "command": "trigger fabled_roots.dialog_trigger.info set 999"
+      }
+    },
+    {
+      "label": {
+        "translate": "menu.fabled_roots.title.reset.external",
+        "color": "gray"
+      },
+      "action": {
+        "type": "show_dialog",
+        "dialog": "fabled_roots:player_settings/reset_player"
+      }
+    }
+  ]
+}

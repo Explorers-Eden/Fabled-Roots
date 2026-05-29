@@ -10,11 +10,24 @@
   "pause": true,
   "exit_action": {
     "label": {
-      "translate": "mco.selectServer.close"
+      "translate": "gui.back"
+    },
+    "action": {
+      "type": "minecraft:show_dialog",
+      "dialog": "minecraft:custom_options"
     }
   },
   "columns": 1,
   "actions": [
+    {
+      "label": {
+        "translate": "menu.fabled_roots.title.player_settings.title.main"
+      },
+      "action": {
+        "type": "show_dialog",
+        "dialog": "fabled_roots:player_settings/main"
+      }
+    },
     {
       "label": {
         "translate": "menu.fabled_roots.title.wiki.main"
@@ -22,15 +35,6 @@
       "action": {
         "type": "show_dialog",
         "dialog": "fabled_roots:wiki/main"
-      }
-    },
-    {
-      "label": {
-        "translate": "menu.fabled_roots.title.reset.external"
-      },
-      "action": {
-        "type": "show_dialog",
-        "dialog": "fabled_roots:reset_player"
       }
     }
   ]

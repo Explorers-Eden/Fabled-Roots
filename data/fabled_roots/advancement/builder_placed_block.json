@@ -4,7 +4,11 @@
       "trigger": "minecraft:placed_block",
       "conditions": {
         "player": {
-          "nbt": "{Tags:[\"fabled_roots.builder\"]}"
+          "minecraft:entity_tags": {
+            "any_of": [
+              "fabled_roots.builder"
+            ]
+          }
         }
       }
     }

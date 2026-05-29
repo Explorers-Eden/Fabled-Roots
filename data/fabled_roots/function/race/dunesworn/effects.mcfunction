@@ -1,9 +1,19 @@
+team join fabled_roots.dunesworn
+
 execute if entity @e[type=player,tag=fabled_roots.dunesworn,distance=1..24] run effect give @s minecraft:regeneration 5 0 true
 execute if biome ~ ~ ~ #minecraft:has_structure/desert_pyramid run effect give @s minecraft:strength 2 0 true
 execute if biome ~ ~ ~ #minecraft:has_structure/desert_pyramid run effect give @s minecraft:luck 2 0 true
 
-execute as @s[gamemode=!spectator] if predicate fabled_roots:entity/is_crouching if items entity @s weapon.* minecraft:wet_sponge run particle dust{color:[0.761,0.655,0.427],scale:1} ~ ~ ~ .5 .5 .5 1 15 normal
-execute as @s[gamemode=!spectator] if predicate fabled_roots:entity/is_crouching if items entity @s weapon.mainhand minecraft:wet_sponge run item modify entity @s weapon.mainhand {"function":"minecraft:set_item","item":"minecraft:sponge"}
-execute as @s[gamemode=!spectator] if predicate fabled_roots:entity/is_crouching if items entity @s weapon.offhand minecraft:wet_sponge run item modify entity @s weapon.offhand {"function":"minecraft:set_item","item":"minecraft:sponge"}
+execute if score @s fabled_roots.dialog_trigger.ability matches 4 run return fail
 
-team join fabled_roots.dunesworn
+execute as @s[gamemode=!spectator,scores={fabled_roots.dialog_trigger.ability=1},predicate=fabled_roots:entity/is_crouching] if items entity @s weapon.* minecraft:wet_sponge run particle dust{color:[0.761,0.655,0.427],scale:1} ~ ~ ~ .5 .5 .5 1 15 normal
+execute as @s[gamemode=!spectator,scores={fabled_roots.dialog_trigger.ability=1},predicate=fabled_roots:entity/is_crouching] if items entity @s weapon.mainhand minecraft:wet_sponge run item modify entity @s weapon.mainhand {"function":"minecraft:set_item","item":"minecraft:sponge"}
+execute as @s[gamemode=!spectator,scores={fabled_roots.dialog_trigger.ability=1},predicate=fabled_roots:entity/is_crouching] if items entity @s weapon.offhand minecraft:wet_sponge run item modify entity @s weapon.offhand {"function":"minecraft:set_item","item":"minecraft:sponge"}
+
+execute as @s[gamemode=!spectator,scores={fabled_roots.dialog_trigger.ability=2},predicate=fabled_roots:entity/is_jumping] if items entity @s weapon.* minecraft:wet_sponge run particle dust{color:[0.761,0.655,0.427],scale:1} ~ ~ ~ .5 .5 .5 1 15 normal
+execute as @s[gamemode=!spectator,scores={fabled_roots.dialog_trigger.ability=2},predicate=fabled_roots:entity/is_jumping] if items entity @s weapon.mainhand minecraft:wet_sponge run item modify entity @s weapon.mainhand {"function":"minecraft:set_item","item":"minecraft:sponge"}
+execute as @s[gamemode=!spectator,scores={fabled_roots.dialog_trigger.ability=2},predicate=fabled_roots:entity/is_jumping] if items entity @s weapon.offhand minecraft:wet_sponge run item modify entity @s weapon.offhand {"function":"minecraft:set_item","item":"minecraft:sponge"}
+
+execute as @s[gamemode=!spectator,scores={fabled_roots.dialog_trigger.ability=3},predicate=fabled_roots:entity/is_sprinting] if items entity @s weapon.* minecraft:wet_sponge run particle dust{color:[0.761,0.655,0.427],scale:1} ~ ~ ~ .5 .5 .5 1 15 normal
+execute as @s[gamemode=!spectator,scores={fabled_roots.dialog_trigger.ability=3},predicate=fabled_roots:entity/is_sprinting] if items entity @s weapon.mainhand minecraft:wet_sponge run item modify entity @s weapon.mainhand {"function":"minecraft:set_item","item":"minecraft:sponge"}
+execute as @s[gamemode=!spectator,scores={fabled_roots.dialog_trigger.ability=3},predicate=fabled_roots:entity/is_sprinting] if items entity @s weapon.offhand minecraft:wet_sponge run item modify entity @s weapon.offhand {"function":"minecraft:set_item","item":"minecraft:sponge"}

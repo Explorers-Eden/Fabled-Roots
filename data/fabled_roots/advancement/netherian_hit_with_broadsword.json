@@ -4,7 +4,11 @@
       "trigger": "minecraft:player_hurt_entity",
       "conditions": {
         "player": {
-          "nbt": "{Tags:[\"fabled_roots.netherian\"]}",
+          "minecraft:entity_tags": {
+            "any_of": [
+              "fabled_roots.netherian"
+            ]
+          },
           "slots": {
             "weapon.mainhand": {
               "items": "#minecraft:swords",

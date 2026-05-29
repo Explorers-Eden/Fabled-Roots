@@ -58,7 +58,7 @@
     },
     "action": {
       "type": "show_dialog",
-      "dialog": "fabled_roots:pause_screen_main"
+      "dialog": "fabled_roots:player_settings/main"
     }
   }
 }

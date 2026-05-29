@@ -4,7 +4,11 @@
       "trigger": "minecraft:bred_animals",
       "conditions": {
         "player": {
-          "nbt": "{Tags:[\"fabled_roots.rancher\"]}"
+          "minecraft:entity_tags": {
+            "any_of": [
+              "fabled_roots.rancher"
+            ]
+          }
         }
       }
     }

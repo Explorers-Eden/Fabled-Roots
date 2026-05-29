@@ -4,13 +4,16 @@
       "trigger": "minecraft:using_item",
       "conditions": {
         "player": {
-          "type_specific": {
-            "type": "minecraft:player",
+          "minecraft:type_specific/player": {
             "looking_at": {
-              "type": "#fabled_roots:living"
+              "minecraft:entity_type": "#fabled_roots:living"
             }
           },
-          "nbt": "{Tags:[\"fabled_roots.scout\"]}"
+          "minecraft:entity_tags": {
+            "any_of": [
+              "fabled_roots.scout"
+            ]
+          }
         },
         "item": {
           "items": "minecraft:spyglass"

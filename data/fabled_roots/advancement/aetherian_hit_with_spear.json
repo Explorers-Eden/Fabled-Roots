@@ -4,11 +4,15 @@
       "trigger": "minecraft:player_hurt_entity",
       "conditions": {
         "player": {
-          "nbt": "{Tags:[\"fabled_roots.aetherian\"]}",
           "slots": {
             "weapon.mainhand": {
               "items": "#minecraft:spears"
             }
+          },
+          "minecraft:entity_tags": {
+            "any_of": [
+              "fabled_roots.aetherian"
+            ]
           }
         }
       }

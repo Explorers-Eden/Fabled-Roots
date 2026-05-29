@@ -4,7 +4,11 @@
       "trigger": "minecraft:entity_hurt_player",
       "conditions": {
         "player": {
-          "nbt": "{Tags:[\"fabled_roots.fighter\"]}"
+          "minecraft:entity_tags": {
+            "any_of": [
+              "fabled_roots.fighter"
+            ]
+          }
         },
         "damage": {
           "blocked": true

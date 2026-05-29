@@ -4,7 +4,11 @@
       "trigger": "minecraft:player_killed_entity",
       "conditions": {
         "player": {
-          "nbt": "{Tags:[\"fabled_roots.palehearted\"]}",
+          "minecraft:entity_tags": {
+            "any_of": [
+              "fabled_roots.palehearted"
+            ]
+          },
           "slots": {
             "weapon.mainhand": {
               "items": "#minecraft:swords",

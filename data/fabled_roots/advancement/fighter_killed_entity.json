@@ -4,7 +4,11 @@
       "trigger": "minecraft:player_killed_entity",
       "conditions": {
         "player": {
-          "nbt": "{Tags:[\"fabled_roots.fighter\"]}"
+          "minecraft:entity_tags": {
+            "any_of": [
+              "fabled_roots.fighter"
+            ]
+          }
         }
       }
     }

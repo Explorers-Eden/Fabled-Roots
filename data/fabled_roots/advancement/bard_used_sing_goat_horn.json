@@ -4,7 +4,11 @@
       "trigger": "minecraft:using_item",
       "conditions": {
         "player": {
-          "nbt": "{Tags:[\"fabled_roots.bard\"]}"
+          "minecraft:entity_tags": {
+            "any_of": [
+              "fabled_roots.bard"
+            ]
+          }
         },
         "item": {
           "items": "minecraft:goat_horn",

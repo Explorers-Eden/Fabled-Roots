@@ -1,6 +1,8 @@
+##clearup for v2.6
+scoreboard objectives remove fabled_roots.dialog_trigger.wiki
+
 ##add default values
 execute unless data storage eden:settings fabled_roots run function fabled_roots:default_values
-
 
 ##forceload spawn chunk in case it isn't loaded
 forceload add 0 0
@@ -16,7 +18,8 @@ scoreboard objectives add fabled_roots.technical dummy
 scoreboard objectives add fabled_roots.dialog_trigger.race trigger {"bold":false,"color":"green","italic":false,"text":"Fabled Roots: Race Selection"}
 scoreboard objectives add fabled_roots.dialog_trigger.class trigger {"bold":false,"color":"green","italic":false,"text":"Fabled Roots: Class Selection"}
 scoreboard objectives add fabled_roots.dialog_trigger.reset trigger {"bold":false,"color":"green","italic":false,"text":"Fabled Roots: Reset Roots"}
-scoreboard objectives add fabled_roots.dialog_trigger.wiki trigger {"bold":false,"color":"green","italic":false,"text":"Fabled Roots: Wiki"}
+scoreboard objectives add fabled_roots.dialog_trigger.info trigger {"bold":false,"color":"green","italic":false,"text":"Fabled Roots: Infos"}
+scoreboard objectives add fabled_roots.dialog_trigger.ability trigger {"bold":false,"color":"green","italic":false,"text":"Fabled Roots: Ability Setting"}
 
 ##additional scoreboards
 scoreboard objectives add fabled_roots.exp.player.level dummy

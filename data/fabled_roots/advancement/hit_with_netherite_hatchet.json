@@ -6,7 +6,7 @@
         "damage": {
           "type": {
             "direct_entity": {
-              "type": "minecraft:snowball",
+              "minecraft:entity_type": "minecraft:snowball",
               "nbt": "{Item:{components:{\"minecraft:item_model\":\"fabled_roots:netherite_hatchet\"}}}"
             }
           }

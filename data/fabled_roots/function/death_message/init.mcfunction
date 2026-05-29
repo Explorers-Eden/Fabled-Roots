@@ -1,6 +1,6 @@
 advancement revoke @s only fabled_roots:death_message
 
-execute store result storage eden:temp death_msg.id int 1 run random value 1..100
+execute store result storage eden:temp death_msg.id int 1 run random value 1..200
 execute as @s[tag=fabled_roots.aetherian] run data modify storage eden:temp death_msg.race set value "aetherian"
 execute as @s[tag=fabled_roots.dunesworn] run data modify storage eden:temp death_msg.race set value "dunesworn"
 execute as @s[tag=fabled_roots.endling] run data modify storage eden:temp death_msg.race set value "endling"
