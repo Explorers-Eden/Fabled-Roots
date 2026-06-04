@@ -184,18 +184,6 @@
     },
     {
       "label": {
-        "translate": "enchantment.fabled_roots.lupine_echo"
-      },
-      "tooltip": {
-        "translate": "enchantment.fabled_roots.lupine_echo.description"
-      },
-      "action": {
-        "type": "run_command",
-        "command": "trigger fabled_roots.dialog_trigger.info set 33"
-      }
-    },
-    {
-      "label": {
         "translate": "enchantment.fabled_roots.lurkers_leap"
       },
       "tooltip": {
@@ -288,18 +276,6 @@
       "action": {
         "type": "run_command",
         "command": "trigger fabled_roots.dialog_trigger.info set 41"
-      }
-    },
-    {
-      "label": {
-        "translate": "enchantment.fabled_roots.thousand_stings"
-      },
-      "tooltip": {
-        "translate": "enchantment.fabled_roots.thousand_stings.description"
-      },
-      "action": {
-        "type": "run_command",
-        "command": "trigger fabled_roots.dialog_trigger.info set 42"
       }
     },
     {

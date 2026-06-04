@@ -10,7 +10,6 @@ function fabled_roots:item/enchanting/frostbite
 function fabled_roots:item/enchanting/ghastly_shot
 function fabled_roots:item/enchanting/heavy_shot
 function fabled_roots:item/enchanting/lumos
-function fabled_roots:item/enchanting/lupine_echo
 function fabled_roots:item/enchanting/lurkers_leap
 function fabled_roots:item/enchanting/pale_bloom
 function fabled_roots:item/enchanting/rocky_bloom
@@ -18,7 +17,6 @@ function fabled_roots:item/enchanting/scouting_arrows
 function fabled_roots:item/enchanting/sculky_bloom
 function fabled_roots:item/enchanting/stonepiercer
 function fabled_roots:item/enchanting/stormcall
-function fabled_roots:item/enchanting/thousand_stings
 function fabled_roots:item/enchanting/toothburst
 function fabled_roots:item/enchanting/verdant_bloom
 function fabled_roots:item/enchanting/void_bloom

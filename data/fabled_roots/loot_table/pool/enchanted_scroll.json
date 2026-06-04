@@ -34,10 +34,6 @@
         },
         {
           "type": "minecraft:loot_table",
-          "value": "fabled_roots:item/enchanted_scroll/thousand_stings"
-        },
-        {
-          "type": "minecraft:loot_table",
           "value": "fabled_roots:item/enchanted_scroll/verdant_bloom"
         },
         {
@@ -47,10 +43,6 @@
         {
           "type": "minecraft:loot_table",
           "value": "fabled_roots:item/enchanted_scroll/warped_bloom"
-        },
-        {
-          "type": "minecraft:loot_table",
-          "value": "fabled_roots:item/enchanted_scroll/lupine_echo"
         },
         {
           "type": "minecraft:loot_table",

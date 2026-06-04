@@ -32,7 +32,6 @@ execute as @s[scores={fabled_roots.dialog_trigger.info=29}] at @s run return run
 execute as @s[scores={fabled_roots.dialog_trigger.info=30}] at @s run return run function fabled_roots:info/enchantment_msg {enchantment:"frostbite"}
 execute as @s[scores={fabled_roots.dialog_trigger.info=31}] at @s run return run function fabled_roots:info/enchantment_msg {enchantment:"ghastly_shot"}
 execute as @s[scores={fabled_roots.dialog_trigger.info=32}] at @s run return run function fabled_roots:info/enchantment_msg {enchantment:"heavy_shot"}
-execute as @s[scores={fabled_roots.dialog_trigger.info=33}] at @s run return run function fabled_roots:info/enchantment_msg {enchantment:"lupine_echo"}
 execute as @s[scores={fabled_roots.dialog_trigger.info=34}] at @s run return run function fabled_roots:info/enchantment_msg {enchantment:"lurkers_leap"}
 execute as @s[scores={fabled_roots.dialog_trigger.info=35}] at @s run return run function fabled_roots:info/enchantment_msg {enchantment:"pale_bloom"}
 execute as @s[scores={fabled_roots.dialog_trigger.info=36}] at @s run return run function fabled_roots:info/enchantment_msg {enchantment:"rocky_bloom"}
@@ -41,7 +40,6 @@ execute as @s[scores={fabled_roots.dialog_trigger.info=38}] at @s run return run
 execute as @s[scores={fabled_roots.dialog_trigger.info=39}] at @s run return run function fabled_roots:info/enchantment_msg {enchantment:"stonepiercer"}
 execute as @s[scores={fabled_roots.dialog_trigger.info=40}] at @s run return run function fabled_roots:info/enchantment_msg {enchantment:"stormcall"}
 execute as @s[scores={fabled_roots.dialog_trigger.info=41}] at @s run return run function fabled_roots:info/enchantment_msg {enchantment:"stronger_together"}
-execute as @s[scores={fabled_roots.dialog_trigger.info=42}] at @s run return run function fabled_roots:info/enchantment_msg {enchantment:"thousand_stings"}
 execute as @s[scores={fabled_roots.dialog_trigger.info=43}] at @s run return run function fabled_roots:info/enchantment_msg {enchantment:"toothburst"}
 execute as @s[scores={fabled_roots.dialog_trigger.info=44}] at @s run return run function fabled_roots:info/enchantment_msg {enchantment:"verdant_bloom"}
 execute as @s[scores={fabled_roots.dialog_trigger.info=45}] at @s run return run function fabled_roots:info/enchantment_msg {enchantment:"void_bloom"}

@@ -5,6 +5,7 @@
 - Added option to pause menu options to allow players to change how they trigger their race ability (Crouch, Sprint, Jump, Disabled)
 - Added option to pause menu options for players to get an info chat message about their current race & class
 - Doubled the amount of death messages per race
+- Removed Lupine Echo and Thousand Sting Enchanted Scrolls/Enchantments due to entity anger changes
 
 ## Fixes:
 - pale_bloom configured feature having the wrong file name (ashen_bloom) resulting in Pale Bloom Scrolls not working
