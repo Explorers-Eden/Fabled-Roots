@@ -1,5 +1,7 @@
 schedule function fabled_roots:trigger/init 1s
 
+execute as @a unless score @s fabled_roots.dialog_trigger.ability matches 1.. run scoreboard players set @s fabled_roots.dialog_trigger.ability 1
+
 scoreboard players enable @a fabled_roots.dialog_trigger.reset
 scoreboard players enable @a fabled_roots.dialog_trigger.info
 scoreboard players enable @a fabled_roots.dialog_trigger.ability
