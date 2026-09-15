@@ -1,10 +1,10 @@
 {
   "values": [
-    "minecraft:coal",
-    "minecraft:chicken",
     "minecraft:beef",
+    "minecraft:chicken",
+    "minecraft:coal",
+    "minecraft:mutton",
     "minecraft:porkchop",
-    "minecraft:rabbit",
-    "minecraft:mutton"
+    "minecraft:rabbit"
   ]
 }

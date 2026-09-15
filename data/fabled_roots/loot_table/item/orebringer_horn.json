@@ -7,9 +7,9 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:goat_horn",
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_components",
+              "type": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
                   "translate": "item.fabled_roots.horn_of_roots"

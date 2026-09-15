@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:simple_block",
+  "to_place": {
+    "type": "minecraft:weighted",
+    "entries": [
+      {
+        "data": {
+          "id": "minecraft:glow_lichen",
+          "properties": {
+            "down": "true"
+          }
+        },
+        "weight": 25
+      },
+      {
+        "data": "minecraft:iron_ore",
+        "weight": 1
+      },
+      {
+        "data": "minecraft:copper_ore",
+        "weight": 2
+      }
+    ]
+  }
+}

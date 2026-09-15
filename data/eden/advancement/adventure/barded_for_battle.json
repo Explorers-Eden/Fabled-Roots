@@ -1,0 +1,89 @@
+{
+  "parent": "eden:adventure/fabled_roots",
+  "display": {
+    "icon": {
+      "id": "minecraft:diamond_horse_armor"
+    },
+    "title": {
+      "translate": "advancement.eden.adventure.fabled_roots.barded_for_battle.title",
+      "fallback": "Barded for Battle"
+    },
+    "description": {
+      "translate": "advancement.eden.adventure.fabled_roots.barded_for_battle.description",
+      "fallback": "Find Horse Armor of Roots in all 4 material tiers."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "copper_armor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:copper_horse_armor",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "copper_horse_armor_of_roots"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "iron_armor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:iron_horse_armor",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "iron_horse_armor_of_roots"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "golden_armor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:golden_horse_armor",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "golden_horse_armor_of_roots"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "diamond_armor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:diamond_horse_armor",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "diamond_horse_armor_of_roots"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

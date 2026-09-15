@@ -4,10 +4,14 @@
       "trigger": "minecraft:player_hurt_entity",
       "conditions": {
         "player": {
-          "minecraft:entity_tags": {
-            "any_of": [
-              "fabled_roots.archer"
-            ]
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_tags": {
+              "any_of": [
+                "fabled_roots.archer"
+              ]
+            }
           }
         },
         "damage": {
@@ -18,7 +22,7 @@
             "tags": [
               {
                 "expected": true,
-                "id": "minecraft:is_projectile"
+                "id": "#minecraft:is_projectile"
               }
             ]
           }

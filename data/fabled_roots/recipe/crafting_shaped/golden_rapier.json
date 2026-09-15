@@ -6,9 +6,9 @@
     "X": "#minecraft:gold_tool_materials"
   },
   "pattern": [
-    "  X",
+    "  #",
     " X ",
-    "#  "
+    "X  "
   ],
   "result": {
     "components": {
@@ -50,10 +50,10 @@
         }
       ],
       "minecraft:tooltip_style": "fabled_roots:palehearted",
-                "swing_animation": {
-                  "type": "stab",
-                  "duration": 20
-                }
+      "attack_animation": {
+        "type": "stab",
+        "duration": 20
+      }
     },
     "count": 1,
     "id": "minecraft:golden_sword"

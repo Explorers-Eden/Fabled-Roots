@@ -1,8 +1,8 @@
 {
   "values": [
-    "#minecraft:leg_armor",
-    "#minecraft:foot_armor",
     "#minecraft:chest_armor",
-    "#minecraft:head_armor"
+    "#minecraft:foot_armor",
+    "#minecraft:head_armor",
+    "#minecraft:leg_armor"
   ]
 }

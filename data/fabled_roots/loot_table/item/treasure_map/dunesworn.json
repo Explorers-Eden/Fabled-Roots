@@ -8,16 +8,16 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:map",
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:exploration_map",
+              "type": "minecraft:exploration_map",
               "destination": "fabled_roots:treasure/dunesworn",
               "decoration": "minecraft:red_x",
               "zoom": 1,
               "skip_existing_chunks": false
             },
             {
-              "function": "minecraft:set_components",
+              "type": "minecraft:set_components",
               "components": {
                 "minecraft:tooltip_style": "fabled_roots:dunesworn",
                 "minecraft:item_name": {

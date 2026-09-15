@@ -7,9 +7,9 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:snowball",
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_components",
+              "type": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
                   "translate": "item.fabled_roots.wooden_throwing_knife"
@@ -50,7 +50,7 @@
                   }
                 ],
                 "minecraft:tooltip_style": "fabled_roots:moonshroud",
-                "swing_animation": {
+                "attack_animation": {
                   "type": "stab",
                   "duration": 10
                 }

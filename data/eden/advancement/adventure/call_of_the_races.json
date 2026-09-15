@@ -1,0 +1,201 @@
+{
+  "parent": "eden:adventure/arsenal_of_roots",
+  "display": {
+    "icon": {
+      "id": "minecraft:goat_horn"
+    },
+    "title": {
+      "translate": "advancement.eden.adventure.fabled_roots.call_of_the_races.title",
+      "fallback": "Call of the Races"
+    },
+    "description": {
+      "translate": "advancement.eden.adventure.fabled_roots.call_of_the_races.description",
+      "fallback": "Collect all 10 race horns."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "aetherian": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:goat_horn",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "horn_of_roots",
+                  "type": "aetherian"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "dunesworn": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:goat_horn",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "horn_of_roots",
+                  "type": "dunesworn"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "endling": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:goat_horn",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "horn_of_roots",
+                  "type": "endling"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "frostborne": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:goat_horn",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "horn_of_roots",
+                  "type": "frostborne"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "moonshroud": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:goat_horn",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "horn_of_roots",
+                  "type": "moonshroud"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "netherian": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:goat_horn",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "horn_of_roots",
+                  "type": "netherian"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "oakhearted": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:goat_horn",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "horn_of_roots",
+                  "type": "oakhearted"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "orebringer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:goat_horn",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "horn_of_roots",
+                  "type": "orebringer"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "palehearted": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:goat_horn",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "horn_of_roots",
+                  "type": "palehearted"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "turtlekin": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:goat_horn",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "horn_of_roots",
+                  "type": "turtlekin"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

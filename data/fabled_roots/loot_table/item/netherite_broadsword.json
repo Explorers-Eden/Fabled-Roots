@@ -7,9 +7,9 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:netherite_sword",
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_components",
+              "type": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
                   "translate": "item.fabled_roots.netherite_broadsword"
@@ -52,7 +52,7 @@
               }
             },
             {
-              "function": "minecraft:set_damage",
+              "type": "minecraft:set_damage",
               "damage": {
                 "type": "minecraft:uniform",
                 "min": 0.3,

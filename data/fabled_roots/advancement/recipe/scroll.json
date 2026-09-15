@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "fabled_roots:crafting_shaped/scroll"
+        "recipes": "fabled_roots:crafting_shaped/scroll"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

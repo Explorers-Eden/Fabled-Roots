@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "fabled_roots:crafting_shaped/stray_shell"
+        "recipes": "fabled_roots:crafting_shaped/stray_shell"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

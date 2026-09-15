@@ -7,9 +7,9 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:lead",
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_count",
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "min": 1,
@@ -30,9 +30,9 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:sugar",
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_count",
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "min": 4,
@@ -44,9 +44,9 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:bone",
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_count",
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "min": 4,
@@ -58,9 +58,9 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:cod",
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_count",
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "min": 4,
@@ -72,9 +72,9 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:wheat_seeds",
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_count",
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "min": 4,

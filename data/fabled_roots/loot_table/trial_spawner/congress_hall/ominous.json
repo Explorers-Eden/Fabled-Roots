@@ -26,12 +26,10 @@
           "value": "fabled_roots:pool/diamond_weapon"
         }
       ],
-      "conditions": [
-        {
-          "condition": "minecraft:random_chance",
-          "chance": 0.4
-        }
-      ]
+      "condition": {
+        "type": "minecraft:random_chance",
+        "chance": 0.4
+      }
     }
   ]
 }

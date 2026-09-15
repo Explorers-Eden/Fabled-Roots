@@ -4,15 +4,19 @@
       "trigger": "minecraft:using_item",
       "conditions": {
         "player": {
-          "minecraft:type_specific/player": {
-            "looking_at": {
-              "minecraft:entity_type": "#fabled_roots:living"
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:type_specific/player": {
+              "looking_at": {
+                "minecraft:entity_type": "#fabled_roots:living"
+              }
+            },
+            "minecraft:entity_tags": {
+              "any_of": [
+                "fabled_roots.scout"
+              ]
             }
-          },
-          "minecraft:entity_tags": {
-            "any_of": [
-              "fabled_roots.scout"
-            ]
           }
         },
         "item": {

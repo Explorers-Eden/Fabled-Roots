@@ -4,10 +4,14 @@
       "trigger": "minecraft:entity_hurt_player",
       "conditions": {
         "player": {
-          "minecraft:entity_tags": {
-            "any_of": [
-              "fabled_roots.survivor"
-            ]
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_tags": {
+              "any_of": [
+                "fabled_roots.survivor"
+              ]
+            }
           }
         }
       }

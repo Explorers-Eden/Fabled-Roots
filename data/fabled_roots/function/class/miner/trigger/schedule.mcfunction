@@ -18,7 +18,7 @@ scoreboard players operation @s fabled_roots.exp.class_ability += @s fabled_root
 scoreboard players operation @s fabled_roots.exp.class_ability += @s fabled_roots.exp.miner.nether_gold_ore
 scoreboard players operation @s fabled_roots.exp.class_ability += @s fabled_roots.exp.miner.nether_quartz_ore
 
-$execute if score @s fabled_roots.exp.class_ability matches 1.. if predicate {"condition":"minecraft:random_chance","chance":0.5} run experience add @s $(exp) points
+$execute if score @s fabled_roots.exp.class_ability matches 1.. if predicate {"type":"minecraft:random_chance","chance":0.5} run experience add @s $(exp) points
 
 scoreboard players set @s fabled_roots.exp.class_ability 0
 scoreboard players set @s fabled_roots.exp.miner.coal_ore 0

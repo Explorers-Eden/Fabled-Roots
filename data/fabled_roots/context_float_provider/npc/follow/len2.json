@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:add",
+  "inputs": [
+    { "type": "minecraft:mul", "inputs": ["fabled_roots:npc/follow/dx", "fabled_roots:npc/follow/dx"] },
+    { "type": "minecraft:mul", "inputs": ["fabled_roots:npc/follow/dz", "fabled_roots:npc/follow/dz"] }
+  ]
+}

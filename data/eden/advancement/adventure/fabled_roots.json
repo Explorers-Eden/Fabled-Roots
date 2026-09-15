@@ -1,0 +1,38 @@
+{
+  "parent": "eden:adventure/root",
+  "display": {
+    "icon": {
+      "id": "minecraft:oak_sapling"
+    },
+    "title": {
+      "translate": "advancement.eden.adventure.fabled_roots.title",
+      "fallback": "Rooted"
+    },
+    "description": {
+      "translate": "advancement.eden.adventure.fabled_roots.description",
+      "fallback": "Craft the Sword of Roots."
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "sword_of_roots": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:iron_sword",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "sword_of_roots"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

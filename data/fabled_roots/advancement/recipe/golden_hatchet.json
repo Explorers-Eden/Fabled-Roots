@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "fabled_roots:crafting_shaped/golden_hatchet"
+        "recipes": "fabled_roots:crafting_shaped/golden_hatchet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

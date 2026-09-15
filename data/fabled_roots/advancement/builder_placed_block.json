@@ -4,10 +4,14 @@
       "trigger": "minecraft:placed_block",
       "conditions": {
         "player": {
-          "minecraft:entity_tags": {
-            "any_of": [
-              "fabled_roots.builder"
-            ]
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_tags": {
+              "any_of": [
+                "fabled_roots.builder"
+              ]
+            }
           }
         }
       }

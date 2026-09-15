@@ -7,9 +7,9 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:cooked_beef",
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_count",
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "min": 4,
@@ -21,9 +21,9 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:cooked_chicken",
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_count",
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "min": 4,
@@ -35,9 +35,9 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:cooked_cod",
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_count",
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "min": 4,
@@ -49,9 +49,9 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:cooked_mutton",
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_count",
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "min": 4,
@@ -63,9 +63,9 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:cooked_porkchop",
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_count",
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "min": 4,
@@ -77,9 +77,9 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:cooked_rabbit",
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_count",
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "min": 4,
@@ -91,9 +91,9 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:cooked_salmon",
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_count",
+              "type": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "min": 4,
@@ -110,9 +110,9 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:fishing_rod",
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:enchant_with_levels",
+              "type": "minecraft:enchant_with_levels",
               "levels": {
                 "type": "minecraft:uniform",
                 "min": 0,
@@ -121,7 +121,7 @@
               "options": "#minecraft:on_random_loot"
             },
             {
-              "function": "minecraft:set_damage",
+              "type": "minecraft:set_damage",
               "damage": {
                 "type": "minecraft:uniform",
                 "min": 0,

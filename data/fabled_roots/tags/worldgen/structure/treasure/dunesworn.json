@@ -1,5 +1,5 @@
 {
-    "values": [
-        { "id": "fabled_roots:treasure/dunesworn","required": false}
-    ]
+  "values": [
+    { "id": "fabled_roots:treasure/dunesworn", "required": false }
+  ]
 }

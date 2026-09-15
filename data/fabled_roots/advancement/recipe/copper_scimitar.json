@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "fabled_roots:crafting_shaped/copper_scimitar"
+        "recipes": "fabled_roots:crafting_shaped/copper_scimitar"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

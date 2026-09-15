@@ -6,41 +6,41 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "functions": [
+          "name": "minecraft:lapis_lazuli",
+          "weight": 3,
+          "modifier": [
             {
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 4,
-                "min": 2
+                "min": 2,
+                "max": 4
               },
-              "function": "minecraft:set_count"
+              "type": "minecraft:set_count"
             }
-          ],
-          "name": "minecraft:lapis_lazuli",
-          "weight": 3
+          ]
         },
         {
           "type": "minecraft:item",
-          "functions": [
+          "name": "minecraft:shield",
+          "weight": 3,
+          "modifier": [
             {
               "add": false,
               "damage": {
                 "type": "minecraft:uniform",
-                "max": 1,
-                "min": 0.5
+                "min": 0.5,
+                "max": 1
               },
-              "function": "minecraft:set_damage"
+              "type": "minecraft:set_damage"
             }
-          ],
-          "name": "minecraft:shield",
-          "weight": 3
+          ]
         },
         {
           "type": "minecraft:loot_table",
           "value": "fabled_roots:item/bow_of_roots",
-          "functions": [],
-          "weight": 3
+          "weight": 3,
+          "modifier": []
         },
         {
           "type": "minecraft:loot_table",
@@ -59,25 +59,27 @@
         },
         {
           "type": "minecraft:item",
-          "functions": [
+          "name": "minecraft:golden_carrot",
+          "weight": 2,
+          "modifier": [
             {
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 2,
-                "min": 1
+                "min": 1,
+                "max": 2
               },
-              "function": "minecraft:set_count"
+              "type": "minecraft:set_count"
             }
-          ],
-          "name": "minecraft:golden_carrot",
-          "weight": 2
+          ]
         },
         {
           "type": "minecraft:item",
-          "functions": [
+          "name": "minecraft:book",
+          "weight": 2,
+          "modifier": [
             {
-              "function": "minecraft:enchant_randomly",
+              "type": "minecraft:enchant_randomly",
               "options": [
                 "minecraft:sharpness",
                 "minecraft:bane_of_arthropods",
@@ -87,15 +89,15 @@
                 "minecraft:feather_falling"
               ]
             }
-          ],
-          "name": "minecraft:book",
-          "weight": 2
+          ]
         },
         {
           "type": "minecraft:item",
-          "functions": [
+          "name": "minecraft:book",
+          "weight": 2,
+          "modifier": [
             {
-              "function": "minecraft:enchant_randomly",
+              "type": "minecraft:enchant_randomly",
               "options": [
                 "minecraft:riptide",
                 "minecraft:loyalty",
@@ -104,9 +106,7 @@
                 "minecraft:mending"
               ]
             }
-          ],
-          "name": "minecraft:book",
-          "weight": 2
+          ]
         },
         {
           "type": "minecraft:loot_table",

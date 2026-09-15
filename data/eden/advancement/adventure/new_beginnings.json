@@ -1,0 +1,755 @@
+{
+  "parent": "eden:adventure/beyond_the_grave",
+  "display": {
+    "icon": {
+      "id": "minecraft:sunflower"
+    },
+    "title": {
+      "translate": "advancement.eden.adventure.fabled_roots.new_beginnings.title",
+      "fallback": "New Beginnings"
+    },
+    "description": {
+      "translate": "advancement.eden.adventure.fabled_roots.new_beginnings.description",
+      "fallback": "Complete a race's New Horizons journal arc."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "aetherian_new_horizons": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "1",
+                  "race": "aetherian"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "2",
+                  "race": "aetherian"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "3",
+                  "race": "aetherian"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "4",
+                  "race": "aetherian"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "5",
+                  "race": "aetherian"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "dunesworn_new_horizons": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "1",
+                  "race": "dunesworn"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "2",
+                  "race": "dunesworn"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "3",
+                  "race": "dunesworn"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "4",
+                  "race": "dunesworn"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "5",
+                  "race": "dunesworn"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "endling_new_horizons": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "1",
+                  "race": "endling"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "2",
+                  "race": "endling"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "3",
+                  "race": "endling"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "4",
+                  "race": "endling"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "5",
+                  "race": "endling"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "frostborne_new_horizons": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "1",
+                  "race": "frostborne"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "2",
+                  "race": "frostborne"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "3",
+                  "race": "frostborne"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "4",
+                  "race": "frostborne"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "5",
+                  "race": "frostborne"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "moonshroud_new_horizons": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "1",
+                  "race": "moonshroud"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "2",
+                  "race": "moonshroud"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "3",
+                  "race": "moonshroud"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "4",
+                  "race": "moonshroud"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "5",
+                  "race": "moonshroud"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "netherian_new_horizons": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "1",
+                  "race": "netherian"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "2",
+                  "race": "netherian"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "3",
+                  "race": "netherian"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "4",
+                  "race": "netherian"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "5",
+                  "race": "netherian"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "oakhearted_new_horizons": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "1",
+                  "race": "oakhearted"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "2",
+                  "race": "oakhearted"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "3",
+                  "race": "oakhearted"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "4",
+                  "race": "oakhearted"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "5",
+                  "race": "oakhearted"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "orebringer_new_horizons": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "1",
+                  "race": "orebringer"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "2",
+                  "race": "orebringer"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "3",
+                  "race": "orebringer"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "4",
+                  "race": "orebringer"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "5",
+                  "race": "orebringer"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "palehearted_new_horizons": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "1",
+                  "race": "palehearted"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "2",
+                  "race": "palehearted"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "3",
+                  "race": "palehearted"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "4",
+                  "race": "palehearted"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "5",
+                  "race": "palehearted"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "turtlekin_new_horizons": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "1",
+                  "race": "turtlekin"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "2",
+                  "race": "turtlekin"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "3",
+                  "race": "turtlekin"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "4",
+                  "race": "turtlekin"
+                }
+              }
+            }
+          },
+          {
+            "items": "minecraft:written_book",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "journal",
+                  "theme": "new_horizons",
+                  "day": "5",
+                  "race": "turtlekin"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "aetherian_new_horizons",
+      "dunesworn_new_horizons",
+      "endling_new_horizons",
+      "frostborne_new_horizons",
+      "moonshroud_new_horizons",
+      "netherian_new_horizons",
+      "oakhearted_new_horizons",
+      "orebringer_new_horizons",
+      "palehearted_new_horizons",
+      "turtlekin_new_horizons"
+    ]
+  ]
+}

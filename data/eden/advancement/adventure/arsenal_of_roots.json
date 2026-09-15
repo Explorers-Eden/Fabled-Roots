@@ -1,0 +1,140 @@
+{
+  "parent": "eden:adventure/fabled_roots",
+  "display": {
+    "icon": {
+      "id": "minecraft:iron_sword"
+    },
+    "title": {
+      "translate": "advancement.eden.adventure.fabled_roots.arsenal_of_roots.title",
+      "fallback": "Arsenal of Roots"
+    },
+    "description": {
+      "translate": "advancement.eden.adventure.fabled_roots.arsenal_of_roots.description",
+      "fallback": "Own one of each of the 7 Roots weapon types, of any tier."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "club": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "#minecraft:swords",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "type": "club"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "rapier": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "#minecraft:swords",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "type": "rapier"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "scimitar": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "#minecraft:swords",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "type": "scimitar"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "broadsword": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "#minecraft:swords",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "type": "broadsword"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "scythe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "#minecraft:swords",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "type": "scythe"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "hatchet": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:snowball",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "type": "hatchet"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "throwing_knife": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:snowball",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "type": "throwing_knife"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

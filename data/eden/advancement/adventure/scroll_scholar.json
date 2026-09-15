@@ -1,0 +1,485 @@
+{
+  "parent": "eden:adventure/fabled_roots",
+  "display": {
+    "icon": {
+      "id": "minecraft:paper"
+    },
+    "title": {
+      "translate": "advancement.eden.adventure.fabled_roots.scroll_scholar.title",
+      "fallback": "Scroll Scholar"
+    },
+    "description": {
+      "translate": "advancement.eden.adventure.fabled_roots.scroll_scholar.description",
+      "fallback": "Use enchanted scrolls spanning all 10 scroll families."
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "scroll_atlantic_shot": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:music_disc_5",
+          "predicates": {
+            "minecraft:custom_data": {
+              "fabled_roots": {
+                "item": "enchanted_scroll",
+                "enchantment": "atlantic_shot"
+              }
+            }
+          }
+        }
+      }
+    },
+    "scroll_breeze_shot": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:music_disc_5",
+          "predicates": {
+            "minecraft:custom_data": {
+              "fabled_roots": {
+                "item": "enchanted_scroll",
+                "enchantment": "breeze_shot"
+              }
+            }
+          }
+        }
+      }
+    },
+    "scroll_ghastly_shot": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:music_disc_5",
+          "predicates": {
+            "minecraft:custom_data": {
+              "fabled_roots": {
+                "item": "enchanted_scroll",
+                "enchantment": "ghastly_shot"
+              }
+            }
+          }
+        }
+      }
+    },
+    "scroll_heavy_shot": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:music_disc_5",
+          "predicates": {
+            "minecraft:custom_data": {
+              "fabled_roots": {
+                "item": "enchanted_scroll",
+                "enchantment": "heavy_shot"
+              }
+            }
+          }
+        }
+      }
+    },
+    "scroll_void_shot": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:music_disc_5",
+          "predicates": {
+            "minecraft:custom_data": {
+              "fabled_roots": {
+                "item": "enchanted_scroll",
+                "enchantment": "void_shot"
+              }
+            }
+          }
+        }
+      }
+    },
+    "scroll_scouting_arrows": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:music_disc_5",
+          "predicates": {
+            "minecraft:custom_data": {
+              "fabled_roots": {
+                "item": "enchanted_scroll",
+                "enchantment": "scouting_arrows"
+              }
+            }
+          }
+        }
+      }
+    },
+    "scroll_cold_bloom": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:music_disc_5",
+          "predicates": {
+            "minecraft:custom_data": {
+              "fabled_roots": {
+                "item": "enchanted_scroll",
+                "enchantment": "cold_bloom"
+              }
+            }
+          }
+        }
+      }
+    },
+    "scroll_crimson_bloom": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:music_disc_5",
+          "predicates": {
+            "minecraft:custom_data": {
+              "fabled_roots": {
+                "item": "enchanted_scroll",
+                "enchantment": "crimson_bloom"
+              }
+            }
+          }
+        }
+      }
+    },
+    "scroll_dry_bloom": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:music_disc_5",
+          "predicates": {
+            "minecraft:custom_data": {
+              "fabled_roots": {
+                "item": "enchanted_scroll",
+                "enchantment": "dry_bloom"
+              }
+            }
+          }
+        }
+      }
+    },
+    "scroll_pale_bloom": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:music_disc_5",
+          "predicates": {
+            "minecraft:custom_data": {
+              "fabled_roots": {
+                "item": "enchanted_scroll",
+                "enchantment": "pale_bloom"
+              }
+            }
+          }
+        }
+      }
+    },
+    "scroll_rocky_bloom": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:music_disc_5",
+          "predicates": {
+            "minecraft:custom_data": {
+              "fabled_roots": {
+                "item": "enchanted_scroll",
+                "enchantment": "rocky_bloom"
+              }
+            }
+          }
+        }
+      }
+    },
+    "scroll_verdant_bloom": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:music_disc_5",
+          "predicates": {
+            "minecraft:custom_data": {
+              "fabled_roots": {
+                "item": "enchanted_scroll",
+                "enchantment": "verdant_bloom"
+              }
+            }
+          }
+        }
+      }
+    },
+    "scroll_void_bloom": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:music_disc_5",
+          "predicates": {
+            "minecraft:custom_data": {
+              "fabled_roots": {
+                "item": "enchanted_scroll",
+                "enchantment": "void_bloom"
+              }
+            }
+          }
+        }
+      }
+    },
+    "scroll_warped_bloom": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:music_disc_5",
+          "predicates": {
+            "minecraft:custom_data": {
+              "fabled_roots": {
+                "item": "enchanted_scroll",
+                "enchantment": "warped_bloom"
+              }
+            }
+          }
+        }
+      }
+    },
+    "scroll_sculky_bloom": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:music_disc_5",
+          "predicates": {
+            "minecraft:custom_data": {
+              "fabled_roots": {
+                "item": "enchanted_scroll",
+                "enchantment": "sculky_bloom"
+              }
+            }
+          }
+        }
+      }
+    },
+    "scroll_decoy": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:music_disc_5",
+          "predicates": {
+            "minecraft:custom_data": {
+              "fabled_roots": {
+                "item": "enchanted_scroll",
+                "enchantment": "decoy"
+              }
+            }
+          }
+        }
+      }
+    },
+    "scroll_dry_heat": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:music_disc_5",
+          "predicates": {
+            "minecraft:custom_data": {
+              "fabled_roots": {
+                "item": "enchanted_scroll",
+                "enchantment": "dry_heat"
+              }
+            }
+          }
+        }
+      }
+    },
+    "scroll_ender_lure": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:music_disc_5",
+          "predicates": {
+            "minecraft:custom_data": {
+              "fabled_roots": {
+                "item": "enchanted_scroll",
+                "enchantment": "ender_lure"
+              }
+            }
+          }
+        }
+      }
+    },
+    "scroll_flying_nimbus": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:music_disc_5",
+          "predicates": {
+            "minecraft:custom_data": {
+              "fabled_roots": {
+                "item": "enchanted_scroll",
+                "enchantment": "flying_nimbus"
+              }
+            }
+          }
+        }
+      }
+    },
+    "scroll_frostbite": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:music_disc_5",
+          "predicates": {
+            "minecraft:custom_data": {
+              "fabled_roots": {
+                "item": "enchanted_scroll",
+                "enchantment": "frostbite"
+              }
+            }
+          }
+        }
+      }
+    },
+    "scroll_lumos": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:music_disc_5",
+          "predicates": {
+            "minecraft:custom_data": {
+              "fabled_roots": {
+                "item": "enchanted_scroll",
+                "enchantment": "lumos"
+              }
+            }
+          }
+        }
+      }
+    },
+    "scroll_lurkers_leap": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:music_disc_5",
+          "predicates": {
+            "minecraft:custom_data": {
+              "fabled_roots": {
+                "item": "enchanted_scroll",
+                "enchantment": "lurkers_leap"
+              }
+            }
+          }
+        }
+      }
+    },
+    "scroll_stonepiercer": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:music_disc_5",
+          "predicates": {
+            "minecraft:custom_data": {
+              "fabled_roots": {
+                "item": "enchanted_scroll",
+                "enchantment": "stonepiercer"
+              }
+            }
+          }
+        }
+      }
+    },
+    "scroll_stormcall": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:music_disc_5",
+          "predicates": {
+            "minecraft:custom_data": {
+              "fabled_roots": {
+                "item": "enchanted_scroll",
+                "enchantment": "stormcall"
+              }
+            }
+          }
+        }
+      }
+    },
+    "scroll_toothburst": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:music_disc_5",
+          "predicates": {
+            "minecraft:custom_data": {
+              "fabled_roots": {
+                "item": "enchanted_scroll",
+                "enchantment": "toothburst"
+              }
+            }
+          }
+        }
+      }
+    },
+    "scroll_webbing": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": "minecraft:music_disc_5",
+          "predicates": {
+            "minecraft:custom_data": {
+              "fabled_roots": {
+                "item": "enchanted_scroll",
+                "enchantment": "webbing"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "scroll_atlantic_shot",
+      "scroll_breeze_shot",
+      "scroll_ghastly_shot"
+    ],
+    [
+      "scroll_heavy_shot",
+      "scroll_void_shot",
+      "scroll_scouting_arrows"
+    ],
+    [
+      "scroll_cold_bloom",
+      "scroll_crimson_bloom",
+      "scroll_dry_bloom"
+    ],
+    [
+      "scroll_pale_bloom",
+      "scroll_rocky_bloom",
+      "scroll_verdant_bloom"
+    ],
+    [
+      "scroll_void_bloom",
+      "scroll_warped_bloom",
+      "scroll_sculky_bloom"
+    ],
+    [
+      "scroll_decoy",
+      "scroll_dry_heat"
+    ],
+    [
+      "scroll_ender_lure",
+      "scroll_flying_nimbus"
+    ],
+    [
+      "scroll_frostbite",
+      "scroll_lumos"
+    ],
+    [
+      "scroll_lurkers_leap",
+      "scroll_stonepiercer"
+    ],
+    [
+      "scroll_stormcall",
+      "scroll_toothburst",
+      "scroll_webbing"
+    ]
+  ]
+}

@@ -7,11 +7,8 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:music_disc_5",
-          "functions": [
-            {
-              "function": "minecraft:reference",
-              "name": "fabled_roots:enchanting/lurkers_leap"
-            }
+          "modifier": [
+            "fabled_roots:enchanting/lurkers_leap"
           ]
         }
       ]

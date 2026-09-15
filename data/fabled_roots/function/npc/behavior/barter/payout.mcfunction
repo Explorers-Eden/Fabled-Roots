@@ -2,6 +2,7 @@ scoreboard players reset @s fabled_roots.npc.bartering.timer
 item replace entity @s weapon.mainhand with minecraft:air
 $playsound fabled_roots:entity.descendant.celebrate ambient @a ~ ~ ~ 0.5 $(pitch)
 particle minecraft:happy_villager ~ ~1 ~ .4 .5 .4 1 10
+swing @s mainhand whack 10t
 
 execute if data entity @s data{race:"aetherian"} run return run loot spawn ~ ~1 ~ loot fabled_roots:gameplay/descendant_bartering/aetherian
 execute if data entity @s data{race:"dunesworn"} run return run loot spawn ~ ~1 ~ loot fabled_roots:gameplay/descendant_bartering/dunesworn

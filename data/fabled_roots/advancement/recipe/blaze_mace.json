@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "fabled_roots:crafting_shaped/blaze_mace"
+        "recipes": "fabled_roots:crafting_shaped/blaze_mace"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

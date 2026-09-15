@@ -4,14 +4,22 @@
       "trigger": "minecraft:villager_trade",
       "conditions": {
         "player": {
-          "minecraft:entity_tags": {
-            "any_of": [
-              "fabled_roots.cleric"
-            ]
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_tags": {
+              "any_of": [
+                "fabled_roots.cleric"
+              ]
+            }
           }
         },
         "villager": {
-          "nbt": "{VillagerData: {profession:\"minecraft:cleric\"}}"
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "nbt": "{VillagerData: {profession:\"minecraft:cleric\"}}"
+          }
         }
       }
     }

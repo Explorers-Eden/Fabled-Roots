@@ -1,5 +1,5 @@
 {
-  "function": "minecraft:set_components",
+  "type": "minecraft:set_components",
   "components": {
     "minecraft:item_model": "fabled_roots:netherite_scythe",
     "minecraft:item_name": {
@@ -12,30 +12,30 @@
       }
     },
     "minecraft:attribute_modifiers": [
-                  {
-                    "type": "minecraft:entity_interaction_range",
-                    "id": "fabled_roots:scythe_range",
-                    "amount": 0.5,
-                    "operation": "add_value",
-                    "slot": "mainhand",
-                    "display": {
-                      "type": "default"
-                    }
-                  },
-                  {
-                    "type": "minecraft:attack_damage",
-                    "id": "fabled_roots:scythe_attack",
-                    "amount": 6.5,
-                    "operation": "add_value",
-                    "slot": "mainhand"
-                  },
-                  {
-                    "type": "minecraft:attack_speed",
-                    "id": "fabled_roots:scythe_speed",
-                    "amount": -2.7,
-                    "operation": "add_value",
-                    "slot": "mainhand"
-                  }
-                ]
+      {
+        "type": "minecraft:entity_interaction_range",
+        "id": "fabled_roots:scythe_range",
+        "amount": 0.5,
+        "operation": "add_value",
+        "slot": "mainhand",
+        "display": {
+          "type": "default"
+        }
+      },
+      {
+        "type": "minecraft:attack_damage",
+        "id": "fabled_roots:scythe_attack",
+        "amount": 6.5,
+        "operation": "add_value",
+        "slot": "mainhand"
+      },
+      {
+        "type": "minecraft:attack_speed",
+        "id": "fabled_roots:scythe_speed",
+        "amount": -2.7,
+        "operation": "add_value",
+        "slot": "mainhand"
+      }
+    ]
   }
 }

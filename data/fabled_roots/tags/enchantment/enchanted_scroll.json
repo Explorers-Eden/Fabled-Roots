@@ -4,6 +4,7 @@
     "fabled_roots:breeze_shot",
     "fabled_roots:cold_bloom",
     "fabled_roots:crimson_bloom",
+    "fabled_roots:decoy",
     "fabled_roots:dry_bloom",
     "fabled_roots:dry_heat",
     "fabled_roots:ender_lure",
@@ -24,7 +25,6 @@
     "fabled_roots:void_bloom",
     "fabled_roots:void_shot",
     "fabled_roots:warped_bloom",
-    "fabled_roots:webbing",
-    "fabled_roots:decoy"
+    "fabled_roots:webbing"
   ]
 }

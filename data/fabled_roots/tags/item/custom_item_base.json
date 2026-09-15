@@ -1,12 +1,11 @@
 {
-    "values": [
-      "#minecraft:swords",
-      "#fabled_roots:armor",
-      "#fabled_roots:horse_armor",
-      "minecraft:white_harness",
-      "minecraft:music_disc_5",
-      "minecraft:bow",
-      "minecraft:bundle"
-    ]
-  }
-  
+  "values": [
+    "#fabled_roots:armor",
+    "#fabled_roots:horse_armor",
+    "#minecraft:swords",
+    "minecraft:bow",
+    "minecraft:bundle",
+    "minecraft:music_disc_5",
+    "minecraft:white_harness"
+  ]
+}

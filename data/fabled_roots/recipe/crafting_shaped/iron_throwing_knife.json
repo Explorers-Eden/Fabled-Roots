@@ -39,11 +39,11 @@
           "slot": "mainhand"
         }
       ],
-                "minecraft:tooltip_style": "fabled_roots:moonshroud",
-                "swing_animation": {
-                  "type": "stab",
-                  "duration": 10
-                }
+      "minecraft:tooltip_style": "fabled_roots:moonshroud",
+      "attack_animation": {
+        "type": "stab",
+        "duration": 10
+      }
     },
     "count": 4,
     "id": "minecraft:snowball"

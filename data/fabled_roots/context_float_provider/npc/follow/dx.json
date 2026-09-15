@@ -1,0 +1,5 @@
+{
+  "type": "minecraft:sub",
+  "left": { "type": "minecraft:storage", "storage": "eden:temp", "path": "fabled_roots.npc.follow.leader_pos[0]" },
+  "right": { "type": "minecraft:storage", "storage": "eden:temp", "path": "fabled_roots.npc.follow.self_pos[0]" }
+}

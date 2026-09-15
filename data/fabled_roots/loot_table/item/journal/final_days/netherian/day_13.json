@@ -7,15 +7,21 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:written_book",
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_components",
+              "type": "minecraft:set_components",
               "components": {
                 "minecraft:written_book_content": {
                   "pages": [
-                    { "raw": { "translate": "written_book.fabled_roots.final_days.netherian.13" } }
+                    {
+                      "raw": {
+                        "translate": "written_book.fabled_roots.final_days.netherian.13"
+                      }
+                    }
                   ],
-                  "title": { "raw": "Journal: Final Days XIII" },
+                  "title": {
+                    "raw": "Journal: Final Days XIII"
+                  },
                   "author": "Netherian Guardian",
                   "generation": 3,
                   "resolved": true
@@ -29,7 +35,9 @@
                   }
                 },
                 "minecraft:tooltip_display": {
-                  "hidden_components": ["minecraft:dyed_color"]
+                  "hidden_components": [
+                    "minecraft:dyed_color"
+                  ]
                 },
                 "minecraft:dyed_color": 11678515,
                 "minecraft:tooltip_style": "fabled_roots:netherian",

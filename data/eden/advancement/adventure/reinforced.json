@@ -1,0 +1,43 @@
+{
+  "parent": "eden:adventure/full_set_of_roots",
+  "display": {
+    "icon": {
+      "id": "minecraft:netherite_chestplate"
+    },
+    "title": {
+      "translate": "advancement.eden.adventure.fabled_roots.reinforced.title",
+      "fallback": "Reinforced"
+    },
+    "description": {
+      "translate": "advancement.eden.adventure.fabled_roots.reinforced.description",
+      "fallback": "Find any piece of reinforced Roots armor."
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "has_piece": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:netherite_helmet",
+              "minecraft:netherite_chestplate",
+              "minecraft:netherite_leggings",
+              "minecraft:netherite_boots"
+            ],
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "armor_of_roots"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -8,9 +8,9 @@
           "type": "minecraft:item",
           "name": "minecraft:music_disc_5",
           "weight": 5,
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_components",
+              "type": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
                   "translate": "item.fabled_roots.crown_of_roots"
@@ -87,9 +87,9 @@
           "type": "minecraft:item",
           "name": "minecraft:music_disc_5",
           "weight": 25,
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_components",
+              "type": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
                   "translate": "item.fabled_roots.crown_of_roots"
@@ -163,9 +163,9 @@
           "type": "minecraft:item",
           "name": "minecraft:music_disc_5",
           "weight": 5,
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_components",
+              "type": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
                   "translate": "item.fabled_roots.crown_of_roots"
@@ -242,9 +242,9 @@
           "type": "minecraft:item",
           "name": "minecraft:music_disc_5",
           "weight": 25,
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_components",
+              "type": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
                   "translate": "item.fabled_roots.crown_of_roots"

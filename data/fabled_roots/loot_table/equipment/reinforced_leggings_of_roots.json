@@ -7,9 +7,9 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:netherite_leggings",
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_components",
+              "type": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
                   "translate": "item.fabled_roots.reinforced_leggings_of_roots"

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "fabled_roots:crafting_shaped/iron_club"
+        "recipes": "fabled_roots:crafting_shaped/iron_club"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

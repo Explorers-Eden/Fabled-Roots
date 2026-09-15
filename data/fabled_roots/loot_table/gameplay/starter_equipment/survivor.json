@@ -15,8 +15,8 @@
       "entries": [
         {
           "type": "minecraft:tag",
-          "name": "minecraft:beds",
-          "expand": true
+          "expand": true,
+          "items": "#minecraft:beds"
         },
         {
           "type": "minecraft:item",

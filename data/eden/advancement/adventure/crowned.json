@@ -1,0 +1,43 @@
+{
+  "parent": "eden:adventure/fabled_roots",
+  "display": {
+    "icon": {
+      "id": "minecraft:golden_helmet"
+    },
+    "title": {
+      "translate": "advancement.eden.adventure.fabled_roots.crowned.title",
+      "fallback": "Crowned"
+    },
+    "description": {
+      "translate": "advancement.eden.adventure.fabled_roots.crowned.description",
+      "fallback": "Find and wear the Crown of Roots."
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "wearing": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "equipment": {
+              "head": {
+                "predicates": {
+                  "minecraft:custom_data": {
+                    "fabled_roots": {
+                      "item": "crown_of_roots"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

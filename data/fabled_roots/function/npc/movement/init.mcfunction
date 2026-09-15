@@ -24,13 +24,13 @@ execute as @e[type=villager,tag=fabled_roots.npc.base] at @s \
 
 execute as @a[gamemode=!spectator,tag=fabled_roots.descendant.leader] at @s \
     run execute as @e[type=villager,tag=fabled_roots.npc.base,distance=..8] at @s \
-        if predicate {"condition":"minecraft:entity_properties","entity":"this","predicate":{"vehicle":{}}} \
+        if predicate {"type":"minecraft:entity_properties","entity":"this","predicate":{"vehicle":{}}} \
             run tag @s remove fabled_roots.descendant.following
 
 execute as @a[gamemode=!spectator,tag=fabled_roots.descendant.leader] at @s \
     unless entity @e[type=villager,tag=fabled_roots.npc.base,distance=..8,tag=fabled_roots.descendant.following] \
         run execute as @n[type=villager,tag=fabled_roots.npc.base,distance=..8] at @s \
-            unless predicate {"condition":"minecraft:entity_properties","entity":"this","predicate":{"vehicle":{}}} \
+            unless predicate {"type":"minecraft:entity_properties","entity":"this","predicate":{"vehicle":{}}} \
                 run tag @s add fabled_roots.descendant.following
 
 

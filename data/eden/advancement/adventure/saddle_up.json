@@ -1,0 +1,38 @@
+{
+  "parent": "eden:adventure/fabled_roots",
+  "display": {
+    "icon": {
+      "id": "minecraft:saddle"
+    },
+    "title": {
+      "translate": "advancement.eden.adventure.fabled_roots.saddle_up.title",
+      "fallback": "Saddle Up"
+    },
+    "description": {
+      "translate": "advancement.eden.adventure.fabled_roots.saddle_up.description",
+      "fallback": "Craft the Harness of Roots."
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "has_harness": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:white_harness",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "harness_of_roots"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

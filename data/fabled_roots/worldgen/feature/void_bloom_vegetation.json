@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:simple_block",
+  "to_place": {
+    "type": "minecraft:weighted",
+    "entries": [
+      {
+        "data": {
+          "id": "minecraft:chorus_flower",
+          "properties": {
+            "age": "0"
+          }
+        },
+        "weight": 15
+      },
+      {
+        "data": "minecraft:medium_amethyst_bud",
+        "weight": 85
+      },
+      {
+        "weight": 30,
+        "data": "minecraft:large_amethyst_bud"
+      },
+      {
+        "weight": 30,
+        "data": "minecraft:small_amethyst_bud"
+      },
+      {
+        "weight": 30,
+        "data": "minecraft:amethyst_cluster"
+      }
+    ]
+  }
+}

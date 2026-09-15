@@ -4,15 +4,19 @@
       "trigger": "minecraft:player_hurt_entity",
       "conditions": {
         "player": {
-          "slots": {
-            "weapon.mainhand": {
-              "items": "#minecraft:spears"
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "slots": {
+              "weapon.mainhand": {
+                "items": "#minecraft:spears"
+              }
+            },
+            "minecraft:entity_tags": {
+              "any_of": [
+                "fabled_roots.aetherian"
+              ]
             }
-          },
-          "minecraft:entity_tags": {
-            "any_of": [
-              "fabled_roots.aetherian"
-            ]
           }
         }
       }

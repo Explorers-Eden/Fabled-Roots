@@ -53,18 +53,9 @@ scoreboard objectives add fabled_roots.exp.miner.nether_quartz_ore minecraft.min
 
 ##npc scoreboards
 scoreboard objectives add fabled_roots.npc.bartering.timer dummy
-scoreboard objectives add fabled_roots.npc.follow.px dummy
-scoreboard objectives add fabled_roots.npc.follow.py dummy
-scoreboard objectives add fabled_roots.npc.follow.pz dummy
 scoreboard objectives add fabled_roots.npc.follow.dx dummy
 scoreboard objectives add fabled_roots.npc.follow.dy dummy
 scoreboard objectives add fabled_roots.npc.follow.dz dummy
-scoreboard objectives add fabled_roots.npc.follow.ex dummy
-scoreboard objectives add fabled_roots.npc.follow.ey dummy
-scoreboard objectives add fabled_roots.npc.follow.ez dummy
-scoreboard objectives add fabled_roots.npc.follow.dx2 dummy
-scoreboard objectives add fabled_roots.npc.follow.dy2 dummy
-scoreboard objectives add fabled_roots.npc.follow.dz2 dummy
 scoreboard objectives add fabled_roots.npc.follow.len2 dummy
 scoreboard objectives add fabled_roots.npc.follow.motionX dummy
 scoreboard objectives add fabled_roots.npc.follow.motionZ dummy
@@ -84,4 +75,4 @@ team modify fabled_roots.decoy collisionRule never
 team modify fabled_roots.decoy nametagVisibility never
 
 ##set data pack version
-data modify storage eden:datapack fabled_roots.version set value "2.7"
+data modify storage eden:datapack fabled_roots.version set value "2.8"

@@ -4,10 +4,14 @@
       "trigger": "minecraft:bred_animals",
       "conditions": {
         "player": {
-          "minecraft:entity_tags": {
-            "any_of": [
-              "fabled_roots.rancher"
-            ]
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_tags": {
+              "any_of": [
+                "fabled_roots.rancher"
+              ]
+            }
           }
         }
       }

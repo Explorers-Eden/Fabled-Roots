@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "nice_items:simple_harness"
+        "recipes": "fabled_roots:crafting_shaped/harness_of_roots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

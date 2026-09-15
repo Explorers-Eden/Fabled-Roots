@@ -23,9 +23,9 @@
           "type": "minecraft:item",
           "name": "minecraft:arrow",
           "weight": 10,
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_count",
+              "type": "minecraft:set_count",
               "count": 32
             }
           ]
@@ -34,9 +34,9 @@
           "type": "minecraft:item",
           "name": "minecraft:spectral_arrow",
           "weight": 5,
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_count",
+              "type": "minecraft:set_count",
               "count": 32
             }
           ]
@@ -45,13 +45,13 @@
           "type": "minecraft:item",
           "name": "minecraft:tipped_arrow",
           "weight": 2,
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_potion",
+              "type": "minecraft:set_potion",
               "id": "minecraft:healing"
             },
             {
-              "function": "minecraft:set_count",
+              "type": "minecraft:set_count",
               "count": 32
             }
           ]
@@ -60,13 +60,13 @@
           "type": "minecraft:item",
           "name": "minecraft:tipped_arrow",
           "weight": 2,
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_potion",
+              "type": "minecraft:set_potion",
               "id": "minecraft:poison"
             },
             {
-              "function": "minecraft:set_count",
+              "type": "minecraft:set_count",
               "count": 32
             }
           ]
@@ -75,13 +75,13 @@
           "type": "minecraft:item",
           "name": "minecraft:tipped_arrow",
           "weight": 2,
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_potion",
+              "type": "minecraft:set_potion",
               "id": "minecraft:invisibility"
             },
             {
-              "function": "minecraft:set_count",
+              "type": "minecraft:set_count",
               "count": 32
             }
           ]
@@ -90,13 +90,13 @@
           "type": "minecraft:item",
           "name": "minecraft:tipped_arrow",
           "weight": 2,
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_potion",
+              "type": "minecraft:set_potion",
               "id": "minecraft:weakness"
             },
             {
-              "function": "minecraft:set_count",
+              "type": "minecraft:set_count",
               "count": 32
             }
           ]

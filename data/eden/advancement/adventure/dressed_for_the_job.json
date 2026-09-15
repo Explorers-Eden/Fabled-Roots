@@ -1,0 +1,174 @@
+{
+  "parent": "eden:adventure/arsenal_of_roots",
+  "display": {
+    "icon": {
+      "id": "minecraft:leather_helmet"
+    },
+    "title": {
+      "translate": "advancement.eden.adventure.fabled_roots.dressed_for_the_job.title",
+      "fallback": "Dressed for the Job"
+    },
+    "description": {
+      "translate": "advancement.eden.adventure.fabled_roots.dressed_for_the_job.description",
+      "fallback": "Collect all 9 villager profession hats."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "armorer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:music_disc_5",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "villager_hat_armorer"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "butcher": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:music_disc_5",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "villager_hat_butcher"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "cartographer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:music_disc_5",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "villager_hat_cartographer"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "farmer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:music_disc_5",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "villager_hat_farmer"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "fisherman": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:music_disc_5",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "villager_hat_fisherman"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "fletcher": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:music_disc_5",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "villager_hat_fletcher"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "librarian": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:music_disc_5",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "villager_hat_librarian"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "shepherd": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:music_disc_5",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "villager_hat_shepherd"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "weaponsmith": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:music_disc_5",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "villager_hat_weaponsmith"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

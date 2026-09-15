@@ -16,4 +16,4 @@ execute \
         run return run function fabled_roots:npc/behavior/barter/payout with entity @s data
 
 $execute if score @s fabled_roots.npc.bartering.timer matches 1 run return run playsound fabled_roots:entity.descendant.encourage ambient @a ~ ~ ~ 0.5 $(pitch)
-$execute if predicate {"condition":"minecraft:random_chance","chance":0.025} run playsound fabled_roots:entity.descendant.ambient ambient @a ~ ~ ~ 0.5 $(pitch)
+$execute if predicate {"type":"minecraft:random_chance","chance":0.025} run playsound fabled_roots:entity.descendant.ambient ambient @a ~ ~ ~ 0.5 $(pitch)

@@ -6,16 +6,16 @@
       "entries": [
         {
           "type": "minecraft:tag",
-          "name": "minecraft:shulker_boxes",
           "expand": true,
           "weight": 5,
-          "functions": []
+          "items": "#minecraft:shulker_boxes",
+          "modifier": []
         },
         {
           "type": "minecraft:tag",
-          "name": "minecraft:bundles",
           "expand": true,
-          "weight": 10
+          "weight": 10,
+          "items": "#minecraft:bundles"
         }
       ]
     },
@@ -26,9 +26,9 @@
           "type": "minecraft:item",
           "name": "minecraft:leather_boots",
           "weight": 10,
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_enchantments",
+              "type": "minecraft:set_enchantments",
               "enchantments": {
                 "minecraft:feather_falling": 1
               }
@@ -39,9 +39,9 @@
           "type": "minecraft:item",
           "name": "minecraft:leather_leggings",
           "weight": 5,
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_enchantments",
+              "type": "minecraft:set_enchantments",
               "enchantments": {
                 "minecraft:feather_falling": 1
               }
@@ -52,9 +52,9 @@
           "type": "minecraft:item",
           "name": "minecraft:leather_chestplate",
           "weight": 5,
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_enchantments",
+              "type": "minecraft:set_enchantments",
               "enchantments": {
                 "minecraft:feather_falling": 1
               }
@@ -65,9 +65,9 @@
           "type": "minecraft:item",
           "name": "minecraft:leather_helmet",
           "weight": 10,
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_enchantments",
+              "type": "minecraft:set_enchantments",
               "enchantments": {
                 "minecraft:feather_falling": 1
               }

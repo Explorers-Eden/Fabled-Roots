@@ -1,0 +1,44 @@
+{
+  "parent": "eden:adventure/fabled_roots",
+  "display": {
+    "icon": {
+      "id": "minecraft:vault"
+    },
+    "title": {
+      "translate": "advancement.eden.adventure.fabled_roots.congress_assembled.title",
+      "fallback": "Congress Assembled"
+    },
+    "description": {
+      "translate": "advancement.eden.adventure.fabled_roots.congress_assembled.description",
+      "fallback": "Open a vault inside the Congress Hall with a Trial Key of Roots."
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "opened_vault": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "location": {
+          "type": "minecraft:location_check",
+          "predicate": {
+            "block": {
+              "blocks": "minecraft:vault"
+            }
+          }
+        },
+        "item": {
+          "items": "minecraft:music_disc_5",
+          "predicates": {
+            "minecraft:custom_data": {
+              "fabled_roots": {
+                "item": "trial_key_of_roots"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -2,11 +2,11 @@
   "values": [
     "minecraft:evoker",
     "minecraft:illusioner",
-    "minecraft:piglin_brute",
     "minecraft:piglin",
+    "minecraft:piglin_brute",
     "minecraft:pillager",
-    "minecraft:vindicator",
+    "minecraft:player",
     "minecraft:villager",
-    "minecraft:player"
+    "minecraft:vindicator"
   ]
 }

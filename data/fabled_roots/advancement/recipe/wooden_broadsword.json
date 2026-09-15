@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "fabled_roots:crafting_shaped/wooden_broadsword"
+        "recipes": "fabled_roots:crafting_shaped/wooden_broadsword"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

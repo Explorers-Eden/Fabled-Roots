@@ -3,29 +3,14 @@ rotate @s facing entity @p[distance=..16,tag=fabled_roots.descendant.leader]
 execute store result score @s fabled_roots.npc.follow.motionX run data get entity @s Motion[0] 100
 execute store result score @s fabled_roots.npc.follow.motionZ run data get entity @s Motion[2] 100
 
-execute as @p[distance=..16,tag=fabled_roots.descendant.leader] store result score @s fabled_roots.npc.follow.px run data get entity @s Pos[0] 5
-execute as @p[distance=..16,tag=fabled_roots.descendant.leader] store result score @s fabled_roots.npc.follow.py run data get entity @s Pos[1] 50
-execute as @p[distance=..16,tag=fabled_roots.descendant.leader] store result score @s fabled_roots.npc.follow.pz run data get entity @s Pos[2] 5
+execute as @p[distance=..16,tag=fabled_roots.descendant.leader] run data modify storage eden:temp fabled_roots.npc.follow.leader_pos set from entity @s Pos
+data modify storage eden:temp fabled_roots.npc.follow.self_pos set from entity @s Pos
 
-execute store result score @s fabled_roots.npc.follow.ex run data get entity @s Pos[0] 5
-execute store result score @s fabled_roots.npc.follow.ey run data get entity @s Pos[1] 50
-execute store result score @s fabled_roots.npc.follow.ez run data get entity @s Pos[2] 5
+execute store result score @s fabled_roots.npc.follow.dx run compute default float fabled_roots:npc/follow/dx 5
+execute store result score @s fabled_roots.npc.follow.dy run compute default float fabled_roots:npc/follow/dy 50
+execute store result score @s fabled_roots.npc.follow.dz run compute default float fabled_roots:npc/follow/dz 5
 
-scoreboard players operation @s fabled_roots.npc.follow.dx = @p[distance=..16,tag=fabled_roots.descendant.leader] fabled_roots.npc.follow.px
-scoreboard players operation @s fabled_roots.npc.follow.dx -= @s fabled_roots.npc.follow.ex
-
-scoreboard players operation @s fabled_roots.npc.follow.dy = @p[distance=..16,tag=fabled_roots.descendant.leader] fabled_roots.npc.follow.py
-scoreboard players operation @s fabled_roots.npc.follow.dy -= @s fabled_roots.npc.follow.ey
-
-scoreboard players operation @s fabled_roots.npc.follow.dz = @p[distance=..16,tag=fabled_roots.descendant.leader] fabled_roots.npc.follow.pz
-scoreboard players operation @s fabled_roots.npc.follow.dz -= @s fabled_roots.npc.follow.ez
-
-scoreboard players operation @s fabled_roots.npc.follow.dx2 = @s fabled_roots.npc.follow.dx
-scoreboard players operation @s fabled_roots.npc.follow.dx2 *= @s fabled_roots.npc.follow.dx
-scoreboard players operation @s fabled_roots.npc.follow.dz2 = @s fabled_roots.npc.follow.dz
-scoreboard players operation @s fabled_roots.npc.follow.dz2 *= @s fabled_roots.npc.follow.dz
-scoreboard players operation @s fabled_roots.npc.follow.len2 = @s fabled_roots.npc.follow.dx2
-scoreboard players operation @s fabled_roots.npc.follow.len2 += @s fabled_roots.npc.follow.dz2
+execute store result score @s fabled_roots.npc.follow.len2 run compute default float fabled_roots:npc/follow/len2 25
 
 execute if score @s fabled_roots.npc.follow.len2 matches ..99 run return 0
 

@@ -4,18 +4,22 @@
       "trigger": "minecraft:player_hurt_entity",
       "conditions": {
         "player": {
-          "minecraft:entity_tags": {
-            "any_of": [
-              "fabled_roots.endling"
-            ]
-          },
-          "slots": {
-            "weapon.mainhand": {
-              "items": "#minecraft:swords",
-              "predicates": {
-                "minecraft:custom_data": {
-                  "fabled_roots": {
-                    "type": "scythe"
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_tags": {
+              "any_of": [
+                "fabled_roots.endling"
+              ]
+            },
+            "slots": {
+              "weapon.mainhand": {
+                "items": "#minecraft:swords",
+                "predicates": {
+                  "minecraft:custom_data": {
+                    "fabled_roots": {
+                      "type": "scythe"
+                    }
                   }
                 }
               }

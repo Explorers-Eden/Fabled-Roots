@@ -1,9 +1,9 @@
 {
   "values": [
+    "minecraft:coal",
     "minecraft:cod",
     "minecraft:salmon",
-    "minecraft:tropical_fish_bucket",
     "minecraft:tropical_fish",
-    "minecraft:coal"
+    "minecraft:tropical_fish_bucket"
   ]
 }

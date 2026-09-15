@@ -1,8 +1,8 @@
 team join fabled_roots.aetherian
 
 execute if entity @e[type=player,tag=fabled_roots.aetherian,distance=1..24] run effect give @s minecraft:regeneration 5 0 true
-execute if predicate {"condition":"minecraft:location_check","predicate":{"position":{"y":{"min":200}}}} run effect give @s minecraft:strength 2 0 true
-execute if predicate {"condition":"minecraft:location_check","predicate":{"position":{"y":{"min":200}}}} run effect give @s minecraft:luck 2 0 true
+execute if predicate {"type":"minecraft:location_check","predicate":{"position":{"y":{"min":200}}}} run effect give @s minecraft:strength 2 0 true
+execute if predicate {"type":"minecraft:location_check","predicate":{"position":{"y":{"min":200}}}} run effect give @s minecraft:luck 2 0 true
 
 execute if score @s fabled_roots.dialog_trigger.ability matches 4 run return fail
 

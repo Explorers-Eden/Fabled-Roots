@@ -4,10 +4,14 @@
       "trigger": "minecraft:using_item",
       "conditions": {
         "player": {
-          "minecraft:entity_tags": {
-            "any_of": [
-              "fabled_roots.bard"
-            ]
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_tags": {
+              "any_of": [
+                "fabled_roots.bard"
+              ]
+            }
           }
         },
         "item": {

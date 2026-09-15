@@ -7,9 +7,9 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:written_book",
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_components",
+              "type": "minecraft:set_components",
               "components": {
                 "minecraft:written_book_content": {
                   "pages": [
@@ -35,7 +35,9 @@
                   }
                 },
                 "minecraft:tooltip_display": {
-                  "hidden_components": ["minecraft:dyed_color"]
+                  "hidden_components": [
+                    "minecraft:dyed_color"
+                  ]
                 },
                 "minecraft:dyed_color": 8747631,
                 "minecraft:tooltip_style": "fabled_roots:orebringer",

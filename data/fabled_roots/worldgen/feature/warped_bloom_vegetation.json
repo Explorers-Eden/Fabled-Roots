@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:simple_block",
+  "to_place": {
+    "type": "minecraft:weighted",
+    "entries": [
+      {
+        "data": "minecraft:warped_roots",
+        "weight": 15
+      },
+      {
+        "data": "minecraft:warped_fungus",
+        "weight": 5
+      },
+      {
+        "weight": 2,
+        "data": "minecraft:twisting_vines"
+      },
+      {
+        "weight": 85,
+        "data": "minecraft:nether_sprouts"
+      }
+    ]
+  }
+}

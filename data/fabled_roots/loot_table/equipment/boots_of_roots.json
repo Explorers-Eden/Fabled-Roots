@@ -7,9 +7,9 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:iron_boots",
-          "functions": [
+          "modifier": [
             {
-              "function": "minecraft:set_components",
+              "type": "minecraft:set_components",
               "components": {
                 "minecraft:item_name": {
                   "translate": "item.fabled_roots.boots_of_roots"

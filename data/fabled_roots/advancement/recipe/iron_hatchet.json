@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "fabled_roots:crafting_shaped/iron_hatchet"
+        "recipes": "fabled_roots:crafting_shaped/iron_hatchet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -1,0 +1,231 @@
+{
+  "parent": "eden:adventure/fabled_roots",
+  "display": {
+    "icon": {
+      "id": "minecraft:campfire"
+    },
+    "title": {
+      "translate": "advancement.eden.adventure.fabled_roots.home_away_from_home.title",
+      "fallback": "Home Away From Home"
+    },
+    "description": {
+      "translate": "advancement.eden.adventure.fabled_roots.home_away_from_home.description",
+      "fallback": "Discover both a Shelter and an Outpost belonging to the same race."
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "dunesworn_shelter": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "location": {
+              "structures": "fabled_roots:shelter/dunesworn"
+            }
+          }
+        }
+      }
+    },
+    "dunesworn_outpost": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "location": {
+              "structures": "fabled_roots:outpost/dunesworn"
+            }
+          }
+        }
+      }
+    },
+    "endling_shelter": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "location": {
+              "structures": "fabled_roots:shelter/endling"
+            }
+          }
+        }
+      }
+    },
+    "endling_outpost": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "location": {
+              "structures": "fabled_roots:outpost/endling"
+            }
+          }
+        }
+      }
+    },
+    "oakhearted_shelter": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "location": {
+              "structures": "fabled_roots:shelter/oakhearted"
+            }
+          }
+        }
+      }
+    },
+    "oakhearted_outpost": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "location": {
+              "structures": "fabled_roots:outpost/oakhearted"
+            }
+          }
+        }
+      }
+    },
+    "palehearted_shelter": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "location": {
+              "structures": "fabled_roots:shelter/palehearted"
+            }
+          }
+        }
+      }
+    },
+    "palehearted_outpost": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "location": {
+              "structures": "fabled_roots:outpost/palehearted"
+            }
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "dunesworn_shelter",
+      "endling_shelter",
+      "oakhearted_shelter",
+      "palehearted_shelter"
+    ],
+    [
+      "dunesworn_shelter",
+      "endling_shelter",
+      "oakhearted_shelter",
+      "palehearted_outpost"
+    ],
+    [
+      "dunesworn_shelter",
+      "endling_shelter",
+      "oakhearted_outpost",
+      "palehearted_shelter"
+    ],
+    [
+      "dunesworn_shelter",
+      "endling_shelter",
+      "oakhearted_outpost",
+      "palehearted_outpost"
+    ],
+    [
+      "dunesworn_shelter",
+      "endling_outpost",
+      "oakhearted_shelter",
+      "palehearted_shelter"
+    ],
+    [
+      "dunesworn_shelter",
+      "endling_outpost",
+      "oakhearted_shelter",
+      "palehearted_outpost"
+    ],
+    [
+      "dunesworn_shelter",
+      "endling_outpost",
+      "oakhearted_outpost",
+      "palehearted_shelter"
+    ],
+    [
+      "dunesworn_shelter",
+      "endling_outpost",
+      "oakhearted_outpost",
+      "palehearted_outpost"
+    ],
+    [
+      "dunesworn_outpost",
+      "endling_shelter",
+      "oakhearted_shelter",
+      "palehearted_shelter"
+    ],
+    [
+      "dunesworn_outpost",
+      "endling_shelter",
+      "oakhearted_shelter",
+      "palehearted_outpost"
+    ],
+    [
+      "dunesworn_outpost",
+      "endling_shelter",
+      "oakhearted_outpost",
+      "palehearted_shelter"
+    ],
+    [
+      "dunesworn_outpost",
+      "endling_shelter",
+      "oakhearted_outpost",
+      "palehearted_outpost"
+    ],
+    [
+      "dunesworn_outpost",
+      "endling_outpost",
+      "oakhearted_shelter",
+      "palehearted_shelter"
+    ],
+    [
+      "dunesworn_outpost",
+      "endling_outpost",
+      "oakhearted_shelter",
+      "palehearted_outpost"
+    ],
+    [
+      "dunesworn_outpost",
+      "endling_outpost",
+      "oakhearted_outpost",
+      "palehearted_shelter"
+    ],
+    [
+      "dunesworn_outpost",
+      "endling_outpost",
+      "oakhearted_outpost",
+      "palehearted_outpost"
+    ]
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "parent": "eden:adventure/arsenal_of_roots",
+  "display": {
+    "icon": {
+      "id": "minecraft:iron_helmet"
+    },
+    "title": {
+      "translate": "advancement.eden.adventure.fabled_roots.trophy_case.title",
+      "fallback": "Trophy Case"
+    },
+    "description": {
+      "translate": "advancement.eden.adventure.fabled_roots.trophy_case.description",
+      "fallback": "Collect all 9 mob shells."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "allay_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:iron_helmet",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "allay_shell"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "bee_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:iron_helmet",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "bee_shell"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "creaking_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:iron_helmet",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "creaking_shell"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "enderman_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:iron_helmet",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "enderman_shell"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "ghast_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:iron_helmet",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "ghast_shell"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "husk_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:iron_helmet",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "husk_shell"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "iron_golem_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:iron_helmet",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "iron_golem_shell"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "phantom_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:iron_helmet",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "phantom_shell"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "stray_shell": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:iron_helmet",
+            "predicates": {
+              "minecraft:custom_data": {
+                "fabled_roots": {
+                  "item": "stray_shell"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

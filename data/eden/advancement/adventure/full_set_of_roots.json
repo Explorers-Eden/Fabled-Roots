@@ -1,0 +1,70 @@
+{
+  "parent": "eden:adventure/fabled_roots",
+  "display": {
+    "icon": {
+      "id": "minecraft:iron_chestplate"
+    },
+    "title": {
+      "translate": "advancement.eden.adventure.fabled_roots.full_set_of_roots.title",
+      "fallback": "Full Set of Roots"
+    },
+    "description": {
+      "translate": "advancement.eden.adventure.fabled_roots.full_set_of_roots.description",
+      "fallback": "Wear the complete Roots armor set."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "wearing": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "equipment": {
+              "head": {
+                "predicates": {
+                  "minecraft:custom_data": {
+                    "fabled_roots": {
+                      "item": "armor_of_roots"
+                    }
+                  }
+                }
+              },
+              "chest": {
+                "predicates": {
+                  "minecraft:custom_data": {
+                    "fabled_roots": {
+                      "item": "armor_of_roots"
+                    }
+                  }
+                }
+              },
+              "legs": {
+                "predicates": {
+                  "minecraft:custom_data": {
+                    "fabled_roots": {
+                      "item": "armor_of_roots"
+                    }
+                  }
+                }
+              },
+              "feet": {
+                "predicates": {
+                  "minecraft:custom_data": {
+                    "fabled_roots": {
+                      "item": "armor_of_roots"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

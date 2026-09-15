@@ -3,7 +3,11 @@
     "consumed_scroll": {
       "trigger": "minecraft:consume_item",
       "conditions": {
-        "player": {},
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {}
+        },
         "item": {
           "items": "minecraft:music_disc_5",
           "predicates": {

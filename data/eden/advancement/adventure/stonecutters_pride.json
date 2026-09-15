@@ -1,0 +1,151 @@
+{
+  "parent": "eden:adventure/fabled_roots",
+  "display": {
+    "icon": {
+      "id": "minecraft:painting"
+    },
+    "title": {
+      "translate": "advancement.eden.adventure.fabled_roots.stonecutters_pride.title",
+      "fallback": "Stonecutter's Pride"
+    },
+    "description": {
+      "translate": "advancement.eden.adventure.fabled_roots.stonecutters_pride.description",
+      "fallback": "Craft a race-specific painting for all 10 races."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "aetherian": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:painting",
+            "components": {
+              "minecraft:painting/variant": "fabled_roots:aetherian"
+            }
+          }
+        ]
+      }
+    },
+    "dunesworn": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:painting",
+            "components": {
+              "minecraft:painting/variant": "fabled_roots:dunesworn"
+            }
+          }
+        ]
+      }
+    },
+    "endling": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:painting",
+            "components": {
+              "minecraft:painting/variant": "fabled_roots:endling"
+            }
+          }
+        ]
+      }
+    },
+    "frostborne": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:painting",
+            "components": {
+              "minecraft:painting/variant": "fabled_roots:frostborne"
+            }
+          }
+        ]
+      }
+    },
+    "moonshroud": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:painting",
+            "components": {
+              "minecraft:painting/variant": "fabled_roots:moonshroud"
+            }
+          }
+        ]
+      }
+    },
+    "netherian": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:painting",
+            "components": {
+              "minecraft:painting/variant": "fabled_roots:netherian"
+            }
+          }
+        ]
+      }
+    },
+    "oakhearted": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:painting",
+            "components": {
+              "minecraft:painting/variant": "fabled_roots:oakhearted"
+            }
+          }
+        ]
+      }
+    },
+    "orebringer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:painting",
+            "components": {
+              "minecraft:painting/variant": "fabled_roots:orebringer"
+            }
+          }
+        ]
+      }
+    },
+    "palehearted": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:painting",
+            "components": {
+              "minecraft:painting/variant": "fabled_roots:palehearted"
+            }
+          }
+        ]
+      }
+    },
+    "turtlekin": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:painting",
+            "components": {
+              "minecraft:painting/variant": "fabled_roots:turtlekin"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

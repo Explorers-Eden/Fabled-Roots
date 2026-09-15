@@ -1,5 +1,5 @@
 {
-    "values": [
-        { "id": "fabled_roots:treasure/orebringer","required": false}
-    ]
+  "values": [
+    { "id": "fabled_roots:treasure/orebringer", "required": false }
+  ]
 }

@@ -1,0 +1,175 @@
+{
+  "parent": "eden:adventure/fabled_roots",
+  "display": {
+    "icon": {
+      "id": "minecraft:map"
+    },
+    "title": {
+      "translate": "advancement.eden.adventure.fabled_roots.x_marks_the_spot.title",
+      "fallback": "X Marks the Spot"
+    },
+    "description": {
+      "translate": "advancement.eden.adventure.fabled_roots.x_marks_the_spot.description",
+      "fallback": "Follow a race's treasure map to its treasure."
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "aetherian": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "location": {
+              "structures": "fabled_roots:treasure/aetherian"
+            }
+          }
+        }
+      }
+    },
+    "dunesworn": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "location": {
+              "structures": "fabled_roots:treasure/dunesworn"
+            }
+          }
+        }
+      }
+    },
+    "endling": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "location": {
+              "structures": "fabled_roots:treasure/endling"
+            }
+          }
+        }
+      }
+    },
+    "frostborne": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "location": {
+              "structures": "fabled_roots:treasure/frostborne"
+            }
+          }
+        }
+      }
+    },
+    "moonshroud": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "location": {
+              "structures": "fabled_roots:treasure/moonshroud"
+            }
+          }
+        }
+      }
+    },
+    "netherian": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "location": {
+              "structures": "fabled_roots:treasure/netherian"
+            }
+          }
+        }
+      }
+    },
+    "oakhearted": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "location": {
+              "structures": "fabled_roots:treasure/oakhearted"
+            }
+          }
+        }
+      }
+    },
+    "orebringer": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "location": {
+              "structures": "fabled_roots:treasure/orebringer"
+            }
+          }
+        }
+      }
+    },
+    "palehearted": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "location": {
+              "structures": "fabled_roots:treasure/palehearted"
+            }
+          }
+        }
+      }
+    },
+    "turtlekin": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "location": {
+              "structures": "fabled_roots:treasure/turtlekin"
+            }
+          }
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "aetherian",
+      "dunesworn",
+      "endling",
+      "frostborne",
+      "moonshroud",
+      "netherian",
+      "oakhearted",
+      "orebringer",
+      "palehearted",
+      "turtlekin"
+    ]
+  ]
+}
