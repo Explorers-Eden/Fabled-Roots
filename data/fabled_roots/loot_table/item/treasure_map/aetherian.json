@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:map",
+          "name": "minecraft:buried_treasure_map",
           "modifier": [
             {
               "type": "minecraft:exploration_map",
@@ -21,7 +21,7 @@
               "components": {
                 "minecraft:tooltip_style": "fabled_roots:aetherian",
                 "minecraft:item_name": {
-                  "translate": "filled_map.buried_treasure"
+                  "translate": "item.minecraft.buried_treasure_map"
                 }
               }
             }
