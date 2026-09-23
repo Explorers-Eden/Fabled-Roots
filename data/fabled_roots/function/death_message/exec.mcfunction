@@ -1,2 +1,2 @@
-$tellraw @a [{"bold":false,"color":"red","italic":false,"text":"▊ "},{"bold":false,"italic":false,"selector":"@s"},{"color":"white","bold":false,"italic":false,"translate":"message.fabled_roots.death.$(race).$(id)"}]
+$tellraw @a [{"bold":false,"color":"red","italic":false,"text":"▊ "},{"bold":false,"italic":false,"selector":"@s"},{"color":"white","bold":false,"italic":false,"translate":"message.fabled_roots.death.$(race).$(id)","fallback":" has fallen."}]
 execute at @a run playsound minecraft:entity.chicken.egg neutral @a ~ ~ ~ .6 2

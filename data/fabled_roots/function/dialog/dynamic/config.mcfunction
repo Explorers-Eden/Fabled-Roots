@@ -13,7 +13,8 @@ $dialog show @s \
         }\
       },\
       "description":{\
-        "translate":"menu.fabled_roots.config.description"\
+        "translate":"menu.fabled_roots.config.description",\
+        "fallback":"Configure Miscellaneous Settings:"\
       }\
     }\
   ],\
@@ -23,13 +24,15 @@ $dialog show @s \
       "key":"pvp",\
       "width": 256,\
       "label":{\
-        "translate":"option.fabled_roots.config.pvp"\
+        "translate":"option.fabled_roots.config.pvp",\
+        "fallback":"Same Race PVP"\
       },\
       "options":[\
         {\
           "id":"enabled",\
           "display":{\
             "translate":"option.fabled_roots.enabled",\
+            "fallback":"Enabled",\
             "color":"green"\
           }\
         },\
@@ -37,6 +40,7 @@ $dialog show @s \
           "id":"disabled",\
           "display":{\
             "translate":"option.fabled_roots.disabled",\
+            "fallback":"Disabled",\
             "color":"red"\
           },\
           "initial":$(pvp_initial)\
@@ -48,13 +52,15 @@ $dialog show @s \
       "key":"prefix",\
       "width": 256,\
       "label":{\
-        "translate":"option.fabled_roots.config.prefix"\
+        "translate":"option.fabled_roots.config.prefix",\
+        "fallback":"Race Prefixes"\
       },\
       "options":[\
         {\
           "id":"enabled",\
           "display":{\
             "translate":"option.fabled_roots.enabled",\
+            "fallback":"Enabled",\
             "color":"green"\
           }\
         },\
@@ -62,6 +68,7 @@ $dialog show @s \
           "id":"disabled",\
           "display":{\
             "translate":"option.fabled_roots.disabled",\
+            "fallback":"Disabled",\
             "color":"red"\
           },\
           "initial":$(prefix_initial)\
@@ -73,13 +80,15 @@ $dialog show @s \
       "key":"seeinvis",\
       "width": 256,\
       "label":{\
-        "translate":"option.fabled_roots.config.seeinvis"\
+        "translate":"option.fabled_roots.config.seeinvis",\
+        "fallback":"See Same Race Invisible Players"\
       },\
       "options":[\
         {\
           "id":"enabled",\
           "display":{\
             "translate":"option.fabled_roots.enabled",\
+            "fallback":"Enabled",\
             "color":"green"\
           }\
         },\
@@ -87,6 +96,7 @@ $dialog show @s \
           "id":"disabled",\
           "display":{\
             "translate":"option.fabled_roots.disabled",\
+            "fallback":"Disabled",\
             "color":"red"\
           },\
           "initial":$(seeinvis_initial)\
@@ -98,13 +108,15 @@ $dialog show @s \
       "key":"npc_spawning",\
       "width": 256,\
       "label":{\
-        "translate":"option.fabled_roots.config.npc_spawning"\
+        "translate":"option.fabled_roots.config.npc_spawning",\
+        "fallback":"Descendant Spawning"\
       },\
       "options":[\
         {\
           "id":"enabled",\
           "display":{\
             "translate":"option.fabled_roots.enabled",\
+            "fallback":"Enabled",\
             "color":"green"\
           }\
         },\
@@ -112,6 +124,7 @@ $dialog show @s \
           "id":"disabled",\
           "display":{\
             "translate":"option.fabled_roots.disabled",\
+            "fallback":"Disabled",\
             "color":"red"\
           },\
           "initial":$(npc_spawning_initial)\
@@ -123,19 +136,22 @@ $dialog show @s \
       "key":"starter_equip",\
       "width": 256,\
       "label":{\
-        "translate":"option.fabled_roots.config.starter_equip"\
+        "translate":"option.fabled_roots.config.starter_equip",\
+        "fallback":"Starting Class Equipment"\
       },\
       "options":[\
         {\
           "id":"always",\
           "display":{\
-            "translate":"option.fabled_roots.starter_equip.always"\
+            "translate":"option.fabled_roots.starter_equip.always",\
+            "fallback":"Always"\
           }\
         },\
         {\
           "id":"once",\
           "display":{\
-            "translate":"option.fabled_roots.starter_equip.once"\
+            "translate":"option.fabled_roots.starter_equip.once",\
+            "fallback":"Once"\
           },\
           "initial":$(starter_equip_initial)\
         }\
@@ -146,14 +162,17 @@ $dialog show @s \
   "pause":true,\
   "after_action":"close",\
   "external_title":{\
-    "translate":"menu.fabled_roots.config.title"\
+    "translate":"menu.fabled_roots.config.title",\
+    "fallback":"Config Menu"\
   },\
   "title":{\
-    "translate":"menu.fabled_roots.config.title"\
+    "translate":"menu.fabled_roots.config.title",\
+    "fallback":"Config Menu"\
   },\
   "yes":{\
     "label":{\
-      "translate":"menu.fabled_roots.confirm"\
+      "translate":"menu.fabled_roots.confirm",\
+      "fallback":"Confirm"\
     },\
     "action":{\
       "type":"minecraft:dynamic/run_command",\
@@ -162,7 +181,8 @@ $dialog show @s \
   },\
   "no": {\
     "label": {\
-      "translate": "menu.fabled_roots.back"\
+      "translate": "menu.fabled_roots.back",\
+      "fallback":"Back"\
     },\
     "action": {\
       "type": "show_dialog",\
