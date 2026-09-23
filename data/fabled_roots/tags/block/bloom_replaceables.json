@@ -2,6 +2,7 @@
   "values": [
     "#minecraft:base_stone_overworld",
     "#minecraft:dirt",
+    "#minecraft:grass_blocks",
     "#minecraft:sand",
     "#minecraft:snow",
     "#minecraft:soul_speed_blocks",
