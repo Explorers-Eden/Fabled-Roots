@@ -4,6 +4,7 @@ function fabled_roots:selection_msg {race:"turtlekin",race_cap:"Turtlekin"}
 tag @s add fabled_roots.turtlekin
 team join fabled_roots.turtlekin
 tag @s add fabled_roots.has_race
+scoreboard players set @s fabled_roots.dialog_trigger.ability 3
 
 waypoint modify @s style set fabled_roots:player
 waypoint modify @s color hex D4F1FF

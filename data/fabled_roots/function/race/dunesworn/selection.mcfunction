@@ -4,6 +4,7 @@ function fabled_roots:selection_msg {race:"dunesworn",race_cap:"Dunesworn"}
 tag @s add fabled_roots.dunesworn
 team join fabled_roots.dunesworn
 tag @s add fabled_roots.has_race
+scoreboard players set @s fabled_roots.dialog_trigger.ability 1
 
 waypoint modify @s style set fabled_roots:player
 waypoint modify @s color hex C2A76D

@@ -1,5 +1,8 @@
 schedule function fabled_roots:race/init 1s
 
+##one-time attribute update for v3.1
+execute as @a[tag=fabled_roots.has_race,tag=!fabled_roots.migrated.v3_1] run function fabled_roots:migrate/v3_1
+
 ##effects
 execute as @a[tag=fabled_roots.aetherian] at @s run function fabled_roots:race/aetherian/effects
 execute as @a[tag=fabled_roots.dunesworn] at @s run function fabled_roots:race/dunesworn/effects

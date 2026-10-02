@@ -4,6 +4,7 @@ function fabled_roots:selection_msg {race:"moonshroud",race_cap:"Moonshroud"}
 tag @s add fabled_roots.moonshroud
 team join fabled_roots.moonshroud
 tag @s add fabled_roots.has_race
+scoreboard players set @s fabled_roots.dialog_trigger.ability 1
 
 waypoint modify @s style set fabled_roots:player
 waypoint modify @s color hex B0B7D6

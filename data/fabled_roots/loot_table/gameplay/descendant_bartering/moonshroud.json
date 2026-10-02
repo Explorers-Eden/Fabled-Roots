@@ -300,6 +300,11 @@
           "type": "minecraft:loot_table",
           "value": "fabled_roots:equipment/boots_of_roots",
           "weight": 10
+        },
+        {
+          "type": "minecraft:loot_table",
+          "value": "fabled_roots:pool/villager_hat",
+          "weight": 1
         }
       ]
     }

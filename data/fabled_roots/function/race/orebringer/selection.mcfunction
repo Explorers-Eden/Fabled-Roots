@@ -4,6 +4,7 @@ function fabled_roots:selection_msg {race:"orebringer",race_cap:"Orebringer"}
 tag @s add fabled_roots.orebringer
 team join fabled_roots.orebringer
 tag @s add fabled_roots.has_race
+scoreboard players set @s fabled_roots.dialog_trigger.ability 1
 
 waypoint modify @s style set fabled_roots:player
 waypoint modify @s color hex 857A6F
@@ -15,6 +16,6 @@ attribute @s minecraft:waypoint_transmit_range base set 256
 attribute @s minecraft:waypoint_receive_range base set 128
 
 attribute @s minecraft:armor_toughness base set 3
-attribute @s minecraft:gravity base set 0.1
+attribute @s minecraft:gravity base set 0.096
 
 dialog show @s fabled_roots:class_selection

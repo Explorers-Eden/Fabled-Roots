@@ -4,6 +4,7 @@ function fabled_roots:selection_msg {race:"palehearted",race_cap:"Palehearted"}
 tag @s add fabled_roots.palehearted
 team join fabled_roots.palehearted
 tag @s add fabled_roots.has_race
+scoreboard players set @s fabled_roots.dialog_trigger.ability 1
 
 waypoint modify @s style set fabled_roots:player
 waypoint modify @s color hex E8DADA
@@ -14,7 +15,7 @@ function fabled_roots:set_player_size with storage eden:temp fabled_roots
 attribute @s minecraft:waypoint_transmit_range base set 256
 attribute @s minecraft:waypoint_receive_range base set 256
 
-attribute @s minecraft:jump_strength base set 0.5
+attribute @s minecraft:jump_strength base set 0.525
 attribute @s minecraft:safe_fall_distance base set 3.3
 attribute @s minecraft:attack_damage base set 0.9
 attribute @s minecraft:burning_time base set 1.5

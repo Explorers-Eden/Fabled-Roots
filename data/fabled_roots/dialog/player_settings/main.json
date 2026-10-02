@@ -11,7 +11,7 @@
   "pause": true,
   "exit_action": {
     "label": {
-      "translate": "gui.back"
+      "translate": "option.fabled_roots.back","fallback":"Back"
     },
     "action": {
       "type": "minecraft:show_dialog",

@@ -4,6 +4,7 @@ function fabled_roots:selection_msg {race:"endling",race_cap:"Endling"}
 tag @s add fabled_roots.endling
 team join fabled_roots.endling
 tag @s add fabled_roots.has_race
+scoreboard players set @s fabled_roots.dialog_trigger.ability 1
 
 waypoint modify @s style set fabled_roots:player
 waypoint modify @s color hex 5D3A9B

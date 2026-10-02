@@ -4,6 +4,7 @@ function fabled_roots:selection_msg {race:"frostborne",race_cap:"Frostborne"}
 tag @s add fabled_roots.frostborne
 team join fabled_roots.frostborne
 tag @s add fabled_roots.has_race
+scoreboard players set @s fabled_roots.dialog_trigger.ability 1
 
 waypoint modify @s style set fabled_roots:player
 waypoint modify @s color hex A9D6E5

@@ -4,6 +4,7 @@ function fabled_roots:selection_msg {race:"aetherian",race_cap:"Aetherian"}
 tag @s add fabled_roots.aetherian
 team join fabled_roots.aetherian
 tag @s add fabled_roots.has_race
+scoreboard players set @s fabled_roots.dialog_trigger.ability 2
 
 waypoint modify @s style set fabled_roots:player
 waypoint modify @s color hex D4F1FF
