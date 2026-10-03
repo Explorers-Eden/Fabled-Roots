@@ -74,5 +74,8 @@ team modify fabled_roots.npc nametagVisibility never
 team modify fabled_roots.decoy collisionRule never
 team modify fabled_roots.decoy nametagVisibility never
 
+##start repeating loops
+function fabled_roots:start
+
 ##set data pack version
-data modify storage eden:datapack fabled_roots.version set value "3.1"
+data modify storage eden:datapack fabled_roots.version set value "3.2"

@@ -1,17 +1,5 @@
 # Minecraft Version(s): 26.3
 ## Changes:
-- Netherian now have -25% Attack Speed instead of -25% Block Breaking Speed, as described in the race info
-- Orebringer gravity changed to +20%, Oakhearted jump strength to +50% and Palehearted jump strength to +25%, as described in the race info
-- Atlantic Shot, Breeze Shot and Void Shot now shoot 5 projectiles, as described in the scroll info
-- Each race now starts with its own default ability hotkey (Aetherian: Jump, Netherian & Turtlekin: Sprint, all others: Crouch), still changeable in the Player Settings
-- Villager Hats can now rarely be bartered from Descendants
-- Decoy scrolls can now be obtained from Enchanting Tables
+- Repeating background tasks now start a few ticks apart after loading instead of all on the same tick, spreading out server load
 
 ## Fixes:
-- Scout and Survivor class abilities not working
-- Crown of Roots not working for Endlings
-- Netherian and Oakhearted Treasures containing each other's loot
-- Moonshroud Shelters and Treasures generating in Oakhearted biomes
-- Netherite Hatchet and Netherite Throwing Knife sharing the same recipe
-- Stormcall scroll info not mentioning its limit of 5 targets
-- Back buttons in menus not showing their label
