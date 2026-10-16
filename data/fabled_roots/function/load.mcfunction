@@ -74,8 +74,13 @@ team modify fabled_roots.npc nametagVisibility never
 team modify fabled_roots.decoy collisionRule never
 team modify fabled_roots.decoy nametagVisibility never
 
+##remove leftover motion vector clouds (older versions didn't always kill them, they pile up at 0 0 0)
+execute in minecraft:overworld positioned 0.0 0.0 0.0 run kill @e[type=minecraft:area_effect_cloud,distance=..3]
+execute in minecraft:the_nether positioned 0.0 0.0 0.0 run kill @e[type=minecraft:area_effect_cloud,distance=..3]
+execute in minecraft:the_end positioned 0.0 0.0 0.0 run kill @e[type=minecraft:area_effect_cloud,distance=..3]
+
 ##start repeating loops
 function fabled_roots:start
 
 ##set data pack version
-data modify storage eden:datapack fabled_roots.version set value "3.2"
+data modify storage eden:datapack fabled_roots.version set value "3.3"

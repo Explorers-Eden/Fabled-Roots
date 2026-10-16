@@ -8,6 +8,5 @@ scoreboard players set @s fabled_roots.scout.timer.active 1
 scoreboard players set @s fabled_roots.scout.timer 1
 
 summon lingering_potion ^ ^-.5 ^2 {Tags:["fabled_roots.scout_glowing"],Item:{id:"minecraft:lingering_potion",count:1,components:{"minecraft:potion_contents":{custom_color:16777215,custom_effects:[{id:"minecraft:glowing",amplifier:1,duration:200,show_particles:0b},{id:"minecraft:slowness",amplifier:2,duration:200,show_particles:0b}]}}}}
-execute rotated as @s positioned 0.0 0.0 0.0 positioned ^ ^.5 ^10 summon minecraft:area_effect_cloud run data modify entity @n[type=minecraft:lingering_potion,tag=fabled_roots.scout_glowing] Motion set from entity @s Pos
-
-execute positioned 0.0 0.0 0.0 run kill @e[type=area_effect_cloud,distance=..15]
+execute rotated as @s positioned 0.0 0.0 0.0 positioned ^ ^.5 ^10 summon minecraft:area_effect_cloud run function fabled_roots:util/store_motion
+data modify entity @n[type=minecraft:lingering_potion,tag=fabled_roots.scout_glowing,distance=..4] Motion set from storage eden:temp fabled_roots.motion
