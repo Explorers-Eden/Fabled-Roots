@@ -16,6 +16,6 @@ attribute @s minecraft:waypoint_transmit_range base set 256
 attribute @s minecraft:waypoint_receive_range base set 128
 
 attribute @s minecraft:attack_knockback base set 1
-attribute @s minecraft:attack_speed base set 3
+attribute @s minecraft:attack_speed modifier add fabled_roots:netherian_speed -0.25 add_multiplied_total
 
 dialog show @s fabled_roots:class_selection

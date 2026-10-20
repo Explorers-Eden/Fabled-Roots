@@ -2,5 +2,4 @@
 ## Changes:
 
 ## Fixes:
-- The Congress Assembled advancement was granted for using any item on any vault; now only a Trial Key of Roots on a vault counts
-- The Stonepiercer and Heavy Shot scrolls used the block format of older versions for their blocks and displays, which 26.3 no longer reads
+- Netherians couldn't charge up attacks with axes and maces; their -25% Attack Speed now slows every weapon by 25% instead of stopping slow weapons completely
