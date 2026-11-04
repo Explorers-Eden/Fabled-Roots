@@ -2,4 +2,4 @@
 ## Changes:
 
 ## Fixes:
-- Netherians couldn't charge up attacks with axes and maces; their -25% Attack Speed now slows every weapon by 25% instead of stopping slow weapons completely
+- Dunesworn Scimitar kills regenerating the whole hunger bar instead of just a fraction
