@@ -1,5 +1,6 @@
 # Minecraft Version(s): 26.3
 ## Changes:
+- Added admin tag "fabled_roots.paused" which when applied stops race/class effects from being applied
+
 
 ## Fixes:
-- Dunesworn Scimitar kills regenerating the whole hunger bar instead of just a fraction

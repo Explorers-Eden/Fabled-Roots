@@ -83,4 +83,4 @@ execute in minecraft:the_end positioned 0.0 0.0 0.0 run kill @e[type=minecraft:a
 function fabled_roots:start
 
 ##set data pack version
-data modify storage eden:datapack fabled_roots.version set value "3.6"
+data modify storage eden:datapack fabled_roots.version set value "3.7"

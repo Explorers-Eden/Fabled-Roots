@@ -1,3 +1,5 @@
+# Paused (in game dimensions, see Nice Control Center): no class ability here.
+execute if entity @s[tag=fabled_roots.paused] run return fail
 effect give @e[type=#fabled_roots:hostile_mobs,distance=..16] minecraft:wither 10 0 false
 
 scoreboard players set @s fabled_roots.bard.timer.active 1

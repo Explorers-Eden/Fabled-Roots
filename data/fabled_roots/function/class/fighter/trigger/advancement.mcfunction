@@ -4,4 +4,6 @@ execute as @s[advancements={fabled_roots:fighter_killed_entity=true}] run scoreb
 
 
 advancement revoke @s only fabled_roots:fighter_killed_entity
+# Paused (in game dimensions, see Nice Control Center): no class ability here.
+execute if entity @s[tag=fabled_roots.paused] run return fail
 advancement revoke @s only fabled_roots:fighter_blocked_dmg

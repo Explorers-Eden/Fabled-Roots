@@ -1,3 +1,5 @@
+# Paused (in game dimensions, see Nice Control Center): no class ability here.
+execute if entity @s[tag=fabled_roots.paused] run return fail
 effect clear @a[distance=..8] minecraft:poison
 effect clear @a[distance=..8] minecraft:wither
 effect clear @a[distance=..8] minecraft:weakness
